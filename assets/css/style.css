@@ -1,0 +1,182 @@
+/* ==========================================================================
+   Seelenfrieden Urnenrückführung GmbH
+   Design-Tokens zuerst — Farben, Typo und Radien zentral anpassbar.
+   ========================================================================== */
+
+:root {
+  --bg:            #faf8f5;
+  --bg-soft:       #f3efe8;
+  --surface:       #ffffff;
+  --text:          #2b2f2d;
+  --text-muted:    #6c726f;
+  --primary:       #46594f;
+  --primary-soft:  #6d8478;
+  --accent:        #b08d57;
+  --border:        #e4ded4;
+  --shadow:        0 1px 2px rgba(43, 47, 45, .04), 0 8px 24px rgba(43, 47, 45, .05);
+
+  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  --font-sans:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --radius:   4px;
+  --radius-l: 10px;
+  --wrap:     1080px;
+  --step:     clamp(3.5rem, 8vw, 6.5rem);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:           #161918;
+    --bg-soft:      #1d2120;
+    --surface:      #1f2422;
+    --text:         #e8e6e1;
+    --text-muted:   #a3a9a5;
+    --primary:      #a8c0b3;
+    --primary-soft: #8aa295;
+    --accent:       #cfa96e;
+    --border:       #2e3533;
+    --shadow:       0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px rgba(0, 0, 0, .25);
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { font-family: var(--font-serif); font-weight: 400; line-height: 1.2; letter-spacing: -.01em; }
+h1 { font-size: clamp(2.1rem, 5.2vw, 3.4rem); margin: 0 0 1rem; }
+h2 { font-size: clamp(1.65rem, 3.4vw, 2.35rem); margin: 0 0 .75rem; }
+h3 { font-size: 1.2rem; margin: 0 0 .4rem; }
+p  { margin: 0 0 1rem; }
+
+a { color: var(--primary); text-decoration-color: color-mix(in srgb, var(--primary) 35%, transparent); text-underline-offset: .2em; }
+a:hover { color: var(--accent); }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.wrap { width: min(100% - 2.5rem, var(--wrap)); margin-inline: auto; }
+
+.eyebrow {
+  font-size: .75rem; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--accent); margin: 0 0 .9rem; font-weight: 600;
+}
+
+.lead { font-size: 1.15rem; color: var(--text-muted); max-width: 62ch; }
+
+/* --- Sprachumschaltung ---------------------------------------------------- */
+
+[data-lang="de"] [lang="ru"] { display: none !important; }
+[data-lang="ru"] [lang="de"] { display: none !important; }
+
+.langswitch { display: inline-flex; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.langswitch button {
+  font: inherit; font-size: .8rem; letter-spacing: .06em;
+  padding: .35rem .7rem; border: 0; background: transparent;
+  color: var(--text-muted); cursor: pointer;
+}
+.langswitch button + button { border-left: 1px solid var(--border); }
+.langswitch button[aria-pressed="true"] { background: var(--primary); color: var(--bg); }
+
+/* --- Kopfzeile ------------------------------------------------------------ */
+
+.site-header {
+  position: sticky; top: 0; z-index: 20;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.site-header .wrap { display: flex; align-items: center; gap: 1.5rem; min-height: 4.5rem; flex-wrap: wrap; }
+
+.brand { display: flex; align-items: center; gap: .7rem; text-decoration: none; color: inherit; margin-right: auto; }
+.brand svg { flex: none; }
+.brand b { font-family: var(--font-serif); font-weight: 400; font-size: 1.15rem; display: block; line-height: 1.15; }
+.brand small { font-size: .7rem; letter-spacing: .13em; text-transform: uppercase; color: var(--text-muted); }
+
+.nav { display: flex; gap: 1.4rem; font-size: .92rem; }
+.nav a { text-decoration: none; color: var(--text-muted); }
+.nav a:hover { color: var(--text); }
+
+/* --- Buttons -------------------------------------------------------------- */
+
+.btn {
+  display: inline-block; padding: .8rem 1.6rem; border-radius: var(--radius);
+  background: var(--primary); color: var(--bg); text-decoration: none;
+  font-size: .95rem; letter-spacing: .02em; border: 1px solid var(--primary);
+  transition: background .15s ease, color .15s ease;
+}
+.btn:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn.ghost { background: transparent; color: var(--text); border-color: var(--border); }
+.btn.ghost:hover { border-color: var(--accent); color: var(--accent); background: transparent; }
+
+/* --- Hero ----------------------------------------------------------------- */
+
+.hero { padding: clamp(4rem, 9vw, 7.5rem) 0 var(--step); background: linear-gradient(180deg, var(--bg-soft), var(--bg)); }
+.hero .inner { display: grid; grid-template-columns: 1.35fr .65fr; gap: 3rem; align-items: center; }
+.hero .actions { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 2rem; }
+.hero figure { margin: 0; display: flex; justify-content: center; }
+
+@media (max-width: 800px) {
+  .hero .inner { grid-template-columns: 1fr; gap: 2rem; }
+  .hero figure { order: -1; justify-content: flex-start; }
+}
+
+/* --- Abschnitte ----------------------------------------------------------- */
+
+section { padding: var(--step) 0; }
+section + section { border-top: 1px solid var(--border); }
+.section-head { max-width: 62ch; margin-bottom: 3rem; }
+
+.grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(255px, 1fr)); }
+
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-l); padding: 1.6rem; box-shadow: var(--shadow);
+}
+.card .icon { color: var(--accent); margin-bottom: .9rem; display: block; }
+.card p { margin: 0; color: var(--text-muted); font-size: .97rem; }
+
+/* --- Ablauf --------------------------------------------------------------- */
+
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.steps li { padding: 1.6rem 1.6rem 1.6rem 0; border-top: 2px solid var(--border); position: relative; }
+.steps li::before {
+  content: attr(data-step);
+  font-family: var(--font-serif); font-size: 2rem; color: var(--accent);
+  display: block; line-height: 1; margin-bottom: .8rem;
+}
+.steps li p { color: var(--text-muted); font-size: .97rem; margin: 0; }
+
+/* --- Kontakt & Impressum -------------------------------------------------- */
+
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+@media (max-width: 800px) { .split { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+.contact-list { list-style: none; margin: 0; padding: 0; }
+.contact-list li { padding: .9rem 0; border-bottom: 1px solid var(--border); display: flex; gap: 1rem; }
+.contact-list .k { flex: 0 0 8.5rem; color: var(--text-muted); font-size: .85rem; letter-spacing: .06em; text-transform: uppercase; padding-top: .15rem; }
+.contact-list .v { font-style: normal; }
+
+.legal { background: var(--bg-soft); }
+.legal address { font-style: normal; }
+.legal dl { display: grid; grid-template-columns: max-content 1fr; gap: .5rem 1.5rem; margin: 0; font-size: .97rem; }
+.legal dt { color: var(--text-muted); }
+.legal dd { margin: 0; }
+@media (max-width: 560px) { .legal dl { grid-template-columns: 1fr; gap: .1rem 0; } .legal dd { margin-bottom: .7rem; } }
+
+.fineprint { font-size: .88rem; color: var(--text-muted); max-width: 70ch; }
+
+/* --- Fusszeile ------------------------------------------------------------ */
+
+.site-footer { border-top: 1px solid var(--border); padding: 2.5rem 0; font-size: .88rem; color: var(--text-muted); }
+.site-footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.site-footer a { color: inherit; }
