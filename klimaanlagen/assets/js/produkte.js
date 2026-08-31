@@ -102,7 +102,7 @@ window.ARKTIK_PRODUKTE = [
 {
 "slug": "arktik-move-7-mobil",
 "name": "ARKTIK Move 7 mobil",
-"kurz": "Mobiles Klimagerät 2,1 kW, sofort einsatzbereit",
+"kurz": "Einkanal-Klimagerät 2,1 kW, sofort einsatzbereit",
 "kw": 2.1,
 "preis": 349,
 "url": "produkte/arktik-move-7-mobil.html",
@@ -111,10 +111,37 @@ window.ARKTIK_PRODUKTE = [
 {
 "slug": "arktik-move-9-pro-mobil",
 "name": "ARKTIK Move 9 Pro mobil",
-"kurz": "Mobiles Klimagerät 2,6 kW mit WLAN und Inverter",
+"kurz": "Einkanal-Klimagerät 2,6 kW mit Inverter und WLAN",
 "kw": 2.6,
 "preis": 449,
 "url": "produkte/arktik-move-9-pro-mobil.html",
 "img": "assets/img/produkt-arktik-move-9-pro-mobil.svg"
+},
+{
+"slug": "arktik-move-duo-9",
+"name": "ARKTIK Move Duo 9",
+"kurz": "Zweikanal-Klimagerät 2,6 kW – kühlt ohne Unterdruck",
+"kw": 2.6,
+"preis": 549,
+"url": "produkte/arktik-move-duo-9.html",
+"img": "assets/img/produkt-arktik-move-duo-9.svg"
+},
+{
+"slug": "arktik-move-duo-12",
+"name": "ARKTIK Move Duo 12",
+"kurz": "Zweikanal-Klimagerät 3,5 kW mit Heizfunktion",
+"kw": 3.5,
+"preis": 649,
+"url": "produkte/arktik-move-duo-12.html",
+"img": "assets/img/produkt-arktik-move-duo-12.svg"
+},
+{
+"slug": "arktik-move-5-kompakt",
+"name": "ARKTIK Move 5 Kompakt",
+"kurz": "Einkanal-Klimagerät 1,8 kW für Arbeitszimmer",
+"kw": 1.8,
+"preis": 279,
+"url": "produkte/arktik-move-5-kompakt.html",
+"img": "assets/img/produkt-arktik-move-5-kompakt.svg"
 }
 ];

@@ -10,7 +10,9 @@ Zwei eigenständige, statische Websites in einem Repository.
 **Klimaanlagen-Shop:** Anleitung in
 [`docs/klimashop-anleitung.md`](docs/klimashop-anleitung.md), rechtliche
 Checkliste vor dem Livegang in
-[`docs/klimashop-rechtliches.md`](docs/klimashop-rechtliches.md).
+[`docs/klimashop-rechtliches.md`](docs/klimashop-rechtliches.md), Lieferanten und
+Anfragetext für China in
+[`docs/klimashop-beschaffung.md`](docs/klimashop-beschaffung.md).
 
 ```bash
 python3 tools/build.py     # Shop bauen

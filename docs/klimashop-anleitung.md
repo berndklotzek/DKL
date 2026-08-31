@@ -158,7 +158,8 @@ ergänzen.
 
 `docs/klimashop-rechtliches.md` durchgehen. Dort stehen die Registrierungen und
 Nachweise, die für den Verkauf von Klimageräten in Deutschland vorliegen müssen —
-mehrere davon **vor** dem ersten Verkauf.
+mehrere davon **vor** dem ersten Verkauf. Welche Unterlagen der Lieferant dafür
+beibringen muss und wie man ihn prüft, steht in `docs/klimashop-beschaffung.md`.
 
 Alle Platzhalter im Markup sind mit „Platzhalter“ oder `TODO` gekennzeichnet und
 so zu finden:

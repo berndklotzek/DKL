@@ -49,7 +49,7 @@ KATEGORIEN = {
     "quick-connect": ("Quick-Connect-Split",     "Split-Effizienz mit vorbefüllter Schnellkupplung. Selbstmontage möglich."),
     "split":         ("Split-Klimaanlagen",      "Höchste Effizienz und niedrigste Geräuschwerte. Montage durch Fachbetrieb."),
     "multisplit":    ("Multi-Split-Anlagen",     "Mehrere Räume an einem Aussengerät – eine Genehmigung genügt."),
-    "mobil":         ("Mobile Klimageräte",      "Sofort einsatzbereit, ohne bauliche Veränderung. Ideal zur Miete."),
+    "mobil":         ("Klimageräte ohne Montage", "Aufstellen und einschalten. Mit Zweikanal-Technik ohne den Unterdruck-Nachteil einfacher Geräte."),
     "zubehoer":      ("Zubehör",                 "Fensterabdichtung, Montagematerial und Nachrüstteile."),
 }
 
@@ -170,6 +170,13 @@ def product_svg(p):
         )
 
     elif kat == "mobil":
+        # Zweikanalgeräte bekommen einen zweiten Schlauch — genau der Unterschied,
+        # auf den es bei Geräten ohne Montage ankommt.
+        zweiter_schlauch = (
+            '<path d="M216 104c26 0 30 14 30 30v46" stroke="%s" stroke-width="13" fill="none" '
+            'stroke-linecap="round" opacity=".22" stroke-dasharray="3 9"/>' % dark
+        ) if p.get("kanaele") == 2 else ""
+
         body = (
             '<rect x="104" y="44" width="112" height="150" rx="18" fill="url(#%s-b)" stroke="%s" stroke-opacity=".28"/>'
             '<path d="M104 150h112v26a18 18 0 0 1-18 18h-76a18 18 0 0 1-18-18z" fill="url(#%s)"/>'
@@ -183,7 +190,7 @@ def product_svg(p):
             '<circle cx="132" cy="200" r="7" fill="%s" opacity=".5"/>'
             '<circle cx="188" cy="200" r="7" fill="%s" opacity=".5"/>'
             % (gid, dark, gid, dark, dark, dark, dark)
-        )
+        ) + zweiter_schlauch
 
     else:  # Zubehör
         body = (
@@ -303,7 +310,9 @@ def product_card(p, rel="", rang=0):
     if p["raum_max"]:
         chips.append("bis %d m²" % p["raum_max"])
     if p["seer"]:
-        chips.append("SEER %s" % kw_de(p["seer"]))
+        chips.append("%s %s" % (p["kennzahl"], kw_de(p["seer"])))
+    if p.get("kanaele"):
+        chips.append("1 Schlauch" if p["kanaele"] == 1 else "2 Schläuche")
     if p["db"]:
         chips.append("%d dB(A)" % p["db"])
     if p["wifi"]:
@@ -549,7 +558,7 @@ def seo_description(p):
     if p["raum_max"]:
         fakten.append("für %d–%d m²" % (p["raum_min"], p["raum_max"]))
     if p["seer"]:
-        fakten.append("SEER %s" % kw_de(p["seer"]))
+        fakten.append("%s %s" % (p["kennzahl"], kw_de(p["seer"])))
     if p["db"]:
         fakten.append("ab %d dB(A)" % p["db"])
     text = "%s: %s. %s. Lieferung in 3–5 Werktagen aus dem EU-Lager." % (
@@ -574,9 +583,16 @@ def product_page(p, produkte):
     if p["raum_max"]:
         specs.append(("Empfohlene Raumgrösse", "%d bis %d m²" % (p["raum_min"], p["raum_max"])))
     if p["seer"]:
-        specs.append(("SEER (Kühlen)", kw_de(p["seer"])))
+        # Split-Geräte werden nach EN 14825 mit SEER bewertet, Einkanal- und
+        # Zweikanal-Geräte nach Verordnung 626/2011 mit EER. Die Werte liegen
+        # auf verschiedenen Skalen und dürfen nicht verglichen werden.
+        specs.append(("%s (Kühlen)" % p["kennzahl"], kw_de(p["seer"])))
+    if p.get("kanaele"):
+        specs.append(("Bauart", "Einkanal (ein Schlauch)" if p["kanaele"] == 1
+                                else "Zweikanal (zwei Schläuche)"))
     if p["scop"]:
-        specs.append(("SCOP (Heizen)", kw_de(p["scop"])))
+        specs.append(("%s (Heizen)" % ("SCOP" if p["kennzahl"] == "SEER" else "COP"),
+                      kw_de(p["scop"])))
     specs.append(("Energieeffizienzklasse", "%s (Kühlen) · %s (Heizen)" % (p["eek_kuehlen"], p["eek_heizen"])))
     if p["db"]:
         specs.append(("Schalldruckpegel innen", "ab %d dB(A)" % p["db"]))
@@ -609,11 +625,21 @@ def product_page(p, produkte):
             'Der Kältekreis ist werkseitig geschlossen und geprüft. Für Aufstellung und '
             'Inbetriebnahme wird kein Sachkundenachweis benötigt. Den Elektroanschluss sollte '
             'dennoch eine Elektrofachkraft ausführen.</div></div>' % ICONS["check"])
+    elif p.get("kanaele") == 2:
+        montage_notice = (
+            '<div class="notice ok">%s<div><b>Sofort einsatzbereit – und ohne Unterdruck</b>'
+            'Auspacken, beide Schläuche durch die mitgelieferte Doppel-Abdichtung ins Fenster, '
+            'Stecker in die Dose. Weil die Luft für den Kühlkreislauf von aussen kommt und dort '
+            'wieder abgegeben wird, zieht das Gerät keine warme Luft in den Raum nach. '
+            'Keine bauliche Veränderung, in jeder Mietwohnung zulässig.</div></div>'
+            % ICONS["check"])
     else:
         montage_notice = (
             '<div class="notice ok">%s<div><b>Sofort einsatzbereit</b>'
             'Auspacken, Abluftschlauch ins Fenster, Stecker in die Dose. Keine bauliche '
-            'Veränderung, damit auch in Mietwohnungen ohne Zustimmung des Vermieters nutzbar.</div></div>'
+            'Veränderung, damit auch in Mietwohnungen ohne Zustimmung des Vermieters nutzbar. '
+            'Einkanalgeräte erzeugen dabei Unterdruck im Raum – die Fensterabdichtung ist '
+            'deshalb nicht optional.</div></div>'
             % ICONS["check"])
 
     verwandt = [q for q in produkte if q["kategorie"] == p["kategorie"] and q["slug"] != p["slug"]]
@@ -691,7 +717,7 @@ def product_page(p, produkte):
         <div class="table-scroll" style="max-width:760px">
           <table class="spec-table">%(spec_rows)s</table>
         </div>
-        <p class="small muted mt-2">SEER und SCOP nach EN 14825. Die Angaben beziehen sich auf
+        <p class="small muted mt-2">%(kennzahl_hinweis)s Die Angaben beziehen sich auf
         Normbedingungen; der reale Verbrauch hängt von Dämmung, Verschattung und Nutzung ab.</p>
       </div>
 
@@ -730,7 +756,8 @@ def product_page(p, produkte):
         "chips": "".join("<li>%s</li>" % c for c in filter(None, [
             "%s kW" % kw_de(p["kw"]) if p["kw"] else "",
             "bis %d m²" % p["raum_max"] if p["raum_max"] else "",
-            "SEER %s" % kw_de(p["seer"]) if p["seer"] else "",
+            "%s %s" % (p["kennzahl"], kw_de(p["seer"])) if p["seer"] else "",
+            ("1 Schlauch" if p["kanaele"] == 1 else "2 Schläuche") if p.get("kanaele") else "",
             "%d dB(A)" % p["db"] if p["db"] else "",
             "Heizen" if p["heizen"] else "",
             "WLAN" if p["wifi"] else "",
@@ -741,6 +768,12 @@ def product_page(p, produkte):
         "sku": p["sku"], "slug": p["slug"], "rel": rel,
         "cart_icon": ICONS["cart"], "check": ICONS["check"],
         "montage_notice": montage_notice, "features": features, "eek": eek_block(p),
+        "kennzahl_hinweis": (
+            "SEER und SCOP nach EN 14825."
+            if p["kennzahl"] == "SEER" else
+            "EER nach Verordnung (EU) 626/2011. Einkanal- und Zweikanalger\u00e4te werden auf "
+            "einer eigenen A+++\u2013D-Skala bewertet; ihr EER ist nicht mit dem SEER einer "
+            "Split-Anlage vergleichbar."),
         "beschreibung": beschreibung, "spec_rows": spec_rows,
         "lieferumfang": "".join('<li>%s<span>%s</span></li>' % (ICONS["check"], t) for t in lieferumfang(p)),
         "montage_text": montage_text(p),
@@ -847,7 +880,9 @@ def lieferumfang(p):
                        "Fernbedienung je Innengerät", "Kondensatschläuche",
                        "Kältemittelleitungen und Konsole sind nicht enthalten",
                        "Bedienungsanleitung in deutscher Sprache"],
-        "mobil": ["Mobiles Klimagerät", "Abluftschlauch 1,5 m mit Fensteradapter",
+        "mobil": ["Mobiles Klimagerät",
+                  "Zwei Schläuche à 1,5 m und Doppel-Fensterabdichtung" if p.get("kanaele") == 2
+                  else "Abluftschlauch 1,5 m mit Fensteradapter",
                   "Infrarot-Fernbedienung mit Batterien", "Abtropfschale und Ablaufschlauch",
                   "Bedienungsanleitung in deutscher Sprache"],
         "zubehoer": ["Artikel wie beschrieben", "Montagematerial, soweit erforderlich",
@@ -869,6 +904,13 @@ def montage_text(p):
                 "ein Kälteschein ist nicht erforderlich.</p>"
                 "<p>Den elektrischen Anschluss sollte eine Elektrofachkraft übernehmen, "
                 "insbesondere wenn ein eigener Stromkreis gelegt wird.</p>")
+    if p.get("kanaele") == 2:
+        return ("<p>Keine Montage nötig. Beide Schläuche werden durch die mitgelieferte "
+                "Doppel-Abdichtung ins Fenster geführt – der eine holt Aussenluft, der andere "
+                "gibt sie erwärmt wieder ab.</p>"
+                "<p>Achten Sie darauf, beide Durchführungen tatsächlich zu nutzen. Wer den "
+                "Zuluftschlauch weglässt, macht aus dem Zweikanalgerät ein Einkanalgerät und "
+                "verschenkt genau den Vorteil, für den er es gekauft hat.</p>")
     return ("<p>Keine Montage nötig. Stellen Sie das Gerät auf, führen Sie den Abluftschlauch nach "
             "draussen und schliessen Sie die Fensteröffnung ab – ohne Abdichtung verliert jedes "
             "mobile Gerät einen erheblichen Teil seiner Wirkung.</p>")
