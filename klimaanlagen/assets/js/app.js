@@ -340,6 +340,17 @@
     });
   });
 
+  /* --- Countdown bis zum Sommeranfang -------------------------------------
+     Zeigt echte verbleibende Tage bis zu einem festen Datum. Bewusst kein
+     künstlicher Ablaufzähler: Die Knappheit im Klimageschäft ist real, sie
+     muss nicht erfunden werden. */
+  $$('[data-countdown]').forEach(function (el) {
+    var ziel = new Date(el.dataset.countdown + 'T00:00:00');
+    var tage = Math.max(0, Math.ceil((ziel - new Date()) / 86400000));
+    var ziffer = el.querySelector('[data-countdown-value]');
+    if (ziffer) { ziffer.textContent = new Intl.NumberFormat('de-DE').format(tage); }
+  });
+
   /* --- Jahreszahl in der Fusszeile --------------------------------------- */
   $$('[data-year]').forEach(function (el) { el.textContent = String(new Date().getFullYear()); });
 

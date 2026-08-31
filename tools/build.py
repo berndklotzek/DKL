@@ -43,6 +43,14 @@ SITE = {
     "zip":      "69168",
     "city":     "Wiesloch",
     "country":  "DE",
+
+    # --- Vorsaison-Kampagne -------------------------------------------------
+    # Eine Stelle für die ganze Kampagne. Das Enddatum ist eine Zusage an den
+    # Kunden: Bis dahin gilt der ausgewiesene Preis. Wer es verschiebt, muss es
+    # hier ändern — und muss es dann auch einhalten.
+    "saison":         "2027",
+    "vorsaison_ende": "31. März 2027",
+    "sommerstart":    "2027-06-01",
 }
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -363,7 +371,7 @@ def product_card(p, rel="", rang=0):
         # Bezugsgrösse ist hier durchgängig die UVP, nicht ein eigener Vorpreis –
         # für einen eigenen Vorpreis gilt § 11 PAngV (niedrigster Preis der letzten 30 Tage).
         "uvp_f": ('<span class="price-old">UVP %s</span>' % eur(p["uvp"])) if p.get("uvp") and p["uvp"] > p["preis"] else "",
-        "versand": "versandkostenfrei" if p["preis"] >= 499 else "zzgl. Versand",
+        "versand": "Vorsaison-Preis bis " + SITE["vorsaison_ende"],
         "sku": p["sku"], "slug": p["slug"],
     }
 
@@ -464,6 +472,9 @@ def render_page(url, title, description, body, *, trail=None, jsonld=None, scrip
         "{{BRAND}}": SITE["brand"],
         "{{COMPANY}}": SITE["company"],
         "{{INHABER}}": SITE["inhaber"],
+        "{{SAISON}}": SITE["saison"],
+        "{{VORSAISON_ENDE}}": SITE["vorsaison_ende"],
+        "{{SOMMERSTART}}": SITE["sommerstart"],
         "{{BREADCRUMB}}": breadcrumb_html(trail, rel),
         "{{BODY}}": body,
         "{{SCRIPTS}}": scripts,
@@ -476,8 +487,10 @@ def render_page(url, title, description, body, *, trail=None, jsonld=None, scrip
         "{{ICON_TRUCK}}": ICONS["truck"],
         "{{ICON_SHIELD}}": ICONS["shield"],
         "{{ICON_BOLT}}": ICONS["bolt"],
+        "{{ICON_CHECK}}": ICONS["check"],
+        "{{ICON_ARROW}}": ICONS["arrow"],
     }
-    for key in ("shop", "calc", "guide", "montage", "about", "contact"):
+    for key in ("vorsaison", "shop", "calc", "guide", "montage", "about", "contact"):
         repl["{{NAV_%s}}" % key.upper()] = ' aria-current="page"' if nav == key else ""
 
     for k, v in repl.items():
@@ -511,7 +524,10 @@ def expand(text, rel, produkte):
                 .replace("{{STREET}}", SITE["street"])
                 .replace("{{ZIP}}", SITE["zip"])
                 .replace("{{CITY}}", SITE["city"])
-                .replace("{{DOMAIN}}", SITE["url"].replace("https://", "")))
+                .replace("{{DOMAIN}}", SITE["url"].replace("https://", ""))
+                .replace("{{SAISON}}", SITE["saison"])
+                .replace("{{VORSAISON_ENDE}}", SITE["vorsaison_ende"])
+                .replace("{{SOMMERSTART}}", SITE["sommerstart"]))
 
     # {{PRODUKTE:slug,slug,slug}} → Produktkarten
     def cards(m):
@@ -684,6 +700,8 @@ def product_page(p, produkte):
           </div>
           <p class="price-note">inkl. 19 %% MwSt. %(versandhinweis)s ·
             <a href="%(rel)srecht/versand-und-lieferung.html">Lieferzeit 3–5 Werktage</a></p>
+          <p class="vorsaison-note">%(uhr)s <span><b>Vorsaison-Preis</b> — gilt bis
+            %(vorsaison)s. Danach gilt der Saisonpreis.</span></p>
           %(eek)s
 
           <div class="buy-row">
@@ -783,6 +801,7 @@ def product_page(p, produkte):
         "sku": p["sku"], "slug": p["slug"], "rel": rel,
         "cart_icon": ICONS["cart"], "check": ICONS["check"],
         "montage_notice": montage_notice, "features": features, "eek": eek_block(p),
+        "uhr": ICONS["clock"], "vorsaison": SITE["vorsaison_ende"],
         "kennzahl_hinweis": (
             "SEER und SCOP nach EN 14825."
             if p["kennzahl"] == "SEER" else
@@ -1084,6 +1103,8 @@ def content_pages(produkte):
             else:
                 trail.append((part, None))
 
+        body = expand(body, rel, produkte)
+
         jsonld = []
         if meta.get("jsonld"):
             jsonld.append(json.loads(expand(meta["jsonld"], rel, produkte)))
@@ -1119,7 +1140,7 @@ def content_pages(produkte):
                 "inLanguage": "de-DE",
             })
 
-        inhalt = expand(body, rel, produkte)
+        inhalt = body
         if url.startswith("recht/"):
             # Paragrafenprosa braucht kleinere Überschriften als eine Verkaufsseite
             inhalt = '<div class="rechtstext">%s</div>' % inhalt

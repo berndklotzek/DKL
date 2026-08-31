@@ -7,22 +7,21 @@ jsonld: {"@context":"https://schema.org","@type":"WebSite","@id":"https://www.ar
 <section class="hero">
   <div class="wrap inner">
     <div>
-      <p class="eyebrow"><b>Neu</b> Lieferung aus dem EU-Lager – auch im Hochsommer</p>
-      <h1>Klimaanlagen, die zum <span class="grad">Raum passen</span>. Nicht zum Prospekt.</h1>
+      <p class="eyebrow"><b>Vorsaison {{SAISON}}</b> Preise gelten bis {{VORSAISON_ENDE}}</p>
+      <h1>Im Juni waren die Klimageräte weg.<br><span class="grad">Sorgen Sie jetzt für {{SAISON}} vor.</span></h1>
       <p class="lead">
-        Zwei Wege, die ohne Fachbetrieb auskommen: Geräte, die Sie an einem Vormittag
-        selbst montieren – und Geräte, die gar nicht montiert werden. Wir sagen Ihnen
-        ehrlich, welcher Weg in Ihre Wohnung gehört, auch wenn das am Ende das
-        günstigere Gerät ist.
+        2026 war der zweitwärmste Sommer seit Beginn der Wetteraufzeichnungen — und ab Ende
+        Juni gab es in Deutschland praktisch keine Geräte mehr zu kaufen. Wir bestellen
+        jetzt für nächstes Jahr.
       </p>
       <div class="actions">
-        <a class="btn btn-accent" href="{{ROOT}}kuehllast-rechner.html">{{ICON:snow}} Kühllast berechnen</a>
-        <a class="btn btn-light" href="{{ROOT}}produkte.html">Alle Klimaanlagen ansehen</a>
+        <a class="btn btn-accent" href="{{ROOT}}vorsaison-{{SAISON}}.html">{{ICON:snow}} Vorsaison-Preis sichern</a>
+        <a class="btn btn-light" href="{{ROOT}}produkte.html">Alle 20 Geräte ansehen</a>
       </div>
       <ul class="hero-points">
-        <li>{{ICON:check}} Ohne Montage oder zur Selbstmontage</li>
-        <li>{{ICON:check}} 3–5 Werktage Lieferzeit</li>
-        <li>{{ICON:check}} Deutscher Ansprechpartner</li>
+        <li>{{ICON:check}} Preisbindung bis {{VORSAISON_ENDE}}</li>
+        <li>{{ICON:check}} Lieferung in 3–5 Werktagen</li>
+        <li>{{ICON:check}} Montagetermine noch frei</li>
       </ul>
     </div>
 
@@ -30,20 +29,54 @@ jsonld: {"@context":"https://schema.org","@type":"WebSite","@id":"https://www.ar
       <img src="{{ROOT}}assets/img/produkt-arktik-frost-qc12-quick-connect.svg"
            alt="Split-Klimaanlage mit Innen- und Aussengerät" width="520" height="390"
            fetchpriority="high" decoding="async">
-      <div class="glass g1"><strong>2,5 – 7,9 kW</strong><span>Kühlleistung im Sortiment</span></div>
-      <div class="glass g2"><strong>SEER 8,5</strong><span>bestes Gerät im Vergleich</span></div>
+      <div class="glass g1" data-countdown="{{SOMMERSTART}}">
+        <strong data-countdown-value>–</strong><span>Tage bis zum Sommer {{SAISON}}</span></div>
+      <div class="glass g2"><strong>19,6 °C</strong><span>Sommermittel 2026 — Platz 2 seit 1881</span></div>
     </div>
   </div>
 </section>
 
 <div class="trustbar">
   <div class="wrap">
-    <div>{{ICON:truck}}<div><b>EU-Lager statt Direktimport</b><span>Keine Zollabfertigung, keine sechs Wochen Wartezeit – Versand in 3–5 Werktagen.</span></div></div>
-    <div>{{ICON:shield}}<div><b>Gewährleistung ohne Umweg</b><span>Zwei Jahre gesetzliche Gewährleistung, abgewickelt über uns in Deutschland.</span></div></div>
-    <div>{{ICON:tools}}<div><b>Montage mitgedacht</b><span>Wir kennzeichnen bei jedem Gerät, ob Selbstmontage erlaubt ist.</span></div></div>
-    <div>{{ICON:leaf}}<div><b>Nur R32 und R290</b><span>Zukunftsfähige Kältemittel mit niedrigem Treibhauspotenzial.</span></div></div>
+    <div>{{ICON:euro}}<div><b>Preisbindung bis {{VORSAISON_ENDE}}</b><span>Der Preis auf der Produktseite gilt bis dahin. Danach Saisonpreis.</span></div></div>
+    <div>{{ICON:truck}}<div><b>Lieferbar, wenn andere leer sind</b><span>Wir kaufen im Winter ein und lagern in der EU. Versand in 3–5 Werktagen.</span></div></div>
+    <div>{{ICON:tools}}<div><b>Montagetermine noch frei</b><span>Im Sommer 2026 wartete man rund drei Monate auf den Einbau.</span></div></div>
+    <div>{{ICON:shield}}<div><b>Gewährleistung ohne Umweg</b><span>Zwei Jahre, abgewickelt über uns in Deutschland.</span></div></div>
   </div>
 </div>
+
+<section class="bg-deep">
+  <div class="wrap">
+    <div class="grid-2">
+      <div class="reveal">
+        <span class="section-eyebrow">Warum jetzt und nicht im Juni</span>
+        <h2>Der Sommer 2026 hat den Markt leergeräumt</h2>
+        <p>Mit 19,6 °C im Mittel war er der zweitwärmste seit 1881 — nur der
+        Jahrhundertsommer 2003 lag ein Zehntelgrad darüber. 22 Tage über 30 Grad, 41,8 °C
+        Spitzenwert, und in einer Nacht sank die Temperatur nirgends unter 29,4 °C. Das ist
+        der höchste je in Deutschland gemessene Nachtwert.</p>
+        <p>Die Folge im Handel: Die Saisonkontingente waren teils früh ausverkauft,
+        Klimageräte bundesweit nahezu vergriffen. Nachschub gab es im laufenden Sommer
+        keinen mehr — Produktion und Seefracht brauchen Monate.</p>
+        <p>Der Anteil der Menschen in Deutschland, die den Kauf einer Klimaanlage planen,
+        hat sich innerhalb eines Jahres von 10 auf 20 Prozent verdoppelt. Nächstes Jahr wird
+        es also nicht leichter, sondern enger.</p>
+        <div class="flex-actions mt-2">
+          <a class="btn btn-accent" href="{{ROOT}}vorsaison-{{SAISON}}.html">Vorsaison {{SAISON}} im Detail</a>
+          <a class="btn btn-light" href="{{ROOT}}kuehllast-rechner.html">Kühllast berechnen</a>
+        </div>
+      </div>
+      <div class="stats reveal">
+        <div class="stat"><b>22</b><span>heiße Tage über 30 °C im Sommer 2026</span></div>
+        <div class="stat"><b>41,8 °C</b><span>Höchstwert am 27. Juni</span></div>
+        <div class="stat"><b>29,4 °C</b><span>wärmste je gemessene Nacht</span></div>
+        <div class="stat"><b>10 → 20 %</b><span>planen den Kauf einer Klimaanlage</span></div>
+      </div>
+    </div>
+    <p class="small mt-3 mb-0" style="color:#8fb0c6">Quellen: Deutscher Wetterdienst,
+    Sommerbilanz vom 31. August 2026; Branchenberichte aus Handel und ZVEI, Sommer 2026.</p>
+  </div>
+</section>
 
 <section>
   <div class="wrap">
@@ -348,23 +381,28 @@ jsonld: {"@context":"https://schema.org","@type":"WebSite","@id":"https://www.ar
 <section class="tight">
   <div class="wrap">
     <div class="cta-band reveal">
-      <div class="grid-2">
+      <div class="grid-2" style="align-items:start">
         <div>
-          <h2>Der nächste Sommer kommt bestimmt</h2>
-          <p>Wer im Juli bestellt, wartet. Wer im März bestellt, hat die Anlage montiert,
-          bevor die erste Hitzewelle kommt. Wir melden uns, sobald die Vorsaison-Preise stehen –
-          höchstens einmal im Monat, jederzeit abbestellbar.</p>
+          <span class="section-eyebrow">Vorsaison-Liste</span>
+          <h2>Wir bestellen jetzt. Sagen Sie uns, was Sie brauchen.</h2>
+          <p>Die Stückzahlen für {{SAISON}} legen wir im Winter fest. Wer auf der Liste steht,
+          erfährt als Erstes, wenn die Preise stehen — und wir reservieren ein Gerät in der
+          passenden Größe, bevor die Saison beginnt.</p>
+          <p class="small" style="color:#b9d6e6">Keine Vorauszahlung, keine Verpflichtung,
+          höchstens eine E-Mail im Monat. Abmeldung jederzeit formlos.</p>
         </div>
         <div>
-          <form class="newsletter-form" data-form data-subject="Newsletter-Anmeldung">
+          <form class="newsletter-form" data-form data-subject="Vorsaison-Liste {{SAISON}}">
             <label class="sr-only" for="nl-mail">E-Mail-Adresse</label>
             <input type="email" id="nl-mail" name="E-Mail" placeholder="ihre@adresse.de" required>
-            <button class="btn btn-accent" type="submit">Anmelden</button>
+            <button class="btn btn-accent" type="submit">Auf die Liste</button>
           </form>
           <p class="form-note">Mit der Anmeldung stimmen Sie unserer
-          <a href="{{ROOT}}recht/datenschutz.html" style="color:#cfe9f5">Datenschutzerklärung</a> zu.
-          Abmeldung jederzeit über den Link in jeder E-Mail.</p>
-          <p class="form-success notice ok" data-form-success hidden>Bitte bestätigen Sie den Versand in Ihrem E-Mail-Programm.</p>
+          <a href="{{ROOT}}recht/datenschutz.html" style="color:#cfe9f5">Datenschutzerklärung</a> zu.</p>
+          <p class="notice ok mt-1" data-form-success hidden>{{ICON:check}}<div>Ihr
+          E-Mail-Programm öffnet sich mit der fertigen Nachricht. Bitte dort noch absenden.</div></p>
+          <p class="mt-2 mb-0"><a href="{{ROOT}}vorsaison-{{SAISON}}.html" style="color:#cfe9f5;font-weight:650">
+            Mehr zur Vorsaison {{SAISON}} und zum Zeitplan &rarr;</a></p>
         </div>
       </div>
     </div>

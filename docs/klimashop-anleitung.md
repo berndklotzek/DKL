@@ -55,6 +55,7 @@ der Bundler liest den gebauten Stand aus `klimaanlagen/`.
 | Ziel | Datei |
 |---|---|
 | Firmenname, Domain, Adresse, Telefon, E-Mail | `tools/build.py`, Block `SITE` ganz oben |
+| Vorsaison-Kampagne: Saisonjahr, Enddatum der Preisbindung, Sommeranfang | `tools/build.py`, Block `SITE`, Schlüssel `saison`, `vorsaison_ende`, `sommerstart` |
 | Farben, Schriften, Abstände, Radien | `klimaanlagen/assets/css/style.css`, `:root` |
 | Produkte anlegen, ändern, entfernen | `src/products.json` |
 | Texte einer Seite | passende Datei in `src/pages/` |
@@ -99,6 +100,32 @@ Empfehlungen und die strukturierten Daten entstehen automatisch.
 Die Produktbilder sind erzeugte SVG-Zeichnungen (`assets/img/produkt-*.svg`).
 Sobald echte Fotos vorliegen: Fotos unter demselben Dateinamen als `.jpg`
 ablegen und in `product_card()` sowie `product_page()` die Endung ändern.
+
+## Vorsaison-Kampagne
+
+Die ganze Kampagne hängt an drei Werten in `SITE`:
+
+```python
+"saison":         "2027",           # Jahr, für das geworben wird
+"vorsaison_ende": "31. März 2027",  # bis dahin gilt der ausgewiesene Preis
+"sommerstart":    "2027-06-01",     # Zielpunkt des Countdowns
+```
+
+Sie steuern die Kampagnenleiste, den Navigationspunkt, die Hinweise in jeder
+Kaufbox, den Countdown im Hero und die Seite `vorsaison-2027.html`. Für die
+nächste Saison genügt es, die drei Werte zu ändern und die Kampagnenseite in
+`src/pages/vorsaison.html` inhaltlich fortzuschreiben (das `url:`-Feld im
+Kopfblock mit ändern).
+
+**Das Enddatum ist eine Zusage, keine Dekoration.** Auf der Seite steht
+ausdrücklich, dass die Frist nicht heimlich verlängert und kein Zähler
+zurückgesetzt wird. Wer den Termin verschieben will, ändert das Datum
+sichtbar — eine Frist, die immer wieder von vorn beginnt, ist eine
+irreführende geschäftliche Handlung und abmahnfähig.
+
+Aus demselben Grund gibt es bewusst **keine** künstlichen Lagerbestandsanzeigen
+(„nur noch 2 auf Lager") und keine ablaufenden Countdown-Uhren pro Besucher.
+Der Countdown auf der Startseite zählt die echten Tage bis zum 1. Juni.
 
 ## Warenkorb
 
