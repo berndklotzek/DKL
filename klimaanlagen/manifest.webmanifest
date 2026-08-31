@@ -1,0 +1,19 @@
+{
+  "name": "ARKTIK Klimasysteme",
+  "short_name": "ARKTIK",
+  "description": "Klimaanlagen für Wohnräume – Monoblock, Split und mobil.",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#08131d",
+  "lang": "de",
+  "icons": [
+    {
+      "src": "/assets/img/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

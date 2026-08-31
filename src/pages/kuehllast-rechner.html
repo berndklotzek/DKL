@@ -1,0 +1,208 @@
+---
+url: kuehllast-rechner.html
+title: Kühllastrechner: wie viel kW braucht die Klimaanlage?
+description: Kostenloser Kühllastrechner für Wohnräume. Berechnet die benötigte Kühlleistung in kW und BTU aus Raumgrösse, Dämmung, Fensterfläche, Himmelsrichtung und interner Last.
+nav: calc
+breadcrumb: Kühllastrechner
+scripts: assets/js/produkte.js, assets/js/calc.js
+jsonld: {"@context":"https://schema.org","@type":"WebApplication","name":"ARKTIK Kühllastrechner","url":"https://www.arktik-klima.de/kuehllast-rechner.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Alle","inLanguage":"de-DE","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"description":"Berechnet die benötigte Kühlleistung einer Klimaanlage aus Raumdaten, Fensterflächen und interner Last."}
+---
+<section class="tight">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">Kostenlos &amp; ohne Anmeldung</span>
+      <h1>Kühllastrechner: Wie viel kW braucht Ihre Klimaanlage?</h1>
+      <p>Die Leistung einer Klimaanlage muss zum Raum passen – nicht zur Quadratmeterzahl
+      allein. Dieser Rechner berücksichtigt Gebäudestandard, Fensterflächen mit
+      Himmelsrichtung, Verschattung und die Wärme, die Personen und Geräte im Raum abgeben.</p>
+    </div>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap">
+    <form class="calc" data-calc>
+      <div>
+        <h2 class="mt-0" style="font-size:1.25rem">Angaben zum Raum</h2>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="flaeche">Grundfläche in m²</label>
+            <input type="number" id="flaeche" name="flaeche" value="24" min="4" max="200" step="1" required>
+          </div>
+          <div class="field">
+            <label for="hoehe">Raumhöhe in m</label>
+            <input type="number" id="hoehe" name="hoehe" value="2.5" min="2" max="6" step="0.1">
+            <p class="hint">Altbau oft 3,0 bis 3,6 m.</p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Gebäudestandard</label>
+          <div class="seg">
+            <label><input type="radio" name="daemmung" value="neubau"> Neubau, gedämmt</label>
+            <label><input type="radio" name="daemmung" value="saniert" checked> Saniert / ab 1985</label>
+            <label><input type="radio" name="daemmung" value="altbau"> Altbau, ungedämmt</label>
+          </div>
+          <p class="hint">Entscheidend ist, wie viel Wärme durch Wände, Dach und Fenster nachströmt.</p>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="fenster">Fensterfläche in m²</label>
+            <input type="number" id="fenster" name="fenster" value="4" min="0" max="60" step="0.5">
+            <p class="hint">Breite × Höhe der Glasflächen, grob geschätzt reicht.</p>
+          </div>
+          <div class="field">
+            <label for="personen">Personen im Raum</label>
+            <input type="number" id="personen" name="personen" value="2" min="0" max="30" step="1">
+            <p class="hint">Jede Person gibt rund 95 W ab.</p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Himmelsrichtung der Fenster</label>
+          <div class="seg">
+            <label><input type="radio" name="orientierung" value="nord"> Nord</label>
+            <label><input type="radio" name="orientierung" value="ost"> Ost</label>
+            <label><input type="radio" name="orientierung" value="sued" checked> Süd</label>
+            <label><input type="radio" name="orientierung" value="west"> West</label>
+            <label><input type="radio" name="orientierung" value="dach"> Dachfenster</label>
+          </div>
+          <p class="hint">Westfenster sind die grösste Last: Die Sonne steht dann tief und
+          trifft am Nachmittag auf einen bereits aufgeheizten Raum.</p>
+        </div>
+
+        <div class="field">
+          <label>Verschattung</label>
+          <div class="seg">
+            <label><input type="radio" name="verschattung" value="keine"> Keine</label>
+            <label><input type="radio" name="verschattung" value="innen" checked> Innen (Vorhang)</label>
+            <label><input type="radio" name="verschattung" value="aussen"> Aussen (Rollladen)</label>
+          </div>
+          <p class="hint">Aussenliegender Sonnenschutz senkt die solare Last um rund 70 Prozent –
+          die günstigste Massnahme überhaupt.</p>
+        </div>
+
+        <div class="field">
+          <label for="geraete">Wärmeabgabe von Geräten in Watt</label>
+          <input type="number" id="geraete" name="geraete" value="200" min="0" max="5000" step="50">
+          <p class="hint">Arbeitsplatz mit zwei Monitoren rund 300 W, Serverschrank deutlich mehr,
+          Wohnzimmer mit Fernseher etwa 150 W.</p>
+        </div>
+
+        <div class="field">
+          <label class="filter-opt"><input type="checkbox" name="dachgeschoss"> <span>Raum liegt unter dem Dach</span></label>
+          <label class="filter-opt"><input type="checkbox" name="kueche"> <span>Offene Küche im Raum</span></label>
+        </div>
+      </div>
+
+      <div class="calc-result">
+        <span class="small" style="color:#a9c6d9">Benötigte Kühlleistung</span>
+        <div class="big"><span data-out-kw>3,4</span><span class="unit"> kW</span></div>
+        <p class="small mb-0" style="color:#a9c6d9">entspricht rund <span data-out-btu>11.600</span> BTU/h</p>
+        <hr>
+        <dl>
+          <dt>Gebäude &amp; Lüftung</dt><dd data-out-grund>–</dd>
+          <dt>Sonneneinstrahlung</dt><dd data-out-fenster>–</dd>
+          <dt>Personen</dt><dd data-out-personen>–</dd>
+          <dt>Geräte</dt><dd data-out-geraete>–</dd>
+          <dt>Sicherheitszuschlag</dt><dd data-out-reserve>–</dd>
+        </dl>
+        <hr>
+        <dl>
+          <dt>Stromkosten pro Sommer</dt><dd data-out-strom>–</dd>
+        </dl>
+        <p class="small mb-0" style="color:#8fb0c6">Annahme: 350 Betriebsstunden, SEER 7,0,
+        35 Cent je kWh.</p>
+      </div>
+    </form>
+
+    <div class="mt-3" data-out-empfehlung></div>
+
+    <noscript>
+      <div class="notice mt-3">{{ICON:warn}}<div><b>Der Rechner benötigt JavaScript</b>
+      Als Faustformel gilt: 60 W/m² im gedämmten Neubau, 80 W/m² im sanierten Bestand und
+      100 W/m² im ungedämmten Altbau, jeweils bezogen auf 2,5 m Raumhöhe. Für einen
+      Raum von 24 m² im Altbau ergibt das rund 2,4 kW zuzüglich solarer Lasten.
+      Schreiben Sie uns – wir rechnen kostenlos nach.</div></div>
+    </noscript>
+  </div>
+</section>
+
+<section class="bg-soft">
+  <div class="wrap wrap-narrow">
+    <h2>So rechnet dieser Rechner</h2>
+    <p>Das Verfahren orientiert sich an VDI 2078 und DIN EN 12831, vereinfacht auf die
+    Grössen, die in Wohnräumen tatsächlich den Ausschlag geben. Es ersetzt keine
+    Kühllastberechnung durch einen Fachplaner – für Wohnungen, Büros und Praxen liefert es
+    aber eine belastbare Grössenordnung.</p>
+
+    <h3>Grundlast des Gebäudes</h3>
+    <p>Aus Grundfläche und Raumhöhe ergibt sich das Volumen. Multipliziert mit einem
+    spezifischen Wert je Gebäudestandard – 18 W/m³ im gedämmten Neubau, 26 W/m³ im
+    sanierten Bestand, 36 W/m³ im ungedämmten Altbau – ergibt sich die Last aus Transmission
+    durch Aussenbauteile und aus Luftwechsel.</p>
+
+    <h3>Sonneneinstrahlung</h3>
+    <p>Je Quadratmeter Fensterfläche werden je nach Himmelsrichtung 40 W (Nord) bis 230 W
+    (Dachfenster) angesetzt. Ein innenliegender Vorhang reduziert das auf 72 Prozent, ein
+    aussenliegender Rollladen auf 28 Prozent. Dieser Faktor ist in vielen Räumen der grösste
+    Hebel: Wer den Sonnenschutz nachrüstet, kann oft eine Geräteklasse kleiner kaufen.</p>
+
+    <h3>Innere Lasten</h3>
+    <p>Personen mit 95 W bei sitzender Tätigkeit, Geräte mit ihrer realen elektrischen
+    Leistungsaufnahme. Für Dachgeschosse kommen 18 Prozent Zuschlag hinzu, für offene
+    Küchen 10 Prozent.</p>
+
+    <h3>Sicherheitszuschlag</h3>
+    <p>Zehn Prozent auf die Summe. Mehr wäre kontraproduktiv: Eine überdimensionierte
+    Anlage erreicht die Solltemperatur zu schnell, schaltet ab und beginnt zu takten.
+    Das kostet Effizienz, Komfort und Lebensdauer des Verdichters.</p>
+
+    <div class="notice info mt-3">{{ICON:info}}<div><b>Zwei Räume, ein Gerät?</b>
+    Rechnen Sie beide Räume einzeln und addieren Sie – aber nur, wenn eine offene
+    Verbindung von mindestens zwei Metern Breite besteht. Kalte Luft fliesst nicht um
+    Ecken. Für getrennte Räume ist eine Multi-Split-Anlage die bessere Lösung.</div></div>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap wrap-narrow">
+    <h2>Häufige Fragen zur Dimensionierung</h2>
+    <div class="accordion">
+      <details data-faq>
+        <summary>Was passiert, wenn die Klimaanlage zu gross ist?</summary>
+        <div class="content"><p>Sie kühlt den Raum sehr schnell herunter, erreicht die
+        Solltemperatur und schaltet ab. Kurz darauf steigt die Temperatur wieder, das Gerät
+        springt erneut an. Dieses Takten senkt die Effizienz deutlich, entfeuchtet die Luft
+        kaum noch – ein zu grosses Gerät fühlt sich klamm-kalt an statt angenehm – und
+        belastet den Verdichter.</p></div>
+      </details>
+      <details data-faq>
+        <summary>Was passiert, wenn sie zu klein ist?</summary>
+        <div class="content"><p>Das Gerät läuft dauerhaft auf voller Leistung, erreicht die
+        gewünschte Temperatur an heissen Tagen aber nie. Der Verbrauch ist hoch, weil der
+        Inverter nie in den effizienten Teillastbereich kommt, und der Geräuschpegel bleibt
+        auf Maximum. Eine zu kleine Anlage ist der häufigste Grund für Enttäuschung.</p></div>
+      </details>
+      <details data-faq>
+        <summary>Wie rechne ich kW in BTU um?</summary>
+        <div class="content"><p>1 kW entspricht 3.412 BTU/h. Die im Handel üblichen Klassen
+        sind 9.000 BTU (2,6 kW), 12.000 BTU (3,5 kW), 18.000 BTU (5,3 kW) und 24.000 BTU
+        (7,0 kW). Der Rechner gibt beide Werte aus.</p></div>
+      </details>
+      <details data-faq>
+        <summary>Zählt die Heizleistung genauso?</summary>
+        <div class="content"><p>Nein. Die Heizlast eines Raumes wird nach DIN EN 12831
+        berechnet und liegt bei gut gedämmten Gebäuden meist niedriger, bei ungedämmten
+        Altbauten deutlich höher als die Kühllast. Wenn Sie die Anlage im Winter ernsthaft
+        zum Heizen nutzen wollen, schreiben Sie uns – dafür rechnen wir separat.</p></div>
+      </details>
+    </div>
+    <div class="flex-actions mt-3">
+      <a class="btn" href="{{ROOT}}produkte.html">Passende Geräte ansehen</a>
+      <a class="btn btn-ghost" href="{{ROOT}}kontakt.html">Kostenlos nachrechnen lassen</a>
+    </div>
+  </div>
+</section>

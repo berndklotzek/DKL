@@ -1,3 +1,24 @@
+# DKL — Websites
+
+Zwei eigenständige, statische Websites in einem Repository.
+
+| Projekt | Ordner | Beschreibung |
+|---|---|---|
+| Seelenfrieden Urnenrückführung GmbH | `index.html`, `assets/` | Zweisprachige Website (DE/RU), siehe unten |
+| ARKTIK Klimasysteme | `klimaanlagen/` | Onlineshop für Klimaanlagen, erzeugt aus `src/` mit `tools/build.py` |
+
+**Klimaanlagen-Shop:** Anleitung in
+[`docs/klimashop-anleitung.md`](docs/klimashop-anleitung.md), rechtliche
+Checkliste vor dem Livegang in
+[`docs/klimashop-rechtliches.md`](docs/klimashop-rechtliches.md).
+
+```bash
+python3 tools/build.py     # Shop bauen
+python3 tools/check.py     # Links, JSON-LD und SEO-Grundlagen prüfen
+```
+
+---
+
 # Seelenfrieden Urnenrückführung GmbH — Website
 
 Statische, zweisprachige Website (Deutsch / Russisch) für die

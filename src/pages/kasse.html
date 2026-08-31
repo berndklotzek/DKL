@@ -1,0 +1,55 @@
+---
+url: kasse.html
+title: Kasse | ARKTIK Klimasysteme
+description: Bestellabschluss bei ARKTIK Klimasysteme.
+robots: noindex,nofollow
+sitemap: nein
+breadcrumb: Warenkorb > warenkorb.html | Kasse
+---
+<section class="tight">
+  <div class="wrap wrap-narrow">
+    <h1>Kasse</h1>
+
+    <div class="notice">{{ICON:warn}}<div><b>Hier fehlt noch das Zahlungssystem</b>
+    Diese Seite ist der Übergabepunkt zu Ihrem Shop- oder Zahlungsanbieter. Der Warenkorb
+    liegt im Browser des Kunden (<code>localStorage</code>) und muss an ein System
+    übergeben werden, das Bestellung, Zahlung und Rechnung abwickelt – zum Beispiel
+    Stripe Checkout, Shopify, WooCommerce oder Mollie.</div></div>
+
+    <h2>Was ein Bestellabschluss rechtlich enthalten muss</h2>
+    <ul>
+      <li>Vollständige Übersicht der Ware mit Einzel- und Gesamtpreis inklusive Steuer</li>
+      <li>Versandkosten gesondert ausgewiesen</li>
+      <li>Bestätigung der Kenntnisnahme von AGB und Widerrufsbelehrung</li>
+      <li>Eine Schaltfläche mit der Beschriftung „zahlungspflichtig bestellen“
+        (Button-Lösung nach § 312j Abs. 3 BGB)</li>
+      <li>Unmittelbare Bestellbestätigung per E-Mail mit allen Vertragsdaten</li>
+    </ul>
+
+    <p>Bis das angebunden ist, können Sie Bestellungen manuell entgegennehmen: Der Button
+    unten schickt den Inhalt des Warenkorbs als E-Mail an Ihr Postfach.</p>
+
+    <form data-form data-subject="Bestellanfrage über arktik-klima.de">
+      <div class="field">
+        <label for="b-name">Name</label>
+        <input type="text" id="b-name" name="Name" required autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="b-mail">E-Mail</label>
+        <input type="email" id="b-mail" name="E-Mail" required autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="b-adresse">Lieferadresse</label>
+        <textarea id="b-adresse" name="Lieferadresse" rows="3" required autocomplete="street-address"></textarea>
+      </div>
+      <div class="field">
+        <label for="b-artikel">Gewünschte Artikel</label>
+        <textarea id="b-artikel" name="Artikel" rows="3"
+          placeholder="Artikelnummern und Mengen aus dem Warenkorb"></textarea>
+      </div>
+      <button class="btn btn-accent btn-block" type="submit">Bestellanfrage senden</button>
+      <p class="small muted mt-1">Dies ist noch kein Kaufvertrag. Wir melden uns mit einer
+      verbindlichen Bestätigung und den Zahlungsdaten.</p>
+    </form>
+  </div>
+</section>

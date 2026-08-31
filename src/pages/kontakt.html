@@ -1,0 +1,76 @@
+---
+url: kontakt.html
+title: Kontakt & Beratung – ARKTIK Klimasysteme
+description: Beratung zur passenden Klimaanlage, Fragen zu Lieferung, Montage oder Gewährleistung. Telefonisch, per E-Mail oder über das Kontaktformular.
+nav: contact
+breadcrumb: Kontakt
+jsonld: {"@context":"https://schema.org","@type":"ContactPage","name":"Kontakt – ARKTIK Klimasysteme","url":"https://www.arktik-klima.de/kontakt.html","inLanguage":"de-DE"}
+---
+<section class="tight">
+  <div class="wrap">
+    <div class="grid-2" style="align-items:start">
+      <div>
+        <span class="section-eyebrow">Kontakt</span>
+        <h1>Wir rechnen Ihren Raum kostenlos nach</h1>
+        <p>Schicken Sie uns Raumgrösse, Fensterseite und Baujahr – wir antworten mit einer
+        konkreten Empfehlung, inklusive der Geräte, die wir <em>nicht</em> empfehlen und warum.</p>
+
+        <div class="card mt-2">
+          <ul class="checklist">
+            <li>{{ICON:phone}}<span><b>Telefon</b><br><a href="tel:{{TEL_HREF}}">{{TEL}}</a><br>
+              <span class="small muted">Mo–Fr 9:00–17:00 Uhr</span></span></li>
+            <li>{{ICON:mail}}<span><b>E-Mail</b><br><a href="mailto:{{MAIL}}">{{MAIL}}</a><br>
+              <span class="small muted">Antwort in der Regel am selben Werktag</span></span></li>
+            <li>{{ICON:truck}}<span><b>Anschrift</b><br>{{COMPANY}}<br>{{STREET}}<br>{{ZIP}} {{CITY}}</span></li>
+          </ul>
+        </div>
+
+        <div class="notice mt-2">{{ICON:warn}}<div><b>Kein Ladengeschäft</b>
+        Unsere Anschrift ist ein Büro, keine Ausstellung. Geräte können dort nicht
+        abgeholt oder besichtigt werden.</div></div>
+      </div>
+
+      <div class="card">
+        <h2 class="mt-0" style="font-size:1.2rem">Beratung anfragen</h2>
+        <form data-form data-subject="Beratungsanfrage über arktik-klima.de">
+          <div class="field">
+            <label for="k-name">Name</label>
+            <input type="text" id="k-name" name="Name" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="k-mail">E-Mail</label>
+            <input type="email" id="k-mail" name="E-Mail" required autocomplete="email">
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="k-flaeche">Raumgrösse in m²</label>
+              <input type="number" id="k-flaeche" name="Raumgroesse" min="4" max="300">
+            </div>
+            <div class="field">
+              <label for="k-baujahr">Baujahr des Hauses</label>
+              <input type="text" id="k-baujahr" name="Baujahr" placeholder="z. B. 1968">
+            </div>
+          </div>
+          <div class="field">
+            <label for="k-text">Ihre Frage</label>
+            <textarea id="k-text" name="Nachricht" rows="5"
+              placeholder="Fensterseite, Dachgeschoss ja/nein, Miete oder Eigentum – je mehr wir wissen, desto konkreter die Antwort."></textarea>
+          </div>
+          <div class="field">
+            <label class="filter-opt">
+              <input type="checkbox" name="Datenschutz" required>
+              <span class="small">Ich habe die <a href="{{ROOT}}recht/datenschutz.html">Datenschutzerklärung</a>
+              gelesen und bin mit der Verarbeitung meiner Angaben zur Beantwortung der Anfrage einverstanden.</span>
+            </label>
+          </div>
+          <button class="btn btn-block" type="submit">Anfrage senden</button>
+          <p class="notice ok mt-1" data-form-success hidden>{{ICON:check}}<div>Ihr
+          E-Mail-Programm öffnet sich mit der fertigen Nachricht. Bitte dort noch absenden.</div></p>
+          <p class="small muted mt-1 mb-0">Dieses Formular ist ohne Server-Backend
+          eingerichtet und öffnet Ihr E-Mail-Programm. Wie Sie es auf einen echten
+          Endpunkt umstellen, steht in der README.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

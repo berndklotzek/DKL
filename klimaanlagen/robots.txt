@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /warenkorb.html
+Disallow: /*?sortierung=
+
+Sitemap: https://www.arktik-klima.de/sitemap.xml
