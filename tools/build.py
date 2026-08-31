@@ -51,6 +51,11 @@ SITE = {
     "saison":         "2027",
     "vorsaison_ende": "31. März 2027",
     "sommerstart":    "2027-06-01",
+
+    # --- Zahlung -----------------------------------------------------------
+    # Adresse der Serverfunktion, die die Stripe-Sitzung erzeugt.
+    # Netlify: /.netlify/functions/checkout · Cloudflare Worker: /api/checkout
+    "checkout_endpoint": "/.netlify/functions/checkout",
 }
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -277,6 +282,18 @@ def og_svg():
 # Hilfsfunktionen
 # ---------------------------------------------------------------------------
 
+PAKET_GRENZE_KG = 31.5     # Höchstgewicht im Paketversand in Deutschland
+
+
+def versandart(p):
+    """Paket oder Spedition. Bestimmt Versandkosten und Lieferablauf."""
+    if p["kategorie"] == "zubehoer":
+        return "paket"
+    if p["kategorie"] == "mobil" and float(p["gewicht"]) <= PAKET_GRENZE_KG:
+        return "paket"
+    return "spedition"
+
+
 def eur(v):
     s = "%.2f" % v
     ganz, dez = s.split(".")
@@ -475,6 +492,7 @@ def render_page(url, title, description, body, *, trail=None, jsonld=None, scrip
         "{{SAISON}}": SITE["saison"],
         "{{VORSAISON_ENDE}}": SITE["vorsaison_ende"],
         "{{SOMMERSTART}}": SITE["sommerstart"],
+        "{{CHECKOUT_ENDPOINT}}": SITE["checkout_endpoint"],
         "{{BREADCRUMB}}": breadcrumb_html(trail, rel),
         "{{BODY}}": body,
         "{{SCRIPTS}}": scripts,
@@ -527,7 +545,8 @@ def expand(text, rel, produkte):
                 .replace("{{DOMAIN}}", SITE["url"].replace("https://", ""))
                 .replace("{{SAISON}}", SITE["saison"])
                 .replace("{{VORSAISON_ENDE}}", SITE["vorsaison_ende"])
-                .replace("{{SOMMERSTART}}", SITE["sommerstart"]))
+                .replace("{{SOMMERSTART}}", SITE["sommerstart"])
+                .replace("{{CHECKOUT_ENDPOINT}}", SITE["checkout_endpoint"]))
 
     # {{PRODUKTE:slug,slug,slug}} → Produktkarten
     def cards(m):
@@ -634,6 +653,7 @@ def product_page(p, produkte):
     specs.append(("Abmessungen", p["masse"]))
     specs.append(("Gewicht", "%s kg" % kw_de(float(p["gewicht"]))))
     specs.append(("Montage", MONTAGE_LABEL[p["montage"]]))
+    specs.append(("Versandart", "Paketversand" if versandart(p) == "paket" else "Speditionsversand"))
     specs.append(("Artikelnummer", p["sku"]))
 
     spec_rows = "".join("<tr><th scope=\"row\">%s</th><td>%s</td></tr>" % (html.escape(k), html.escape(v))
@@ -1239,11 +1259,47 @@ def main():
     open(os.path.join(img_dir, "favicon.svg"), "w", encoding="utf-8").write(favicon_svg())
     open(os.path.join(img_dir, "og-arktik.svg"), "w", encoding="utf-8").write(og_svg())
 
+    # Serverseitiger Preiskatalog für die Stripe-Anbindung.
+    # Der Warenkorb liegt im Browser des Kunden und ist deshalb manipulierbar.
+    # Die Zahlungsfunktion nimmt vom Browser nur Artikelnummer und Menge
+    # entgegen und schlägt Preis, Name und Versandart hier nach.
+    katalog = {
+        "waehrung": "eur",
+        "mwst_satz": 19,
+        "versandkostenfrei_ab_cent": 49900,
+        "versand": {
+            "DE": {"paket": 590, "spedition": 2990},
+            "AT": {"paket": 1290, "spedition": 4990},
+        },
+        "artikel": {
+            p["sku"]: {
+                "name": p["name"],
+                "kurz": p["kurz"],
+                "preis_cent": int(round(p["preis"] * 100)),
+                "versandart": versandart(p),
+                "url": "produkte/%s.html" % p["slug"],
+                "bild": "assets/img/produkt-%s.svg" % p["slug"],
+            } for p in produkte
+        },
+    }
+    stripe_dir = os.path.join(ROOT, "stripe")
+    if os.path.isdir(stripe_dir):
+        with open(os.path.join(stripe_dir, "catalog.json"), "w", encoding="utf-8") as f:
+            json.dump(katalog, f, ensure_ascii=False, indent=2)
+
     # Produktdaten für den Kühllastrechner
     kompakt = [{
         "slug": p["slug"], "name": p["name"], "kurz": p["kurz"], "kw": p["kw"], "preis": p["preis"],
         "url": "produkte/%s.html" % p["slug"], "img": "assets/img/produkt-%s.svg" % p["slug"],
     } for p in produkte if p["kw"] > 0]
+    # checkout.js enthält einen Platzhalter für die Adresse der Serverfunktion.
+    ck = os.path.join(OUT, "assets", "js", "checkout.js")
+    if os.path.exists(ck):
+        quelle = open(ck, encoding="utf-8").read()
+        ersetzt = quelle.replace("{{CHECKOUT_ENDPOINT}}", SITE["checkout_endpoint"])
+        if ersetzt != quelle:
+            open(ck, "w", encoding="utf-8").write(ersetzt)
+
     open(os.path.join(OUT, "assets", "js", "produkte.js"), "w", encoding="utf-8").write(
         "/* Automatisch erzeugt von tools/build.py — nicht von Hand ändern. */\n"
         "window.ARKTIK_PRODUKTE = %s;\n" % json.dumps(kompakt, ensure_ascii=False, indent=0))

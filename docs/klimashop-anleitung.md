@@ -130,13 +130,17 @@ Der Countdown auf der Startseite zählt die echten Tage bis zum 1. Juni.
 ## Warenkorb
 
 Der Warenkorb liegt im `localStorage` des Besuchers unter dem Schlüssel
-`arktik.cart.v1`. Es gibt bewusst kein Backend: Für einen echten Bestellabschluss
-muss ein Zahlungs- oder Shopsystem angebunden werden. Übergabepunkt ist
-`src/pages/kasse.html`. Beim Anbinden zu beachten:
+`arktik.cart.v1`. Der Bestellabschluss läuft über Stripe — Einrichtung in
+[`stripe/README.md`](../stripe/README.md).
 
-- Preise serverseitig erneut prüfen — der Warenkorb liegt beim Kunden.
-- Schaltfläche muss „zahlungspflichtig bestellen“ heissen (§ 312j Abs. 3 BGB).
-- Bestellbestätigung mit allen Vertragsdaten unmittelbar per E-Mail.
+Wichtig am Aufbau: Die Serverfunktion nimmt vom Browser nur Artikelnummer und
+Menge entgegen und schlägt den Preis in `stripe/catalog.json` nach. Diese Datei
+erzeugt `tools/build.py` aus `src/products.json` — nach jeder Preisänderung also
+neu bauen **und neu veröffentlichen**, sonst rechnet die Kasse mit alten Preisen.
+
+```bash
+node stripe/test.mjs       # Preise, Versand und Webhook-Signatur prüfen
+```
 
 ## Formulare
 

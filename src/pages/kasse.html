@@ -5,51 +5,105 @@ description: Bestellabschluss bei ARKTIK Klimasysteme.
 robots: noindex,nofollow
 sitemap: nein
 breadcrumb: Warenkorb > warenkorb.html | Kasse
+scripts: assets/js/checkout.js
 ---
 <section class="tight">
-  <div class="wrap wrap-narrow">
-    <h1>Kasse</h1>
+  <div class="wrap">
+    <h1>Bestellung abschliessen</h1>
 
-    <div class="notice">{{ICON:warn}}<div><b>Hier fehlt noch das Zahlungssystem</b>
-    Diese Seite ist der Übergabepunkt zu Ihrem Shop- oder Zahlungsanbieter. Der Warenkorb
-    liegt im Browser des Kunden (<code>localStorage</code>) und muss an ein System
-    übergeben werden, das Bestellung, Zahlung und Rechnung abwickelt – zum Beispiel
-    Stripe Checkout, Shopify, WooCommerce oder Mollie.</div></div>
+    <div class="cart-layout mt-2">
+      <div>
+        <h2 style="font-size:1.15rem">Ihre Bestellung</h2>
+        <div data-cart-page-items></div>
 
-    <h2>Was ein Bestellabschluss rechtlich enthalten muss</h2>
-    <ul>
-      <li>Vollständige Übersicht der Ware mit Einzel- und Gesamtpreis inklusive Steuer</li>
-      <li>Versandkosten gesondert ausgewiesen</li>
-      <li>Bestätigung der Kenntnisnahme von AGB und Widerrufsbelehrung</li>
-      <li>Eine Schaltfläche mit der Beschriftung „zahlungspflichtig bestellen“
-        (Button-Lösung nach § 312j Abs. 3 BGB)</li>
-      <li>Unmittelbare Bestellbestätigung per E-Mail mit allen Vertragsdaten</li>
-    </ul>
+        <div class="card mt-3" data-checkout-form hidden>
+          <h2 class="mt-0" style="font-size:1.15rem">Angaben</h2>
+          <div class="field">
+            <label for="k-mail">E-Mail-Adresse für die Bestellbestätigung</label>
+            <input type="email" id="k-mail" name="email" required autocomplete="email"
+                   placeholder="ihre@adresse.de">
+            <p class="hint">Rechnung und Sendungsverfolgung gehen an diese Adresse.</p>
+          </div>
 
-    <p>Bis das angebunden ist, können Sie Bestellungen manuell entgegennehmen: Der Button
-    unten schickt den Inhalt des Warenkorbs als E-Mail an Ihr Postfach.</p>
+          <div class="field">
+            <label for="k-land">Lieferland</label>
+            <select id="k-land" name="land">
+              <option value="DE" selected>Deutschland</option>
+              <option value="AT">Österreich</option>
+            </select>
+            <p class="hint">Lieferadresse und Zahlungsart geben Sie im nächsten Schritt
+            bei unserem Zahlungsdienstleister Stripe ein.</p>
+          </div>
 
-    <form data-form data-subject="Bestellanfrage über arktik-klima.de">
-      <div class="field">
-        <label for="b-name">Name</label>
-        <input type="text" id="b-name" name="Name" required autocomplete="name">
+          <div class="field">
+            <label for="k-notiz">Anmerkung zur Lieferung <span class="muted">(optional)</span></label>
+            <textarea id="k-notiz" name="notiz" rows="2"
+              placeholder="z. B. Anlieferung nur vormittags, enge Hofeinfahrt"></textarea>
+          </div>
+
+          <div class="field">
+            <label class="filter-opt">
+              <input type="checkbox" data-agb required>
+              <span class="small">Ich habe die <a href="recht/agb.html">AGB</a> und die
+              <a href="recht/widerruf.html">Widerrufsbelehrung</a> gelesen und stimme ihnen zu.</span>
+            </label>
+            <label class="filter-opt">
+              <input type="checkbox" data-datenschutz required>
+              <span class="small">Ich habe die <a href="recht/datenschutz.html">Datenschutzerklärung</a>
+              zur Kenntnis genommen.</span>
+            </label>
+          </div>
+
+          <div class="notice info">{{ICON:info}}<div><b>Was als Nächstes passiert</b>
+          Mit dem Klick auf die Schaltfläche geben Sie eine verbindliche Bestellung ab.
+          Anschliessend leiten wir Sie zur Zahlung an Stripe weiter. Der Kaufvertrag kommt
+          nach § 2 unserer AGB mit unserer Annahme oder dem Versand zustande.</div></div>
+
+          <!-- Beschriftung nach § 312j Abs. 3 BGB. Nicht ändern: Eine andere
+               Formulierung kann dazu führen, dass der Vertrag nicht zustande kommt. -->
+          <button class="btn btn-accent btn-block" data-checkout-submit disabled>
+            Zahlungspflichtig bestellen
+          </button>
+
+          <p class="notice mt-1" data-checkout-error hidden>{{ICON:warn}}<span></span></p>
+          <p class="small muted mt-1 mb-0">Sie werden zu Stripe weitergeleitet. Ihre
+          Zahlungsdaten erreichen unsere Server nicht.</p>
+        </div>
+
+        <div class="notice mt-2" data-checkout-missing hidden>{{ICON:warn}}<div>
+          <b>Zahlung ist noch nicht eingerichtet</b>
+          Die Serverfunktion für Stripe antwortet nicht. Solange sie fehlt, nehmen wir
+          Bestellungen per E-Mail entgegen — schreiben Sie an
+          <a href="mailto:{{MAIL}}">{{MAIL}}</a> mit den Artikelnummern aus dem Warenkorb.
+          Die Einrichtung ist in <code>stripe/README.md</code> beschrieben.
+        </div></div>
       </div>
-      <div class="field">
-        <label for="b-mail">E-Mail</label>
-        <input type="email" id="b-mail" name="E-Mail" required autocomplete="email">
+
+      <div class="summary" data-cart-summary hidden>
+        <h2 style="font-size:1.1rem" class="mt-0">Zusammenfassung</h2>
+        <dl>
+          <dt>Zwischensumme</dt><dd data-cart-subtotal>0,00 €</dd>
+          <dt>Versand</dt><dd data-cart-shipping>–</dd>
+        </dl>
+        <hr style="border:0;border-top:1px solid var(--line)">
+        <dl>
+          <dt class="total">Gesamt</dt><dd class="total" data-cart-total>0,00 €</dd>
+        </dl>
+        <p class="small muted" data-cart-freehint hidden></p>
+        <p class="small muted">Enthält 19 % MwSt. Der endgültige Versandbetrag wird nach
+        Eingabe der Lieferadresse bestätigt.</p>
+        <ul class="checklist mt-2 small">
+          <li>{{ICON:check}}<span>14 Tage Widerrufsrecht</span></li>
+          <li>{{ICON:check}}<span>2 Jahre Gewährleistung</span></li>
+          <li>{{ICON:check}}<span>Zahlung über Stripe, PCI-DSS-zertifiziert</span></li>
+        </ul>
+        <div class="payment-icons mt-2" style="justify-content:center">
+          <span style="border-color:var(--line-strong);color:var(--muted)">Karte</span>
+          <span style="border-color:var(--line-strong);color:var(--muted)">PayPal</span>
+          <span style="border-color:var(--line-strong);color:var(--muted)">Klarna</span>
+          <span style="border-color:var(--line-strong);color:var(--muted)">SEPA</span>
+        </div>
       </div>
-      <div class="field">
-        <label for="b-adresse">Lieferadresse</label>
-        <textarea id="b-adresse" name="Lieferadresse" rows="3" required autocomplete="street-address"></textarea>
-      </div>
-      <div class="field">
-        <label for="b-artikel">Gewünschte Artikel</label>
-        <textarea id="b-artikel" name="Artikel" rows="3"
-          placeholder="Artikelnummern und Mengen aus dem Warenkorb"></textarea>
-      </div>
-      <button class="btn btn-accent btn-block" type="submit">Bestellanfrage senden</button>
-      <p class="small muted mt-1">Dies ist noch kein Kaufvertrag. Wir melden uns mit einer
-      verbindlichen Bestätigung und den Zahlungsdaten.</p>
-    </form>
+    </div>
   </div>
 </section>

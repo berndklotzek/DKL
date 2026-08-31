@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kasse | ARKTIK Klimasysteme</title>
-<meta name="description" content="Bestellabschluss bei ARKTIK Klimasysteme.">
-<link rel="canonical" href="https://www.arktik-klima.de/kasse.html">
+<title>Danke für Ihre Bestellung | ARKTIK Klimasysteme</title>
+<meta name="description" content="Ihre Bestellung bei ARKTIK Klimasysteme ist eingegangen.">
+<link rel="canonical" href="https://www.arktik-klima.de/bestellung-erfolgreich.html">
 <meta name="robots" content="noindex,nofollow">
 <meta name="author" content="ARKTIK Klimasysteme">
 <meta name="theme-color" content="#08131d">
@@ -13,15 +13,15 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ARKTIK Klimasysteme">
 <meta property="og:locale" content="de_DE">
-<meta property="og:title" content="Kasse | ARKTIK Klimasysteme">
-<meta property="og:description" content="Bestellabschluss bei ARKTIK Klimasysteme.">
-<meta property="og:url" content="https://www.arktik-klima.de/kasse.html">
+<meta property="og:title" content="Danke für Ihre Bestellung | ARKTIK Klimasysteme">
+<meta property="og:description" content="Ihre Bestellung bei ARKTIK Klimasysteme ist eingegangen.">
+<meta property="og:url" content="https://www.arktik-klima.de/bestellung-erfolgreich.html">
 <meta property="og:image" content="https://www.arktik-klima.de/assets/img/og-arktik.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Kasse | ARKTIK Klimasysteme">
-<meta name="twitter:description" content="Bestellabschluss bei ARKTIK Klimasysteme.">
+<meta name="twitter:title" content="Danke für Ihre Bestellung | ARKTIK Klimasysteme">
+<meta name="twitter:description" content="Ihre Bestellung bei ARKTIK Klimasysteme ist eingegangen.">
 <meta name="twitter:image" content="https://www.arktik-klima.de/assets/img/og-arktik.png">
 
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
@@ -73,106 +73,43 @@
   </div>
 </header>
 
-<nav class="breadcrumb" aria-label="Sie sind hier"><div class="wrap"><ol><li><a href="index.html">Start</a></li><li><a href="warenkorb.html">Warenkorb</a></li><li><span aria-current="page">Kasse</span></li></ol></div></nav>
+
 
 <main id="inhalt">
-<section class="tight">
-  <div class="wrap">
-    <h1>Bestellung abschliessen</h1>
+<section>
+  <div class="wrap wrap-narrow">
+    <div class="text-center">
+      <p class="section-eyebrow">Bestellung eingegangen</p>
+      <h1>Danke. Wir haben Ihre Bestellung.</h1>
+      <p class="muted">Die Bestellbestätigung ist unterwegs zu Ihnen. Bitte sehen Sie
+      auch im Spam-Ordner nach, falls sie in den nächsten Minuten nicht ankommt.</p>
+      <p class="small muted" data-order-ref hidden></p>
+    </div>
 
-    <div class="cart-layout mt-2">
-      <div>
-        <h2 style="font-size:1.15rem">Ihre Bestellung</h2>
-        <div data-cart-page-items></div>
-
-        <div class="card mt-3" data-checkout-form hidden>
-          <h2 class="mt-0" style="font-size:1.15rem">Angaben</h2>
-          <div class="field">
-            <label for="k-mail">E-Mail-Adresse für die Bestellbestätigung</label>
-            <input type="email" id="k-mail" name="email" required autocomplete="email"
-                   placeholder="ihre@adresse.de">
-            <p class="hint">Rechnung und Sendungsverfolgung gehen an diese Adresse.</p>
-          </div>
-
-          <div class="field">
-            <label for="k-land">Lieferland</label>
-            <select id="k-land" name="land">
-              <option value="DE" selected>Deutschland</option>
-              <option value="AT">Österreich</option>
-            </select>
-            <p class="hint">Lieferadresse und Zahlungsart geben Sie im nächsten Schritt
-            bei unserem Zahlungsdienstleister Stripe ein.</p>
-          </div>
-
-          <div class="field">
-            <label for="k-notiz">Anmerkung zur Lieferung <span class="muted">(optional)</span></label>
-            <textarea id="k-notiz" name="notiz" rows="2"
-              placeholder="z. B. Anlieferung nur vormittags, enge Hofeinfahrt"></textarea>
-          </div>
-
-          <div class="field">
-            <label class="filter-opt">
-              <input type="checkbox" data-agb required>
-              <span class="small">Ich habe die <a href="recht/agb.html">AGB</a> und die
-              <a href="recht/widerruf.html">Widerrufsbelehrung</a> gelesen und stimme ihnen zu.</span>
-            </label>
-            <label class="filter-opt">
-              <input type="checkbox" data-datenschutz required>
-              <span class="small">Ich habe die <a href="recht/datenschutz.html">Datenschutzerklärung</a>
-              zur Kenntnis genommen.</span>
-            </label>
-          </div>
-
-          <div class="notice info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></svg><div><b>Was als Nächstes passiert</b>
-          Mit dem Klick auf die Schaltfläche geben Sie eine verbindliche Bestellung ab.
-          Anschliessend leiten wir Sie zur Zahlung an Stripe weiter. Der Kaufvertrag kommt
-          nach § 2 unserer AGB mit unserer Annahme oder dem Versand zustande.</div></div>
-
-          <!-- Beschriftung nach § 312j Abs. 3 BGB. Nicht ändern: Eine andere
-               Formulierung kann dazu führen, dass der Vertrag nicht zustande kommt. -->
-          <button class="btn btn-accent btn-block" data-checkout-submit disabled>
-            Zahlungspflichtig bestellen
-          </button>
-
-          <p class="notice mt-1" data-checkout-error hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4m0 4h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><span></span></p>
-          <p class="small muted mt-1 mb-0">Sie werden zu Stripe weitergeleitet. Ihre
-          Zahlungsdaten erreichen unsere Server nicht.</p>
-        </div>
-
-        <div class="notice mt-2" data-checkout-missing hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4m0 4h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><div>
-          <b>Zahlung ist noch nicht eingerichtet</b>
-          Die Serverfunktion für Stripe antwortet nicht. Solange sie fehlt, nehmen wir
-          Bestellungen per E-Mail entgegen — schreiben Sie an
-          <a href="mailto:info@arktik-klima.de">info@arktik-klima.de</a> mit den Artikelnummern aus dem Warenkorb.
-          Die Einrichtung ist in <code>stripe/README.md</code> beschrieben.
-        </div></div>
+    <div class="steps mt-3">
+      <div class="step">
+        <h3>Bestätigung per E-Mail</h3>
+        <p>Sie erhalten eine Bestätigung mit allen Vertragsdaten und der Rechnung.</p>
       </div>
-
-      <div class="summary" data-cart-summary hidden>
-        <h2 style="font-size:1.1rem" class="mt-0">Zusammenfassung</h2>
-        <dl>
-          <dt>Zwischensumme</dt><dd data-cart-subtotal>0,00 €</dd>
-          <dt>Versand</dt><dd data-cart-shipping>–</dd>
-        </dl>
-        <hr style="border:0;border-top:1px solid var(--line)">
-        <dl>
-          <dt class="total">Gesamt</dt><dd class="total" data-cart-total>0,00 €</dd>
-        </dl>
-        <p class="small muted" data-cart-freehint hidden></p>
-        <p class="small muted">Enthält 19 % MwSt. Der endgültige Versandbetrag wird nach
-        Eingabe der Lieferadresse bestätigt.</p>
-        <ul class="checklist mt-2 small">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4.5 12.5 5 5 10-11"/></svg><span>14 Tage Widerrufsrecht</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4.5 12.5 5 5 10-11"/></svg><span>2 Jahre Gewährleistung</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4.5 12.5 5 5 10-11"/></svg><span>Zahlung über Stripe, PCI-DSS-zertifiziert</span></li>
-        </ul>
-        <div class="payment-icons mt-2" style="justify-content:center">
-          <span style="border-color:var(--line-strong);color:var(--muted)">Karte</span>
-          <span style="border-color:var(--line-strong);color:var(--muted)">PayPal</span>
-          <span style="border-color:var(--line-strong);color:var(--muted)">Klarna</span>
-          <span style="border-color:var(--line-strong);color:var(--muted)">SEPA</span>
-        </div>
+      <div class="step">
+        <h3>Versand in 3–5 Werktagen</h3>
+        <p>Speditionsware wird vorher telefonisch avisiert. Halten Sie Ihr Telefon bereit.</p>
       </div>
+      <div class="step">
+        <h3>Vor der Montage prüfen</h3>
+        <p>Lieferung auf Vollständigkeit und Transportschäden kontrollieren, bevor Sie
+        mit der Montage beginnen.</p>
+      </div>
+    </div>
+
+    <div class="notice info mt-3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></svg><div><b>Noch Fragen zur Montage?</b>
+    Auf der <a href="montage.html">Montageseite</a> steht der Ablauf Schritt für Schritt.
+    Für Split-Anlagen vermitteln wir einen Partnerbetrieb — schreiben Sie uns an
+    <a href="mailto:info@arktik-klima.de">info@arktik-klima.de</a>.</div></div>
+
+    <div class="flex-actions mt-3" style="justify-content:center">
+      <a class="btn" href="index.html">Zur Startseite</a>
+      <a class="btn btn-ghost" href="ratgeber/index.html">Ratgeber lesen</a>
     </div>
   </div>
 </section>
@@ -262,6 +199,6 @@
 <script src="assets/js/app.js" defer></script>
 <script src="assets/js/checkout.js" defer></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"OnlineStore","@id":"https://www.arktik-klima.de/#organisation","name":"ARKTIK Klimasysteme","legalName":"Daniel Klotzek","founder":{"@type":"Person","name":"Daniel Klotzek"},"url":"https://www.arktik-klima.de/","logo":"https://www.arktik-klima.de/assets/img/favicon.svg","image":"https://www.arktik-klima.de/assets/img/og-arktik.png","description":"Onlineshop für Klimaanlagen: Monoblock, Quick-Connect-Split, Split- und Multi-Split-Anlagen sowie mobile Klimageräte.","email":"info@arktik-klima.de","telephone":"+49 000 0000000","address":{"@type":"PostalAddress","streetAddress":"Am Danielsbrunnen 28","postalCode":"69168","addressLocality":"Wiesloch","addressCountry":"DE"},"areaServed":[{"@type":"Country","name":"Deutschland"},{"@type":"Country","name":"Österreich"}],"currenciesAccepted":"EUR","paymentAccepted":"PayPal, Kreditkarte, Klarna, SEPA-Lastschrift, Vorkasse","contactPoint":{"@type":"ContactPoint","contactType":"customer service","telephone":"+49 000 0000000","email":"info@arktik-klima.de","availableLanguage":["de"]}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Start","item":"https://www.arktik-klima.de/"},{"@type":"ListItem","position":2,"name":"Warenkorb","item":"https://www.arktik-klima.de/warenkorb.html"},{"@type":"ListItem","position":3,"name":"Kasse","item":"https://www.arktik-klima.de/kasse.html"}]}</script>
+
 </body>
 </html>

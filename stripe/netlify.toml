@@ -1,0 +1,21 @@
+# In das Wurzelverzeichnis der Netlify-Seite kopieren.
+# Das Veröffentlichungsverzeichnis ist der gebaute Shop.
+
+[build]
+  publish = "klimaanlagen"
+  functions = "stripe/netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+  # catalog.json muss mit in das Funktionspaket
+  included_files = ["stripe/catalog.json"]
+
+[[redirects]]
+  from = "/api/checkout"
+  to = "/.netlify/functions/checkout"
+  status = 200
+
+[[redirects]]
+  from = "/api/stripe-webhook"
+  to = "/.netlify/functions/stripe-webhook"
+  status = 200

@@ -1,0 +1,6 @@
+# Niemals einchecken: Stripe-Schlüssel und lokale Umgebung
+.env
+.env.*
+!.env.example
+node_modules/
+.netlify/
