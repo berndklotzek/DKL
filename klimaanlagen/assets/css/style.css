@@ -743,6 +743,25 @@ select { width: auto; cursor: pointer; }
 .breadcrumb a:hover { color: var(--brand); text-decoration: underline; }
 
 /* ============================================================================
+   Rechtstexte
+   ========================================================================= */
+
+.rechtstext { font-size: .97rem; }
+.rechtstext h2 { font-size: 1.3rem; margin-top: 2.4em; }
+.rechtstext h2:first-of-type { margin-top: 1.6em; }
+.rechtstext h3 { font-size: 1.05rem; margin-top: 1.8em; }
+.rechtstext p, .rechtstext li { max-width: 68ch; }
+.rechtstext ul, .rechtstext ol { padding-left: 1.3em; }
+.rechtstext li { margin-bottom: .4em; }
+.rechtstext blockquote {
+  margin: 1.6rem 0; padding: 1.1rem 1.4rem; border-left: 3px solid var(--line-strong);
+  background: var(--bg-soft); border-radius: 0 var(--r) var(--r) 0;
+}
+.rechtstext table { width: 100%; border-collapse: collapse; margin: 1.4rem 0; font-size: .94rem; }
+.rechtstext th, .rechtstext td { border: 1px solid var(--line); padding: .65rem .8rem; text-align: left; }
+.rechtstext th { background: var(--bg-soft); font-weight: 650; }
+
+/* ============================================================================
    Bewertungen
    ========================================================================= */
 

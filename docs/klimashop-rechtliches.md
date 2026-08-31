@@ -7,7 +7,7 @@ Klimageräten treffen vier Regelungsbereiche zusammen — Produktsicherheit,
 Kältemittelrecht, Elektroaltgeräte und Energiekennzeichnung. Wer aus China
 importiert, ist für alle vier selbst verantwortlich.
 
-Lassen Sie die Punkte 1 bis 6 von einer auf IT- und Produktrecht spezialisierten
+Lassen Sie die Punkte 1 bis 6a von einer auf IT- und Produktrecht spezialisierten
 Kanzlei prüfen, bevor Sie das erste Gerät verkaufen. Das kostet einen niedrigen
 vierstelligen Betrag und ist deutlich günstiger als die erste Abmahnung.
 
@@ -128,6 +128,55 @@ EPREL-Link je Gerät fehlen noch und müssen vor dem Livegang ergänzt werden.
 - **Bewertungen**: Erfundene oder gekaufte Bewertungen sind seit der
   Omnibus-Richtlinie ausdrücklich verboten. Der Shop zeigt deshalb bewusst keine
   Sterne, bis echte, überprüfbare Bewertungen vorliegen.
+
+## 6a. Was das Einzelunternehmen konkret bedeutet
+
+Der Shop läuft auf Daniel Klotzek, Am Danielsbrunnen 28, 60168 Liesloch — ein Einzelunternehmen, kein Kapitalgesellschaft.
+Vier Punkte, die daraus folgen:
+
+**Sie haften persönlich und unbeschränkt.** Das ist bei diesem Warenkorb kein
+theoretischer Punkt. Wenn ein importiertes Klimagerät einen Wohnungsbrand
+auslöst, haftet als Importeur nach dem Produkthaftungsgesetz zunächst das
+Unternehmen — und beim Einzelunternehmen ist das Ihr gesamtes Privatvermögen,
+einschliesslich Haus und Ersparnissen. Bei einer GmbH oder UG endet die Haftung
+grundsätzlich beim Gesellschaftsvermögen.
+
+Daraus folgen zwei Handlungsempfehlungen:
+
+1. **Betriebshaftpflicht mit Produkthaftpflicht abschliessen**, ausdrücklich
+   einschliesslich Importeurshaftung und Rückrufkosten. Ohne diese Police sollten
+   Sie kein einziges Gerät verkaufen. Rechnen Sie mit einem niedrigen bis
+   mittleren dreistelligen Betrag im Jahr — gegenüber dem Risiko ist das nichts.
+2. **Wechsel in eine UG oder GmbH prüfen**, sobald das Geschäft läuft. Eine UG
+   ist ab 1 € Stammkapital gründbar, kostet mit Notar und Handelsregister
+   überschaubar wenig und begrenzt genau dieses Risiko. Für den Start als
+   Einzelunternehmen zu beginnen ist völlig in Ordnung; dauerhaft Klimageräte
+   zu importieren, ohne die Haftung zu begrenzen, ist es nicht.
+
+**Kein Handelsregistereintrag nötig, aber eine Gewerbeanmeldung.** Das Gewerbe
+wird beim Gewerbeamt der Gemeinde angemeldet, bevor der erste Verkauf läuft.
+Daraus folgt automatisch die Pflichtmitgliedschaft in der IHK. Eine Eintragung
+ins Handelsregister als eingetragener Kaufmann (e. K.) ist erst ab einem in
+kaufmännischer Weise eingerichteten Geschäftsbetrieb erforderlich — bei
+wachsendem Import kann das schneller eintreten, als man denkt.
+
+**Im Impressum steht Ihr Name, nicht nur die Marke.** „ARKTIK Klimasysteme“ ist
+eine Geschäftsbezeichnung, kein Firmenname im Rechtssinn. Impressum, AGB,
+Widerrufsbelehrung und Rechnungen müssen Ihren bürgerlichen Namen tragen. So ist
+es jetzt umgesetzt: „ARKTIK Klimasysteme, Inhaber Daniel Klotzek“.
+
+**„Geschäftsführer“ ist der falsche Titel.** Den gibt es nur bei
+Kapitalgesellschaften. Beim Einzelunternehmen heisst die Rolle **Inhaber**. Auf
+Visitenkarten und in E-Mail-Signaturen ist die falsche Bezeichnung ein
+Angriffspunkt, weil sie über die Rechtsform und damit über die Haftung täuscht.
+
+**Kleinunternehmerregelung passt hier nicht.** Nach § 19 UStG könnten Sie
+unterhalb der Umsatzgrenze auf den Ausweis der Umsatzsteuer verzichten — dann
+dürfen Sie aber auch keine Vorsteuer ziehen. Bei einem Import zahlen Sie
+Einfuhrumsatzsteuer auf den gesamten Wareneinsatz und blieben darauf sitzen. Für
+dieses Geschäftsmodell ist die Regelbesteuerung fast sicher richtig; die Website
+weist entsprechend „inkl. 19 % MwSt.“ aus. Klären Sie das mit dem Steuerbüro,
+bevor die erste Rechnung rausgeht.
 
 ## 7. Steuern
 

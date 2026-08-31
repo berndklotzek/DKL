@@ -28,15 +28,20 @@ from datetime import date
 # ---------------------------------------------------------------------------
 
 SITE = {
+    # Geschäftsbezeichnung. Ein Einzelunternehmen darf unter einem Fantasienamen
+    # auftreten, im Impressum, in den AGB und auf Rechnungen muss aber der
+    # bürgerliche Name des Inhabers stehen — deshalb beide Angaben getrennt.
     "brand":    "ARKTIK Klimasysteme",
-    "company":  "ARKTIK Klimasysteme GmbH",
+    "company":  "ARKTIK Klimasysteme",
+    "inhaber":  "Daniel Klotzek",
+    "rechtsform": "Einzelunternehmen",
     "url":      "https://www.arktik-klima.de",     # ohne Schrägstrich am Ende
     "email":    "info@arktik-klima.de",
-    "phone":    "+49 30 120 89 440",
-    "phone_href": "+493012089440",
-    "street":   "Musterstraße 12",
-    "zip":      "10115",
-    "city":     "Berlin",
+    "phone":    "+49 000 0000000",                 # TODO echte Rufnummer eintragen
+    "phone_href": "+490000000000",
+    "street":   "Am Danielsbrunnen 28",
+    "zip":      "60168",
+    "city":     "Liesloch",
     "country":  "DE",
 }
 
@@ -396,8 +401,9 @@ def org_ld():
         "@context": "https://schema.org",
         "@type": "OnlineStore",
         "@id": SITE["url"] + "/#organisation",
-        "name": SITE["company"],
-        "alternateName": SITE["brand"],
+        "name": SITE["brand"],
+        "legalName": SITE["inhaber"],
+        "founder": {"@type": "Person", "name": SITE["inhaber"]},
         "url": SITE["url"] + "/",
         "logo": SITE["url"] + "/assets/img/favicon.svg",
         "image": SITE["url"] + "/assets/img/og-arktik.png",
@@ -457,6 +463,7 @@ def render_page(url, title, description, body, *, trail=None, jsonld=None, scrip
         "{{ROOT}}": rel,
         "{{BRAND}}": SITE["brand"],
         "{{COMPANY}}": SITE["company"],
+        "{{INHABER}}": SITE["inhaber"],
         "{{BREADCRUMB}}": breadcrumb_html(trail, rel),
         "{{BODY}}": body,
         "{{SCRIPTS}}": scripts,
@@ -492,6 +499,14 @@ def expand(text, rel, produkte):
                 .replace("{{TEL_HREF}}", SITE["phone_href"])
                 .replace("{{MAIL}}", SITE["email"])
                 .replace("{{COMPANY}}", SITE["company"])
+                .replace("{{INHABER}}", SITE["inhaber"])
+                .replace("{{RECHTSFORM}}", SITE["rechtsform"])
+                .replace("{{ANSCHRIFT}}", "%s<br>Inhaber %s<br>%s<br>%s %s"
+                         % (SITE["company"], SITE["inhaber"], SITE["street"],
+                            SITE["zip"], SITE["city"]))
+                .replace("{{ANSCHRIFT_ZEILE}}", "%s, Inhaber %s, %s, %s %s"
+                         % (SITE["company"], SITE["inhaber"], SITE["street"],
+                            SITE["zip"], SITE["city"]))
                 .replace("{{BRAND}}", SITE["brand"])
                 .replace("{{STREET}}", SITE["street"])
                 .replace("{{ZIP}}", SITE["zip"])
@@ -1104,11 +1119,16 @@ def content_pages(produkte):
                 "inLanguage": "de-DE",
             })
 
+        inhalt = expand(body, rel, produkte)
+        if url.startswith("recht/"):
+            # Paragrafenprosa braucht kleinere Überschriften als eine Verkaufsseite
+            inhalt = '<div class="rechtstext">%s</div>' % inhalt
+
         urls.append(render_page(
             url,
             meta["title"],
             meta["description"],
-            expand(body, rel, produkte),
+            inhalt,
             trail=trail,
             jsonld=jsonld,
             scripts=("".join('<script src="%s%s" defer></script>' % (rel, s.strip())
