@@ -525,7 +525,7 @@ def eek_block(p):
         if p["eek_heizen"] != "–" else ""
     return ('<p class="eek-row">'
             '<span class="eek-label" style="background:%s">%s</span> Kühlen %s'
-            '· <a href="#panel-tech" class="small">Produktdatenblatt</a>'
+            '· <a href="#panel-tech" class="small" data-open-tab="tab-tech">Produktdatenblatt</a>'
             '</p>' % (farbe, p["eek_kuehlen"], heiz))
 
 

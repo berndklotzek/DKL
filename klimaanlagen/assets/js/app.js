@@ -304,6 +304,15 @@
     });
   });
 
+  /* Verweise, die eine Registerkarte öffnen sollen (z. B. „Produktdatenblatt“).
+     Ohne das würde der Sprung auf ein ausgeblendetes Panel führen. */
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('[data-open-tab]');
+    if (!link) { return; }
+    var tab = document.getElementById(link.dataset.openTab);
+    if (tab) { tab.click(); }
+  });
+
   /* ==========================================================================
      Formulare
      Die Seite ist statisch: Ohne Backend werden Kontakt- und Newsletter-

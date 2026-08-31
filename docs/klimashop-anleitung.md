@@ -31,6 +31,25 @@ cd klimaanlagen && python3 -m http.server 8000
 Danach <http://localhost:8000> öffnen. Es wird nichts installiert, es gibt keine
 Abhängigkeiten ausser Python 3.
 
+## Vorschau zum Herumzeigen
+
+```bash
+python3 tools/bundle.py    # erzeugt vorschau/arktik-vorschau.html
+```
+
+Packt die komplette Website — alle Seiten, Stile, Skripte und Grafiken — in eine
+einzige HTML-Datei. Die läuft ohne Webserver: Doppelklick genügt, und sie lässt
+sich als Anhang verschicken. Jede Seite wird in einem eigenen Dokument angezeigt,
+damit die Seitenskripte genauso laufen wie im Echtbetrieb; Verweise werden
+abgefangen und auf die eingebettete Fassung umgeleitet.
+
+In der Vorschau abgeschaltet: Formulare (statt E-Mail erscheint ein Hinweis) und
+`mailto:`- sowie `tel:`-Verweise. Warenkorb, Filter, Sortierung, Registerkarten
+und der Kühllastrechner funktionieren vollständig.
+
+Nach jeder Änderung erst `tools/build.py`, dann `tools/bundle.py` ausführen —
+der Bundler liest den gebauten Stand aus `klimaanlagen/`.
+
 ## Was wo geändert wird
 
 | Ziel | Datei |

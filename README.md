@@ -15,6 +15,7 @@ Checkliste vor dem Livegang in
 ```bash
 python3 tools/build.py     # Shop bauen
 python3 tools/check.py     # Links, JSON-LD und SEO-Grundlagen prüfen
+python3 tools/bundle.py    # alles in eine Datei: vorschau/arktik-vorschau.html
 ```
 
 ---
