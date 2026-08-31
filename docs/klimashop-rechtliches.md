@@ -131,7 +131,8 @@ EPREL-Link je Gerät fehlen noch und müssen vor dem Livegang ergänzt werden.
 
 ## 6a. Was das Einzelunternehmen konkret bedeutet
 
-Der Shop läuft auf Daniel Klotzek, Am Danielsbrunnen 28, 60168 Liesloch — ein Einzelunternehmen, kein Kapitalgesellschaft.
+Der Shop läuft auf Daniel Klotzek, Am Danielsbrunnen 28, 69168 Wiesloch — ein
+Einzelunternehmen, keine Kapitalgesellschaft.
 Vier Punkte, die daraus folgen:
 
 **Sie haften persönlich und unbeschränkt.** Das ist bei diesem Warenkorb kein

@@ -40,8 +40,8 @@ SITE = {
     "phone":    "+49 000 0000000",                 # TODO echte Rufnummer eintragen
     "phone_href": "+490000000000",
     "street":   "Am Danielsbrunnen 28",
-    "zip":      "60168",
-    "city":     "Liesloch",
+    "zip":      "69168",
+    "city":     "Wiesloch",
     "country":  "DE",
 }
 
