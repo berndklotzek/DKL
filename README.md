@@ -35,6 +35,17 @@ stehen — es fehlt also nie Inhalt.
 **Neuen Text ergänzen:** immer beide Sprachvarianten anlegen, sonst ist der
 Abschnitt in einer Sprache leer.
 
+## Laufschrift
+
+Das Slogan-Band über der Kopfzeile (`.ticker`) läuft endlos, weil die Items
+doppelt im Markup stehen und die Spur um genau 50 % verschoben wird. Der Text
+steht einmal zusätzlich als `.visually-hidden` im Dokument — die laufende Spur
+selbst ist `aria-hidden`, damit Screenreader den Slogan nicht viermal vorlesen.
+Beim Überfahren mit der Maus hält das Band an; bei `prefers-reduced-motion`
+steht ein einzelner, zentrierter Slogan ohne Bewegung.
+
+Tempo ändern: `animation: ticker-run 38s linear infinite` in `style.css`.
+
 ## Design anpassen
 
 Sämtliche Farben, Schriften, Radien und die Maximalbreite liegen als Variablen
