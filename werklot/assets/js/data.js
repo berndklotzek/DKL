@@ -1,5 +1,5 @@
 /* =====================================================================
-   HANDFEST — Datenschicht
+   WERKLOT — Datenschicht
    Alle Inhalte dieser Datei sind Demonstrationsdaten. Betriebe, Namen,
    Zitate und Kennzahlen sind erfunden; die Vergütungsangaben sind grobe
    Richtwerte und ersetzen keine Tarifauskunft.
@@ -19,7 +19,7 @@ const DIM_KEYS = Object.keys(DIMENSIONEN);
 
 /* ---------------------------------------------------------------------
    Berufe
-   index  = HANDFEST Zukunfts-Index (0–100, eigenes Modell, siehe Methodik)
+   index  = WERKLOT Zukunfts-Index (0–100, eigenes Modell, siehe Methodik)
    profil = Ausprägung 0–5 je Merkmal
    ------------------------------------------------------------------ */
 const BERUFE = [

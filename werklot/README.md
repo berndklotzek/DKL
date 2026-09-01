@@ -1,4 +1,4 @@
-# HANDFEST — Vermittlungsportal Schule ↔ Handwerk
+# WERKLOT — Vermittlungsportal Schule ↔ Handwerk
 
 Prototyp eines Portals, das Schülerinnen und Schüler an Handwerksbetriebe in
 ihrer Region vermittelt. Leitgedanke der ganzen Seite: **ein Beruf, dessen Kern
@@ -21,13 +21,13 @@ Kein Build, kein Framework, keine Abhängigkeiten außer den Webfonts. Lokal
 testen:
 
 ```bash
-python3 -m http.server 8000   # dann http://localhost:8000/handfest/ öffnen
+python3 -m http.server 8000   # dann http://localhost:8000/werklot/ öffnen
 ```
 
 Einzeldatei zum Weitergeben (Mailanhang, Präsentation):
 
 ```bash
-python3 tools/einzeldatei.py            # handfest-einzeldatei.html
+python3 tools/einzeldatei.py            # werklot-einzeldatei.html
 python3 tools/einzeldatei.py --fragment out.html   # ohne <html>/<head>-Gerüst
 ```
 
@@ -59,7 +59,8 @@ nach Passung, Entfernung, Vergütung oder Übernahmequote.
 Das Signet ist ein **Senklot**: Aufhängung, Lotschnur, Lotkörper, Grundlinie.
 Ein Lot misst nicht und behauptet nichts — es zeigt, ob etwas gerade sitzt. Das
 ist die Aussage der Marke, und es ist bewusst kein Hammer, weil der nur sagt,
-dass geschlagen wird.
+dass geschlagen wird. Seit der Umbenennung steht das Zeichen auch im Namen:
+Werk + Lot.
 
 Beide SVG bestehen ausschließlich aus Geometrie auf einem Raster von 32
 Einheiten und hängen an keiner Schrift. Aufhängung 10 breit, Lotschnur 10 hoch,

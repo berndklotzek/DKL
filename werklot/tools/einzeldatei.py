@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Baut aus index.html + assets/ eine einzige HTML-Datei.
 
-    python3 tools/einzeldatei.py                 -> handfest-einzeldatei.html
+    python3 tools/einzeldatei.py                 -> werklot-einzeldatei.html
     python3 tools/einzeldatei.py --fragment out.html
 
 Die Seite selbst braucht keinen Build; dieses Skript ist nur dafür da, den
@@ -34,7 +34,7 @@ def main() -> int:
     quelle = (WURZEL / "index.html").read_text(encoding="utf-8")
     fragment = "--fragment" in sys.argv
     rest = [a for a in sys.argv[1:] if not a.startswith("--")]
-    ziel = Path(rest[0]) if rest else WURZEL / "handfest-einzeldatei.html"
+    ziel = Path(rest[0]) if rest else WURZEL / "werklot-einzeldatei.html"
 
     voll = einbetten(quelle)
 

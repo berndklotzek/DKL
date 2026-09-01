@@ -1,5 +1,5 @@
 /* =====================================================================
-   HANDFEST — Anwendungslogik
+   WERKLOT — Anwendungslogik
    Kein Framework. Reihenfolge: data.js zuerst, dann diese Datei.
    ===================================================================== */
 (function () {
@@ -14,7 +14,7 @@
   function initTheme() {
     var root = document.documentElement;
     var stored = null;
-    try { stored = localStorage.getItem("handfest-theme"); } catch (e) { /* Privater Modus */ }
+    try { stored = localStorage.getItem("werklot-theme"); } catch (e) { /* Privater Modus */ }
     if (stored === "dark" || stored === "light") root.setAttribute("data-theme", stored);
 
     var btn = $("#theme-toggle");
@@ -25,7 +25,7 @@
           window.matchMedia("(prefers-color-scheme: dark)").matches);
       var next = dunkelJetzt ? "light" : "dark";
       root.setAttribute("data-theme", next);
-      try { localStorage.setItem("handfest-theme", next); } catch (e) { /* egal */ }
+      try { localStorage.setItem("werklot-theme", next); } catch (e) { /* egal */ }
     });
   }
 
