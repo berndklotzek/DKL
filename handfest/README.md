@@ -52,6 +52,37 @@ kommt: Vergütung im ersten Lehrjahr, Übernahmequote, freie Plätze, konkrete
 Ausbildungsinhalte. Filter nach Gewerk, Umkreis, Ausbildungsstart; Sortierung
 nach Passung, Entfernung, Vergütung oder Übernahmequote.
 
+## Slogans im Hero
+
+Die Überschrift wechselt alle 5,2 Sekunden durch sechs Sätze. Sie stehen
+vollständig im Markup (`h1.slogans`), jedes Wort in einem eigenen
+`<span class="w">` — daraus entsteht die gestaffelte Einlauf-Animation, und
+ohne JavaScript bleibt der erste Slogan einfach stehen. Das Akzentwort trägt
+zusätzlich `accent`.
+
+```html
+<span class="slogan">
+  <span class="w">Kein</span>
+  <span class="w">Update</span>
+  <span class="w">ersetzt</span>
+  <span class="w">einen</span>
+  <span class="w accent">Meisterbrief.</span>
+</span>
+```
+
+Alle Slogans liegen in derselben Rasterzelle, die Höhe richtet sich nach dem
+längsten — beim Wechsel springt also nichts. Damit darunter keine Lücke
+entsteht, sind die sechs Sätze so gefasst, dass sie in jeder Fensterbreite
+gleich viele Zeilen brauchen: **beim Ergänzen eines Slogans die Länge der
+vorhandenen treffen** (rund 32–39 Zeichen) und einen Knopf in der Skala
+darunter mitanlegen.
+
+Die Skala unter der Überschrift ist gleichzeitig Fortschrittsanzeige und
+Bedienelement: der orangefarbene Strich läuft über die Standzeit voll, jeder
+Strich springt per Klick zum zugehörigen Slogan. Bei Mauszeiger oder Tastatur­
+fokus im Hero hält der Wechsel an; bei `prefers-reduced-motion` läuft er gar
+nicht erst von allein, die Striche bleiben als manuelle Bedienung.
+
 ## Geschäftsmodell (Entwurf)
 
 | Seite | Preis | Begründung |

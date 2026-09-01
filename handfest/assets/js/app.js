@@ -62,6 +62,94 @@
   }
 
   /* ------------------------------------------------------------------
+     Slogan-Wechsler im Hero
+     ------------------------------------------------------------------ */
+  function initSlogans() {
+    var zone = $("#slogan-zone");
+    var rotor = $("#rotor");
+    var slogans = $$(".slogan");
+    if (!zone || !rotor || slogans.length < 2) return;
+
+    var ticks = $$(".tick", rotor);
+    var STANDZEIT = 5200;
+    var reduziert = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var aktuell = -1, timer = null, pausiert = false;
+
+    rotor.style.setProperty("--dwell", (STANDZEIT / 1000) + "s");
+
+    function zeige(n) {
+      if (n === aktuell) return;
+      var alt = slogans[aktuell];
+      if (alt) {
+        alt.classList.remove("is-on");
+        alt.classList.add("is-out");
+        alt.setAttribute("aria-hidden", "true");
+        window.setTimeout(function () { alt.classList.remove("is-out"); }, 400);
+      }
+      aktuell = n;
+      slogans[n].removeAttribute("aria-hidden");
+      slogans[n].classList.add("is-on");
+      skalaNeu();
+    }
+
+    /* Klasse abnehmen, Umbruch erzwingen, wieder anlegen: nur so startet
+       die Füll-Animation der Skala von vorn. */
+    function skalaNeu() {
+      ticks.forEach(function (t, i) {
+        t.classList.remove("is-on");
+        t.setAttribute("aria-current", i === aktuell ? "true" : "false");
+      });
+      if (ticks[aktuell]) {
+        void ticks[aktuell].offsetWidth;
+        ticks[aktuell].classList.add("is-on");
+      }
+    }
+
+    function planen() {
+      window.clearTimeout(timer);
+      if (reduziert || pausiert) return;
+      timer = window.setTimeout(function () {
+        zeige((aktuell + 1) % slogans.length);
+        planen();
+      }, STANDZEIT);
+    }
+
+    function anhalten() {
+      pausiert = true;
+      rotor.classList.add("is-paused");
+      window.clearTimeout(timer);
+    }
+    function weiterlaufen() {
+      if (!pausiert) return;
+      pausiert = false;
+      rotor.classList.remove("is-paused");
+      skalaNeu();
+      planen();
+    }
+
+    zone.addEventListener("mouseenter", anhalten);
+    zone.addEventListener("mouseleave", weiterlaufen);
+    zone.addEventListener("focusin", anhalten);
+    zone.addEventListener("focusout", function (e) {
+      if (!zone.contains(e.relatedTarget)) weiterlaufen();
+    });
+
+    ticks.forEach(function (t, i) {
+      t.addEventListener("click", function () { zeige(i); planen(); });
+    });
+
+    /* Der erste Slogan steht schon im Markup; kurz abnehmen, damit er beim
+       Laden genauso einläuft wie alle folgenden. */
+    slogans.forEach(function (el, i) {
+      el.classList.remove("is-on");
+      if (i > 0) el.setAttribute("aria-hidden", "true");
+    });
+    void slogans[0].offsetWidth;
+    zeige(0);
+    planen();
+  }
+
+  /* ------------------------------------------------------------------
      Diagramm: Zukunfts-Index
      ------------------------------------------------------------------ */
   function renderChart() {
@@ -512,6 +600,7 @@
     initTheme();
     initReveal();
     initGauge();
+    initSlogans();
     renderChart();
     initCheck();
     initFilter();
