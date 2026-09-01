@@ -6,34 +6,72 @@ Seelenfrieden Urnenrückführung GmbH, Zug.
 ## Aufbau
 
 ```
-index.html              Komplette Seite (Hero, Leistungen, Ablauf, Über uns, Kontakt, Impressum)
+quelle.html             Einzige Datei, die von Hand bearbeitet wird — beide Sprachen nebeneinander
+tools/sprachen.py       Trennt die Sprachen und erzeugt daraus:
+index.html                deutsche Seite   (/)
+ru/index.html             russische Seite  (/ru/)
+sitemap.xml               beide URLs mit hreflang-Verweisen
+robots.txt
 assets/css/style.css    Styles; alle Farben/Typo als CSS-Variablen ganz oben in :root
-assets/js/i18n.js       Sprachumschalter DE/RU
+assets/img/og-*.png     Vorschaubilder für geteilte Links, je Sprache
 ```
 
-Kein Build, kein Framework, keine externen Ressourcen — die Seite läuft direkt
-vom Dateisystem oder von jedem Webspace. Lokal testen:
+Kein Framework, keine externen Ressourcen. Die erzeugten Seiten liegen im
+Verzeichnis und laufen direkt von jedem Webspace. Nach jeder Änderung an
+`quelle.html`:
 
 ```bash
-python3 -m http.server 8000   # dann http://localhost:8000 öffnen
+python3 tools/sprachen.py            # erzeugt die Seiten neu
+python3 tools/sprachen.py --pruefen  # meldet nur, ob etwas veraltet ist
+python3 -m http.server 8000          # lokal ansehen
 ```
 
 ## Zweisprachigkeit
 
-Beide Sprachfassungen stehen parallel im HTML:
+In `quelle.html` stehen beide Sprachfassungen weiterhin nebeneinander:
 
 ```html
 <span lang="de">Leistungen</span><span lang="ru">Услуги</span>
 ```
 
-Sichtbar ist jeweils die Sprache, die `data-lang` am `<html>`-Element freigibt
-(CSS-Regeln am Ende des Abschnitts „Sprachumschaltung“ in `style.css`).
-`i18n.js` setzt das Attribut, merkt sich die Wahl in `localStorage` und
-übernimmt beim ersten Besuch die Browsersprache. Ohne JavaScript bleibt Deutsch
-stehen — es fehlt also nie Inhalt.
+`tools/sprachen.py` schneidet daraus zwei Seiten: für `/` fällt alles mit
+`lang="ru"` weg, für `/ru/` alles mit `lang="de"`. Beide bekommen einen eigenen
+Titel, eine eigene Beschreibung, `canonical` auf sich selbst und
+`hreflang`-Verweise aufeinander.
 
-**Neuen Text ergänzen:** immer beide Sprachvarianten anlegen, sonst ist der
-Abschnitt in einer Sprache leer.
+**Neuen Text ergänzen:** immer beide Sprachvarianten anlegen, sonst fehlt der
+Abschnitt in einer Sprache. Danach das Skript laufen lassen — sonst zeigt die
+Website den alten Stand.
+
+**Warum nicht mehr per CSS umschalten?** Weil eine URL nur in einer Sprache
+ranken kann. Solange beide Fassungen in einem Dokument standen und per CSS
+umgeschaltet wurden, sah eine Suchmaschine eine gemischtsprachige Seite ohne
+eigene russische Adresse — die russische Zielgruppe war praktisch unauffindbar.
+Der frühere Umschalter (`assets/js/i18n.js`) ist deshalb entfallen; an seiner
+Stelle stehen echte Verweise auf die jeweils andere Seite, die auch ein
+Suchmaschinen-Roboter verfolgen kann.
+
+## Suchmaschinen
+
+Was in den erzeugten Seiten steckt:
+
+| Baustein | Wo |
+|---|---|
+| Titel und Beschreibung je Sprache | `tools/sprachen.py`, Wörterbuch `SPRACHEN` |
+| `canonical`, `hreflang`, `x-default` | automatisch aus denselben Angaben |
+| Open Graph und Twitter Card | dito, Bilder unter `assets/img/` |
+| Strukturierte Daten `LocalBusiness` | Anschrift, Sprachen, Erreichbarkeit |
+| Strukturierte Daten `FAQPage` | wird aus dem Abschnitt `#fragen` der Seite gelesen |
+| `sitemap.xml`, `robots.txt` | erzeugt |
+
+Die Fragen und Antworten stehen nur an einer Stelle — im Markup des Abschnitts
+`#fragen`. Wer dort etwas ändert, ändert die strukturierten Daten mit.
+
+**Zwei Angaben fehlen noch und sind im Skript als `TODO` markiert:** die
+endgültige Domain (`BASIS`) und die Rufnummer (`TELEFON`). Die Rufnummer bleibt
+bewusst aus den strukturierten Daten heraus, solange auf der Seite die
+Platzhalternummer steht — eine falsche Nummer dort landet sonst in der
+Google-Visitenkarte.
 
 ## Design anpassen
 

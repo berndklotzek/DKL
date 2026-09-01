@@ -75,17 +75,18 @@ a:hover { color: var(--accent); }
 
 /* --- Sprachumschaltung ---------------------------------------------------- */
 
-[data-lang="de"] [lang="ru"] { display: none !important; }
-[data-lang="ru"] [lang="de"] { display: none !important; }
-
+/* Der Umschalter sind echte Verweise auf die jeweils andere Sprachfassung —
+   nur so kann eine Suchmaschine die russische Seite überhaupt finden. */
 .langswitch { display: inline-flex; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
-.langswitch button {
+.langswitch a,
+.langswitch span {
   font: inherit; font-size: .8rem; letter-spacing: .06em;
-  padding: .35rem .7rem; border: 0; background: transparent;
-  color: var(--text-muted); cursor: pointer;
+  padding: .35rem .7rem; text-decoration: none;
+  color: var(--text-muted); background: transparent;
 }
-.langswitch button + button { border-left: 1px solid var(--border); }
-.langswitch button[aria-pressed="true"] { background: var(--primary); color: var(--bg); }
+.langswitch a:hover { color: var(--text); background: var(--bg-soft); }
+.langswitch a + span, .langswitch span + a { border-left: 1px solid var(--border); }
+.langswitch [aria-current="true"] { background: var(--primary); color: var(--bg); }
 
 /* --- Kopfzeile ------------------------------------------------------------ */
 
@@ -144,6 +145,13 @@ section + section { border-top: 1px solid var(--border); }
 }
 .card .icon { color: var(--accent); margin-bottom: .9rem; display: block; }
 .card p { margin: 0; color: var(--text-muted); font-size: .97rem; }
+
+/* --- Häufige Fragen ------------------------------------------------------- */
+/* Zwei Spalten statt drei: die Antworten sind Fliesstext, kein Stichwort. */
+
+.grid.faq { grid-template-columns: repeat(auto-fit, minmax(430px, 1fr)); }
+.grid.faq .card h3 { margin-bottom: .6rem; }
+.grid.faq .card p { font-size: 1rem; line-height: 1.65; }
 
 /* --- Ablauf --------------------------------------------------------------- */
 
