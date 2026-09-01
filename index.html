@@ -111,15 +111,12 @@
           </a>
         </div>
       </div>
-      <figure>
-        <svg width="200" height="240" viewBox="0 0 200 240" role="img" aria-hidden="true" fill="none">
-          <circle cx="100" cy="118" r="86" fill="var(--bg-soft)"/>
-          <path d="M74 82h52l-8 18a38 38 0 0 1 20 33c0 22-17 37-38 37s-38-15-38-37a38 38 0 0 1 20-33l-8-18Z"
-                stroke="var(--primary)" stroke-width="1.6"/>
-          <path d="M80 66h40" stroke="var(--primary)" stroke-width="1.6" stroke-linecap="round"/>
-          <path d="M100 24c9 12 13 20 13 27a13 13 0 1 1-26 0c0-7 4-15 13-27Z" stroke="var(--accent)" stroke-width="1.6"/>
-          <path d="M62 196h76" stroke="var(--border)" stroke-width="1.6" stroke-linecap="round"/>
-        </svg>
+      <figure class="flagbox">
+        <canvas class="flag" width="300" height="270" aria-hidden="true"></canvas>
+        <figcaption>
+          <span lang="de">Gegründet und geführt in der Schweiz</span>
+          <span lang="ru">Основана и управляется в Швейцарии</span>
+        </figcaption>
       </figure>
     </div>
   </section>
@@ -398,6 +395,7 @@
 
 <script src="assets/js/i18n.js"></script>
 <script src="assets/js/slogans.js"></script>
+<script src="assets/js/flag.js"></script>
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

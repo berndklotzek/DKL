@@ -10,6 +10,7 @@ index.html              Komplette Seite (Hero, Leistungen, Ablauf, Über uns, Ko
 assets/css/style.css    Styles; alle Farben/Typo als CSS-Variablen ganz oben in :root
 assets/js/i18n.js       Sprachumschalter DE/RU
 assets/js/slogans.js    Wechsel der Hauptüberschrift
+assets/js/flag.js       Wehende Schweizer Fahne (Canvas)
 ```
 
 Kein Build, kein Framework, keine externen Ressourcen — die Seite läuft direkt
@@ -35,6 +36,19 @@ stehen — es fehlt also nie Inhalt.
 
 **Neuen Text ergänzen:** immer beide Sprachvarianten anlegen, sonst ist der
 Abschnitt in einer Sprache leer.
+
+## Wehende Fahne
+
+`flag.js` zeichnet die Fahne einmal flach in ein Offscreen-Canvas — Feld 32 × 32,
+Kreuzbalken 20 × 6, also die eidgenössischen Proportionen — und trägt sie dann
+spaltenweise versetzt wieder auf. Der Versatz kommt aus einer Sinuswelle, deren
+Ausschlag zum freien Ende hin wächst; die Helligkeit jeder Spalte folgt der
+Steigung der Welle, dadurch wirkt der Stoff plastisch. Kein Bild, keine
+Bibliothek.
+
+Stellschrauben oben in der Datei: `WAVES` (Wellenbäuche), `SPEED` (Tempo),
+`AMP` (Ausschlag). Bei `prefers-reduced-motion` steht die Fahne in einer
+einzelnen, ruhigen Welle still.
 
 ## Wechselnde Hauptüberschrift
 
