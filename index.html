@@ -38,12 +38,7 @@
   <section class="hero">
 
     <!-- Kulisse: Bergkette hinten, Fahne am Mast, darüber ein Schleier. -->
-    <div class="hero-scene" aria-hidden="true">
-      <svg viewBox="0 0 1440 420" preserveAspectRatio="none" fill="none">
-        <path d="M0 420V236l150-96 118 74 96-52 132 92 124-140 156 130 108-64 148 96 122-70 138 84 148-52v182H0Z" fill="#131f2b"/>
-        <path d="M0 420V300l188-74 142 62 130-38 166 76 148-52 152 68 156-46 158 62v62H0Z" fill="#0d1721"/>
-      </svg>
-    </div>
+    <canvas class="scene" aria-hidden="true"></canvas>
     <canvas class="flag" width="300" height="560" aria-hidden="true"></canvas>
 
     <header class="topbar">
@@ -282,7 +277,8 @@
   </section>
 
   <!-- Kontakt -->
-  <section id="kontakt" class="band-alt">
+  <section id="kontakt" class="band-alt has-scene">
+    <canvas class="scene" aria-hidden="true"></canvas>
     <div class="wrap split">
       <div>
         <p class="eyebrow caps"><span lang="de">Kontakt</span><span lang="ru">Контакты</span></p>
@@ -415,6 +411,7 @@
 <script src="assets/js/i18n.js"></script>
 <script src="assets/js/nav.js"></script>
 <script src="assets/js/slogans.js"></script>
+<script src="assets/js/scene.js"></script>
 <script src="assets/js/flag.js"></script>
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>

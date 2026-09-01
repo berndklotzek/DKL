@@ -11,6 +11,7 @@ assets/css/style.css    Styles; alle Farben und Schriften als CSS-Variablen ganz
 assets/js/i18n.js       Sprachumschalter DE/RU
 assets/js/nav.js        Menü auf schmalen Schirmen
 assets/js/slogans.js    Wechsel der Hauptüberschrift
+assets/js/scene.js      Dämmerungskulisse: Berge, Dunst, Stadt (Canvas)
 assets/js/flag.js       Wehende Schweizer Fahne am Mast (Canvas)
 ```
 
@@ -68,6 +69,21 @@ jede zweizeilig: `.l1` weiss, `.l2` goldkursiv. Sie liegen im selben Rasterfeld
 schaltet alle 5,2 Sekunden weiter und pausiert unter der Maus und bei Tab im
 Hintergrund. Die erste Aussage trägt `is-active`, damit ohne JavaScript keine
 leere Überschrift dasteht; bei `prefers-reduced-motion` bleibt sie stehen.
+
+## Kulisse
+
+`scene.js` zeichnet die Dämmerung selbst, statt ein Foto zu laden: Himmel mit
+warmem Horizontschimmer, Sterne, vier Bergketten über Mittelpunktverschiebung,
+Dunstbänder am Fuss jeder Kette (das ist die Luftperspektive) und die Lichter
+einer Stadt am Grund. Alles kommt aus einem festen Startwert — dieselbe Kulisse
+auf jedem Gerät und bei jedem Aufruf, ein Markenbild darf nicht flackern.
+
+Gezeichnet wird in jedes `canvas.scene`: einmal im Hero, einmal gedämpft hinter
+dem Kontaktteil. Startwert und Farben stehen oben in der Datei.
+
+**Soll das Originalfoto rein:** Bild unter `assets/img/` ablegen, im Hero
+`background-image` setzen und das `<canvas class="scene">` dort entfernen — der
+Schleier `\.hero::after` bleibt und sorgt weiter für lesbaren Text.
 
 ## Wehende Fahne
 
