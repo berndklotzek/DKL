@@ -12,6 +12,8 @@ index.html                  Komplette Seite (Hero, Zukunfts-Index, Talent-Check,
 assets/css/style.css        Styles; alle Farben/Typo als CSS-Variablen in :root
 assets/js/data.js           Inhalte: Berufe, Betriebe, Fragen, Indexwerte
 assets/js/app.js            Logik: Matching, Filter, Detailpanel, Diagramm
+assets/img/signet.svg       Signet (Senklot), Grundfassung
+assets/img/signet-badge.svg Signet im Quadrat für App-Symbol und Favicon
 tools/einzeldatei.py        Optional: baut alles zu einer HTML-Datei zusammen
 ```
 
@@ -51,6 +53,33 @@ gespeichert.
 kommt: Vergütung im ersten Lehrjahr, Übernahmequote, freie Plätze, konkrete
 Ausbildungsinhalte. Filter nach Gewerk, Umkreis, Ausbildungsstart; Sortierung
 nach Passung, Entfernung, Vergütung oder Übernahmequote.
+
+## Markenzeichen
+
+Das Signet ist ein **Senklot**: Aufhängung, Lotschnur, Lotkörper, Grundlinie.
+Ein Lot misst nicht und behauptet nichts — es zeigt, ob etwas gerade sitzt. Das
+ist die Aussage der Marke, und es ist bewusst kein Hammer, weil der nur sagt,
+dass geschlagen wird.
+
+Beide SVG bestehen ausschließlich aus Geometrie auf einem Raster von 32
+Einheiten und hängen an keiner Schrift. Aufhängung 10 breit, Lotschnur 10 hoch,
+Lotkörper 9,2 × 12,4, Grundlinie 21 breit, Strichstärke durchgehend 2,0.
+
+| Fassung | Datei | Anwendung |
+|---|---|---|
+| Grundfassung | `assets/img/signet.svg` | Kopfzeile, Dokumente; Linien in `currentColor`, Lotkörper immer in Signalorange |
+| Quadrat | `assets/img/signet-badge.svg` | App-Symbol, Favicon; enthält die Farben fest |
+
+Im Kopf der Seite steht das Signet als eingebettetes SVG, damit es die
+Textfarbe erbt und in beiden Erscheinungsbildern sitzt; das Favicon ist
+dieselbe Quadratfassung als Datenadresse im `<head>`. **Regeln:** ringsum eine
+Lotkörperbreite frei lassen, nie kleiner als 16 Pixel, nicht kippen (ein Lot
+hängt senkrecht), nicht verzerren und die beiden Farben nicht tauschen.
+
+Die Wortmarke wird bislang als Text in Archivo 800 gesetzt (Versalien,
+Laufweite 0,11 em). Für Druck, Fremdanwendung und eine etwaige Markenanmeldung
+muss sie noch in Pfade umgewandelt werden; eine Recherche nach älteren Rechten
+Dritter hat nicht stattgefunden.
 
 ## Slogans im Hero
 

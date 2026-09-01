@@ -214,7 +214,7 @@ button,input,select,textarea{ font:inherit; color:inherit; }
   display:flex; align-items:center; gap:10px;
   text-decoration:none; flex:0 0 auto;
 }
-.brand-mark{ color:var(--signal); flex:0 0 auto; }
+.brand-mark{ color:var(--ink); flex:0 0 auto; }
 .brand-name{
   font-family:var(--font-display);
   font-weight:800; font-size:1.06rem;
