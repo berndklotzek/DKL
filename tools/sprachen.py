@@ -23,11 +23,10 @@ WURZEL = Path(__file__).resolve().parent.parent
 # TODO: endgültige Domain bestätigen. Punycode-Form, weil sie überall eindeutig ist.
 BASIS = "https://xn--seelenfrieden-urnenrckfhrung-l7cd.ch"
 
-# TODO: sobald die echte Rufnummer feststeht, hier eintragen und in den
-# strukturierten Daten ergänzen. Solange die Platzhalternummer auf der Seite
-# steht, darf sie nicht in die strukturierten Daten — eine falsche Nummer dort
-# landet in der Google-Visitenkarte.
-TELEFON = None
+# Deutsche Mobilnummer in internationaler Schreibweise. Aus der Schweiz wird
+# ohne die führende 0 gewählt; E.164 ist ausserdem das Format, das Google für
+# strukturierte Daten erwartet.
+TELEFON = "+491624053093"
 
 EMAIL = "info@xn--seelenfrieden-urnenrckfhrung-l7cd.ch"
 

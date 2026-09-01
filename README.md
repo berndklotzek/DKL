@@ -67,11 +67,9 @@ Was in den erzeugten Seiten steckt:
 Die Fragen und Antworten stehen nur an einer Stelle — im Markup des Abschnitts
 `#fragen`. Wer dort etwas ändert, ändert die strukturierten Daten mit.
 
-**Zwei Angaben fehlen noch und sind im Skript als `TODO` markiert:** die
-endgültige Domain (`BASIS`) und die Rufnummer (`TELEFON`). Die Rufnummer bleibt
-bewusst aus den strukturierten Daten heraus, solange auf der Seite die
-Platzhalternummer steht — eine falsche Nummer dort landet sonst in der
-Google-Visitenkarte.
+**Eine Angabe fehlt noch und ist im Skript als `TODO` markiert:** die endgültige
+Domain (`BASIS`). Die Rufnummer steht als `TELEFON` im selben Skript und wandert
+von dort in die strukturierten Daten.
 
 ## Design anpassen
 
@@ -90,7 +88,6 @@ Diese Platzhalter stehen im Markup und sind mit `TODO` kommentiert:
 
 | Stelle | Platzhalter | gebraucht wird |
 |---|---|---|
-| Kontakt + Impressum | `+41 41 000 00 00` | echte Rufnummer |
 | Impressum | `CHE-000.000.000` | UID/Handelsregisternummer nach Eintrag |
 | Kontakt + Impressum | `6300 Zug` | Postleitzahl bestätigen |
 
