@@ -730,6 +730,35 @@ button,input,select,textarea{ font:inherit; color:inherit; }
 .faq details[open] summary::after{ content:"–"; }
 .faq p{ padding:0 4px 22px; max-width:70ch; color:var(--ink-2); font-size:.95rem; }
 
+/* ---------- Impressum ------------------------------------------------ */
+.legal{
+  display:grid; grid-template-columns:minmax(0,320px) minmax(0,1fr);
+  gap:26px 56px; align-items:start;
+}
+.legal-grid{ margin:0; display:flex; flex-direction:column; }
+.legal-grid > div{
+  display:flex; flex-direction:column; gap:3px;
+  padding:14px 0; border-top:1px solid var(--line);
+}
+.legal-grid > div:first-child{ border-top:2px solid var(--rule); }
+.legal-grid dt{
+  font-family:var(--font-data); font-size:.63rem; font-weight:500;
+  letter-spacing:.13em; text-transform:uppercase; color:var(--ink-3);
+}
+.legal-grid dd{ margin:0; font-size:.96rem; line-height:1.45; }
+.legal-note{ display:block; font-size:.82rem; color:var(--ink-3); margin-top:3px; }
+.offen{
+  display:inline-block;
+  font-family:var(--font-data); font-size:.61rem; font-weight:500;
+  letter-spacing:.11em; text-transform:uppercase;
+  padding:3px 9px; border-radius:99px;
+  border:1px dashed var(--signal-line); color:var(--signal-txt); background:var(--signal-soft);
+}
+.legal-text{ max-width:66ch; display:flex; flex-direction:column; gap:9px; }
+.legal-text h3{ font-size:.98rem; margin-top:16px; }
+.legal-text h3:first-child{ margin-top:0; }
+.legal-text p{ font-size:.92rem; color:var(--ink-2); }
+
 /* ---------- Fußzeile -------------------------------------------------- */
 .site-foot{ background:var(--blue); color:var(--on-blue-2); padding-block:56px 34px; }
 .foot-grid{ display:grid; grid-template-columns:1.4fr repeat(3,1fr); gap:36px; }
@@ -787,6 +816,7 @@ button,input,select,textarea{ font:inherit; color:inherit; }
   .hero-grid{ grid-template-columns:1fr; gap:40px; padding-block:64px 72px; }
   .mainnav{ display:none; }
   .grid-3, .grid-2, .audience{ grid-template-columns:1fr; }
+  .legal{ grid-template-columns:1fr; gap:34px; }
   .foot-grid{ grid-template-columns:1fr 1fr; }
   .section{ padding-block:64px; }
 }

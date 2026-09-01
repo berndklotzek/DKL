@@ -120,7 +120,15 @@ Diagrammfläche) — beim Ändern bitte nachprüfen.
 
 | Stelle | Platzhalter | gebraucht wird |
 |---|---|---|
-| Fußzeile | Impressum, Datenschutz, Barrierefreiheit | echte Seiten |
+| Impressum | `noch einzutragen` | Anschrift, Telefon und E-Mail, Amtsgericht + HRB, USt-IdNr., redaktionell verantwortliche Person |
+| Fußzeile | Datenschutz, Barrierefreiheit | eigene Erklärungen |
 | Panel-Buttons | Kurzmeldung statt Funktion | Bewerbungsstrecke mit Backend |
 | Betriebe | erfundener Datensatz | Anbindung Lehrstellenbörse / Kammer-API |
 | Schulbereich | nur beschrieben | Klassencode und Lehrkraft-Auswertung |
+
+Das Impressum steht als Abschnitt `#impressum` in `index.html` — wie beim
+Schwesterprojekt in derselben Datei, damit die Einzeldatei-Ausgabe keine toten
+Verweise enthält. Firma und Geschäftsführer sind eingetragen; jede noch fehlende
+Pflichtangabe trägt sichtbar die Marke `noch einzutragen` und im Markup ein
+`TODO`, damit nichts unbemerkt ungefüllt online geht. Der Text ist eine
+Arbeitsfassung und ersetzt keine rechtliche Prüfung.
