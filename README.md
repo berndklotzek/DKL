@@ -7,18 +7,43 @@ Seelenfrieden Urnenrückführung GmbH, Zug.
 
 ```
 index.html              Komplette Seite (Hero, Leistungen, Ablauf, Über uns, Kontakt, Impressum)
-assets/css/style.css    Styles; alle Farben/Typo als CSS-Variablen ganz oben in :root
+assets/css/style.css    Styles; alle Farben und Schriften als CSS-Variablen ganz oben in :root
 assets/js/i18n.js       Sprachumschalter DE/RU
+assets/js/nav.js        Menü auf schmalen Schirmen
 assets/js/slogans.js    Wechsel der Hauptüberschrift
-assets/js/flag.js       Wehende Schweizer Fahne (Canvas)
+assets/js/flag.js       Wehende Schweizer Fahne am Mast (Canvas)
 ```
 
-Kein Build, kein Framework, keine externen Ressourcen — die Seite läuft direkt
-vom Dateisystem oder von jedem Webspace. Lokal testen:
+Kein Build, kein Framework. Lokal testen:
 
 ```bash
 python3 -m http.server 8000   # dann http://localhost:8000 öffnen
 ```
+
+## Gestaltung
+
+Der Auftritt ist bewusst **einfarbig dunkel** — Gold auf Nachtblau — und hat
+keine helle Variante: Er soll auf jedem Gerät gleich wirken. Alle Werte liegen
+als Variablen in `:root`:
+
+```css
+--gold:    #c9a86b;   /* Akzent: Kursive, Buttons, Kennzahlen, Zierlinien */
+--ink-800: #0b1119;   /* Grundton der Abschnitte */
+--track:   .22em;     /* Laufweite der Versalien-Kleinschrift */
+```
+
+Wiederkehrendes Motiv ist die Klasse `.caps`: kleine Versalien mit weiter
+Laufweite, in Eyebrow, Buttons, Kennzahlen und Fusszeile.
+
+### Schriften — bitte selbst hosten
+
+Playfair Display und Poppins werden derzeit über **Google Fonts** geladen. Für
+eine Seite, die sich an Angehörige in Deutschland richtet, ist das heikel: Das
+Einbinden per Verweis überträgt die IP-Adresse der Besucher an Google, was
+deutsche Gerichte als DSGVO-Verstoss gewertet haben (LG München I, 3 O 17493/20).
+Vor dem Livegang also die beiden Familien herunterladen, unter `assets/fonts/`
+ablegen, per `@font-face` einbinden und die drei `<link>`-Zeilen im `<head>`
+entfernen.
 
 ## Zweisprachigkeit
 
@@ -28,14 +53,21 @@ Beide Sprachfassungen stehen parallel im HTML:
 <span lang="de">Leistungen</span><span lang="ru">Услуги</span>
 ```
 
-Sichtbar ist jeweils die Sprache, die `data-lang` am `<html>`-Element freigibt
-(CSS-Regeln am Ende des Abschnitts „Sprachumschaltung“ in `style.css`).
+Sichtbar ist die Sprache, die `data-lang` am `<html>`-Element freigibt.
 `i18n.js` setzt das Attribut, merkt sich die Wahl in `localStorage` und
 übernimmt beim ersten Besuch die Browsersprache. Ohne JavaScript bleibt Deutsch
 stehen — es fehlt also nie Inhalt.
 
-**Neuen Text ergänzen:** immer beide Sprachvarianten anlegen, sonst ist der
-Abschnitt in einer Sprache leer.
+**Neuen Text ergänzen:** immer beide Sprachvarianten anlegen.
+
+## Wechselnde Hauptüberschrift
+
+Die fünf Aussagen im Hero stehen als `.slogan` in der `<h1 class="rotator">`,
+jede zweizeilig: `.l1` weiss, `.l2` goldkursiv. Sie liegen im selben Rasterfeld
+übereinander, deshalb springt das Layout beim Wechsel nicht. `slogans.js`
+schaltet alle 5,2 Sekunden weiter und pausiert unter der Maus und bei Tab im
+Hintergrund. Die erste Aussage trägt `is-active`, damit ohne JavaScript keine
+leere Überschrift dasteht; bei `prefers-reduced-motion` bleibt sie stehen.
 
 ## Wehende Fahne
 
@@ -43,59 +75,30 @@ Abschnitt in einer Sprache leer.
 Kreuzbalken 20 × 6, also die eidgenössischen Proportionen — und trägt sie dann
 spaltenweise versetzt wieder auf. Der Versatz kommt aus einer Sinuswelle, deren
 Ausschlag zum freien Ende hin wächst; die Helligkeit jeder Spalte folgt der
-Steigung der Welle, dadurch wirkt der Stoff plastisch. Kein Bild, keine
-Bibliothek.
+Steigung der Welle. Der Mast wird separat gezeichnet. Kein Bild, keine Bibliothek.
 
-Stellschrauben oben in der Datei: `WAVES` (Wellenbäuche), `SPEED` (Tempo),
-`AMP` (Ausschlag). Bei `prefers-reduced-motion` steht die Fahne in einer
-einzelnen, ruhigen Welle still.
-
-## Wechselnde Hauptüberschrift
-
-Die fünf Aussagen im Hero stehen als `.slogan` in der `<h1 class="rotator">`.
-Sie liegen im selben Rasterfeld übereinander, deshalb ist die Überschrift immer
-so hoch wie die längste Aussage und springt beim Wechsel nicht. `slogans.js`
-schaltet alle 5,2 Sekunden weiter und pausiert, solange die Maus darauf steht
-oder der Tab im Hintergrund liegt.
-
-Aussage ergänzen: einen weiteren `.slogan`-Block mit beiden Sprachen in die
-`<h1>` einhängen — mehr braucht es nicht. Die erste Aussage trägt `is-active`,
-damit ohne JavaScript nicht etwa eine leere Überschrift dasteht. Bei
-`prefers-reduced-motion` bleibt genau diese erste Aussage stehen.
+Stellschrauben oben in der Datei: `WAVES`, `SPEED`, `AMP`. Bei
+`prefers-reduced-motion` steht die Fahne still.
 
 ## Laufschrift
 
-Das Slogan-Band über der Kopfzeile (`.ticker`) läuft endlos, weil die Items
-doppelt im Markup stehen und die Spur um genau 50 % verschoben wird. Der Text
-steht einmal zusätzlich als `.visually-hidden` im Dokument — die laufende Spur
-selbst ist `aria-hidden`, damit Screenreader den Slogan nicht viermal vorlesen.
-Beim Überfahren mit der Maus hält das Band an; bei `prefers-reduced-motion`
-steht ein einzelner, zentrierter Slogan ohne Bewegung.
-
-Tempo ändern: `animation: ticker-run 38s linear infinite` in `style.css`.
-
-## Design anpassen
-
-Sämtliche Farben, Schriften, Radien und die Maximalbreite liegen als Variablen
-in `:root` (und für den Dunkelmodus in `@media (prefers-color-scheme: dark)`).
-Ein Wechsel der Hausfarbe ist eine Zeile:
-
-```css
---primary: #46594f;   /* Hauptfarbe */
---accent:  #b08d57;   /* Akzent (Zahlen, Icons, Hover) */
-```
+Das Slogan-Band über der Kopfzeile läuft endlos, weil die Items doppelt im
+Markup stehen und die Spur um genau 50 % verschoben wird. Die laufende Spur ist
+`aria-hidden`, der Slogan steht einmal zusätzlich als `.visually-hidden` im
+Dokument. Pause beim Überfahren; bei `prefers-reduced-motion` steht ein
+einzelner, zentrierter Slogan.
 
 ## Noch einzutragen
-
-Diese Platzhalter stehen im Markup und sind mit `TODO` kommentiert:
 
 | Stelle | Platzhalter | gebraucht wird |
 |---|---|---|
 | Kontakt + Impressum | `+41 41 000 00 00` | echte Rufnummer |
-| Impressum | `CHE-000.000.000` | UID/Handelsregisternummer nach Eintrag |
+| Impressum | `CHE-000.000.000` | UID nach Handelsregistereintrag |
 | Kontakt + Impressum | `6300 Zug` | Postleitzahl bestätigen |
+| Kopfzeile | `.logo-mark` (SVG) | das echte Signet |
+| Hero | Bergkette als SVG | das Original-Hintergrundbild, falls gewünscht |
+| Hero | `200+`, `490 €`, `100 %` | Zahlen bestätigen — Werbeaussagen müssen stimmen |
 
-Die E-Mail-Adresse `info@seelenfrieden-urnenrückführung.ch` ist aus der Domain
-abgeleitet; `mailto:`-Links verwenden die Punycode-Form
-`info@xn--seelenfrieden-urnenrckfhrung-l7cd.ch`, damit ältere Mailprogramme sie
-korrekt auflösen.
+Die E-Mail-Adresse ist aus der Domain abgeleitet; `mailto:`-Links verwenden die
+Punycode-Form `info@xn--seelenfrieden-urnenrckfhrung-l7cd.ch`, damit ältere
+Mailprogramme sie auflösen.

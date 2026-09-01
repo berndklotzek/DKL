@@ -1,4 +1,4 @@
-/* Wehende Schweizer Fahne auf Canvas.
+/* Wehende Schweizer Fahne am Mast, Kulisse des Hero.
    Die flache Fahne wird einmal vorgezeichnet und dann spaltenweise versetzt
    wieder aufgetragen — Versatz aus einer Sinuswelle, Helligkeit aus deren
    Steigung. Das ergibt Stoff statt Bild. Ohne Bewegungswunsch steht sie still. */
@@ -14,7 +14,7 @@
   var AMP   = 0.075;    // Ausschlag, Anteil der Fahnenhöhe
   var STEP  = 2;        // Spaltenbreite in Gerätepixeln
 
-  var dpr, W, H, side, ox, oy, flat;
+  var dpr, W, H, side, ox, oy, poleX, flat;
 
   /* Eidgenössische Proportionen: Feld 32 × 32, Kreuzbalken 20 × 6, mittig.
      Die Armlänge ist damit um ein Sechstel grösser als die Armbreite. */
@@ -39,15 +39,32 @@
     H = Math.round(box.height * dpr);
     canvas.width = W;
     canvas.height = H;
-    side = Math.round(Math.min(W / (1 + AMP), H / (1 + 2 * AMP)));
-    ox = Math.round((W - side) / 2);
-    oy = Math.round((H - side) / 2);
-    flat = drawFlat(side);
+
+    side  = Math.round(Math.min(W / (1 + AMP), H * 0.42));
+    poleX = Math.round(W - side - Math.max(2, 3 * dpr));
+    ox    = poleX + Math.max(2, 3 * dpr);
+    oy    = Math.round(H * 0.07);
+    flat  = drawFlat(side);
     return true;
+  }
+
+  function drawPole() {
+    var w = Math.max(1.5, 2.2 * dpr);
+    var g = ctx.createLinearGradient(poleX, 0, poleX + w, 0);
+    g.addColorStop(0, '#5c626a');
+    g.addColorStop(.45, '#aeb4bd');
+    g.addColorStop(1, '#5c626a');
+    ctx.fillStyle = g;
+    ctx.fillRect(poleX, oy - side * 0.09, w, H - oy + side * 0.09);
+    ctx.beginPath();
+    ctx.arc(poleX + w / 2, oy - side * 0.11, Math.max(2.5, 3.4 * dpr), 0, Math.PI * 2);
+    ctx.fillStyle = '#c9a86b';
+    ctx.fill();
   }
 
   function render(t) {
     ctx.clearRect(0, 0, W, H);
+    drawPole();
     var amp = side * AMP;
 
     for (var x = 0; x < side; x += STEP) {
@@ -58,15 +75,15 @@
       var dy = amp * grip * Math.sin(phase);
       var squash = 1 - 0.12 * grip * (1 + Math.cos(phase)) / 2;
       var w = Math.min(STEP + 1, side - x);
+      var top = oy + dy + side * (1 - squash) / 2;
 
-      ctx.drawImage(flat, x, 0, w, side,
-                    ox + x, oy + dy + side * (1 - squash) / 2, w, side * squash);
+      ctx.drawImage(flat, x, 0, w, side, ox + x, top, w, side * squash);
 
       /* Steigung der Welle: wo sich der Stoff wegdreht, wird er dunkler. */
       var slope = grip * Math.cos(phase);
-      ctx.fillStyle = slope < 0 ? 'rgba(20,16,14,' + (-slope * 0.3).toFixed(3) + ')'
-                                : 'rgba(255,252,245,' + (slope * 0.17).toFixed(3) + ')';
-      ctx.fillRect(ox + x, oy + dy + side * (1 - squash) / 2, w, side * squash);
+      ctx.fillStyle = slope < 0 ? 'rgba(8,12,17,' + (-slope * 0.34).toFixed(3) + ')'
+                                : 'rgba(255,250,240,' + (slope * 0.15).toFixed(3) + ')';
+      ctx.fillRect(ox + x, top, w, side * squash);
     }
   }
 
