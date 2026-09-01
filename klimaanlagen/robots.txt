@@ -3,4 +3,4 @@ Allow: /
 Disallow: /warenkorb.html
 Disallow: /*?sortierung=
 
-Sitemap: https://www.arktik-klima.de/sitemap.xml
+Sitemap: https://www.kaltstart-klima.de/sitemap.xml

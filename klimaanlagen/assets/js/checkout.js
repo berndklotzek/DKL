@@ -1,5 +1,5 @@
 /* ============================================================================
-   ARKTIK — Kassenseite
+   KALTSTART — Kassenseite
    Schickt Artikelnummern und Mengen an die Serverfunktion, die daraus eine
    Stripe-Sitzung erzeugt. Preise werden bewusst NICHT mitgeschickt: Der Server
    schlägt sie im eigenen Katalog nach.
@@ -8,7 +8,7 @@
   'use strict';
 
   var ENDPUNKT = '/.netlify/functions/checkout';
-  var KEY = 'arktik.cart.v1';
+  var KEY = 'kaltstart.cart.v1';
 
   var form     = document.querySelector('[data-checkout-form]');
   var knopf    = document.querySelector('[data-checkout-submit]');

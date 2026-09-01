@@ -1,5 +1,5 @@
 /* ============================================================================
-   ARKTIK — Stripe-Anbindung, plattformunabhängiger Kern
+   KALTSTART — Stripe-Anbindung, plattformunabhängiger Kern
    ============================================================================
 
    Bewusst ohne Stripe-SDK: nur fetch und Web Crypto. Damit läuft derselbe Code

@@ -1,5 +1,5 @@
 /* ============================================================================
-   ARKTIK — Kühllastrechner
+   KALTSTART — Kühllastrechner
    Vereinfachtes Verfahren in Anlehnung an VDI 2078 / DIN EN 12831-1.
    Es ersetzt keine Kühllastberechnung durch einen Fachplaner, liefert aber
    für Wohnräume eine belastbare Grössenordnung.
@@ -123,7 +123,7 @@
 
   function empfehle(kw) {
     if (!out.empfehlung) { return; }
-    var produkte = window.ARKTIK_PRODUKTE || [];
+    var produkte = window.KALTSTART_PRODUKTE || [];
     var passend = produkte
       .filter(function (p) { return p.kw >= kw * 0.92; })
       .sort(function (a, b) { return a.kw - b.kw || a.preis - b.preis; })

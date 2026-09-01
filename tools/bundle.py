@@ -10,7 +10,7 @@ werden abgefangen und auf die eingebettete Fassung umgeleitet.
 
     python3 tools/build.py && python3 tools/bundle.py
 
-Ergebnis: vorschau/arktik-vorschau.html
+Ergebnis: vorschau/kaltstart-vorschau.html
 """
 
 import base64
@@ -22,7 +22,7 @@ import re
 WURZEL = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 AUS = os.path.join(WURZEL, "klimaanlagen")
 ZIEL_ORDNER = os.path.join(WURZEL, "vorschau")
-ZIEL = os.path.join(ZIEL_ORDNER, "arktik-vorschau.html")
+ZIEL = os.path.join(ZIEL_ORDNER, "vorschau.html")
 
 GRUPPEN = [
     ("Hauptseiten", lambda u: "/" not in u),
@@ -56,7 +56,7 @@ def seiten_sammeln():
 
 def kurzname(titel):
     """Aus dem Seitentitel eine knappe Bezeichnung für die Auswahlliste machen."""
-    for trenner in (" | ARKTIK Klimasysteme", " | ARKTIK", " – ARKTIK"):
+    for trenner in (" | KALTSTART Klimasysteme", " | KALTSTART", " – KALTSTART"):
         if trenner in titel:
             titel = titel.split(trenner)[0]
     return titel.strip()
@@ -123,12 +123,12 @@ def main():
     with open(ZIEL, "w", encoding="utf-8") as f:
         f.write(SCHALE.replace("/*DATEN*/null", daten))
 
-    print("vorschau/arktik-vorschau.html geschrieben: %d Seiten, %d kB"
+    print("vorschau/vorschau.html geschrieben: %d Seiten, %d kB"
           % (len(seiten), os.path.getsize(ZIEL) // 1024))
 
 
 SCHALE = r"""<meta charset="utf-8">
-<title>ARKTIK Klimasysteme</title>
+<title>Vorschau</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
@@ -277,7 +277,7 @@ iframe { width: 100%; height: 100%; border: 0; display: block; background: #fff;
       <path d="M12 2v20M4.2 6.5l15.6 9M19.8 6.5l-15.6 9"/>
       <path d="M9 4.2 12 6l3-1.8M9 19.8 12 18l3 1.8"/>
     </svg>
-    <b>ARKTIK</b><span>Vorschau</span>
+    <b>KALTSTART</b><span>Vorschau</span>
   </span>
 
   <button class="nav-btn" id="zurueck" title="Eine Seite zurück" aria-label="Zurück" disabled>&larr;</button>
@@ -344,8 +344,8 @@ iframe { width: 100%; height: 100%; border: 0; display: block; background: #fff;
   window.addEventListener('message', function (e) {
     if (e.source !== rahmen.contentWindow) { return; }
     var n = e.data || {};
-    if (n.arktik === 'nav') { laden(n.ziel, true); }
-    if (n.arktik === 'toast') { toast(n.text); }
+    if (n.kaltstart === 'nav') { laden(n.ziel, true); }
+    if (n.kaltstart === 'toast') { toast(n.text); }
   });
 
   /* Läuft vor den Seitenskripten: history.replaceState funktioniert in einem
@@ -373,17 +373,17 @@ iframe { width: 100%; height: 100%; border: 0; display: block; background: #fff;
     '    if (!href || href.charAt(0) === "#") return;',
     '    e.preventDefault();',
     '    if (/^(mailto:|tel:)/.test(href)) {',
-    '      melden({arktik:"toast", text:"In der Vorschau deaktiviert: " + href});',
+    '      melden({kaltstart:"toast", text:"In der Vorschau deaktiviert: " + href});',
     '      return;',
     '    }',
     '    if (/^https?:/.test(href)) { window.open(href, "_blank", "noopener"); return; }',
     '    var z = new URL(href, "http://x/" + document.body.dataset.basis);',
-    '    melden({arktik:"nav", ziel: z.pathname.slice(1) + z.search});',
+    '    melden({kaltstart:"nav", ziel: z.pathname.slice(1) + z.search});',
     '  }, true);',
     '',
     '  document.addEventListener("submit", function(e){',
     '    e.preventDefault(); e.stopPropagation();',
-    '    melden({arktik:"toast", text:"Formulare sind in der Vorschau abgeschaltet \\u2014 im Echtbetrieb geht hier eine E-Mail raus."});',
+    '    melden({kaltstart:"toast", text:"Formulare sind in der Vorschau abgeschaltet \\u2014 im Echtbetrieb geht hier eine E-Mail raus."});',
     '  }, true);',
     '',
     '  var abfrage = window.__ABFRAGE;',
@@ -431,7 +431,7 @@ iframe { width: 100%; height: 100%; border: 0; display: block; background: #fff;
     auswahl.value = url;
     pfadEl.textContent = '/' + ziel;
     zurueck.disabled = verlauf.length === 0;
-    document.title = s.titel + ' — ARKTIK Vorschau';
+    document.title = s.titel + ' — Vorschau';
   }
 
   auswahl.addEventListener('change', function () { laden(auswahl.value, true); });

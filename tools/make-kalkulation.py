@@ -3,7 +3,7 @@
 
     python3 tools/make-kalkulation.py
 
-Ergebnis: kalkulation/arktik-margenkalkulation.xlsx
+Ergebnis: kalkulation/kaltstart-margenkalkulation.xlsx
 
 Die Mappe enthält nur Formeln, keine vorberechneten Werte — Excel und
 LibreOffice rechnen beim Öffnen. Verwendet werden ausschliesslich SUM, IF und
@@ -51,7 +51,7 @@ ws.column_dimensions["A"].width = 3
 ws.column_dimensions["B"].width = 104
 
 zeilen = [
-    ("t", "ARKTIK Klimasysteme — Margenkalkulation"),
+    ("t", "KALTSTART Klimasysteme — Margenkalkulation"),
     ("u", "Erstellt am 31.08.2026. Alle Zahlen sind Annahmen und müssen durch echte Angebote ersetzt werden."),
     ("", ""),
     ("h", "So benutzen Sie diese Mappe"),
@@ -445,5 +445,5 @@ mk["B%d" % r].font = SCHWARZ
 mk.merge_cells("B%d:E%d" % (r, r + 12))
 mk["B%d" % r].alignment = Alignment(wrap_text=True, vertical="top")
 
-wb.save("/home/user/DKL/kalkulation/arktik-margenkalkulation.xlsx")
+wb.save("/home/user/DKL/kalkulation/kaltstart-margenkalkulation.xlsx")
 print("Mappe geschrieben")

@@ -129,55 +129,48 @@ EPREL-Link je Gerät fehlen noch und müssen vor dem Livegang ergänzt werden.
   Omnibus-Richtlinie ausdrücklich verboten. Der Shop zeigt deshalb bewusst keine
   Sterne, bis echte, überprüfbare Bewertungen vorliegen.
 
-## 6a. Was das Einzelunternehmen konkret bedeutet
+## 6a. Was die GmbH konkret bedeutet
 
-Der Shop läuft auf Daniel Klotzek, Am Danielsbrunnen 28, 69168 Wiesloch — ein
-Einzelunternehmen, keine Kapitalgesellschaft.
-Vier Punkte, die daraus folgen:
+Der Shop läuft auf die Kaltstart GmbH, Am Danielsbrunnen 28, 69168 Wiesloch,
+geführt von Paul Schoffer und Daniel Klotzek. Fünf Punkte, die daraus folgen:
 
-**Sie haften persönlich und unbeschränkt.** Das ist bei diesem Warenkorb kein
-theoretischer Punkt. Wenn ein importiertes Klimagerät einen Wohnungsbrand
-auslöst, haftet als Importeur nach dem Produkthaftungsgesetz zunächst das
-Unternehmen — und beim Einzelunternehmen ist das Ihr gesamtes Privatvermögen,
-einschliesslich Haus und Ersparnissen. Bei einer GmbH oder UG endet die Haftung
-grundsätzlich beim Gesellschaftsvermögen.
+**Die Haftung ist begrenzt — das ist bei diesem Geschäft viel wert.** Wenn ein
+importiertes Klimagerät einen Wohnungsbrand auslöst, haftet als Importeur die
+Gesellschaft, nicht Ihr Privatvermögen. Genau deshalb ist die GmbH für den
+Import von Elektrogeräten die richtige Rechtsform. Sie ersetzt aber keine
+Versicherung: **Schliessen Sie eine Betriebshaftpflicht mit Produkthaftpflicht
+ab**, ausdrücklich einschliesslich Importeurshaftung und Rückrufkosten. Ein
+Rückruf kann die Gesellschaft sonst schlicht aufbrauchen.
 
-Daraus folgen zwei Handlungsempfehlungen:
+**Die Haftungsbegrenzung gilt nicht bedingungslos.** Geschäftsführer haften
+persönlich, wenn sie Pflichten verletzen — insbesondere bei verspäteter
+Insolvenzanmeldung, nicht abgeführten Sozialabgaben und Lohnsteuer, und bei
+Verstössen gegen Produktsicherheitsrecht, die sie zu verantworten haben. Die
+Registrierungen aus Abschnitt 4 rechtzeitig zu erledigen, ist damit nicht nur
+eine Formalie, sondern schützt Sie beide persönlich.
 
-1. **Betriebshaftpflicht mit Produkthaftpflicht abschliessen**, ausdrücklich
-   einschliesslich Importeurshaftung und Rückrufkosten. Ohne diese Police sollten
-   Sie kein einziges Gerät verkaufen. Rechnen Sie mit einem niedrigen bis
-   mittleren dreistelligen Betrag im Jahr — gegenüber dem Risiko ist das nichts.
-2. **Wechsel in eine UG oder GmbH prüfen**, sobald das Geschäft läuft. Eine UG
-   ist ab 1 € Stammkapital gründbar, kostet mit Notar und Handelsregister
-   überschaubar wenig und begrenzt genau dieses Risiko. Für den Start als
-   Einzelunternehmen zu beginnen ist völlig in Ordnung; dauerhaft Klimageräte
-   zu importieren, ohne die Haftung zu begrenzen, ist es nicht.
+**Zwei Geschäftsführer heisst: Vertretungsregelung klären.** Legen Sie im
+Gesellschaftsvertrag fest, ob jeder allein oder nur beide gemeinsam vertreten
+dürfen. Einzelvertretung ist im Tagesgeschäft praktischer, Gesamtvertretung
+sicherer. Was auch immer Sie wählen — es steht im Handelsregister und
+Geschäftspartner richten sich danach.
 
-**Kein Handelsregistereintrag nötig, aber eine Gewerbeanmeldung.** Das Gewerbe
-wird beim Gewerbeamt der Gemeinde angemeldet, bevor der erste Verkauf läuft.
-Daraus folgt automatisch die Pflichtmitgliedschaft in der IHK. Eine Eintragung
-ins Handelsregister als eingetragener Kaufmann (e. K.) ist erst ab einem in
-kaufmännischer Weise eingerichteten Geschäftsbetrieb erforderlich — bei
-wachsendem Import kann das schneller eintreten, als man denkt.
+**Pflichtangaben auf allen Geschäftsbriefen.** Nach § 35a GmbHG müssen Firma,
+Rechtsform, Sitz, Registergericht, Handelsregisternummer und **alle**
+Geschäftsführer auf jedem Geschäftsbrief stehen. Das gilt auch für
+E-Mail-Signaturen, Rechnungen und Bestellbestätigungen — nicht nur für das
+Impressum. Ein häufiger und leicht vermeidbarer Abmahnpunkt.
 
-**Im Impressum steht Ihr Name, nicht nur die Marke.** „ARKTIK Klimasysteme“ ist
-eine Geschäftsbezeichnung, kein Firmenname im Rechtssinn. Impressum, AGB,
-Widerrufsbelehrung und Rechnungen müssen Ihren bürgerlichen Namen tragen. So ist
-es jetzt umgesetzt: „ARKTIK Klimasysteme, Inhaber Daniel Klotzek“.
+**Buchführung und Kosten.** Die GmbH ist bilanzierungspflichtig, muss den
+Jahresabschluss offenlegen und Körperschaft- sowie Gewerbesteuer zahlen.
+Rechnen Sie mit spürbar höherem Aufwand beim Steuerbüro als bei einem
+Einzelunternehmen. Das Stammkapital von 25.000 € muss zur Hälfte eingezahlt
+sein; es steht der Gesellschaft als Betriebsmittel zur Verfügung und deckt
+damit einen Teil des Wareneinsatzes aus Abschnitt 8.
 
-**„Geschäftsführer“ ist der falsche Titel.** Den gibt es nur bei
-Kapitalgesellschaften. Beim Einzelunternehmen heisst die Rolle **Inhaber**. Auf
-Visitenkarten und in E-Mail-Signaturen ist die falsche Bezeichnung ein
-Angriffspunkt, weil sie über die Rechtsform und damit über die Haftung täuscht.
-
-**Kleinunternehmerregelung passt hier nicht.** Nach § 19 UStG könnten Sie
-unterhalb der Umsatzgrenze auf den Ausweis der Umsatzsteuer verzichten — dann
-dürfen Sie aber auch keine Vorsteuer ziehen. Bei einem Import zahlen Sie
-Einfuhrumsatzsteuer auf den gesamten Wareneinsatz und blieben darauf sitzen. Für
-dieses Geschäftsmodell ist die Regelbesteuerung fast sicher richtig; die Website
-weist entsprechend „inkl. 19 % MwSt.“ aus. Klären Sie das mit dem Steuerbüro,
-bevor die erste Rechnung rausgeht.
+**Kleinunternehmerregelung ist kein Thema.** Beim Import zahlen Sie
+Einfuhrumsatzsteuer auf den gesamten Wareneinsatz und ziehen sie als Vorsteuer
+wieder ab. Die Website weist entsprechend „inkl. 19 % MwSt." aus.
 
 ## 7. Steuern
 

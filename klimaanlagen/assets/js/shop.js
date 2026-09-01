@@ -1,5 +1,5 @@
 /* ============================================================================
-   ARKTIK — Filter und Sortierung der Produktübersicht
+   KALTSTART — Filter und Sortierung der Produktübersicht
    Die Produktkarten stehen vollständig im HTML (wichtig für Suchmaschinen und
    für Besucher ohne JavaScript). Dieses Skript blendet nur ein und aus.
    ========================================================================= */

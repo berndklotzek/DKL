@@ -1,8 +1,8 @@
 [
   {
-    "slug": "arktik-nova-m25-monoblock",
-    "sku": "ARK-NM25",
-    "name": "ARKTIK Nova M25 Monoblock",
+    "slug": "kaltstart-nova-m25-monoblock",
+    "sku": "KST-NM25",
+    "name": "KALTSTART Nova M25 Monoblock",
     "kurz": "Monoblock-Klimaanlage 2,5 kW ohne Aussengerät",
     "kategorie": "monoblock",
     "preis": 749,
@@ -42,9 +42,9 @@
     "kanaele": 0
   },
   {
-    "slug": "arktik-nova-m35-monoblock",
-    "sku": "ARK-NM35",
-    "name": "ARKTIK Nova M35 Monoblock",
+    "slug": "kaltstart-nova-m35-monoblock",
+    "sku": "KST-NM35",
+    "name": "KALTSTART Nova M35 Monoblock",
     "kurz": "Monoblock-Klimaanlage 3,5 kW ohne Aussengerät",
     "kategorie": "monoblock",
     "preis": 899,
@@ -84,9 +84,9 @@
     "kanaele": 0
   },
   {
-    "slug": "arktik-nova-m35-pro-monoblock",
-    "sku": "ARK-NM35P",
-    "name": "ARKTIK Nova M35 Pro",
+    "slug": "kaltstart-nova-m35-pro-monoblock",
+    "sku": "KST-NM35P",
+    "name": "KALTSTART Nova M35 Pro",
     "kurz": "Monoblock 3,5 kW mit Winterheizfunktion bis −15 °C",
     "kategorie": "monoblock",
     "preis": 1049,
@@ -126,9 +126,9 @@
     "kanaele": 0
   },
   {
-    "slug": "arktik-frost-qc9-quick-connect",
-    "sku": "ARK-FQC9",
-    "name": "ARKTIK Frost QC9 Quick-Connect",
+    "slug": "kaltstart-frost-qc9-quick-connect",
+    "sku": "KST-FQC9",
+    "name": "KALTSTART Frost QC9 Quick-Connect",
     "kurz": "Split-Klimaanlage 2,6 kW mit vorbefüllter Schnellkupplung",
     "kategorie": "quick-connect",
     "preis": 649,
@@ -168,9 +168,9 @@
     "kanaele": 0
   },
   {
-    "slug": "arktik-frost-qc12-quick-connect",
-    "sku": "ARK-FQC12",
-    "name": "ARKTIK Frost QC12 Quick-Connect",
+    "slug": "kaltstart-frost-qc12-quick-connect",
+    "sku": "KST-FQC12",
+    "name": "KALTSTART Frost QC12 Quick-Connect",
     "kurz": "Split-Klimaanlage 3,5 kW mit vorbefüllter Schnellkupplung",
     "kategorie": "quick-connect",
     "preis": 749,
@@ -210,9 +210,9 @@
     "kanaele": 0
   },
   {
-    "slug": "arktik-frost-qc18-quick-connect",
-    "sku": "ARK-FQC18",
-    "name": "ARKTIK Frost QC18 Quick-Connect",
+    "slug": "kaltstart-frost-qc18-quick-connect",
+    "sku": "KST-FQC18",
+    "name": "KALTSTART Frost QC18 Quick-Connect",
     "kurz": "Split-Klimaanlage 5,3 kW für grosse Räume",
     "kategorie": "quick-connect",
     "preis": 949,
@@ -252,9 +252,9 @@
     "kanaele": 0
   },
   {
-    "slug": "arktik-silent-s9-split",
-    "sku": "ARK-SS9",
-    "name": "ARKTIK Silent S9 Split",
+    "slug": "kaltstart-silent-s9-split",
+    "sku": "KST-SS9",
+    "name": "KALTSTART Silent S9 Split",
     "kurz": "Wandgerät 2,6 kW, 19 dB(A) – leiseste Anlage im Sortiment",
     "kategorie": "split",
     "preis": 559,
@@ -294,9 +294,9 @@
     "kanaele": 0
   },
   {
-    "slug": "arktik-silent-s12-split",
-    "sku": "ARK-SS12",
-    "name": "ARKTIK Silent S12 Split",
+    "slug": "kaltstart-silent-s12-split",
+    "sku": "KST-SS12",
+    "name": "KALTSTART Silent S12 Split",
     "kurz": "Wandgerät 3,5 kW mit SEER 8,2",
     "kategorie": "split",
     "preis": 629,
@@ -336,9 +336,9 @@
     "kanaele": 0
   },
   {
-    "slug": "arktik-silent-s18-split",
-    "sku": "ARK-SS18",
-    "name": "ARKTIK Silent S18 Split",
+    "slug": "kaltstart-silent-s18-split",
+    "sku": "KST-SS18",
+    "name": "KALTSTART Silent S18 Split",
     "kurz": "Wandgerät 5,2 kW für grosse Räume und Dachgeschosse",
     "kategorie": "split",
     "preis": 829,
@@ -378,9 +378,9 @@
     "kanaele": 0
   },
   {
-    "slug": "arktik-duo-multisplit-2x9",
-    "sku": "ARK-DUO29",
-    "name": "ARKTIK Duo Multi-Split 2× 9000",
+    "slug": "kaltstart-duo-multisplit-2x9",
+    "sku": "KST-DUO29",
+    "name": "KALTSTART Duo Multi-Split 2× 9000",
     "kurz": "Ein Aussengerät, zwei Innengeräte, 5,3 kW gesamt",
     "kategorie": "multisplit",
     "preis": 1349,
@@ -420,9 +420,9 @@
     "kanaele": 0
   },
   {
-    "slug": "arktik-trio-multisplit-3x9",
-    "sku": "ARK-TRIO39",
-    "name": "ARKTIK Trio Multi-Split 3× 9000",
+    "slug": "kaltstart-trio-multisplit-3x9",
+    "sku": "KST-TRIO39",
+    "name": "KALTSTART Trio Multi-Split 3× 9000",
     "kurz": "Ein Aussengerät, drei Innengeräte, 7,9 kW gesamt",
     "kategorie": "multisplit",
     "preis": 1899,
@@ -462,9 +462,9 @@
     "kanaele": 0
   },
   {
-    "slug": "arktik-move-7-mobil",
-    "sku": "ARK-MV7",
-    "name": "ARKTIK Move 7 mobil",
+    "slug": "kaltstart-move-7-mobil",
+    "sku": "KST-MV7",
+    "name": "KALTSTART Move 7 mobil",
     "kurz": "Einkanal-Klimagerät 2,1 kW, sofort einsatzbereit",
     "kategorie": "mobil",
     "preis": 349,
@@ -504,9 +504,9 @@
     "kanaele": 1
   },
   {
-    "slug": "arktik-move-9-pro-mobil",
-    "sku": "ARK-MV9P",
-    "name": "ARKTIK Move 9 Pro mobil",
+    "slug": "kaltstart-move-9-pro-mobil",
+    "sku": "KST-MV9P",
+    "name": "KALTSTART Move 9 Pro mobil",
     "kurz": "Einkanal-Klimagerät 2,6 kW mit Inverter und WLAN",
     "kategorie": "mobil",
     "preis": 449,
@@ -547,7 +547,7 @@
   },
   {
     "slug": "fensterabdichtung-universal",
-    "sku": "ARK-ZUB-FA",
+    "sku": "KST-ZUB-FA",
     "name": "Fensterabdichtung Universal",
     "kurz": "Abdichtung für Dreh-Kipp- und Schiebefenster, 400 cm",
     "kategorie": "zubehoer",
@@ -589,7 +589,7 @@
   },
   {
     "slug": "montageset-quick-connect-5m",
-    "sku": "ARK-ZUB-MS5",
+    "sku": "KST-ZUB-MS5",
     "name": "Montage-Set Wandkonsole 5 m",
     "kurz": "Wandkonsole, Kondensatleitung und Befestigungsmaterial",
     "kategorie": "zubehoer",
@@ -630,9 +630,9 @@
     "kanaele": 0
   },
   {
-    "slug": "arktik-smart-bridge-wlan",
-    "sku": "ARK-ZUB-WLAN",
-    "name": "ARKTIK Smart Bridge WLAN",
+    "slug": "kaltstart-smart-bridge-wlan",
+    "sku": "KST-ZUB-WLAN",
+    "name": "KALTSTART Smart Bridge WLAN",
     "kurz": "Nachrüstmodul für App- und Sprachsteuerung",
     "kategorie": "zubehoer",
     "preis": 49,
@@ -666,15 +666,15 @@
     "beschreibung": [
       "Die Smart Bridge sitzt im Raum und sendet die Infrarot-Befehle, die sonst von der Fernbedienung kommen. Damit lässt sich praktisch jedes Klimagerät nachträglich in die App holen.",
       "Interessant ist vor allem die Automatik: Kühlen ab einer eingestellten Raumtemperatur, Abschalten beim Verlassen der Wohnung, Vorkühlen vor dem Feierabend.",
-      "Für ARKTIK-Geräte mit eingebautem WLAN wird die Bridge nicht benötigt."
+      "Für KALTSTART-Geräte mit eingebautem WLAN wird die Bridge nicht benötigt."
     ],
     "kennzahl": "",
     "kanaele": 0
   },
   {
-    "slug": "arktik-move-duo-9",
-    "sku": "ARK-MVD9",
-    "name": "ARKTIK Move Duo 9",
+    "slug": "kaltstart-move-duo-9",
+    "sku": "KST-MVD9",
+    "name": "KALTSTART Move Duo 9",
     "kurz": "Zweikanal-Klimagerät 2,6 kW – kühlt ohne Unterdruck",
     "kategorie": "mobil",
     "preis": 549,
@@ -714,9 +714,9 @@
     ]
   },
   {
-    "slug": "arktik-move-duo-12",
-    "sku": "ARK-MVD12",
-    "name": "ARKTIK Move Duo 12",
+    "slug": "kaltstart-move-duo-12",
+    "sku": "KST-MVD12",
+    "name": "KALTSTART Move Duo 12",
     "kurz": "Zweikanal-Klimagerät 3,5 kW mit Heizfunktion",
     "kategorie": "mobil",
     "preis": 649,
@@ -756,9 +756,9 @@
     ]
   },
   {
-    "slug": "arktik-move-5-kompakt",
-    "sku": "ARK-MV5",
-    "name": "ARKTIK Move 5 Kompakt",
+    "slug": "kaltstart-move-5-kompakt",
+    "sku": "KST-MV5",
+    "name": "KALTSTART Move 5 Kompakt",
     "kurz": "Einkanal-Klimagerät 1,8 kW für Arbeitszimmer",
     "kategorie": "mobil",
     "preis": 279,
@@ -799,7 +799,7 @@
   },
   {
     "slug": "fensterabdichtung-duo",
-    "sku": "ARK-ZUB-FAD",
+    "sku": "KST-ZUB-FAD",
     "name": "Fensterabdichtung Duo",
     "kurz": "Abdichtung mit zwei Durchführungen für Zweikanalgeräte",
     "kategorie": "zubehoer",

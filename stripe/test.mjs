@@ -16,7 +16,7 @@ import {
 } from './lib/core.mjs';
 
 const katalog = JSON.parse(readFileSync(new URL('./catalog.json', import.meta.url), 'utf8'));
-const SITE = 'https://www.arktik-klima.de';
+const SITE = 'https://www.kaltstart-klima.de';
 
 let bestanden = 0, gescheitert = 0;
 
@@ -47,21 +47,21 @@ console.log('\nPreisbildung');
 
 pruefe('Preis kommt aus dem Katalog, nicht aus dem Browser', () => {
   // Der Browser behauptet einen Preis von einem Cent — er wird ignoriert.
-  const w = [{ sku: 'ARK-FQC12', qty: 1, price: 0.01, name: 'Geschenkt' }];
+  const w = [{ sku: 'KST-FQC12', qty: 1, price: 0.01, name: 'Geschenkt' }];
   const { positionen, zwischensumme } = buildLineItems(w, katalog, SITE);
   gleich(positionen[0].price_data.unit_amount, 74900, 'Stückpreis');
-  gleich(positionen[0].price_data.product_data.name, 'ARKTIK Frost QC12 Quick-Connect', 'Name');
+  gleich(positionen[0].price_data.product_data.name, 'KALTSTART Frost QC12 Quick-Connect', 'Name');
   gleich(zwischensumme, 74900, 'Zwischensumme');
 });
 
 pruefe('Mengen werden multipliziert', () => {
   const { zwischensumme } = buildLineItems(
-    [{ sku: 'ARK-MVD9', qty: 2 }, { sku: 'ARK-ZUB-FA', qty: 3 }], katalog, SITE);
+    [{ sku: 'KST-MVD9', qty: 2 }, { sku: 'KST-ZUB-FA', qty: 3 }], katalog, SITE);
   gleich(zwischensumme, 54900 * 2 + 3900 * 3, 'Zwischensumme');
 });
 
 pruefe('Bruttopreise werden als inklusive gekennzeichnet', () => {
-  const { positionen } = buildLineItems([{ sku: 'ARK-MV5', qty: 1 }], katalog, SITE);
+  const { positionen } = buildLineItems([{ sku: 'KST-MV5', qty: 1 }], katalog, SITE);
   gleich(positionen[0].price_data.tax_behavior, 'inclusive', 'Steuerverhalten');
 });
 
@@ -70,16 +70,16 @@ console.log('\nManipulationsschutz');
 pruefe('unbekannte Artikelnummer wird abgewiesen', () =>
   wirft(() => buildLineItems([{ sku: 'GIBT-ES-NICHT', qty: 1 }], katalog, SITE), 'Unbekannte'));
 pruefe('Menge null wird abgewiesen', () =>
-  wirft(() => buildLineItems([{ sku: 'ARK-MV5', qty: 0 }], katalog, SITE), 'Menge'));
+  wirft(() => buildLineItems([{ sku: 'KST-MV5', qty: 0 }], katalog, SITE), 'Menge'));
 pruefe('negative Menge wird abgewiesen', () =>
-  wirft(() => buildLineItems([{ sku: 'ARK-MV5', qty: -5 }], katalog, SITE), 'Menge'));
+  wirft(() => buildLineItems([{ sku: 'KST-MV5', qty: -5 }], katalog, SITE), 'Menge'));
 pruefe('Kommazahl als Menge wird abgewiesen', () =>
-  wirft(() => buildLineItems([{ sku: 'ARK-MV5', qty: 1.5 }], katalog, SITE), 'Menge'));
+  wirft(() => buildLineItems([{ sku: 'KST-MV5', qty: 1.5 }], katalog, SITE), 'Menge'));
 pruefe('absurde Menge wird gedeckelt', () =>
-  wirft(() => buildLineItems([{ sku: 'ARK-MV5', qty: 9999 }], katalog, SITE), 'Menge'));
+  wirft(() => buildLineItems([{ sku: 'KST-MV5', qty: 9999 }], katalog, SITE), 'Menge'));
 pruefe('doppelte Position wird abgewiesen', () =>
   wirft(() => buildLineItems(
-    [{ sku: 'ARK-MV5', qty: 1 }, { sku: 'ARK-MV5', qty: 1 }], katalog, SITE), 'doppelt'));
+    [{ sku: 'KST-MV5', qty: 1 }, { sku: 'KST-MV5', qty: 1 }], katalog, SITE), 'doppelt'));
 pruefe('leerer Warenkorb wird abgewiesen', () =>
   wirft(() => buildLineItems([], katalog, SITE), 'leer'));
 pruefe('kein Array wird abgewiesen', () =>
@@ -118,9 +118,9 @@ pruefe('nicht belieferte Länder werden abgewiesen', () =>
   wirft(() => shippingOptions(katalog, 10000, false, 'CH'), 'liefern derzeit nicht'));
 
 pruefe('Versandart folgt dem Katalog', () => {
-  const schwer = buildLineItems([{ sku: 'ARK-MVD12', qty: 1 }], katalog, SITE);
+  const schwer = buildLineItems([{ sku: 'KST-MVD12', qty: 1 }], katalog, SITE);
   gleich(schwer.brauchtSpedition, true, 'Move Duo 12 wiegt 36 kg');
-  const leicht = buildLineItems([{ sku: 'ARK-MV5', qty: 1 }], katalog, SITE);
+  const leicht = buildLineItems([{ sku: 'KST-MV5', qty: 1 }], katalog, SITE);
   gleich(leicht.brauchtSpedition, false, 'Move 5 wiegt 20 kg');
 });
 
@@ -162,7 +162,7 @@ pruefe('Umlaute und Sonderzeichen werden kodiert', () => {
 console.log('\nSitzungsparameter');
 
 pruefe('Erfolgs- und Abbruchadresse zeigen auf die eigene Domain', () => {
-  const { positionen } = buildLineItems([{ sku: 'ARK-MV5', qty: 1 }], katalog, SITE);
+  const { positionen } = buildLineItems([{ sku: 'KST-MV5', qty: 1 }], katalog, SITE);
   const p = sessionParams({
     positionen, versand: shippingOptions(katalog, 27900, false, 'DE'), siteUrl: SITE });
   gleich(p.success_url, SITE + '/bestellung-erfolgreich.html?sitzung={CHECKOUT_SESSION_ID}');
@@ -174,7 +174,7 @@ pruefe('Erfolgs- und Abbruchadresse zeigen auf die eigene Domain', () => {
 
 pruefe('kompletter Warenkorb lässt sich kodieren', () => {
   const { positionen, zwischensumme, brauchtSpedition } = buildLineItems(
-    [{ sku: 'ARK-FQC12', qty: 1 }, { sku: 'ARK-ZUB-MS5', qty: 1 }], katalog, SITE);
+    [{ sku: 'KST-FQC12', qty: 1 }, { sku: 'KST-ZUB-MS5', qty: 1 }], katalog, SITE);
   const kodiert = toFormBody(sessionParams({
     positionen, versand: shippingOptions(katalog, zwischensumme, brauchtSpedition, 'DE'),
     siteUrl: SITE, email: 'kunde@example.de' }));

@@ -13,111 +13,111 @@
     }
   },
   "artikel": {
-    "ARK-NM25": {
-      "name": "ARKTIK Nova M25 Monoblock",
+    "KST-NM25": {
+      "name": "KALTSTART Nova M25 Monoblock",
       "kurz": "Monoblock-Klimaanlage 2,5 kW ohne Aussengerät",
       "preis_cent": 74900,
       "versandart": "spedition",
-      "url": "produkte/arktik-nova-m25-monoblock.html",
-      "bild": "assets/img/produkt-arktik-nova-m25-monoblock.svg"
+      "url": "produkte/kaltstart-nova-m25-monoblock.html",
+      "bild": "assets/img/produkt-kaltstart-nova-m25-monoblock.svg"
     },
-    "ARK-NM35": {
-      "name": "ARKTIK Nova M35 Monoblock",
+    "KST-NM35": {
+      "name": "KALTSTART Nova M35 Monoblock",
       "kurz": "Monoblock-Klimaanlage 3,5 kW ohne Aussengerät",
       "preis_cent": 89900,
       "versandart": "spedition",
-      "url": "produkte/arktik-nova-m35-monoblock.html",
-      "bild": "assets/img/produkt-arktik-nova-m35-monoblock.svg"
+      "url": "produkte/kaltstart-nova-m35-monoblock.html",
+      "bild": "assets/img/produkt-kaltstart-nova-m35-monoblock.svg"
     },
-    "ARK-NM35P": {
-      "name": "ARKTIK Nova M35 Pro",
+    "KST-NM35P": {
+      "name": "KALTSTART Nova M35 Pro",
       "kurz": "Monoblock 3,5 kW mit Winterheizfunktion bis −15 °C",
       "preis_cent": 104900,
       "versandart": "spedition",
-      "url": "produkte/arktik-nova-m35-pro-monoblock.html",
-      "bild": "assets/img/produkt-arktik-nova-m35-pro-monoblock.svg"
+      "url": "produkte/kaltstart-nova-m35-pro-monoblock.html",
+      "bild": "assets/img/produkt-kaltstart-nova-m35-pro-monoblock.svg"
     },
-    "ARK-FQC9": {
-      "name": "ARKTIK Frost QC9 Quick-Connect",
+    "KST-FQC9": {
+      "name": "KALTSTART Frost QC9 Quick-Connect",
       "kurz": "Split-Klimaanlage 2,6 kW mit vorbefüllter Schnellkupplung",
       "preis_cent": 64900,
       "versandart": "spedition",
-      "url": "produkte/arktik-frost-qc9-quick-connect.html",
-      "bild": "assets/img/produkt-arktik-frost-qc9-quick-connect.svg"
+      "url": "produkte/kaltstart-frost-qc9-quick-connect.html",
+      "bild": "assets/img/produkt-kaltstart-frost-qc9-quick-connect.svg"
     },
-    "ARK-FQC12": {
-      "name": "ARKTIK Frost QC12 Quick-Connect",
+    "KST-FQC12": {
+      "name": "KALTSTART Frost QC12 Quick-Connect",
       "kurz": "Split-Klimaanlage 3,5 kW mit vorbefüllter Schnellkupplung",
       "preis_cent": 74900,
       "versandart": "spedition",
-      "url": "produkte/arktik-frost-qc12-quick-connect.html",
-      "bild": "assets/img/produkt-arktik-frost-qc12-quick-connect.svg"
+      "url": "produkte/kaltstart-frost-qc12-quick-connect.html",
+      "bild": "assets/img/produkt-kaltstart-frost-qc12-quick-connect.svg"
     },
-    "ARK-FQC18": {
-      "name": "ARKTIK Frost QC18 Quick-Connect",
+    "KST-FQC18": {
+      "name": "KALTSTART Frost QC18 Quick-Connect",
       "kurz": "Split-Klimaanlage 5,3 kW für grosse Räume",
       "preis_cent": 94900,
       "versandart": "spedition",
-      "url": "produkte/arktik-frost-qc18-quick-connect.html",
-      "bild": "assets/img/produkt-arktik-frost-qc18-quick-connect.svg"
+      "url": "produkte/kaltstart-frost-qc18-quick-connect.html",
+      "bild": "assets/img/produkt-kaltstart-frost-qc18-quick-connect.svg"
     },
-    "ARK-SS9": {
-      "name": "ARKTIK Silent S9 Split",
+    "KST-SS9": {
+      "name": "KALTSTART Silent S9 Split",
       "kurz": "Wandgerät 2,6 kW, 19 dB(A) – leiseste Anlage im Sortiment",
       "preis_cent": 55900,
       "versandart": "spedition",
-      "url": "produkte/arktik-silent-s9-split.html",
-      "bild": "assets/img/produkt-arktik-silent-s9-split.svg"
+      "url": "produkte/kaltstart-silent-s9-split.html",
+      "bild": "assets/img/produkt-kaltstart-silent-s9-split.svg"
     },
-    "ARK-SS12": {
-      "name": "ARKTIK Silent S12 Split",
+    "KST-SS12": {
+      "name": "KALTSTART Silent S12 Split",
       "kurz": "Wandgerät 3,5 kW mit SEER 8,2",
       "preis_cent": 62900,
       "versandart": "spedition",
-      "url": "produkte/arktik-silent-s12-split.html",
-      "bild": "assets/img/produkt-arktik-silent-s12-split.svg"
+      "url": "produkte/kaltstart-silent-s12-split.html",
+      "bild": "assets/img/produkt-kaltstart-silent-s12-split.svg"
     },
-    "ARK-SS18": {
-      "name": "ARKTIK Silent S18 Split",
+    "KST-SS18": {
+      "name": "KALTSTART Silent S18 Split",
       "kurz": "Wandgerät 5,2 kW für grosse Räume und Dachgeschosse",
       "preis_cent": 82900,
       "versandart": "spedition",
-      "url": "produkte/arktik-silent-s18-split.html",
-      "bild": "assets/img/produkt-arktik-silent-s18-split.svg"
+      "url": "produkte/kaltstart-silent-s18-split.html",
+      "bild": "assets/img/produkt-kaltstart-silent-s18-split.svg"
     },
-    "ARK-DUO29": {
-      "name": "ARKTIK Duo Multi-Split 2× 9000",
+    "KST-DUO29": {
+      "name": "KALTSTART Duo Multi-Split 2× 9000",
       "kurz": "Ein Aussengerät, zwei Innengeräte, 5,3 kW gesamt",
       "preis_cent": 134900,
       "versandart": "spedition",
-      "url": "produkte/arktik-duo-multisplit-2x9.html",
-      "bild": "assets/img/produkt-arktik-duo-multisplit-2x9.svg"
+      "url": "produkte/kaltstart-duo-multisplit-2x9.html",
+      "bild": "assets/img/produkt-kaltstart-duo-multisplit-2x9.svg"
     },
-    "ARK-TRIO39": {
-      "name": "ARKTIK Trio Multi-Split 3× 9000",
+    "KST-TRIO39": {
+      "name": "KALTSTART Trio Multi-Split 3× 9000",
       "kurz": "Ein Aussengerät, drei Innengeräte, 7,9 kW gesamt",
       "preis_cent": 189900,
       "versandart": "spedition",
-      "url": "produkte/arktik-trio-multisplit-3x9.html",
-      "bild": "assets/img/produkt-arktik-trio-multisplit-3x9.svg"
+      "url": "produkte/kaltstart-trio-multisplit-3x9.html",
+      "bild": "assets/img/produkt-kaltstart-trio-multisplit-3x9.svg"
     },
-    "ARK-MV7": {
-      "name": "ARKTIK Move 7 mobil",
+    "KST-MV7": {
+      "name": "KALTSTART Move 7 mobil",
       "kurz": "Einkanal-Klimagerät 2,1 kW, sofort einsatzbereit",
       "preis_cent": 34900,
       "versandart": "paket",
-      "url": "produkte/arktik-move-7-mobil.html",
-      "bild": "assets/img/produkt-arktik-move-7-mobil.svg"
+      "url": "produkte/kaltstart-move-7-mobil.html",
+      "bild": "assets/img/produkt-kaltstart-move-7-mobil.svg"
     },
-    "ARK-MV9P": {
-      "name": "ARKTIK Move 9 Pro mobil",
+    "KST-MV9P": {
+      "name": "KALTSTART Move 9 Pro mobil",
       "kurz": "Einkanal-Klimagerät 2,6 kW mit Inverter und WLAN",
       "preis_cent": 44900,
       "versandart": "paket",
-      "url": "produkte/arktik-move-9-pro-mobil.html",
-      "bild": "assets/img/produkt-arktik-move-9-pro-mobil.svg"
+      "url": "produkte/kaltstart-move-9-pro-mobil.html",
+      "bild": "assets/img/produkt-kaltstart-move-9-pro-mobil.svg"
     },
-    "ARK-ZUB-FA": {
+    "KST-ZUB-FA": {
       "name": "Fensterabdichtung Universal",
       "kurz": "Abdichtung für Dreh-Kipp- und Schiebefenster, 400 cm",
       "preis_cent": 3900,
@@ -125,7 +125,7 @@
       "url": "produkte/fensterabdichtung-universal.html",
       "bild": "assets/img/produkt-fensterabdichtung-universal.svg"
     },
-    "ARK-ZUB-MS5": {
+    "KST-ZUB-MS5": {
       "name": "Montage-Set Wandkonsole 5 m",
       "kurz": "Wandkonsole, Kondensatleitung und Befestigungsmaterial",
       "preis_cent": 8900,
@@ -133,39 +133,39 @@
       "url": "produkte/montageset-quick-connect-5m.html",
       "bild": "assets/img/produkt-montageset-quick-connect-5m.svg"
     },
-    "ARK-ZUB-WLAN": {
-      "name": "ARKTIK Smart Bridge WLAN",
+    "KST-ZUB-WLAN": {
+      "name": "KALTSTART Smart Bridge WLAN",
       "kurz": "Nachrüstmodul für App- und Sprachsteuerung",
       "preis_cent": 4900,
       "versandart": "paket",
-      "url": "produkte/arktik-smart-bridge-wlan.html",
-      "bild": "assets/img/produkt-arktik-smart-bridge-wlan.svg"
+      "url": "produkte/kaltstart-smart-bridge-wlan.html",
+      "bild": "assets/img/produkt-kaltstart-smart-bridge-wlan.svg"
     },
-    "ARK-MVD9": {
-      "name": "ARKTIK Move Duo 9",
+    "KST-MVD9": {
+      "name": "KALTSTART Move Duo 9",
       "kurz": "Zweikanal-Klimagerät 2,6 kW – kühlt ohne Unterdruck",
       "preis_cent": 54900,
       "versandart": "paket",
-      "url": "produkte/arktik-move-duo-9.html",
-      "bild": "assets/img/produkt-arktik-move-duo-9.svg"
+      "url": "produkte/kaltstart-move-duo-9.html",
+      "bild": "assets/img/produkt-kaltstart-move-duo-9.svg"
     },
-    "ARK-MVD12": {
-      "name": "ARKTIK Move Duo 12",
+    "KST-MVD12": {
+      "name": "KALTSTART Move Duo 12",
       "kurz": "Zweikanal-Klimagerät 3,5 kW mit Heizfunktion",
       "preis_cent": 64900,
       "versandart": "spedition",
-      "url": "produkte/arktik-move-duo-12.html",
-      "bild": "assets/img/produkt-arktik-move-duo-12.svg"
+      "url": "produkte/kaltstart-move-duo-12.html",
+      "bild": "assets/img/produkt-kaltstart-move-duo-12.svg"
     },
-    "ARK-MV5": {
-      "name": "ARKTIK Move 5 Kompakt",
+    "KST-MV5": {
+      "name": "KALTSTART Move 5 Kompakt",
       "kurz": "Einkanal-Klimagerät 1,8 kW für Arbeitszimmer",
       "preis_cent": 27900,
       "versandart": "paket",
-      "url": "produkte/arktik-move-5-kompakt.html",
-      "bild": "assets/img/produkt-arktik-move-5-kompakt.svg"
+      "url": "produkte/kaltstart-move-5-kompakt.html",
+      "bild": "assets/img/produkt-kaltstart-move-5-kompakt.svg"
     },
-    "ARK-ZUB-FAD": {
+    "KST-ZUB-FAD": {
       "name": "Fensterabdichtung Duo",
       "kurz": "Abdichtung mit zwei Durchführungen für Zweikanalgeräte",
       "preis_cent": 4900,

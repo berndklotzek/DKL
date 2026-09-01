@@ -76,7 +76,7 @@ Umgebungsvariablen unter Site settings → Environment variables:
 |---|---|
 | `STRIPE_SECRET_KEY` | `sk_test_…`, später `sk_live_…` |
 | `STRIPE_WEBHOOK_SECRET` | aus Schritt 6 |
-| `SITE_URL` | `https://www.arktik-klima.de` ohne Schrägstrich am Ende |
+| `SITE_URL` | `https://www.kaltstart-klima.de` ohne Schrägstrich am Ende |
 | `ORDER_WEBHOOK_URL` | optional, für Bestellbenachrichtigungen |
 
 **Cloudflare Workers:** `stripe/cloudflare/worker.mjs` als Worker

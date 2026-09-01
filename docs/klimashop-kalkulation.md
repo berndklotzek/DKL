@@ -2,7 +2,7 @@
 
 Stand: 31. August 2026. Marktpreise recherchiert, Kostensätze sind
 branchenübliche Erfahrungswerte. Zum Selbstrechnen:
-`kalkulation/arktik-margenkalkulation.xlsx`.
+`kalkulation/kaltstart-margenkalkulation.xlsx`.
 
 ---
 

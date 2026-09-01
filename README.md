@@ -5,7 +5,7 @@ Zwei eigenständige, statische Websites in einem Repository.
 | Projekt | Ordner | Beschreibung |
 |---|---|---|
 | Seelenfrieden Urnenrückführung GmbH | `index.html`, `assets/` | Zweisprachige Website (DE/RU), siehe unten |
-| ARKTIK Klimasysteme | `klimaanlagen/` | Onlineshop für Klimaanlagen, erzeugt aus `src/` mit `tools/build.py` |
+| KALTSTART Klimasysteme | `klimaanlagen/` | Onlineshop für Klimaanlagen, erzeugt aus `src/` mit `tools/build.py` |
 
 **Klimaanlagen-Shop:** Anleitung in
 [`docs/klimashop-anleitung.md`](docs/klimashop-anleitung.md), rechtliche
@@ -14,14 +14,14 @@ Checkliste vor dem Livegang in
 Anfragetext für China in
 [`docs/klimashop-beschaffung.md`](docs/klimashop-beschaffung.md), Marge und
 Preisbildung in [`docs/klimashop-kalkulation.md`](docs/klimashop-kalkulation.md)
-samt Arbeitsmappe `kalkulation/arktik-margenkalkulation.xlsx`, Wettbewerb,
+samt Arbeitsmappe `kalkulation/kaltstart-margenkalkulation.xlsx`, Wettbewerb,
 Zielgruppe und Namensfindung in
 [`docs/klimashop-positionierung.md`](docs/klimashop-positionierung.md).
 
 ```bash
 python3 tools/build.py     # Shop bauen
 python3 tools/check.py     # Links, JSON-LD und SEO-Grundlagen prüfen
-python3 tools/bundle.py    # alles in eine Datei: vorschau/arktik-vorschau.html
+python3 tools/bundle.py    # alles in eine Datei: vorschau/kaltstart-vorschau.html
 ```
 
 ---

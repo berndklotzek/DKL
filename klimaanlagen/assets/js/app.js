@@ -1,5 +1,5 @@
 /* ============================================================================
-   ARKTIK — Basisverhalten der Seite
+   KALTSTART — Basisverhalten der Seite
    Kein Framework, keine externen Abhängigkeiten. Alles, was hier passiert,
    ist Progressive Enhancement: Ohne JavaScript bleibt die Seite vollständig
    lesbar und alle Inhalte sind im HTML vorhanden.
@@ -65,7 +65,7 @@
      Persistiert in localStorage. Struktur:
      [{ sku, name, price, qty, url, img }]
      ======================================================================= */
-  var KEY = 'arktik.cart.v1';
+  var KEY = 'kaltstart.cart.v1';
 
   function readCart() {
     try {
@@ -329,8 +329,8 @@
       var lines = [];
       data.forEach(function (v, k) { if (String(v).trim()) { lines.push(k + ': ' + v); } });
 
-      var to = form.dataset.mailto || 'info@arktik-klima.de';
-      var subject = form.dataset.subject || 'Anfrage über arktik-klima.de';
+      var to = form.dataset.mailto || 'info@kaltstart-klima.de';
+      var subject = form.dataset.subject || 'Anfrage über kaltstart-klima.de';
       window.location.href = 'mailto:' + to +
         '?subject=' + encodeURIComponent(subject) +
         '&body=' + encodeURIComponent(lines.join('\n'));
@@ -357,5 +357,5 @@
   render();
 
   /* Für andere Module (shop.js, calc.js) freigeben */
-  window.ARKTIK = { fmt: fmt, readCart: readCart, add: add, $: $, $$: $$ };
+  window.KALTSTART = { fmt: fmt, readCart: readCart, add: add, $: $, $$: $$ };
 })();

@@ -1,4 +1,4 @@
-# ARKTIK Klimasysteme — Bedienungsanleitung für den Shop
+# KALTSTART Klimasysteme — Bedienungsanleitung für den Shop
 
 Statische Website für einen Klimaanlagen-Onlineshop. Kein Framework, keine
 externen Ressourcen, keine Cookies. Der fertige Stand liegt in `klimaanlagen/`
@@ -34,7 +34,7 @@ Abhängigkeiten ausser Python 3.
 ## Margenkalkulation
 
 ```bash
-python3 tools/make-kalkulation.py    # erzeugt kalkulation/arktik-margenkalkulation.xlsx
+python3 tools/make-kalkulation.py    # erzeugt kalkulation/kaltstart-margenkalkulation.xlsx
 ```
 
 Arbeitsmappe zum Selbstrechnen: Einkaufspreis, Landepreis, Deckungsbeitrag und
@@ -44,7 +44,7 @@ Erläuterung dazu steht in [`docs/klimashop-kalkulation.md`](klimashop-kalkulati
 ## Vorschau zum Herumzeigen
 
 ```bash
-python3 tools/bundle.py    # erzeugt vorschau/arktik-vorschau.html
+python3 tools/bundle.py    # erzeugt vorschau/kaltstart-vorschau.html
 ```
 
 Packt die komplette Website — alle Seiten, Stile, Skripte und Grafiken — in eine
@@ -83,9 +83,9 @@ Einen Eintrag in `src/products.json` ergänzen. Pflichtfelder:
 
 ```json
 {
-  "slug": "arktik-neu-12",          // wird zur URL: produkte/arktik-neu-12.html
-  "sku": "ARK-N12",
-  "name": "ARKTIK Neu 12",
+  "slug": "kaltstart-neu-12",          // wird zur URL: produkte/kaltstart-neu-12.html
+  "sku": "KST-N12",
+  "name": "KALTSTART Neu 12",
   "kurz": "Split-Klimaanlage 3,5 kW mit …",
   "kategorie": "quick-connect",      // monoblock | quick-connect | split | multisplit | mobil | zubehoer
   "preis": 749, "uvp": 929,
@@ -140,7 +140,7 @@ Der Countdown auf der Startseite zählt die echten Tage bis zum 1. Juni.
 ## Warenkorb
 
 Der Warenkorb liegt im `localStorage` des Besuchers unter dem Schlüssel
-`arktik.cart.v1`. Der Bestellabschluss läuft über Stripe — Einrichtung in
+`kaltstart.cart.v1`. Der Bestellabschluss läuft über Stripe — Einrichtung in
 [`stripe/README.md`](../stripe/README.md).
 
 Wichtig am Aufbau: Die Serverfunktion nimmt vom Browser nur Artikelnummer und

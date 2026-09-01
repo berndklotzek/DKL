@@ -119,38 +119,27 @@ bauen Sie das Geschäft nicht darauf.
 | **Frostwerk** | **Belegt.** Schweizer Kälte- und Klimatechnikfirma. |
 | Steckerklima, Bohrfrei, Kühlkopf, Kaltstart | keine etablierte Marke in der Branche gefunden |
 
-### Vier Vorschläge
+### Die Entscheidung: KALTSTART
 
-**KALTSTART** — meine Empfehlung
+Gewählt und umgesetzt. Firma ist die **Kaltstart GmbH**, die Website läuft als
+**KALTSTART Klimasysteme**.
 
-Ein Wort, deutsch, harte Konsonanten, sofort merkbar. Das Wortspiel sitzt: Ihr
-Sommer beginnt kalt. Für Klimageräte ist der Begriff **nicht beschreibend** —
-das ist der entscheidende Punkt, denn nur unterscheidungskräftige Zeichen lassen
-sich als Marke schützen. „Kaltstart Klimasysteme, Inhaber Daniel Klotzek" trägt
-auch auf einer Rechnung. Risiko: Assoziation zum Motor, und das Wort ist
-allgemein gebräuchlich.
+Warum der Name trägt: ein Wort, deutsch, harte Konsonanten, sofort merkbar. Das
+Wortspiel sitzt — Ihr Sommer beginnt kalt. Und der für den Markenschutz
+entscheidende Punkt: Für Klimageräte ist „Kaltstart" **nicht beschreibend**.
+Nur unterscheidungskräftige Zeichen lassen sich als Marke eintragen; rein
+beschreibende Begriffe bleiben für jeden frei.
 
-**STECKERKLIMA** — die strategische Wette
+**Dazu als Kategoriebegriff: „Steckerklima".** Nicht als Marke — das wäre
+beschreibend und nicht schützbar — sondern als Wort, das Sie in Texten,
+Überschriften und Anzeigen konsequent verwenden. Vorbild ist
+„Balkonkraftwerk": ein Wort, das einen genehmigungsfreien Weg benennt und
+dadurch einen Markt geschaffen hat. Die Kombination ist ideal:
+*Kaltstart — die Steckerklima-Anlage.*
 
-Denken Sie an „Balkonkraftwerk". Dieses eine Wort hat einen Markt geschaffen,
-weil es einen genehmigungsfreien Weg benannt hat. „Steckerklima" könnte für
-Klimageräte dasselbe leisten: einstecken, kühlen, niemanden fragen. Das
-SEO-Potenzial ist enorm.
-
-Der Haken: Beschreibende Begriffe sind kaum als Marke zu schützen. Jeder darf
-sie verwenden. **Ideal ist deshalb die Kombination** — eine schützbare Marke
-plus ein Kategoriebegriff, den Sie popularisieren: *Kaltstart — die
-Steckerklima-Anlage.*
-
-**KÜHLFERTIG**
-
-Nach dem Muster von „steckerfertig". Trifft die Positionierung exakt: kommt
-fertig, keine Montage. Solide, etwas nüchtern, wenig Risiko.
-
-**SCHWITZFREI**
-
-Emotional, sofort verstanden, sympathisch — und nah an der verlorenen Idee
-„Hitzefrei". Risiko: klingt nach Deodorant.
+Nicht weiterverfolgt: **Hitzefrei** (Hitzefrei GmbH, Kühlcontainer — gleiche
+Branche), **Frostwerk** (Schweizer Kältetechnikfirma), Kühlfertig und
+Schwitzfrei.
 
 ### Bevor Sie sich festlegen
 
@@ -158,9 +147,12 @@ Ich konnte aus dieser Umgebung weder Markenregister noch Domainverfügbarkeit
 abfragen. Diese vier Schritte müssen Sie selbst gehen, in dieser Reihenfolge:
 
 1. **DPMAregister** (kostenlos) auf identische und ähnliche Marken in
-   **Nizza-Klasse 11** prüfen — das ist die Klasse für Klimageräte
+   **Nizza-Klasse 11** prüfen — das ist die Klasse für Klimageräte. Zusätzlich
+   Klasse 35 (Einzelhandel) erwägen
 2. **EUIPO eSearch** für Unionsmarken, die in Deutschland ebenso wirken
-3. **Domain** prüfen: `.de` ist Pflicht, `.com` gern dazu
+3. **Domain** prüfen: `kaltstart.de` scheint vergeben zu sein — es existiert
+   ein gleichnamiges Instagram-Konto. Auf der Website steht deshalb
+   `kaltstart-klima.de` als Platzhalter. Prüfen Sie beides, bevor Sie drucken lassen
 4. **Handelsregister und einfache Websuche** auf gleichnamige Firmen
 
 Eine anwaltliche Erstrecherche kostet ein paar hundert Euro. Gemessen daran,

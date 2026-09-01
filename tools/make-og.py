@@ -3,7 +3,7 @@
 Rendert das Vorschaubild für soziale Netzwerke als PNG.
 
 Soziale Netzwerke und Suchmaschinen zeigen SVG-Vorschaubilder nicht an, deshalb
-muss neben og-arktik.svg auch og-arktik.png vorliegen. Dieses Skript erzeugt es
+muss neben og-kaltstart.svg auch og-kaltstart.png vorliegen. Dieses Skript erzeugt es
 mit dem lokal installierten Chrome/Chromium – ohne Bildbibliothek.
 
     python3 tools/make-og.py [--chrome /pfad/zu/chrome]
@@ -161,14 +161,14 @@ def main():
             f.write('<!doctype html><meta charset="utf-8">'
                     '<style>html,body{margin:0;padding:0;height:100%;overflow:hidden}'
                     '.bild{width:100vw;height:100vh;'
-                    'background:url("assets/img/og-arktik.svg") no-repeat left top / 100% 100%}'
+                    'background:url("assets/img/og-kaltstart.svg") no-repeat left top / 100% 100%}'
                     '</style><div class="bild"></div>')
-        ziel = os.path.join(AUS, "assets", "img", "og-arktik.png")
+        ziel = os.path.join(AUS, "assets", "img", "og-kaltstart.png")
         schiessen(chrome, basis + ".og-render.html", ziel, BREITE, HOEHE + versatz, profil)
         zuschneiden(ziel, BREITE, HOEHE)
 
         b, h, _, _ = png_lesen(ziel)
-        print("og-arktik.png geschrieben: %d × %d px, %d kB"
+        print("og-kaltstart.png geschrieben: %d × %d px, %d kB"
               % (b, h, os.path.getsize(ziel) // 1024))
     finally:
         server.shutdown()

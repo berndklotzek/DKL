@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-ARKTIK Klimasysteme — Statischer Seitengenerator
+KALTSTART Klimasysteme — Statischer Seitengenerator
 ================================================
 
 Erzeugt aus
@@ -28,16 +28,21 @@ from datetime import date
 # ---------------------------------------------------------------------------
 
 SITE = {
-    # Geschäftsbezeichnung. Ein Einzelunternehmen darf unter einem Fantasienamen
-    # auftreten, im Impressum, in den AGB und auf Rechnungen muss aber der
-    # bürgerliche Name des Inhabers stehen — deshalb beide Angaben getrennt.
-    "brand":    "ARKTIK Klimasysteme",
-    "company":  "ARKTIK Klimasysteme",
-    "inhaber":  "Daniel Klotzek",
-    "rechtsform": "Einzelunternehmen",
-    "url":      "https://www.arktik-klima.de",     # ohne Schrägstrich am Ende
-    "email":    "info@arktik-klima.de",
-    "phone":    "+49 000 0000000",                 # TODO echte Rufnummer eintragen
+    # Firma und Marke. Bei einer GmbH ist der Firmenname zugleich die Marke —
+    # anders als beim Einzelunternehmen braucht es keine getrennte
+    # Geschäftsbezeichnung.
+    "brand":    "KALTSTART",
+    "claim":    "Klimasysteme",
+    "company":  "Kaltstart GmbH",
+    "gf":       "Paul Schoffer und Daniel Klotzek",
+    "rechtsform": "GmbH",
+
+    # TODO Domain prüfen: kaltstart.de scheint vergeben zu sein (es existiert
+    # ein gleichnamiges Instagram-Konto). kaltstart-klima.de ist hier als
+    # Platzhalter gesetzt.
+    "url":      "https://www.kaltstart-klima.de",   # ohne Schrägstrich am Ende
+    "email":    "info@kaltstart-klima.de",
+    "phone":    "+49 000 0000000",                  # TODO echte Rufnummer
     "phone_href": "+490000000000",
     "street":   "Am Danielsbrunnen 28",
     "zip":      "69168",
@@ -45,16 +50,11 @@ SITE = {
     "country":  "DE",
 
     # --- Vorsaison-Kampagne -------------------------------------------------
-    # Eine Stelle für die ganze Kampagne. Das Enddatum ist eine Zusage an den
-    # Kunden: Bis dahin gilt der ausgewiesene Preis. Wer es verschiebt, muss es
-    # hier ändern — und muss es dann auch einhalten.
     "saison":         "2027",
     "vorsaison_ende": "31. März 2027",
     "sommerstart":    "2027-06-01",
 
     # --- Zahlung -----------------------------------------------------------
-    # Adresse der Serverfunktion, die die Stripe-Sitzung erzeugt.
-    # Netlify: /.netlify/functions/checkout · Cloudflare Worker: /api/checkout
     "checkout_endpoint": "/.netlify/functions/checkout",
 }
 
@@ -261,7 +261,7 @@ def og_svg():
         '<path d="M9.8 15.2 9.4 21l-5 2.8M30.2 21.8l.4-5.8 5-2.8"/>'
         '</g>'
         '<text x="146" y="105" fill="#ffffff" font-size="28" font-weight="700" letter-spacing="7">'
-        'ARKTIK KLIMASYSTEME</text>'
+        'KALTSTART KLIMASYSTEME</text>'
         '<text x="80" y="256" fill="#ffffff" font-size="76" font-weight="800" letter-spacing="-2">'
         'Klimaanlagen, die zum</text>'
         '<text x="80" y="344" fill="#2ec9e8" font-size="76" font-weight="800" letter-spacing="-2">'
@@ -427,11 +427,10 @@ def org_ld():
         "@type": "OnlineStore",
         "@id": SITE["url"] + "/#organisation",
         "name": SITE["brand"],
-        "legalName": SITE["inhaber"],
-        "founder": {"@type": "Person", "name": SITE["inhaber"]},
+        "legalName": SITE["company"],
         "url": SITE["url"] + "/",
         "logo": SITE["url"] + "/assets/img/favicon.svg",
-        "image": SITE["url"] + "/assets/img/og-arktik.png",
+        "image": SITE["url"] + "/assets/img/og-kaltstart.png",
         "description": "Onlineshop für Klimaanlagen: Monoblock, Quick-Connect-Split, "
                        "Split- und Multi-Split-Anlagen sowie mobile Klimageräte.",
         "email": SITE["email"],
@@ -484,11 +483,12 @@ def render_page(url, title, description, body, *, trail=None, jsonld=None, scrip
         "{{CANONICAL}}": SITE["url"] + "/" + ("" if url == "index.html" else url),
         "{{ROBOTS}}": robots,
         "{{OGTYPE}}": ogtype,
-        "{{OGIMAGE}}": SITE["url"] + "/assets/img/og-arktik.png",
+        "{{OGIMAGE}}": SITE["url"] + "/assets/img/og-kaltstart.png",
         "{{ROOT}}": rel,
         "{{BRAND}}": SITE["brand"],
         "{{COMPANY}}": SITE["company"],
-        "{{INHABER}}": SITE["inhaber"],
+        "{{GF}}": SITE["gf"],
+        "{{CLAIM}}": SITE["claim"],
         "{{SAISON}}": SITE["saison"],
         "{{VORSAISON_ENDE}}": SITE["vorsaison_ende"],
         "{{SOMMERSTART}}": SITE["sommerstart"],
@@ -530,14 +530,12 @@ def expand(text, rel, produkte):
                 .replace("{{TEL_HREF}}", SITE["phone_href"])
                 .replace("{{MAIL}}", SITE["email"])
                 .replace("{{COMPANY}}", SITE["company"])
-                .replace("{{INHABER}}", SITE["inhaber"])
+                .replace("{{GF}}", SITE["gf"])
                 .replace("{{RECHTSFORM}}", SITE["rechtsform"])
-                .replace("{{ANSCHRIFT}}", "%s<br>Inhaber %s<br>%s<br>%s %s"
-                         % (SITE["company"], SITE["inhaber"], SITE["street"],
-                            SITE["zip"], SITE["city"]))
-                .replace("{{ANSCHRIFT_ZEILE}}", "%s, Inhaber %s, %s, %s %s"
-                         % (SITE["company"], SITE["inhaber"], SITE["street"],
-                            SITE["zip"], SITE["city"]))
+                .replace("{{ANSCHRIFT}}", "%s<br>%s<br>%s %s"
+                         % (SITE["company"], SITE["street"], SITE["zip"], SITE["city"]))
+                .replace("{{ANSCHRIFT_ZEILE}}", "%s, %s, %s %s"
+                         % (SITE["company"], SITE["street"], SITE["zip"], SITE["city"]))
                 .replace("{{BRAND}}", SITE["brand"])
                 .replace("{{STREET}}", SITE["street"])
                 .replace("{{ZIP}}", SITE["zip"])
@@ -591,9 +589,9 @@ def eek_block(p):
 def seo_titel(p, kat_name):
     """Title unter 60 Zeichen halten – darüber kürzt Google in den Suchergebnissen."""
     zusatz = "%s kW Klimaanlage" % kw_de(p["kw"]) if p["kw"] else kat_name
-    for variante in ("%s – %s kaufen | ARKTIK" % (p["name"], zusatz),
-                     "%s – %s | ARKTIK" % (p["name"], zusatz),
-                     "%s kaufen | ARKTIK" % p["name"],
+    for variante in ("%s – %s kaufen | KALTSTART" % (p["name"], zusatz),
+                     "%s – %s | KALTSTART" % (p["name"], zusatz),
+                     "%s kaufen | KALTSTART" % p["name"],
                      p["name"]):
         if len(variante) <= 60:
             return variante
@@ -899,7 +897,7 @@ def product_page(p, produkte):
         "mpn": p["sku"],
         "description": p["beschreibung"][0],
         "image": [img_abs],
-        "brand": {"@type": "Brand", "name": "ARKTIK"},
+        "brand": {"@type": "Brand", "name": "KALTSTART"},
         "category": kat_name,
         "offers": offer,
         "additionalProperty": props,
@@ -1030,7 +1028,7 @@ def listing_page(produkte):
     itemlist = {
         "@context": "https://schema.org",
         "@type": "ItemList",
-        "name": "Klimaanlagen bei ARKTIK",
+        "name": "Klimaanlagen bei KALTSTART",
         "numberOfItems": len(produkte),
         "itemListElement": [
             {"@type": "ListItem", "position": i + 1, "name": p["name"],
@@ -1108,7 +1106,7 @@ def listing_page(produkte):
 
     return render_page(
         "produkte.html",
-        "Klimaanlagen kaufen – Split, Monoblock & mobil | ARKTIK",
+        "Klimaanlagen kaufen – ohne Montage & Split | KALTSTART",
         "Monoblock ohne Aussengerät, Quick-Connect-Split zur Selbstmontage, leise "
         "Split-Anlagen und mobile Klimageräte. Lieferung in 3–5 Werktagen aus dem EU-Lager.",
         body,
@@ -1172,7 +1170,7 @@ def content_pages(produkte):
                 "@type": "Article",
                 "headline": meta["h1"] if "h1" in meta else meta["title"].split("|")[0].strip(),
                 "description": meta["description"],
-                "image": SITE["url"] + "/assets/img/og-arktik.png",
+                "image": SITE["url"] + "/assets/img/og-kaltstart.png",
                 "datePublished": meta.get("datum", "2026-03-01"),
                 "dateModified": meta.get("aktualisiert", meta.get("datum", "2026-03-01")),
                 "author": {"@type": "Organization", "name": SITE["company"], "url": SITE["url"] + "/"},
@@ -1238,7 +1236,7 @@ def write_robots():
 def write_manifest():
     data = {
         "name": SITE["brand"],
-        "short_name": "ARKTIK",
+        "short_name": "KALTSTART",
         "description": "Klimaanlagen für Wohnräume – Monoblock, Split und mobil.",
         "start_url": "/index.html",
         "scope": "/",
@@ -1278,7 +1276,7 @@ def main():
     for p in produkte:
         open(os.path.join(img_dir, "produkt-%s.svg" % p["slug"]), "w", encoding="utf-8").write(product_svg(p))
     open(os.path.join(img_dir, "favicon.svg"), "w", encoding="utf-8").write(favicon_svg())
-    open(os.path.join(img_dir, "og-arktik.svg"), "w", encoding="utf-8").write(og_svg())
+    open(os.path.join(img_dir, "og-kaltstart.svg"), "w", encoding="utf-8").write(og_svg())
 
     # Serverseitiger Preiskatalog für die Stripe-Anbindung.
     # Der Warenkorb liegt im Browser des Kunden und ist deshalb manipulierbar.
@@ -1323,7 +1321,7 @@ def main():
 
     open(os.path.join(OUT, "assets", "js", "produkte.js"), "w", encoding="utf-8").write(
         "/* Automatisch erzeugt von tools/build.py — nicht von Hand ändern. */\n"
-        "window.ARKTIK_PRODUKTE = %s;\n" % json.dumps(kompakt, ensure_ascii=False, indent=0))
+        "window.KALTSTART_PRODUKTE = %s;\n" % json.dumps(kompakt, ensure_ascii=False, indent=0))
 
     urls = []
     urls += content_pages(produkte)
