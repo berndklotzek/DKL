@@ -120,7 +120,7 @@ Diagrammfläche) — beim Ändern bitte nachprüfen.
 
 | Stelle | Platzhalter | gebraucht wird |
 |---|---|---|
-| Impressum | `noch einzutragen` | Anschrift, Telefon und E-Mail, Amtsgericht + HRB, USt-IdNr., redaktionell verantwortliche Person |
+| Impressum | `noch einzutragen` | Telefon und E-Mail, Amtsgericht + HRB, USt-IdNr., redaktionell verantwortliche Person; Postleitzahl bestätigen |
 | Fußzeile | Datenschutz, Barrierefreiheit | eigene Erklärungen |
 | Panel-Buttons | Kurzmeldung statt Funktion | Bewerbungsstrecke mit Backend |
 | Betriebe | erfundener Datensatz | Anbindung Lehrstellenbörse / Kammer-API |
