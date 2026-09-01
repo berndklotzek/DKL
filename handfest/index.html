@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HANDFEST — Vermittlungsportal Schule und Handwerk</title>
+<meta name="description" content="HANDFEST vermittelt Schülerinnen und Schüler an Handwerksbetriebe in ihrer Region. Talent-Check in neun Fragen, passende Berufe, freie Lehrstellen — und ein Beruf, der von KI nicht ersetzt wird.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230E2A3E'/%3E%3Cpath d='M8 21.5 20 9.5m0 0 3 3-12 12H8v-3Z' stroke='%23E2611A' stroke-width='2.2' fill='none' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Mono:wght@500&family=Source+Sans+3:wght@400;600&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="demo-banner">
+  <div class="wrap">
+    <b>Prototyp</b>
+    <span>Betriebe, Zitate und Kennzahlen sind Beispieldaten.</span>
+  </div>
+</div>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <svg class="brand-mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M7 22.5 20 9.5m0 0 3.5 3.5L10.5 26H7v-3.5Z" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round"/>
+        <path d="M20.5 9 24 5.5l3 3L23.5 12" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round"/>
+      </svg>
+      <span>
+        <span class="brand-name">Handfest</span>
+        <small class="brand-sub">Schule &rarr; Handwerk</small>
+      </span>
+    </a>
+
+    <nav class="mainnav" aria-label="Hauptnavigation">
+      <a href="#zukunft">Zukunfts-Index</a>
+      <a href="#check">Talent-Check</a>
+      <a href="#betriebe">Betriebe</a>
+      <a href="#ablauf">Ablauf</a>
+      <a href="#partner">Für Schulen &amp; Betriebe</a>
+    </nav>
+
+    <div class="topbar-actions">
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Helles oder dunkles Erscheinungsbild">
+        <svg class="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6"/></svg>
+        <svg class="icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+      </button>
+      <a class="btn sm" href="#check" data-scroll="check"><span class="lbl-lang">Talent-Check starten</span><span class="lbl-kurz">Talent-Check</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= Hero ================= -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Vermittlungsportal Schule &amp; Handwerk</p>
+          <h1>Kein Sprachmodell <span class="accent">repariert</span> deine Heizung.</h1>
+          <p class="hero-lead">
+            HANDFEST bringt Schülerinnen und Schüler mit Handwerksbetrieben in ihrer Region
+            zusammen. Neun Fragen, drei passende Berufe, freie Lehrstellen im Umkreis —
+            ohne Bewerbungsmappe, ohne Anmeldung.
+          </p>
+          <div class="hero-actions">
+            <a class="btn" href="#check" data-scroll="check">Talent-Check starten</a>
+            <a class="btn on-blue" href="#zukunft" data-scroll="zukunft">Warum Handwerk bleibt</a>
+          </div>
+          <div class="hero-proof">
+            <div><b>14</b><span>Gewerke</span></div>
+            <div><b>30</b><span>Lehrstellen frei</span></div>
+            <div><b>9</b><span>Fragen</span></div>
+            <div><b>0</b><span>Bewerbungsmappen</span></div>
+          </div>
+        </div>
+
+        <aside class="gauge" aria-label="Zukunfts-Index, drei Beispielwerte">
+          <div class="gauge-head">
+            <strong>Zukunfts-Index</strong>
+            <span>0 – 100</span>
+          </div>
+
+          <div class="gauge-row">
+            <span class="gauge-label">Anlagenmechanik SHK</span>
+            <span class="gauge-value">94</span>
+            <span class="gauge-track"><span class="gauge-fill" data-gauge="94"></span></span>
+          </div>
+          <div class="gauge-row">
+            <span class="gauge-label">Elektronik Gebäudetechnik</span>
+            <span class="gauge-value">92</span>
+            <span class="gauge-track"><span class="gauge-fill" data-gauge="92"></span></span>
+          </div>
+          <div class="gauge-row">
+            <span class="gauge-label">Sachbearbeitung Verwaltung</span>
+            <span class="gauge-value">31</span>
+            <span class="gauge-track"><span class="gauge-fill alt" data-gauge="31"></span></span>
+          </div>
+
+          <p class="gauge-foot">
+            Je höher der Wert, desto schlechter lässt sich der <em>Kern</em> der Arbeit
+            automatisieren. Modellrechnung von HANDFEST — die Kriterien stehen weiter unten.
+          </p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Zukunfts-Index ================= -->
+  <section class="section first" id="zukunft">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Die These</p>
+        <h2>Automatisieren lässt sich, was vorhersehbar ist. Ein Altbau ist es nicht.</h2>
+        <p class="lead">
+          Software wird jeden Beruf verändern — auch das Handwerk. Der Unterschied liegt
+          darin, was danach übrig bleibt. Wo Arbeit aus Text, Tabelle und wiederholbarem
+          Ablauf besteht, bleibt wenig. Wo sie aus einem engen Schacht, einem schiefen
+          Dachstuhl und einer Unterschrift unter der Abnahme besteht, bleibt alles.
+        </p>
+      </div>
+
+      <div class="chart-shell">
+        <figure class="chart reveal" style="margin:0">
+          <figcaption class="chart-title">
+            <h3>Zukunfts-Index nach Tätigkeit</h3>
+            <p>0 = Kern der Arbeit weitgehend automatisierbar &nbsp;·&nbsp; 100 = kaum automatisierbar</p>
+          </figcaption>
+
+          <div class="legend">
+            <span><i></i> Handwerksberufe</span>
+            <span><i class="s2"></i> Vergleich: Büro und Verwaltung</span>
+          </div>
+
+          <div class="bars" id="index-bars" role="list"></div>
+
+          <div class="chart-axis"><span>0</span><span>50</span><span>100</span></div>
+        </figure>
+
+        <aside class="method reveal">
+          <h4>Wie der Index gerechnet wird</h4>
+          <ol>
+            <li><b>Arbeitsumgebung</b> — wie oft wechselt der Ort, wie selten gleicht ein Objekt dem anderen?</li>
+            <li><b>Hand und Körper</b> — wie viel muss vor Ort mit den Händen geschehen?</li>
+            <li><b>Verantwortung</b> — braucht es eine Abnahme, eine Haftung, eine Unterschrift?</li>
+            <li><b>Mensch im Spiel</b> — wird beraten, ausgehandelt, Vertrauen aufgebaut?</li>
+            <li><b>Fehlerkosten</b> — was passiert, wenn es falsch ist: Wasserschaden oder Tippfehler?</li>
+          </ol>
+          <p class="note">
+            Eigenes Modell von HANDFEST, keine amtliche Statistik. Bewertet wird der Kern
+            einer Tätigkeit, nicht der einzelne Arbeitsschritt: Diagnosesoftware, CNC und
+            Aufmaß-App sind im Handwerk längst Alltag — sie nehmen Arbeit ab, sie nehmen
+            den Beruf nicht weg.
+          </p>
+        </aside>
+      </div>
+
+      <div class="grid-4" style="margin-top:28px">
+        <article class="card arg-card reveal">
+          <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 20h16M6 20V9l6-4 6 4v11"/><path d="M10 20v-5h4v5"/></svg>
+          <h3>Ortsgebunden</h3>
+          <p>Eine Wärmepumpe wird dort eingebaut, wo sie steht. Dieser Job lässt sich weder verlagern noch aus der Ferne erledigen.</p>
+        </article>
+        <article class="card arg-card reveal">
+          <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3v18M5 8l7-4 7 4M5 8v8l7 4 7-4V8"/></svg>
+          <h3>Gebraucht</h3>
+          <p>Energiewende, Sanierungsstau und Ruhestandswelle treffen zusammen. Betriebe suchen — und bilden aus, um zu halten.</p>
+        </article>
+        <article class="card arg-card reveal">
+          <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          <h3>Bezahlt von Tag eins</h3>
+          <p>Ausbildungsvergütung statt Studiengebühren. In mehreren Bauberufen liegt sie schon im ersten Lehrjahr über 1.000 Euro.</p>
+        </article>
+        <article class="card arg-card reveal">
+          <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 19h16M7 19V8l5-4 5 4v11"/><path d="M12 4v15"/></svg>
+          <h3>Mit eigener Firma am Ende</h3>
+          <p>Geselle, Meisterbrief, eigener Betrieb: ein Weg zur Selbstständigkeit, den es in dieser Klarheit sonst kaum gibt.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Talent-Check ================= -->
+  <section class="section tinted" id="check">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Talent-Check</p>
+        <h2>Neun Fragen. Danach weißt du, welches Gewerk zu dir passt.</h2>
+        <p class="lead">
+          Kein Persönlichkeitstest, kein Konto, keine E-Mail. Die Antworten ergeben ein
+          Profil aus sieben Merkmalen; es wird mit dem Anforderungsprofil von 14 Berufen
+          verglichen. Alles bleibt in diesem Browserfenster.
+        </p>
+      </div>
+
+      <div class="check reveal">
+        <div class="check-bar">
+          <span class="check-step" id="check-step">Frage 1 von 9</span>
+          <span class="check-progress"><i id="check-progress"></i></span>
+        </div>
+
+        <div id="check-fragen">
+          <div class="check-body">
+            <div class="check-q">
+              <h3 id="check-frage">…</h3>
+              <p id="check-hinweis" hidden></p>
+            </div>
+            <div class="opts" id="check-optionen"></div>
+          </div>
+          <div class="check-foot">
+            <button class="btn ghost sm" type="button" id="check-zurueck">Zurück</button>
+            <span class="check-hint">Deine Antworten verlassen dieses Gerät nicht.</span>
+            <button class="btn sm" type="button" id="check-weiter">Weiter</button>
+          </div>
+        </div>
+
+        <div id="check-ergebnis" hidden>
+          <div class="check-body">
+            <div class="result-head">
+              <div class="check-q" style="margin:0">
+                <h3>Das passt zu dir.</h3>
+                <p id="ergebnis-satz"></p>
+              </div>
+              <button class="btn ghost sm" type="button" id="check-neu">Noch einmal</button>
+            </div>
+            <div class="match-list" id="match-list"></div>
+          </div>
+          <div class="check-foot">
+            <span class="check-hint">Die Betriebsliste unten ist bereits auf dein Ergebnis eingestellt.</span>
+            <a class="btn sm" href="#betriebe" data-scroll="betriebe">Passende Betriebe ansehen</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Betriebe ================= -->
+  <section class="section" id="betriebe">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Betriebe in deiner Region</p>
+        <h2>Jeder Betrieb zeigt, was er zahlt, was er beibringt und wen er behält.</h2>
+        <p class="lead">
+          Übernahmequote, Vergütung im ersten Lehrjahr, freie Plätze und der konkrete
+          Lerninhalt — offen auf der Karte, nicht erst im Vorstellungsgespräch.
+          <span id="firm-hinweis"></span>
+        </p>
+      </div>
+
+      <div class="filters reveal">
+        <div class="field">
+          <label for="filter-suche">Suche</label>
+          <input type="text" id="filter-suche" placeholder="Betrieb oder Ort">
+        </div>
+        <div class="field">
+          <label for="filter-gewerk">Gewerk</label>
+          <select id="filter-gewerk"><option value="alle">Alle Gewerke</option></select>
+        </div>
+        <div class="field">
+          <label for="filter-km">Umkreis · <span id="km-wert">30 km</span></label>
+          <input type="range" id="filter-km" min="5" max="30" step="1" value="30">
+        </div>
+        <div class="field">
+          <label for="filter-start">Start</label>
+          <select id="filter-start">
+            <option value="alle">Egal</option>
+            <option value="August">August 2026</option>
+            <option value="September">September 2026</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="filter-sort">Sortierung</label>
+          <select id="filter-sort">
+            <option value="match">Passung</option>
+            <option value="km">Entfernung</option>
+            <option value="geld">Vergütung</option>
+            <option value="uebernahme">Übernahmequote</option>
+          </select>
+        </div>
+        <span class="spacer"></span>
+        <span class="filter-count num" id="filter-count"></span>
+      </div>
+
+      <div class="firm-grid" id="firm-grid"></div>
+    </div>
+  </section>
+
+  <!-- ================= Ablauf ================= -->
+  <section class="section tinted" id="ablauf">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Von der Schulbank zum Probetag</p>
+        <h2>Vier Schritte. Zwischen erstem Klick und Probetag liegen selten mehr als zwei Wochen.</h2>
+      </div>
+
+      <div class="steps reveal">
+        <article class="step">
+          <span class="step-no">Schritt 01</span>
+          <h3>Talent-Check</h3>
+          <p>Neun Fragen, rund zehn Minuten, ohne Anmeldung. Ergebnis sind drei Berufe mit Begründung.</p>
+        </article>
+        <article class="step">
+          <span class="step-no">Schritt 02</span>
+          <h3>Betriebe vergleichen</h3>
+          <p>Passung, Entfernung, Vergütung, Übernahmequote und der Ausbildungsinhalt — nebeneinander.</p>
+        </article>
+        <article class="step">
+          <span class="step-no">Schritt 03</span>
+          <h3>Kurzbewerbung</h3>
+          <p>Ein Profil statt einer Mappe: Zeugnis hochladen, Sprachnachricht aufnehmen, an bis zu drei Betriebe senden.</p>
+        </article>
+        <article class="step">
+          <span class="step-no">Schritt 04</span>
+          <h3>Probetag</h3>
+          <p>Betriebe antworten innerhalb von fünf Werktagen — sonst rutscht die Anzeige im Portal nach hinten.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= Schulen & Betriebe ================= -->
+  <section class="section" id="partner">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Zwei Seiten, eine Plattform</p>
+        <h2>Schulen bringen die Klasse mit. Betriebe zahlen erst, wenn der Vertrag steht.</h2>
+      </div>
+
+      <div class="audience">
+        <article class="aud reveal">
+          <div>
+            <p class="eyebrow">Für Schulen</p>
+            <h3 style="font-size:1.5rem;margin-top:10px">Berufsorientierung, die eine Doppelstunde füllt</h3>
+          </div>
+          <ul class="ticks">
+            <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5 6.3 12 13 4.5"/></svg><span>Klassencode statt Einzelanmeldung — die Klasse startet in 30 Sekunden.</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5 6.3 12 13 4.5"/></svg><span>Auswertung für Lehrkräfte: welche Gewerke die Klasse interessieren, ohne Einzelprofile.</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5 6.3 12 13 4.5"/></svg><span>Fertige Materialien für Elternabend und Praktikumswoche.</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5 6.3 12 13 4.5"/></svg><span>Keine personenbezogenen Daten nötig, solange niemand eine Bewerbung abschickt.</span></li>
+          </ul>
+          <div class="price"><b>0 €</b><span>für allgemeinbildende Schulen, dauerhaft</span></div>
+          <a class="btn ghost" href="#kontakt" data-scroll="kontakt">Schule anmelden</a>
+        </article>
+
+        <article class="aud blue reveal">
+          <div>
+            <p class="eyebrow">Für Betriebe</p>
+            <h3 style="font-size:1.5rem;margin-top:10px">Bewerbungen von Leuten, die wissen, worauf sie sich einlassen</h3>
+          </div>
+          <ul class="ticks">
+            <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5 6.3 12 13 4.5"/></svg><span>Betriebsprofil mit Ausbildungsinhalt, Vergütung und Übernahmequote — offen sichtbar.</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5 6.3 12 13 4.5"/></svg><span>Vorsortierte Kandidatinnen und Kandidaten samt Passungswert und Begründung.</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5 6.3 12 13 4.5"/></svg><span>Antwortfrist von fünf Werktagen — wer schneller antwortet, steht weiter oben.</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5 6.3 12 13 4.5"/></svg><span>Anbindung an Innung und Kammer: eine Anzeige, mehrere Kanäle.</span></li>
+          </ul>
+          <div class="price"><b>690 €</b><span>je unterschriebenem Ausbildungsvertrag · kein Abo, keine Grundgebühr</span></div>
+          <a class="btn" href="#kontakt" data-scroll="kontakt">Betrieb eintragen</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="section tinted" id="fragen">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Häufige Fragen</p>
+        <h2>Was Schülerinnen, Eltern und Betriebe zuerst wissen wollen</h2>
+      </div>
+
+      <div class="faq reveal">
+        <details>
+          <summary>Ist Handwerk wirklich sicher vor KI?</summary>
+          <p>Kein Beruf bleibt unverändert. Im Handwerk verschiebt Software vor allem die Vorbereitung: Aufmaß, Kalkulation, Diagnose, Planung. Was am Objekt passiert — im engen Schacht, auf dem Dach, am Menschen — bleibt Handarbeit mit Verantwortung. Genau das misst unser Zukunfts-Index. Er ist ein Modell und keine Prognose; die Kriterien legen wir offen, damit man ihm widersprechen kann.</p>
+        </details>
+        <details>
+          <summary>Kostet das Portal für Schülerinnen und Schüler etwas?</summary>
+          <p>Nein. Der Talent-Check, die Betriebssuche und die Bewerbung sind kostenfrei und bleiben es. Bezahlt wird das Portal von Betrieben, und zwar erst, wenn ein Ausbildungsvertrag zustande gekommen ist.</p>
+        </details>
+        <details>
+          <summary>Was passiert mit meinen Daten?</summary>
+          <p>Der Talent-Check läuft vollständig im Browser; ohne Absenden einer Bewerbung verlässt keine Antwort das Gerät. Erst wenn eine Kurzbewerbung an einen Betrieb geht, werden Name, Kontakt und Profil übertragen — an genau diesen Betrieb und an sonst niemanden.</p>
+        </details>
+        <details>
+          <summary>Ich habe keinen guten Abschluss. Bringt mir das etwas?</summary>
+          <p>Ja. Betriebe filtern hier nicht zuerst nach Noten, sondern nach Passung und Interesse. Viele Profile im Portal führen den Probetag ausdrücklich vor dem Zeugnis auf — weil sich im Betrieb schneller zeigt, wer geeignet ist, als auf dem Papier.</p>
+        </details>
+        <details>
+          <summary>Wie kommt die Passung zustande?</summary>
+          <p>Aus den neun Antworten entsteht ein Profil über sieben Merkmale: Handgeschick, Technikverständnis, wechselnde Orte, Kundenkontakt, Gestalten, Präzision, körperlicher Einsatz. Dieses Profil wird statistisch mit dem Anforderungsprofil jedes Berufs verglichen. Angezeigt wird, welche zwei Merkmale den Ausschlag gegeben haben — damit die Empfehlung nachvollziehbar bleibt und nicht als Orakel auftritt.</p>
+        </details>
+        <details>
+          <summary>Unser Betrieb bildet zum ersten Mal aus. Geht das?</summary>
+          <p>Ja, sofern die Ausbildungsberechtigung vorliegt. Beim Profil hilft die Redaktion, und die Anbindung an Innung und Kammer sorgt dafür, dass die Anzeige nicht nur hier erscheint.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= Fußzeile ================= -->
+<footer class="site-foot" id="kontakt">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <span class="brand-name">Handfest</span>
+        <small class="brand-sub">Vermittlung Schule &rarr; Handwerk</small>
+        <p style="margin-top:16px;max-width:34ch;font-size:.92rem">
+          Ein Portal für die Berufe, die bleiben — und für die Betriebe, die sie weitergeben.
+        </p>
+        <p style="margin-top:18px"><span class="demo-note">Prototyp · Beispieldaten</span></p>
+      </div>
+      <div>
+        <h4>Portal</h4>
+        <ul>
+          <li><a href="#check" data-scroll="check">Talent-Check</a></li>
+          <li><a href="#betriebe" data-scroll="betriebe">Betriebe</a></li>
+          <li><a href="#zukunft" data-scroll="zukunft">Zukunfts-Index</a></li>
+          <li><a href="#ablauf" data-scroll="ablauf">Ablauf</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Für Partner</h4>
+        <ul>
+          <li><a href="#partner" data-scroll="partner">Schulen</a></li>
+          <li><a href="#partner" data-scroll="partner">Betriebe</a></li>
+          <li><a href="#partner" data-scroll="partner">Innungen &amp; Kammern</a></li>
+          <li><a href="#fragen" data-scroll="fragen">Häufige Fragen</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Rechtliches</h4>
+        <ul>
+          <!-- TODO: echte Seiten hinterlegen, sobald der Betrieb steht -->
+          <li><a href="#kontakt">Impressum</a></li>
+          <li><a href="#kontakt">Datenschutz</a></li>
+          <li><a href="#kontakt">Barrierefreiheit</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-note">
+      <span>&copy; <span id="jahr">2026</span> HANDFEST — Entwurf</span>
+      <span>Der Zukunfts-Index ist ein eigenes Modell und keine amtliche Statistik.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= Betriebsprofil ================= -->
+<div class="panel-backdrop" id="panel" hidden role="dialog" aria-modal="true" aria-labelledby="panel-titel">
+  <div class="panel">
+    <div class="panel-head">
+      <div>
+        <h2 id="panel-titel">Betrieb</h2>
+        <p class="firm-meta" id="panel-meta"></p>
+      </div>
+      <button class="panel-close" id="panel-close" type="button" aria-label="Profil schließen">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3.5 3.5l9 9m0-9-9 9"/></svg>
+      </button>
+    </div>
+    <div class="panel-body" id="panel-body"></div>
+    <div class="panel-cta">
+      <button class="btn" type="button" id="panel-bewerben">In 90 Sekunden bewerben</button>
+      <button class="btn ghost" type="button" id="panel-merken">Merken</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
