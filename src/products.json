@@ -35,7 +35,7 @@
     ],
     "beschreibung": [
       "Der Nova M25 ist die Antwort auf alle Wohnungen, in denen ein Aussengerät nicht in Frage kommt: Denkmalschutz, Eigentümergemeinschaft, Mietvertrag. Die komplette Kältetechnik sitzt im Innengerät, nach draussen führen nur zwei Luftkanäle durch die Wand.",
-      "Weil der Kältekreis werkseitig geschlossen und geprüft ist, darf das Gerät ohne Sachkundenachweis nach EU-Verordnung 2024/573 installiert werden – die Kernbohrung übernimmt jeder Trockenbauer. Das macht den Nova M25 zum schnellsten Weg zu einem kühlen Schlafzimmer.",
+      "Der Kältekreis sitzt vollständig im Gerät, ist werkseitig geschlossen und wird bei der Montage nicht geöffnet. Damit ist die Anlage hermetisch geschlossen im Sinne der F-Gase-Verordnung — die Sachkundepflicht greift nicht, und es gibt auch keine Verkaufsbeschränkung. Die Kernbohrung übernimmt jeder Trockenbauer. Das macht den Nova M25 zum schnellsten legalen Weg zu einem kühlen Schlafzimmer.",
       "Mit einer Kühlleistung von 2,5 kW versorgt er Räume bis rund 28 m². Im Winter heizt er mit einer Jahresarbeitszahl von 3,8 deutlich günstiger als eine Elektroheizung."
     ],
     "kennzahl": "SEER",
@@ -148,21 +148,21 @@
     "eek_heizen": "A++",
     "gewicht": 38,
     "masse": "Innen 805 × 285 × 195 mm",
-    "montage": "selbst",
-    "badge": "Selbstmontage",
+    "montage": "fachbetrieb",
+    "badge": "Fachbetrieb, halbe Zeit",
     "farbe": "#2bb7c9",
     "features": [
       "Werkseitig befüllte 5-m-Leitung mit selbstdichtender Schnellkupplung",
-      "Montage ohne Vakuumpumpe und ohne Kälteschein",
+      "Montage in rund zwei statt fünf Stunden — der Fachbetrieb spart Vakuumpumpe und Dichtheitsprüfung",
       "SEER 7,2 – sehr niedriger Verbrauch im Teillastbetrieb",
       "21 dB(A) im Silent-Modus",
       "Aussengerät mit Korrosionsschutzbeschichtung",
-      "Komplettes Montagematerial im Karton"
+      "Nachweis des Fachbetriebs vor Versand erforderlich (F-Gase-Verordnung)"
     ],
     "beschreibung": [
-      "Quick-Connect-Systeme schliessen die Lücke zwischen Monoblock und klassischer Split-Anlage: Sie haben ein Aussengerät und damit die volle Effizienz einer Split-Anlage, kommen aber mit vorbefüllten Leitungen und selbstdichtenden Kupplungen.",
-      "Beim Verschrauben öffnen sich die Ventile, ohne Kältemittel freizusetzen. Es wird weder eine Vakuumpumpe noch ein Sachkundenachweis nach Kategorie I benötigt.",
-      "Für einen handwerklich geübten Menschen ist die Anlage an einem Vormittag montiert – Kernbohrung, Wandkonsole, Leitung verschrauben, Elektroanschluss durch eine Elektrofachkraft."
+      "Quick-Connect verkürzt die Montagezeit erheblich: Die Leitungen sind werkseitig befüllt und vorvakuumiert, die Kupplungen dichten beim Anziehen selbst ab. Vakuumpumpe, Bördeln und die lange Dichtheitsprüfung entfallen.",
+      "Was Quick-Connect nicht bedeutet: dass Sie selbst montieren dürfen. Die Anlage ist nicht hermetisch geschlossen und mit fluoriertem Kältemittel befüllt. Nach Artikel 11 Absatz 7 der Verordnung (EU) 2024/573 und § 9 Absatz 3 der Chemikalien-Klimaschutzverordnung dürfen wir sie nur an Sie verkaufen, wenn Sie uns schriftlich nachweisen, dass ein zertifizierter Fachbetrieb die Installation übernimmt.",
+      "Der Vorteil bleibt trotzdem Ihrer: Weil der Betrieb statt fünf nur rund zwei Stunden braucht, sinkt die Montagerechnung typischerweise um 200 bis 400 €. Wir vermitteln auf Wunsch einen Partnerbetrieb."
     ],
     "kennzahl": "SEER",
     "kanaele": 0
@@ -190,21 +190,21 @@
     "eek_heizen": "A++",
     "gewicht": 43,
     "masse": "Innen 900 × 300 × 210 mm",
-    "montage": "selbst",
-    "badge": "Selbstmontage",
+    "montage": "fachbetrieb",
+    "badge": "Fachbetrieb, halbe Zeit",
     "farbe": "#1f9fb8",
     "features": [
       "3,5 kW für Räume bis 42 m²",
-      "Vorbefüllte 5-m-Leitung, verlängerbar auf 10 m",
-      "Kein Kälteschein für die Montage nötig",
+      "Vorbefüllte, vorvakuumierte 5-m-Leitung — deutlich kürzere Montagezeit",
       "Follow-Me-Sensor in der Fernbedienung",
       "Selbstreinigungsfunktion des Verdampfers",
-      "22 dB(A) im Nachtbetrieb"
+      "22 dB(A) im Nachtbetrieb",
+      "Nachweis des Fachbetriebs vor Versand erforderlich (F-Gase-Verordnung)"
     ],
     "beschreibung": [
       "Die 12.000-BTU-Klasse ist das meistverkaufte Segment im deutschen Markt – gross genug für Wohnzimmer, klein genug für einen günstigen Preis.",
       "Der Follow-Me-Sensor misst die Temperatur dort, wo die Fernbedienung liegt, statt am Innengerät unter der Decke. Das vermeidet das typische Überkühlen im Sitzbereich.",
-      "Die Selbstreinigung trocknet den Verdampfer nach dem Kühlbetrieb – das ist der wirksamste Schutz gegen den muffigen Geruch, über den viele Billiggeräte nach zwei Sommern klagen."
+      "Zur Montage: Die vorbefüllte Schnellkupplung spart dem Fachbetrieb Vakuumpumpe und Dichtheitsprüfung und damit mehrere Stunden. Selbst montieren dürfen Sie die Anlage nicht — sie enthält fluoriertes Kältemittel und ist nicht hermetisch geschlossen. Wir dürfen sie nur mit dem schriftlichen Nachweis eines zertifizierten Fachbetriebs ausliefern."
     ],
     "kennzahl": "SEER",
     "kanaele": 0
@@ -232,7 +232,7 @@
     "eek_heizen": "A+",
     "gewicht": 56,
     "masse": "Innen 1010 × 320 × 225 mm",
-    "montage": "selbst",
+    "montage": "fachbetrieb",
     "badge": "Für grosse Räume",
     "farbe": "#177f9e",
     "features": [
@@ -241,12 +241,12 @@
       "Doppelter Luftauslass für gleichmässige Verteilung",
       "Turbo-Modus: 8 °C Temperaturabsenkung in 12 Minuten",
       "Kältemittel R32 mit GWP 675",
-      "Aussengerät auf Gummidämpfern, 52 dB(A)"
+      "Nachweis des Fachbetriebs vor Versand erforderlich (F-Gase-Verordnung)"
     ],
     "beschreibung": [
       "Für Küche-Wohnzimmer-Kombinationen, Dachgeschosse und alles, was über 40 m² hinausgeht. Ein zu klein dimensioniertes Gerät läuft im Hochsommer dauerhaft auf Anschlag und verbraucht am Ende mehr als ein richtig dimensioniertes.",
       "Der doppelte Luftauslass verteilt die kalte Luft über zwei Ebenen, statt einen kalten Strahl in die Raummitte zu blasen.",
-      "Prüfen Sie vor dem Kauf die Absicherung: 5,3 kW Kälteleistung entsprechen rund 1,7 kW elektrischer Aufnahme – ein normaler 16-A-Stromkreis genügt, sollte aber nicht mit Herd oder Waschmaschine geteilt werden."
+      "Die Anlage wird von einem zertifizierten Fachbetrieb in Betrieb genommen; die vorbefüllte Schnellkupplung verkürzt dessen Arbeitszeit deutlich. Den Nachweis des Betriebs brauchen wir vor dem Versand."
     ],
     "kennzahl": "SEER",
     "kanaele": 0
@@ -590,7 +590,7 @@
   {
     "slug": "montageset-quick-connect-5m",
     "sku": "ARK-ZUB-MS5",
-    "name": "Montage-Set Quick-Connect 5 m",
+    "name": "Montage-Set Wandkonsole 5 m",
     "kurz": "Wandkonsole, Kondensatleitung und Befestigungsmaterial",
     "kategorie": "zubehoer",
     "preis": 89,
@@ -622,9 +622,9 @@
       "Dübel, Schrauben, Isolierband"
     ],
     "beschreibung": [
-      "Wer eine Quick-Connect-Anlage selbst montiert, braucht ausser der Anlage genau diese Teile – und merkt das erfahrungsgemäss am Samstagnachmittag, wenn der Baumarkt schliesst.",
-      "Die Konsole ist verzinkt und für Aussengeräte bis 120 kg ausgelegt, die Schwingungsdämpfer entkoppeln den Verdichter von der Fassade.",
-      "Der Kabelkanal deckt Leitung und Kondensatschlauch an der Fassade ab – optisch der Unterschied zwischen Handwerk und Provisorium."
+      "Jede Anlage mit Aussengerät braucht ausser dem Gerät selbst noch die Halterung und das Kleinmaterial. Viele Sets enthalten das nicht — und das fällt erfahrungsgemäss am Samstagnachmittag auf, wenn der Baumarkt schliesst.",
+      "Die Konsole ist verzinkt und für Aussengeräte bis 120 kg ausgelegt, die Schwingungsdämpfer entkoppeln den Verdichter von der Fassade — das ist der Unterschied zwischen einem ruhigen Gerät und einem, über das sich der Nachbar beschwert.",
+      "Der Kabelkanal deckt Leitung und Kondensatschlauch an der Fassade ab. Wenn Sie den Fachbetrieb beauftragen, bringen Sie das Material einfach mit; viele Betriebe rechnen es sonst mit Aufschlag ab."
     ],
     "kennzahl": "",
     "kanaele": 0

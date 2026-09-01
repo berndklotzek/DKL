@@ -14,7 +14,9 @@ Checkliste vor dem Livegang in
 Anfragetext für China in
 [`docs/klimashop-beschaffung.md`](docs/klimashop-beschaffung.md), Marge und
 Preisbildung in [`docs/klimashop-kalkulation.md`](docs/klimashop-kalkulation.md)
-samt Arbeitsmappe `kalkulation/arktik-margenkalkulation.xlsx`.
+samt Arbeitsmappe `kalkulation/arktik-margenkalkulation.xlsx`, Wettbewerb,
+Zielgruppe und Namensfindung in
+[`docs/klimashop-positionierung.md`](docs/klimashop-positionierung.md).
 
 ```bash
 python3 tools/build.py     # Shop bauen

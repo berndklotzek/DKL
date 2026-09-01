@@ -63,8 +63,8 @@ SRC = os.path.join(ROOT, "src")
 OUT = os.path.join(ROOT, "klimaanlagen")
 
 KATEGORIEN = {
-    "monoblock":     ("Monoblock-Klimaanlagen",  "Ohne Aussengerät – nur zwei Kernbohrungen. Montage ohne Kälteschein."),
-    "quick-connect": ("Quick-Connect-Split",     "Split-Effizienz mit vorbefüllter Schnellkupplung. Selbstmontage möglich."),
+    "monoblock":     ("Monoblock-Klimaanlagen",  "Ohne Aussengerät – nur zwei Kernbohrungen. Hermetisch geschlossen, deshalb ohne Kälteschein montierbar."),
+    "quick-connect": ("Quick-Connect-Split",     "Vorbefüllte Schnellkupplung: Der Fachbetrieb braucht statt fünf nur rund zwei Stunden."),
     "split":         ("Split-Klimaanlagen",      "Höchste Effizienz und niedrigste Geräuschwerte. Montage durch Fachbetrieb."),
     "multisplit":    ("Multi-Split-Anlagen",     "Mehrere Räume an einem Aussengerät – eine Genehmigung genügt."),
     "mobil":         ("Klimageräte ohne Montage", "Aufstellen und einschalten. Mit Zweikanal-Technik ohne den Unterdruck-Nachteil einfacher Geräte."),
@@ -662,7 +662,18 @@ def product_page(p, produkte):
     features = "".join('<li>%s<span>%s</span></li>' % (ICONS["check"], html.escape(f)) for f in p["features"])
     beschreibung = "".join("<p>%s</p>" % html.escape(t) for t in p["beschreibung"])
 
-    if p["montage"] == "fachbetrieb":
+    if p["kategorie"] == "quick-connect":
+        montage_notice = (
+            '<div class="notice">%s<div><b>Montage durch einen zertifizierten Betrieb — '
+            'aber deutlich schneller</b>'
+            'Quick-Connect heisst schnellere Montage, nicht Selbstmontage. Die Anlage ist nicht '
+            'hermetisch geschlossen und mit fluoriertem Kältemittel befüllt; nach Artikel 11 '
+            'Absatz 7 der Verordnung (EU) 2024/573 und § 9 Absatz 3 ChemKlimaschutzV dürfen wir '
+            'sie nur an Sie verkaufen, wenn Sie schriftlich nachweisen, dass ein zertifizierter '
+            'Fachbetrieb installiert. Weil Vakuumpumpe und Dichtheitsprüfung entfallen, sinkt '
+            'die Montagerechnung typischerweise um 200 bis 400 €. Wir vermitteln einen '
+            'Partnerbetrieb.</div></div>' % ICONS["warn"])
+    elif p["montage"] == "fachbetrieb":
         montage_notice = (
             '<div class="notice">%s<div><b>Montage durch einen zertifizierten Betrieb</b>'
             'Diese Split-Anlage wird mit evakuierten Kältemittelleitungen in Betrieb genommen. '
@@ -925,7 +936,8 @@ def lieferumfang(p):
                       "Kondensatschlauch 1,5 m", "Bedienungsanleitung in deutscher Sprache"],
         "quick-connect": ["Innen- und Aussengerät", "Vorbefüllte Kältemittelleitung 5 m mit Schnellkupplung",
                           "Wandkonsole für das Aussengerät", "Infrarot-Fernbedienung mit Batterien",
-                          "Kondensatschlauch und Mauerdurchführung", "Bedienungsanleitung in deutscher Sprache"],
+                          "Kondensatschlauch und Mauerdurchführung", "Bedienungsanleitung in deutscher Sprache",
+                          "Formular für den Nachweis des Fachbetriebs"],
         "split": ["Innen- und Aussengerät", "Montageplatte für das Innengerät",
                   "Infrarot-Fernbedienung mit Batterien", "Kondensatschlauch 1,5 m",
                   "Kältemittelleitungen und Wandkonsole sind nicht enthalten",
@@ -946,6 +958,15 @@ def lieferumfang(p):
 
 
 def montage_text(p):
+    if p["kategorie"] == "quick-connect":
+        return ("<p>Die Leitungen sind werkseitig befüllt und vorvakuumiert, die Kupplungen "
+                "dichten beim Anziehen selbst ab. Der Fachbetrieb spart dadurch Vakuumpumpe, "
+                "Bördeln und Dichtheitsprüfung — statt rund fünf Stunden braucht er etwa zwei.</p>"
+                "<p><b>Selbst montieren dürfen Sie die Anlage nicht.</b> Sie ist nicht hermetisch "
+                "geschlossen und enthält fluoriertes Kältemittel. Wir dürfen sie deshalb nur "
+                "ausliefern, wenn uns Ihr schriftlicher Nachweis über den zertifizierten "
+                "Fachbetrieb vorliegt — ein Formular dafür schicken wir mit der "
+                "Bestellbestätigung. Den Nachweis bewahren wir fünf Jahre auf.</p>")
     if p["montage"] == "fachbetrieb":
         return ("<p>Die Anlage wird mit evakuierten Leitungen in Betrieb genommen. Das darf nach "
                 "EU-Verordnung 2024/573 nur ein Betrieb mit Sachkundenachweis der Kategorie I. "
