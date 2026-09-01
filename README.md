@@ -12,7 +12,9 @@ Zwei eigenständige, statische Websites in einem Repository.
 Checkliste vor dem Livegang in
 [`docs/klimashop-rechtliches.md`](docs/klimashop-rechtliches.md), Lieferanten und
 Anfragetext für China in
-[`docs/klimashop-beschaffung.md`](docs/klimashop-beschaffung.md).
+[`docs/klimashop-beschaffung.md`](docs/klimashop-beschaffung.md), Marge und
+Preisbildung in [`docs/klimashop-kalkulation.md`](docs/klimashop-kalkulation.md)
+samt Arbeitsmappe `kalkulation/arktik-margenkalkulation.xlsx`.
 
 ```bash
 python3 tools/build.py     # Shop bauen

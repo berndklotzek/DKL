@@ -31,6 +31,16 @@ cd klimaanlagen && python3 -m http.server 8000
 Danach <http://localhost:8000> öffnen. Es wird nichts installiert, es gibt keine
 Abhängigkeiten ausser Python 3.
 
+## Margenkalkulation
+
+```bash
+python3 tools/make-kalkulation.py    # erzeugt kalkulation/arktik-margenkalkulation.xlsx
+```
+
+Arbeitsmappe zum Selbstrechnen: Einkaufspreis, Landepreis, Deckungsbeitrag und
+Kapitalbedarf je Container. Blaue Zellen ändern, der Rest sind Formeln. Die
+Erläuterung dazu steht in [`docs/klimashop-kalkulation.md`](klimashop-kalkulation.md).
+
 ## Vorschau zum Herumzeigen
 
 ```bash
