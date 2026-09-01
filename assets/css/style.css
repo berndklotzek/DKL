@@ -162,6 +162,22 @@ a:hover { color: var(--accent); }
   .hero figure { order: -1; justify-content: flex-start; }
 }
 
+/* --- Wechselnde Hauptüberschrift ------------------------------------------ */
+
+/* Alle Aussagen teilen sich ein Rasterfeld: Die Überschrift ist so hoch wie die
+   längste Aussage und springt beim Wechsel nicht. */
+.rotator { display: grid; text-wrap: balance; }
+.slogan {
+  grid-area: 1 / 1;
+  opacity: 0; visibility: hidden; transform: translateY(.28em);
+  transition: opacity .7s ease, transform .7s ease, visibility .7s;
+}
+.slogan.is-active { opacity: 1; visibility: visible; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .slogan { transition: none; transform: none; }
+}
+
 /* --- Abschnitte ----------------------------------------------------------- */
 
 section { padding: var(--step) 0; }

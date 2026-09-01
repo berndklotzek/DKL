@@ -9,6 +9,7 @@ Seelenfrieden Urnenrückführung GmbH, Zug.
 index.html              Komplette Seite (Hero, Leistungen, Ablauf, Über uns, Kontakt, Impressum)
 assets/css/style.css    Styles; alle Farben/Typo als CSS-Variablen ganz oben in :root
 assets/js/i18n.js       Sprachumschalter DE/RU
+assets/js/slogans.js    Wechsel der Hauptüberschrift
 ```
 
 Kein Build, kein Framework, keine externen Ressourcen — die Seite läuft direkt
@@ -34,6 +35,19 @@ stehen — es fehlt also nie Inhalt.
 
 **Neuen Text ergänzen:** immer beide Sprachvarianten anlegen, sonst ist der
 Abschnitt in einer Sprache leer.
+
+## Wechselnde Hauptüberschrift
+
+Die fünf Aussagen im Hero stehen als `.slogan` in der `<h1 class="rotator">`.
+Sie liegen im selben Rasterfeld übereinander, deshalb ist die Überschrift immer
+so hoch wie die längste Aussage und springt beim Wechsel nicht. `slogans.js`
+schaltet alle 5,2 Sekunden weiter und pausiert, solange die Maus darauf steht
+oder der Tab im Hintergrund liegt.
+
+Aussage ergänzen: einen weiteren `.slogan`-Block mit beiden Sprachen in die
+`<h1>` einhängen — mehr braucht es nicht. Die erste Aussage trägt `is-active`,
+damit ohne JavaScript nicht etwa eine leere Überschrift dasteht. Bei
+`prefers-reduced-motion` bleibt genau diese erste Aussage stehen.
 
 ## Laufschrift
 
