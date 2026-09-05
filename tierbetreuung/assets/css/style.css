@@ -308,7 +308,7 @@ p:last-child { margin-bottom: 0; }
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  object-position: 50% 20%;
+  object-position: 50% 50%;
   border-radius: 4px;
 }
 .hero__figure figcaption {
@@ -439,6 +439,21 @@ p:last-child { margin-bottom: 0; }
 .day .plan__rail::before { background: var(--card); }
 .plan h3 { font-size: 1.25rem; margin-bottom: .4rem; }
 .plan p { color: var(--pine-soft); font-size: .96rem; max-width: 56ch; }
+
+.day__photo {
+  margin: 2.2rem 0 1.6rem;
+  max-width: 21rem;
+}
+.day__photo img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 4px;
+}
+.day__photo figcaption {
+  margin-top: .6rem;
+  color: var(--mute);
+}
 
 .day__grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
 @media (max-width: 860px) { .day__grid { grid-template-columns: 1fr; } }

@@ -107,10 +107,21 @@ unterwegs?“ im FAQ und der Kontaktabschnitt.
 
 ## Bilder
 
-Zurzeit gibt es nur das Porträt. Sobald Fotos betreuter Tiere vorliegen, ist der
-Tagesplan-Abschnitt die passende Stelle — pro Eintrag ein Bild neben dem Text.
-Vorher immer die Einwilligung der Halterinnen und Halter einholen; so steht es
-auch in der Datenschutzerklärung.
+| Datei | wo | Ausschnitt |
+|---|---|---|
+| `veronika-hund.jpg` | Titelbild neben der Hauptüberschrift | 4:5, fasst Gesicht und Hund |
+| `katze-snack.jpg` | Tagesplan, linke Spalte | 4:5 |
+| `veronika.jpg` | Über mich | Hochformat |
+
+Alle drei sind auf 1120 × 1400 gerechnet und liegen bei rund 100 bis 200 KB.
+Das Titelbild wird über `object-fit: cover` beschnitten: auf dem Handy schmaler
+(3:4), am Rechner genau im Seitenverhältnis der Datei. Ein Austausch braucht
+deshalb nur ein Bild im Hochformat, in dem oben und in der Mitte nichts
+Wichtiges am Rand klebt.
+
+Sobald Fotos betreuter Tiere dazukommen, ist der Tagesplan die passende Stelle —
+pro Eintrag ein Bild neben dem Text. Vorher immer die Einwilligung der
+Halterinnen und Halter einholen; so steht es auch in der Datenschutzerklärung.
 
 ## Gestaltung
 
