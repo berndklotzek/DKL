@@ -81,7 +81,7 @@ dorthin; WhatsApp und E-Mail bleiben bestehen.
 | `booking-config.js` → `services` | Preise 15 € / 22 € / 14 € / 45 € / 55 € | bestätigte Preise — Preisangaben müssen stimmen |
 | `booking-config.js` → `visitHours` | 7–21 Uhr, Wochenende 8–20 Uhr | die tatsächlichen Zeiten |
 | `index.html` Kontakt | Tabelle „Besuchszeiten“ | muss zu `visitHours` passen |
-| `booking-config.js` → `contact.area` | „etwa 15 km“ | tatsächlicher Radius (steht auch im FAQ und im Kontaktteil) |
+| `booking-config.js` → `contact.area` | „Stuttgart und Umgebung“ | Grenzen des Gebiets bestätigen — dieselbe Angabe steht im Hero, im FAQ und im Kontaktteil |
 | `impressum.html` | Abschnitt „Umsatzsteuer“ | USt-IdNr. **oder** Hinweis auf § 19 UStG |
 | `datenschutz.html` | Hoster, Speicherdauer der Logfiles | Angaben des gewählten Hosters |
 
@@ -94,6 +94,16 @@ sie abgeschlossen ist, gehört ein Satz in die Fragen-Liste.
 Umfang kann zusätzlich eine Erlaubnis nach § 11 TierSchG nötig werden (das
 betrifft vor allem Betreuung in eigenen Räumen). Das gehört vor den Livegang
 mit Gewerbeamt und Veterinäramt geklärt.
+
+## Betriebssitz und Einsatzgebiet
+
+Die Anschrift in Impressum, Datenschutzerklärung und `booking-config.js`
+(Berliner Straße 13, Remseck am Neckar) ist der Sitz — dort muss die
+ladungsfähige Adresse stehen. Das Einsatzgebiet ist davon unabhängig und
+lautet Stuttgart und Umgebung; genannt werden das Stadtgebiet sowie Fellbach,
+Waiblingen, Kornwestheim, Ludwigsburg und Remseck. Wird das Gebiet enger oder
+weiter, sind es drei Stellen: `contact.area`, die Antwort „Wo sind Sie
+unterwegs?“ im FAQ und der Kontaktabschnitt.
 
 ## Bilder
 

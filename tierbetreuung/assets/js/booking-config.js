@@ -16,7 +16,7 @@ window.BOOKING_CONFIG = {
     instagram: 'veronnyss',
     street:    'Berliner Straße 13',
     city:      '71686 Remseck am Neckar',
-    area:      'Remseck am Neckar und Umgebung, etwa 15 km'   // TODO Radius bestätigen
+    area:      'Stuttgart und Umgebung'          // TODO Grenzen des Gebiets bestätigen
   },
 
   /* --- Wohin geht die Anfrage? ------------------------------------------
