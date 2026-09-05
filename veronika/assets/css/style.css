@@ -351,6 +351,11 @@ p:last-child { margin-bottom: 0; }
   margin-top: 2.4rem;
 }
 
+.hero__where {
+  margin-top: 1.6rem;
+  color: var(--ink-mute);
+}
+
 .hero__facts {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -937,6 +942,12 @@ p:last-child { margin-bottom: 0; }
 }
 .contact__grid p { font-family: var(--serif); font-size: 1.3rem; line-height: 1.5; }
 .contact__grid a { text-decoration: none; border-bottom: 1px solid var(--gold-soft); }
+.contact__grid .map-link {
+  font-family: var(--sans);
+  font-size: .66rem;
+  margin-top: .9rem;
+}
+.contact__grid .map-link a { color: var(--ink-mute); }
 .contact__grid a:hover { color: var(--gold); }
 
 .hours { list-style: none; margin: 0; padding: 0; }

@@ -74,14 +74,19 @@ Weg bestehen. Der Rest der Seite bleibt unverändert.
 
 | Stelle | Platzhalter | gebraucht wird |
 |---|---|---|
-| `index.html` Kontakt, `impressum.html`, `datenschutz.html` | `[Straße Hausnummer]`, `[PLZ Ort]` | die echte Studioadresse |
-| `booking-config.js` → `contact.studio` | dieselben Platzhalter | Adresse für die Kalenderdatei |
 | `impressum.html` | Abschnitt „Umsatzsteuer“ | USt-IdNr. **oder** Hinweis auf § 19 UStG (Kleinunternehmerin) |
 | `datenschutz.html` | `[Name und Anschrift des Hosters]`, `[Speicherdauer]` | Angaben des gewählten Hosters |
 | `booking-config.js` → `services` | Preise `ab 45 €` … | bestätigte Preise; Preisangaben müssen stimmen |
 | `booking-config.js` → `openingHours` | Di–Fr 10–19, Sa 10–16 | die tatsächlichen Zeiten |
 | `index.html` Abschnitt Kontakt | dieselbe Tabelle „Öffnungszeiten“ | muss zu `openingHours` passen |
 | `index.html` | `2 Jahre`, `6–8 Wochen` | Angaben bestätigen |
+
+Die Anschrift (Berliner Straße 13, 71686 Remseck am Neckar) steht im
+Kontaktabschnitt, im Impressum, in der Datenschutzerklärung und in
+`booking-config.js` (von dort wandert sie in die Kalenderdatei). Remseck am
+Neckar hat nur die eine Postleitzahl 71686 — bitte trotzdem einmal
+gegenlesen, ebenso, ob die Adresse öffentlich stehen soll: im Impressum ist
+sie Pflicht, im Kontaktabschnitt der Startseite nicht.
 
 Telefonnummer, E-Mail-Adresse und Instagram-Name stammen aus dem Portfolio.
 Die WhatsApp-Schaltfläche nutzt dieselbe Nummer (`contact.whatsapp`) — falls

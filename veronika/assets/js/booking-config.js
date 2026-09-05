@@ -17,9 +17,9 @@ window.BOOKING_CONFIG = {
     whatsapp:  '4917657990459',
     instagram: 'veronnyss',
     studio: {
-      name:   'Lash Studio Veronika',            // TODO Studioname bestaetigen
-      street: '[Straße Hausnummer]',            // TODO
-      city:   '[PLZ Ort]'                        // TODO
+      name:   'Veronika Yovenko — Lash Lifting',
+      street: 'Berliner Straße 13',
+      city:   '71686 Remseck am Neckar'
     }
   },
 
