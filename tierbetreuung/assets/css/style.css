@@ -261,14 +261,25 @@ p:last-child { margin-bottom: 0; }
   stroke-dasharray: 3 14;
 }
 
+/* Der Hero ist ein benanntes Raster. Dadurch kann das Porträt auf schmalen
+   Schirmen neben der Überschrift stehen bleiben, statt darunter zu rutschen:
+   es wechselt nur das Feld, nicht die Reihenfolge im HTML. */
 .hero__grid {
   position: relative;
   display: grid;
   grid-template-columns: 1.05fr .95fr;
-  gap: clamp(2rem, 5vw, 4.5rem);
-  align-items: center;
+  grid-template-areas:
+    "label  figure"
+    "title  figure"
+    "rest   figure";
+  grid-template-rows: auto auto 1fr;
+  column-gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
 }
-@media (max-width: 900px) { .hero__grid { grid-template-columns: 1fr; } }
+.hero__label  { grid-area: label; }
+.hero__title  { grid-area: title; }
+.hero__rest   { grid-area: rest; }
+.hero__figure { grid-area: figure; align-self: center; }
 
 .hero h1 {
   font-size: clamp(2.5rem, 6.4vw, 4.6rem);
@@ -314,7 +325,32 @@ p:last-child { margin-bottom: 0; }
   box-shadow: 0 18px 40px -30px rgba(22, 33, 27, .8);
 }
 @media (max-width: 900px) {
-  .hero__figure { max-width: 24rem; margin-bottom: 3.5rem; }
+  .hero__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(6rem, 41%);
+    grid-template-areas:
+      "label  label"
+      "title  figure"
+      "rest   rest";
+    column-gap: clamp(1rem, 4vw, 1.8rem);
+  }
+  .hero h1 { font-size: clamp(1.8rem, 8.2vw, 2.7rem); hyphens: auto; overflow-wrap: break-word; }
+  .hero__rest { margin-top: 1.8rem; }
+  .hero__figure { align-self: start; margin-top: .4rem; }
+  .hero__figure img { aspect-ratio: 3 / 4; }
+  /* Die Bildunterschrift steht hier nicht mehr über der Ecke des Bildes,
+     sondern schlicht darunter — daneben ist kein Platz. */
+  .hero__figure figcaption {
+    position: static;
+    transform: none;
+    max-width: none;
+    padding: .55rem 0 0;
+    background: transparent;
+    border-left: 0;
+    box-shadow: none;
+    font-size: .72rem;
+    line-height: 1.35;
+  }
+  .hero__figcaption-more { display: none; }
 }
 
 /* --- Band mit Einsatzgebiet ------------------------------------------------ */
@@ -481,6 +517,13 @@ p:last-child { margin-bottom: 0; }
 .svc__name { font-family: var(--display); font-size: 1.25rem; font-weight: 500; }
 .svc__meta { color: var(--ocher); white-space: nowrap; }
 .svc__desc { grid-column: 1 / -1; color: var(--pine-soft); font-size: .92rem; line-height: 1.55; }
+
+/* Auf sehr schmalen Schirmen rutscht die Angabe zu Dauer und Preis unter den
+   Namen — nebeneinander würde die Karte über den Bildschirmrand hinauswachsen. */
+@media (max-width: 460px) {
+  .svc { grid-template-columns: 1fr; }
+  .svc__meta { white-space: normal; }
+}
 
 .cal-layout { display: grid; grid-template-columns: minmax(0, 19rem) minmax(0, 1fr); gap: clamp(1.6rem, 4vw, 2.8rem); }
 @media (max-width: 780px) { .cal-layout { grid-template-columns: 1fr; } }
