@@ -458,6 +458,35 @@ p:last-child { margin-bottom: 0; }
 .day__grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
 @media (max-width: 860px) { .day__grid { grid-template-columns: 1fr; } }
 
+/* --- Ankommen (Video) ------------------------------------------------------ */
+
+.moment__grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+@media (max-width: 860px) { .moment__grid { grid-template-columns: 1fr; } }
+
+.moment__player { margin: 0; }
+.moment__player video {
+  display: block;
+  width: 100%;
+  /* height: auto ist nötig — sonst gewinnt das height-Attribut im HTML
+     (das für das Seitenverhältnis dasteht) gegen aspect-ratio. */
+  height: auto;
+  max-width: 21rem;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  background: var(--pine);
+  border-radius: 4px;
+}
+.moment__player figcaption {
+  margin-top: .7rem;
+  max-width: 21rem;
+  color: var(--mute);
+}
+
 /* --- Ablauf ---------------------------------------------------------------- */
 
 .steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(1.2rem, 3vw, 2.2rem); list-style: none; margin: 0; padding: 0; }

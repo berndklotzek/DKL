@@ -119,6 +119,21 @@ Das Titelbild wird über `object-fit: cover` beschnitten: auf dem Handy schmaler
 deshalb nur ein Bild im Hochformat, in dem oben und in der Mitte nichts
 Wichtiges am Rand klebt.
 
+### Video
+
+`assets/video/ankommen.mp4` (H.264, 2,4 MB) und `ankommen.webm` (VP9, 1,6 MB)
+zeigen dasselbe: den ersten Besuch eines Tages, 16 Sekunden, mit Ton. Beide
+Fassungen stehen als `<source>` im HTML — Safari und iOS nehmen die MP4, ein
+Chromium ohne H.264 die WebM. Das Standbild `assets/img/ankommen-poster.jpg`
+ist der einzige Teil, der beim Seitenaufruf geladen wird: das Video hat
+`preload="none"` und startet erst auf Tippen. Es liegt auf demselben Server,
+also kein YouTube, kein Cookie, kein Fremdzugriff.
+
+Ein neues Video ersetzt beide Dateien; die Kommandozeile dafür steht im
+Commit, kurz gefasst: 30 Bilder pro Sekunde, 720 Pixel Breite, `-crf 28` für
+H.264 und `-crf 40` für VP9. Das Standbild sollte ein Bild aus der Mitte sein,
+in dem das Tier gut zu sehen ist.
+
 Sobald Fotos betreuter Tiere dazukommen, ist der Tagesplan die passende Stelle —
 pro Eintrag ein Bild neben dem Text. Vorher immer die Einwilligung der
 Halterinnen und Halter einholen; so steht es auch in der Datenschutzerklärung.
