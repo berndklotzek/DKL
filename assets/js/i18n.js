@@ -1,7 +1,8 @@
 /* Sprachumschaltung DE / RU.
    Die Inhalte stehen doppelt im HTML (lang="de" / lang="ru"); sichtbar ist,
    was das data-lang-Attribut am <html>-Element freigibt. Ohne JavaScript
-   bleibt die im Markup gesetzte Standardsprache stehen. */
+   bleibt die im Markup gesetzte Standardsprache stehen.
+   Reihenfolge: ?lang= in der Adresse, gemerkte Wahl, Browsersprache, Deutsch. */
 (function () {
   var SUPPORTED = ['de', 'ru'];
   var STORE_KEY = 'sf-lang';
@@ -10,7 +11,6 @@
   function stored() {
     try { return localStorage.getItem(STORE_KEY); } catch (e) { return null; }
   }
-
   function remember(lang) {
     try { localStorage.setItem(STORE_KEY, lang); } catch (e) { /* Privatmodus: egal */ }
   }
@@ -22,10 +22,17 @@
     document.querySelectorAll('[data-set-lang]').forEach(function (btn) {
       btn.setAttribute('aria-pressed', String(btn.dataset.setLang === lang));
     });
+    /* Titel und Beschreibung aus data-title-xx / data-desc-xx am <html>. */
+    var t = root.getAttribute('data-title-' + lang);
+    if (t) document.title = t;
+    var d = root.getAttribute('data-desc-' + lang), meta = document.querySelector('meta[name="description"]');
+    if (d && meta) meta.setAttribute('content', d);
   }
 
-  var initial = stored() || (navigator.language || '').slice(0, 2).toLowerCase();
+  var fromUrl = (new URLSearchParams(location.search).get('lang') || '').toLowerCase();
+  var initial = fromUrl || stored() || (navigator.language || '').slice(0, 2).toLowerCase();
   apply(SUPPORTED.indexOf(initial) === -1 ? 'de' : initial);
+  if (fromUrl && SUPPORTED.indexOf(fromUrl) !== -1) remember(fromUrl);
 
   document.addEventListener('click', function (ev) {
     var btn = ev.target.closest('[data-set-lang]');

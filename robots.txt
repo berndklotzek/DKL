@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/sitemap.xml
