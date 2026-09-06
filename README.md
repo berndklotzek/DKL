@@ -13,13 +13,17 @@ python3 -m http.server 8000   # dann http://localhost:8000 öffnen
 ## Aufbau
 
 ```
-index.html               Startseite: Hero, Rechtslage, Leistungen, Ablauf, Festpreis,
-                         Vorsorge, Über uns, Versprechen, FAQ, Kontakt mit Formular
+index.html               Startseite: Hero mit 3D-Urne, Rechtslage, Leistungen, Ablauf mit
+                         3D-Route, Festpreis, Vorsorge, Über uns, Ratgeber, FAQ, Kontakt
 friedhofszwang.html      Ratgeber: Friedhofszwang, Schweizer Praxis, Weg über die Grenze
+urne-zu-hause-aufbewahren.html      Ratgeber: Urne zu Hause — DE verboten, CH erlaubt
+urne-ins-ausland-ueberfuehren.html  Ratgeber: Unterlagen, Dauer, Zoll, Kosten
+bestattungsverfuegung.html          Ratgeber: Vorsorge zu Lebzeiten
 impressum.html           Impressum
 datenschutz.html         Datenschutzerklärung (DSG / DSGVO)
 404.html                 Fehlerseite (beim Hoster als 404-Dokument eintragen)
-tools/build-pages.py     erzeugt die vier Unterseiten aus einem gemeinsamen Rahmen
+ru/                      dieselben Seiten mit Russisch als Standardsprache (eigene URLs)
+tools/build-pages.py     erzeugt alle Unterseiten, den Ordner ru/ und die Sitemap
 
 assets/css/fonts.css     @font-face für die selbst gehosteten Schriften
 assets/css/style.css     Gestaltungssystem; alle Farben, Schriften, Abstände oben in :root
@@ -32,6 +36,9 @@ assets/js/scene.js       Dämmerung über dem Zugersee: Berge, Mond, Stadt, Spie
 assets/js/flag.js        Wehende Schweizer Fahne am Mast (Canvas)
 assets/js/reveal.js      Einblenden beim Scrollen, Zähler, aktiver Menüpunkt, Inhaltsverzeichnis
 assets/js/form.js        Kontaktformular: Endpunkt oder Mailprogramm
+assets/js/fx.js          Lesefortschritt, Lichtkegel unter dem Zeiger, Neigung der Preiskarte
+assets/js/three-scenes.js  WebGL: Partikel-Urne im Hero, Lichtroute im Ablauf
+assets/vendor/three.min.js Three.js r128 (MIT), lokal — kein CDN
 
 robots.txt, sitemap.xml, site.webmanifest
 ```
@@ -69,24 +76,28 @@ Beide Sprachfassungen stehen parallel im HTML:
 ```
 
 Sichtbar ist die Sprache, die `data-lang` am `<html>`-Element freigibt.
-`i18n.js` setzt das Attribut — Reihenfolge: `?lang=ru` in der Adresse,
-gemerkte Wahl (`localStorage`), Browsersprache, sonst Deutsch. Titel und
-Meta-Beschreibung wechseln mit (`data-title-*`, `data-desc-*` am `<html>`).
-Ohne JavaScript bleibt Deutsch stehen — es fehlt also nie Inhalt.
+Jede Sprache hat **eine eigene Adresse**: `/` ist Deutsch, `/ru/` ist Russisch
+(gleiche Dateien, russische Standardsprache, Titel, Beschreibung, Canonical).
+Die Umschalter DE/RU sind echte Links mit `hreflang`, damit Suchmaschinen
+beide Fassungen finden. Für Besucher schaltet `i18n.js` sofort um, ohne neu
+zu laden, und merkt sich die Wahl. Ohne JavaScript steht die Sprache der
+Adresse — es fehlt also nie Inhalt.
 
-**Neuen Text ergänzen:** immer beide Sprachvarianten anlegen.
+**Neuen Text ergänzen:** immer beide Sprachvarianten anlegen, danach
+`python3 tools/build-pages.py` laufen lassen, damit `ru/` nachzieht.
 
 ## Unterseiten pflegen
 
-Ratgeber, Impressum, Datenschutz und 404 teilen sich Kopf- und Fusszeile.
-Sie werden aus `tools/build-pages.py` erzeugt:
+Alle Seiten ausser der Startseite werden aus `tools/build-pages.py` erzeugt;
+das Skript schreibt auch den Ordner `ru/` (inklusive `ru/index.html` aus
+`index.html`) und die `sitemap.xml`:
 
 ```bash
 python3 tools/build-pages.py
 ```
 
-Text ändern → im Skript ändern → Skript laufen lassen → die HTML-Dateien
-mit einchecken. Die Startseite `index.html` wird direkt gepflegt.
+Text ändern → im Skript ändern → Skript laufen lassen → alle erzeugten
+Dateien mit einchecken. Die Startseite `index.html` wird direkt gepflegt.
 
 ## Kontaktformular
 
@@ -100,6 +111,23 @@ Function oder einen eigenen Endpunkt, der JSON per POST entgegennimmt:
 ```
 
 Das unsichtbare Feld `website` ist ein Honeypot gegen Bots.
+
+## 3D-Szenen
+
+`three-scenes.js` zeichnet mit Three.js zwei WebGL-Szenen:
+
+- **Hero:** eine Urne aus rund 9 000 goldenen Lichtpunkten (auf Handys 4 200),
+  gleichmässig auf einer Drehfläche verteilt. Sie dreht sich, neigt sich zur
+  Maus und löst sich beim Scrollen in einen Strom auf, der nach oben zieht.
+  Dazu zwei Lichtbahnen und aufsteigende Funken. Profil der Urne: `profile`
+  oben in der Datei, Radius/Höhe von unten nach oben.
+- **Ablauf:** Drahtgitter-Gelände, Lichtbogen von Deutschland nach Zug, ein
+  reisender Lichtpunkt mit Schweif.
+
+Gerendert wird nur, wenn die Szene im Bild und der Tab sichtbar ist. Ohne
+WebGL, ohne Three.js oder bei `prefers-reduced-motion` bleibt die gemalte
+2D-Kulisse stehen — es leuchtet nur weniger. Three.js liegt lokal unter
+`assets/vendor/` (MIT, Lizenz beigelegt), es wird kein CDN angesprochen.
 
 ## Kulisse und Bewegung
 
@@ -117,11 +145,24 @@ Scrollen ein und zählt die Kennzahl «200+» hoch.
 Bei `prefers-reduced-motion` steht alles still: Fahne, Laufschrift, Nebel,
 Slogan-Wechsel, Einblendungen.
 
-## Suchmaschinen und Vorschauen
+## Suchmaschinen
 
-JSON-LD (`LocalBusiness`, `FAQPage`) im Kopf der Startseite, Open-Graph-Bild
-`assets/img/og.png` (1200 × 630), `hreflang` für beide Sprachen, `sitemap.xml`
-und `robots.txt`. Die Sitemap verwendet die Punycode-Form der Domain.
+- **Eigene URLs je Sprache** (`/`, `/ru/`) mit `hreflang` in beide Richtungen
+  und `x-default`, Canonical in Punycode-Form.
+- **Strukturierte Daten:** Startseite `Organization`/`LocalBusiness` mit Geo,
+  Öffnungszeiten und Kontakt, `WebSite`, `WebPage`, `Service` mit `Offer`
+  (490 €) und Leistungskatalog, `FAQPage` mit acht Fragen. Ratgeber-Seiten
+  `Article` + `BreadcrumbList`, Impressum/Datenschutz `WebPage` + Breadcrumb.
+- **Inhalt:** vier Ratgeber-Artikel zu den Suchbegriffen «Friedhofszwang»,
+  «Urne zu Hause aufbewahren», «Urne ins Ausland überführen»,
+  «Bestattungsverfügung», untereinander verlinkt («Weiterlesen») und von der
+  Startseite (#ratgeber) und der Fusszeile aus.
+- **Technik:** `sitemap.xml` mit allen 14 URLs und Sprachalternativen,
+  `robots.txt`, Open-Graph je Seite mit Bild (1200 × 630), `theme-color`,
+  Web-Manifest, keine Fremdabrufe, Schriften vorgeladen.
+- **Beim Livegang:** Sitemap in der Google Search Console einreichen,
+  Google-Unternehmensprofil für «Seelenfrieden Urnenrückführung GmbH, Zug»
+  anlegen und mit der Website verknüpfen.
 
 ## Noch einzutragen
 
@@ -131,7 +172,7 @@ und `robots.txt`. Die Sitemap verwendet die Punycode-Form der Domain.
 | Impressum | `CHE-000.000.000` | UID nach Handelsregistereintrag |
 | Datenschutz | «Hosting-Anbieter» | Name und Serverstandort des Hosters |
 | Über uns | Porträtrahmen (Canvas) | Foto von Daniel Klotzek — `<canvas>` durch `<img>` ersetzen |
-| Hero, Festpreis, FAQ | `200+`, `490 €`, «1–2 Wochen», «Zahlung nach Übergabe» | Zahlen und Zusagen bestätigen — Werbeaussagen müssen stimmen |
+| Hero, Festpreis, FAQ, Ratgeber | `200+`, `490 €`, «1–2 Wochen», «Zahlung nach Übergabe» | Zahlen und Zusagen bestätigen — Werbeaussagen müssen stimmen |
 | Festpreis | «Nicht enthalten» | Leistungsumfang mit dem tatsächlichen Angebot abgleichen |
 | Kontakt | `data-endpoint` | Formular-Endpunkt, falls kein Mailprogramm gewünscht |
 

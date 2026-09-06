@@ -7,8 +7,10 @@ import os, re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-def head(title_de, title_ru, desc_de, desc_ru, path, noindex=False):
-    robots = '<meta name="robots" content="noindex">\n' if noindex else ''
+D = 'https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch'
+
+def head(title_de, title_ru, desc_de, desc_ru, path, noindex=False, ld=''):
+    robots = '<meta name="robots" content="noindex">\n' if noindex else '<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">\n'
     return f'''<!doctype html>
 <html lang="de" data-lang="de" class="no-js"
       data-title-de="{title_de}"
@@ -22,13 +24,18 @@ def head(title_de, title_ru, desc_de, desc_ru, path, noindex=False):
 <meta name="description" content="{desc_de}">
 {robots}<meta name="theme-color" content="#070c11">
 <meta name="color-scheme" content="dark">
-<link rel="canonical" href="https://www.seelenfrieden-urnenrückführung.ch/{path}">
+<link rel="canonical" href="{D}/{path}">
+<link rel="alternate" hreflang="de" href="{D}/{path}">
+<link rel="alternate" hreflang="ru" href="{D}/ru/{path}">
+<link rel="alternate" hreflang="x-default" href="{D}/{path}">
 <meta property="og:type" content="article">
+<meta property="og:locale" content="de_CH">
+<meta property="og:locale:alternate" content="ru_RU">
 <meta property="og:site_name" content="Seelenfrieden Urnenrückführung GmbH">
 <meta property="og:title" content="{title_de}">
 <meta property="og:description" content="{desc_de}">
-<meta property="og:url" content="https://www.seelenfrieden-urnenrückführung.ch/{path}">
-<meta property="og:image" content="https://www.seelenfrieden-urnenrückführung.ch/assets/img/og.png">
+<meta property="og:url" content="{D}/{path}">
+<meta property="og:image" content="{D}/assets/img/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
@@ -38,9 +45,11 @@ def head(title_de, title_ru, desc_de, desc_ru, path, noindex=False):
 <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="assets/css/style.css">
+{ld}
 </head>
 <body>
 
+<div class="progress" aria-hidden="true"></div>
 <a class="skip" href="#inhalt"><span lang="de">Zum Inhalt</span><span lang="ru">К содержанию</span></a>
 '''
 
@@ -72,15 +81,15 @@ HEADER = '''
       <a href="index.html#leistungen"><span lang="de">Leistungen</span><span lang="ru">Услуги</span></a>
       <a href="index.html#ablauf"><span lang="de">Ablauf</span><span lang="ru">Порядок</span></a>
       <a href="index.html#festpreis"><span lang="de">Festpreis</span><span lang="ru">Цена</span></a>
-      <a href="friedhofszwang.html"><span lang="de">Ratgeber</span><span lang="ru">Справочник</span></a>
+      <a href="index.html#ratgeber"><span lang="de">Ratgeber</span><span lang="ru">Справочник</span></a>
       <a href="index.html#kontakt"><span lang="de">Kontakt</span><span lang="ru">Контакты</span></a>
       <a class="nav-cta" href="tel:+41410000000">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" style="margin-right:.5rem"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>
         <span lang="de">Jetzt anrufen</span><span lang="ru">Позвонить</span>
       </a>
       <span class="langswitch" role="group" aria-label="Sprache / Язык">
-        <button type="button" data-set-lang="de" aria-pressed="true">DE</button>
-        <button type="button" data-set-lang="ru" aria-pressed="false">RU</button>
+        <a href="{{PAGE}}" hreflang="de" data-set-lang="de" aria-pressed="true">DE</a>
+        <a href="ru/{{PAGE}}" hreflang="ru" data-set-lang="ru" aria-pressed="false">RU</a>
       </span>
     </nav>
   </div>
@@ -111,7 +120,10 @@ FOOTER = '''
       <div>
         <h4><span lang="de">Rechtliches</span><span lang="ru">Правовая информация</span></h4>
         <ul>
-          <li><a href="friedhofszwang.html"><span lang="de">Ratgeber Friedhofszwang</span><span lang="ru">Справочник</span></a></li>
+          <li><a href="friedhofszwang.html"><span lang="de">Ratgeber Friedhofszwang</span><span lang="ru">Обязательное захоронение</span></a></li>
+          <li><a href="urne-zu-hause-aufbewahren.html"><span lang="de">Urne zu Hause aufbewahren</span><span lang="ru">Хранить урну дома</span></a></li>
+          <li><a href="urne-ins-ausland-ueberfuehren.html"><span lang="de">Urne ins Ausland überführen</span><span lang="ru">Вывезти урну за границу</span></a></li>
+          <li><a href="bestattungsverfuegung.html"><span lang="de">Bestattungsverfügung</span><span lang="ru">Распоряжение о погребении</span></a></li>
           <li><a href="impressum.html"><span lang="de">Impressum</span><span lang="ru">Выходные данные</span></a></li>
           <li><a href="datenschutz.html"><span lang="de">Datenschutz</span><span lang="ru">Защита данных</span></a></li>
         </ul>
@@ -135,6 +147,7 @@ FOOTER = '''
 <script src="assets/js/i18n.js"></script>
 <script src="assets/js/nav.js"></script>
 <script src="assets/js/reveal.js"></script>
+<script src="assets/js/fx.js"></script>
 </body>
 </html>
 '''
@@ -445,34 +458,386 @@ notfound_body = '''
 </main>
 '''
 
+
+# --------------------------------------------------------------- Weiterlesen
+def related(exclude):
+    items = [
+      ('friedhofszwang.html', 'Der Friedhofszwang, erklärt', 'Обязательное захоронение: как это устроено', 'Rechtslage', 'Право'),
+      ('urne-zu-hause-aufbewahren.html', 'Urne zu Hause aufbewahren', 'Хранить урну дома', 'Zu Hause', 'Дома'),
+      ('urne-ins-ausland-ueberfuehren.html', 'Urne ins Ausland überführen', 'Вывезти урну за границу', 'Ablauf & Kosten', 'Порядок и цена'),
+      ('bestattungsverfuegung.html', 'Die Bestattungsverfügung', 'Распоряжение о погребении', 'Vorsorge', 'Планирование'),
+    ]
+    cards = ''.join(f'''
+        <a href="{h}" class="spot">
+          <span class="caps"><span lang="de">{ede}</span><span lang="ru">{eru}</span></span>
+          <h3><span lang="de">{tde}</span><span lang="ru">{tru}</span></h3>
+          <span class="more"><span lang="de">Lesen</span><span lang="ru">Читать</span></span>
+        </a>''' for h, tde, tru, ede, eru in items if h != exclude)
+    return f'''
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow caps"><span lang="de">Weiterlesen</span><span lang="ru">Читать дальше</span></p>
+      <div class="articles reveal-stagger" style="grid-template-columns:repeat(3,1fr)">{cards}
+      </div>
+    </div>
+  </section>
+'''
+
+def article_ld(path, headline, desc, date_pub, date_mod, crumb):
+    return f'''<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@graph": [
+    {{
+      "@type": "Article",
+      "@id": "{D}/{path}#article",
+      "headline": "{headline}",
+      "description": "{desc}",
+      "inLanguage": "de",
+      "datePublished": "{date_pub}",
+      "dateModified": "{date_mod}",
+      "author": {{ "@type": "Organization", "name": "Seelenfrieden Urnenrückführung GmbH", "@id": "{D}/#org" }},
+      "publisher": {{ "@id": "{D}/#org" }},
+      "mainEntityOfPage": "{D}/{path}",
+      "image": "{D}/assets/img/og.png",
+      "about": [ "Friedhofszwang", "Urnenüberführung", "Bestattungsrecht Schweiz" ]
+    }},
+    {{
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {{ "@type": "ListItem", "position": 1, "name": "Startseite", "item": "{D}/" }},
+        {{ "@type": "ListItem", "position": 2, "name": "Ratgeber", "item": "{D}/#ratgeber" }},
+        {{ "@type": "ListItem", "position": 3, "name": "{crumb}", "item": "{D}/{path}" }}
+      ]
+    }}
+  ]
+}}
+</script>'''
+
+def page_ld(path, name):
+    return f'''<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "{D}/{path}",
+  "url": "{D}/{path}",
+  "name": "{name}",
+  "inLanguage": "de",
+  "isPartOf": {{ "@id": "{D}/#website" }},
+  "breadcrumb": {{ "@type": "BreadcrumbList", "itemListElement": [
+    {{ "@type": "ListItem", "position": 1, "name": "Startseite", "item": "{D}/" }},
+    {{ "@type": "ListItem", "position": 2, "name": "{name}", "item": "{D}/{path}" }} ] }}
+}}
+</script>'''
+
+def article_head(crumb_de, crumb_ru, eyebrow_de, eyebrow_ru, h1_de, h1_ru, lead_de, lead_ru):
+    return f'''
+<main id="inhalt">
+  <div class="page-head">
+    <div class="wrap">
+      <p class="crumbs caps"><a href="index.html"><span lang="de">Startseite</span><span lang="ru">Главная</span></a><span>/</span><a href="index.html#ratgeber"><span lang="de">Ratgeber</span><span lang="ru">Справочник</span></a><span>/</span><span lang="de">{crumb_de}</span><span lang="ru">{crumb_ru}</span></p>
+      <p class="eyebrow caps"><span lang="de">{eyebrow_de}</span><span lang="ru">{eyebrow_ru}</span></p>
+      <h1><span lang="de">{h1_de}</span><span lang="ru">{h1_ru}</span></h1>
+      <p class="lead" lang="de">{lead_de}</p>
+      <p class="lead" lang="ru">{lead_ru}</p>
+    </div>
+  </div>
+  <section class="band">
+    <div class="wrap">
+      <article class="prose" style="margin-inline:auto">
+'''
+
+ARTICLE_END = '''
+      </article>
+    </div>
+  </section>
+'''
+
+# --------------------------------------------------------------- Urne zu Hause
+zuhause_body = article_head(
+  'Urne zu Hause', 'Урна дома', 'Ratgeber · Zu Hause', 'Справочник · Дома',
+  'Urne zu Hause aufbewahren: in Deutschland verboten, in der Schweiz erlaubt.',
+  'Хранить урну дома: в Германии запрещено, в Швейцарии разрешено.',
+  'Viele Angehörige möchten die Urne eines geliebten Menschen bei sich behalten. In Deutschland scheitert das am Friedhofszwang — in der Schweiz ist es selbstverständlich. Was gilt, was möglich ist und wie der Weg aussieht.',
+  'Многие близкие хотят сохранить урну любимого человека у себя. В Германии это невозможно из-за обязательного захоронения — в Швейцарии это само собой разумеется. Что действует, что возможно и как выглядит путь.') + '''
+        <h2><span lang="de">Darf man eine Urne zu Hause aufbewahren?</span><span lang="ru">Можно ли хранить урну дома?</span></h2>
+        <p lang="de"><strong>In Deutschland: nein.</strong> Die Bestattungsgesetze aller sechzehn Bundesländer schreiben vor, dass die Asche eines Verstorbenen auf einem Friedhof oder in einer zugelassenen Anlage beigesetzt wird. Das Krematorium händigt die Urne nicht an Angehörige aus, sondern nur an ein Bestattungsunternehmen oder eine Friedhofsverwaltung. Wer die Urne dennoch zu Hause aufbewahrt, begeht eine Ordnungswidrigkeit.</p>
+        <p lang="ru"><strong>В Германии: нет.</strong> Похоронные законы всех шестнадцати федеральных земель предписывают захоронение праха умершего на кладбище или в допущенном для этого месте. Крематорий не выдаёт урну родственникам — только похоронному бюро или администрации кладбища. Тот, кто всё же хранит урну дома, совершает административное правонарушение.</p>
+        <p lang="de"><strong>In der Schweiz: ja.</strong> Das Bestattungswesen ist Sache der Kantone und Gemeinden, und keine dieser Ordnungen kennt einen Friedhofszwang für Asche. Die Urne wird der Familie ausgehändigt. Sie darf im Wohnzimmer stehen, in einer Nische, im Garten beigesetzt werden — oder die Asche wird an einem Ort verstreut, der dem Verstorbenen etwas bedeutet hat.</p>
+        <p lang="ru"><strong>В Швейцарии: да.</strong> Похоронное дело относится к компетенции кантонов и общин, и ни одна из этих норм не знает обязательного захоронения праха. Урна передаётся семье. Она может стоять в гостиной, в нише, быть захороненной в саду — или прах развеивают в месте, которое было дорого умершему.</p>
+
+        <h2><span lang="de">Warum das für viele Familien wichtig ist</span><span lang="ru">Почему это важно для многих семей</span></h2>
+        <p lang="de">Ein Grab auf einem Friedhof bindet die Familie an einen Ort, an Öffnungszeiten, an Gebühren für zwanzig oder mehr Jahre und an Pflegepflichten. Wer umzieht, verliert die Nähe. Wer aus einem anderen Land stammt, hat oft den Wunsch, die Asche nach Hause mitzunehmen — oder sie wenigstens dort zu wissen, wo die Familie lebt. Der Friedhofszwang lässt beides nicht zu.</p>
+        <p lang="ru">Могила на кладбище привязывает семью к месту, к часам работы, к платежам на двадцать и более лет и к обязанности ухода. Кто переезжает — теряет близость. Кто родом из другой страны, часто хочет забрать прах домой — или хотя бы знать, что он там, где живёт семья. Обязательное захоронение не допускает ни того, ни другого.</p>
+        <blockquote lang="de">Trauer braucht Nähe. Ein Grab in einer fremden Stadt gibt sie nicht.</blockquote>
+        <blockquote lang="ru">Скорби нужна близость. Могила в чужом городе её не даёт.</blockquote>
+
+        <h2><span lang="de">Der Weg: Überführung in die Schweiz</span><span lang="ru">Путь: перевозка в Швейцарию</span></h2>
+        <p lang="de">Was in Deutschland verboten ist, ist über die Grenze erlaubt. Die deutschen Bestattungsgesetze gestatten die Überführung einer Urne ins Ausland, wenn dort eine zugelassene Stelle die Urne übernimmt. Die Seelenfrieden Urnenrückführung GmbH ist eine solche Stelle. Der Ablauf in Kürze:</p>
+        <p lang="ru">То, что запрещено в Германии, разрешено за границей. Немецкие похоронные законы позволяют вывезти урну за рубеж, если там её принимает уполномоченная сторона. Seelenfrieden Urnenrückführung GmbH — такая сторона. Порядок вкратце:</p>
+        <ol lang="de">
+          <li>Sie rufen uns an. Wir klären Ausgangsort, Unterlagen und Zeitrahmen — zum Festpreis von 490 €.</li>
+          <li>Wir bestätigen dem Krematorium die Übernahme und beschaffen Sterbeurkunde und Einäscherungsbescheinigung.</li>
+          <li>Wir holen die Urne ab und bringen sie versiegelt über die Grenze.</li>
+          <li>In Zug übergeben wir Ihnen die Urne persönlich — ab jetzt gehört sie zu Ihnen.</li>
+        </ol>
+        <ol lang="ru">
+          <li>Вы звоните нам. Мы уточняем место, документы и сроки — по фиксированной цене 490 €.</li>
+          <li>Мы подтверждаем крематорию принятие урны и получаем свидетельство о смерти и справку о кремации.</li>
+          <li>Мы забираем урну и провозим её опечатанной через границу.</li>
+          <li>В Цуге мы лично передаём вам урну — с этого момента она ваша.</li>
+        </ol>
+
+        <h2><span lang="de">Wo die Urne dann bleiben darf</span><span lang="ru">Где урна может находиться дальше</span></h2>
+        <ul lang="de">
+          <li><strong>Zu Hause in der Schweiz.</strong> Ohne Frist, ohne Bewilligung.</li>
+          <li><strong>Im eigenen Garten.</strong> In den meisten Gemeinden ohne Formalitäten möglich.</li>
+          <li><strong>In der Natur.</strong> Verstreuen am Berg, im Wald oder auf dem See — mit Rücksicht auf Dritte und Grundeigentümer.</li>
+          <li><strong>In einem anderen Land.</strong> Wir organisieren die Weiterreise, wenn die Einfuhr dort erlaubt ist.</li>
+        </ul>
+        <ul lang="ru">
+          <li><strong>Дома в Швейцарии.</strong> Без сроков, без разрешений.</li>
+          <li><strong>В собственном саду.</strong> В большинстве общин без формальностей.</li>
+          <li><strong>На природе.</strong> Развеять в горах, в лесу или на озере — с уважением к окружающим и владельцам земли.</li>
+          <li><strong>В другой стране.</strong> Мы организуем дальнейшую перевозку, если ввоз там разрешён.</li>
+        </ul>
+        <div class="aside">
+          <p lang="de"><strong>Ehrlich gesagt:</strong> Zurück nach Deutschland darf die Urne nicht — dort gilt weiterhin der Friedhofszwang. Wer in Deutschland lebt, wählt in der Regel einen Ort in der Schweiz, den er jederzeit besuchen kann, oder die Weiterreise in die Heimat.</p>
+          <p lang="ru"><strong>Честно говоря:</strong> обратно в Германию урну везти нельзя — там по-прежнему действует обязательное захоронение. Кто живёт в Германии, обычно выбирает место в Швейцарии, которое можно посещать в любое время, или дальнейший путь на родину.</p>
+        </div>
+        <div class="aside">
+          <p lang="de"><strong>Hinweis.</strong> Dieser Text ersetzt keine Rechtsberatung. Bestattungsrecht ist Länder- beziehungsweise Kantonssache; wir klären jeden Fall individuell.</p>
+          <p lang="ru"><strong>Примечание.</strong> Этот текст не заменяет юридическую консультацию. Похоронное право относится к компетенции земель и кантонов; каждый случай мы проверяем индивидуально.</p>
+        </div>
+''' + ARTICLE_END + related('urne-zu-hause-aufbewahren.html') + CTA + '''
+</main>
+'''
+
+# --------------------------------------------------------------- Ins Ausland
+ausland_body = article_head(
+  'Urne ins Ausland', 'Урна за границу', 'Ratgeber · Ablauf & Kosten', 'Справочник · Порядок и цена',
+  'Urne ins Ausland überführen: Unterlagen, Dauer, Zoll und Kosten.',
+  'Вывезти урну за границу: документы, сроки, таможня и стоимость.',
+  'Eine Urne darf Deutschland verlassen — wenn der Weg stimmt. Hier steht, welche Papiere nötig sind, wie lange es dauert, was an der Grenze passiert und was es kostet.',
+  'Урна может покинуть Германию — если путь правильный. Здесь описано, какие бумаги нужны, сколько это длится, что происходит на границе и сколько это стоит.') + '''
+        <h2><span lang="de">Ist die Überführung einer Urne ins Ausland erlaubt?</span><span lang="ru">Разрешён ли вывоз урны за границу?</span></h2>
+        <p lang="de">Ja. Die Bestattungsgesetze der Bundesländer sehen die Überführung von Urnen ins Ausland ausdrücklich vor. Voraussetzung ist, dass im Zielland eine zugelassene Stelle — ein Bestattungsunternehmen, eine Friedhofsverwaltung — die Urne übernimmt und dem deutschen Krematorium dies schriftlich bestätigt. Was danach im Zielland mit der Urne geschieht, richtet sich allein nach dessen Recht.</p>
+        <p lang="ru">Да. Похоронные законы федеральных земель прямо предусматривают вывоз урн за границу. Условие — чтобы в стране назначения уполномоченная сторона (похоронное предприятие, администрация кладбища) приняла урну и письменно подтвердила это немецкому крематорию. Что происходит с урной дальше, определяется исключительно правом страны назначения.</p>
+
+        <h2><span lang="de">Welche Unterlagen werden gebraucht?</span><span lang="ru">Какие документы нужны?</span></h2>
+        <div class="table-scroll">
+        <table lang="de">
+          <thead><tr><th>Dokument</th><th>Wer stellt es aus</th><th>Wozu</th></tr></thead>
+          <tbody>
+            <tr><td>Sterbeurkunde</td><td>Standesamt des Sterbeorts</td><td>Nachweis des Todesfalls; wird an der Grenze und im Zielland verlangt</td></tr>
+            <tr><td>Einäscherungsbescheinigung</td><td>Krematorium</td><td>Belegt, dass die Urne die Asche der genannten Person enthält</td></tr>
+            <tr><td>Übernahmebestätigung</td><td>Wir</td><td>Bestätigt dem Krematorium die ordnungsgemässe Übernahme im Zielland</td></tr>
+            <tr><td>Vollmacht</td><td>Sie</td><td>Berechtigt uns, in Ihrem Namen mit Krematorium und Behörden zu handeln</td></tr>
+            <tr><td>Ausweiskopie</td><td>Sie</td><td>Identität der auftraggebenden Person</td></tr>
+          </tbody>
+        </table>
+        <table lang="ru">
+          <thead><tr><th>Документ</th><th>Кто выдаёт</th><th>Зачем</th></tr></thead>
+          <tbody>
+            <tr><td>Свидетельство о смерти</td><td>Загс по месту смерти</td><td>Подтверждение факта смерти; требуется на границе и в стране назначения</td></tr>
+            <tr><td>Справка о кремации</td><td>Крематорий</td><td>Подтверждает, что в урне прах указанного лица</td></tr>
+            <tr><td>Подтверждение о принятии</td><td>Мы</td><td>Подтверждает крематорию надлежащее принятие в стране назначения</td></tr>
+            <tr><td>Доверенность</td><td>Вы</td><td>Даёт нам право действовать от вашего имени с крематорием и ведомствами</td></tr>
+            <tr><td>Копия удостоверения</td><td>Вы</td><td>Личность заказчика</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p lang="de">Je nach Bundesland und Krematorium kommen einzelne Formulare hinzu. Wir kennen sie und beschaffen sie — Sie müssen bei keiner Behörde anrufen.</p>
+        <p lang="ru">В зависимости от федеральной земли и крематория добавляются отдельные формы. Мы их знаем и получаем — вам не нужно звонить ни в одно ведомство.</p>
+
+        <h2><span lang="de">Wie lange dauert es?</span><span lang="ru">Сколько это длится?</span></h2>
+        <p lang="de">Meist ein bis zwei Wochen nach der Einäscherung. Die Zeit geht fast vollständig für Papiere drauf: Standesämter und Krematorien haben ihre eigenen Fristen. Die Fahrt selbst dauert einen Tag. Wenn es eilt — etwa weil Angehörige aus dem Ausland anreisen — sagen Sie es uns im ersten Gespräch; oft lässt sich etwas beschleunigen.</p>
+        <p lang="ru">Обычно одна–две недели после кремации. Почти всё время уходит на бумаги: у загсов и крематориев свои сроки. Сама поездка занимает один день. Если спешно — например, потому что родственники приезжают из-за рубежа, — скажите нам в первом разговоре; часто что-то можно ускорить.</p>
+
+        <h2><span lang="de">Was passiert an der Grenze?</span><span lang="ru">Что происходит на границе?</span></h2>
+        <p lang="de">Die Asche eines Verstorbenen ist keine Ware. Es fallen keine Zollabgaben an. Am Grenzübergang legen wir Sterbeurkunde, Einäscherungsbescheinigung und Übernahmebestätigung vor; die Urne reist in einem versiegelten, zugelassenen Transportbehälter. Für die Weiterreise per Luftfracht in ein Drittland gelten zusätzlich die Vorschriften des Ziellandes und der Fluggesellschaft — auch das klären wir vorab.</p>
+        <p lang="ru">Прах умершего — не товар. Таможенные пошлины не взимаются. На пограничном переходе мы предъявляем свидетельство о смерти, справку о кремации и подтверждение о принятии; урна перевозится в опечатанном, допущенном транспортном контейнере. Для дальнейшей авиаперевозки в третью страну дополнительно действуют правила страны назначения и авиакомпании — это мы также уточняем заранее.</p>
+
+        <h2><span lang="de">Was kostet die Überführung?</span><span lang="ru">Сколько стоит перевозка?</span></h2>
+        <p lang="de">Die Standard-Überführung Deutschland → Zug kostet bei uns <strong>490 € zum Festpreis</strong>: Erstgespräch, Unterlagen, Abholung beim Krematorium, Transportbehälter, Grenze, persönliche Übergabe. Nicht enthalten sind die Einäscherung selbst, amtliche Gebühren und beglaubigte Übersetzungen — die rechnen wir nach Aufwand ab, vorher angekündigt. Für die Weiterreise in ein anderes Land erhalten Sie innerhalb von 24 Stunden ein schriftliches Angebot.</p>
+        <p lang="ru">Стандартная перевозка Германия → Цуг стоит у нас <strong>490 € по фиксированной цене</strong>: первая беседа, документы, получение урны в крематории, транспортный контейнер, граница, личная передача. Не включены сама кремация, государственные пошлины и заверенные переводы — их мы рассчитываем по фактическим затратам, предупредив заранее. Для дальнейшей перевозки в другую страну вы получите письменное предложение в течение 24 часов.</p>
+        <p><a class="btn btn-text" href="index.html#festpreis"><span lang="de">Zum Festpreis im Detail</span><span lang="ru">Подробно о фиксированной цене</span></a></p>
+
+        <h2><span lang="de">Was Sie selbst tun müssen</span><span lang="ru">Что нужно сделать вам</span></h2>
+        <p lang="de">Anrufen. Eine Vollmacht unterschreiben. Die Urne in Zug in Empfang nehmen — oder uns sagen, wohin sie weiterreisen soll. Alles andere ist unsere Aufgabe.</p>
+        <p lang="ru">Позвонить. Подписать доверенность. Принять урну в Цуге — или сказать нам, куда её везти дальше. Всё остальное — наша работа.</p>
+        <div class="aside">
+          <p lang="de"><strong>Hinweis.</strong> Dieser Text ersetzt keine Rechtsberatung. Vorschriften unterscheiden sich nach Bundesland, Kanton und Zielland; wir klären jeden Fall individuell.</p>
+          <p lang="ru"><strong>Примечание.</strong> Этот текст не заменяет юридическую консультацию. Правила различаются по землям, кантонам и странам назначения; каждый случай мы проверяем индивидуально.</p>
+        </div>
+''' + ARTICLE_END + related('urne-ins-ausland-ueberfuehren.html') + CTA + '''
+</main>
+'''
+
+# --------------------------------------------------------------- Bestattungsverfügung
+verfuegung_body = article_head(
+  'Bestattungsverfügung', 'Распоряжение о погребении', 'Ratgeber · Vorsorge', 'Справочник · Планирование',
+  'Die Bestattungsverfügung: zu Lebzeiten festlegen, wo Sie ruhen.',
+  'Распоряжение о погребении: определить при жизни, где вы будете покоиться.',
+  'Wer nicht in ein Reihengrab will, sondern zur Familie, in die Berge oder nach Hause, kann das heute schon verbindlich regeln. Was in eine Bestattungsverfügung gehört, wie sie wirkt und wie wir sie hinterlegen.',
+  'Кто не хочет в рядовую могилу, а хочет к семье, в горы или домой, может оформить это уже сегодня. Что должно быть в распоряжении о погребении, как оно действует и как мы его храним.') + '''
+        <h2><span lang="de">Was eine Bestattungsverfügung ist</span><span lang="ru">Что такое распоряжение о погребении</span></h2>
+        <p lang="de">Eine Bestattungsverfügung ist eine schriftliche Erklärung, in der Sie zu Lebzeiten festlegen, wie Ihre Bestattung ablaufen soll: Einäscherung oder Erdbestattung, Ort der Beisetzung, Art der Feier, wer sich kümmert. In Deutschland ist der Wille des Verstorbenen für die Angehörigen und die Behörden verbindlich — soweit er sich im Rahmen des Gesetzes bewegt. Und genau hier liegt der Punkt: Der Wunsch, die Urne ins Ausland zu überführen, bewegt sich im Rahmen des Gesetzes.</p>
+        <p lang="ru">Распоряжение о погребении — это письменное заявление, в котором вы при жизни определяете, как должны пройти ваши похороны: кремация или погребение в землю, место захоронения, форма прощания, кто этим займётся. В Германии воля умершего обязательна для близких и ведомств — в рамках закона. И именно здесь ключевой момент: желание вывезти урну за границу находится в рамках закона.</p>
+
+        <h2><span lang="de">Warum sie für die Überführung wichtig ist</span><span lang="ru">Почему оно важно для перевозки</span></h2>
+        <p lang="de">Ohne Verfügung entscheiden nach dem Tod die nächsten Angehörigen — oft unter Zeitdruck, oft uneins, oft ohne zu wissen, dass es eine Alternative zum Friedhof gibt. Mit einer Verfügung ist der Weg vorgezeichnet: Das Krematorium weiss, dass die Urne an uns übergeben wird; die Familie weiss, wen sie anruft; niemand muss in der Trauer eine Entscheidung treffen, die Sie längst getroffen haben.</p>
+        <p lang="ru">Без распоряжения после смерти решают ближайшие родственники — часто в спешке, часто без единого мнения, часто не зная, что есть альтернатива кладбищу. С распоряжением путь предопределён: крематорий знает, что урна передаётся нам; семья знает, кому звонить; никому не приходится в горе принимать решение, которое вы давно приняли.</p>
+        <blockquote lang="de">Vorsorge ist kein Abschied vom Leben. Es ist ein Geschenk an die, die bleiben.</blockquote>
+        <blockquote lang="ru">Планирование — не прощание с жизнью. Это подарок тем, кто остаётся.</blockquote>
+
+        <h2><span lang="de">Was hineingehört</span><span lang="ru">Что должно быть в документе</span></h2>
+        <ul lang="de">
+          <li><strong>Ihre Personalien</strong> — Name, Geburtsdatum, Adresse.</li>
+          <li><strong>Die Bestattungsart</strong> — Einäscherung.</li>
+          <li><strong>Der Wunsch nach Überführung</strong> — «Meine Urne soll in die Schweiz überführt und dort meiner Familie ausgehändigt werden.» Nennen Sie, was danach geschehen soll: zu Hause bleiben, im Garten, an einem bestimmten Ort in der Natur, Weiterreise in ein bestimmtes Land.</li>
+          <li><strong>Die verantwortliche Person</strong> — wer Ihre Verfügung umsetzt (in Deutschland «totenfürsorgeberechtigt»). Am besten mit Ersatzperson.</li>
+          <li><strong>Das beauftragte Unternehmen</strong> — Seelenfrieden Urnenrückführung GmbH, Zug, mit unseren Kontaktdaten.</li>
+          <li><strong>Datum und eigenhändige Unterschrift.</strong> Eine notarielle Beglaubigung ist nicht nötig, schadet aber nicht.</li>
+        </ul>
+        <ul lang="ru">
+          <li><strong>Ваши личные данные</strong> — имя, дата рождения, адрес.</li>
+          <li><strong>Вид погребения</strong> — кремация.</li>
+          <li><strong>Желание перевозки</strong> — «Моя урна должна быть перевезена в Швейцарию и передана там моей семье». Укажите, что должно произойти дальше: остаться дома, в саду, в определённом месте на природе, дальнейшая перевозка в определённую страну.</li>
+          <li><strong>Ответственное лицо</strong> — кто исполнит ваше распоряжение (в Германии «totenfürsorgeberechtigt»). Лучше с запасным лицом.</li>
+          <li><strong>Уполномоченное предприятие</strong> — Seelenfrieden Urnenrückführung GmbH, Цуг, с нашими контактами.</li>
+          <li><strong>Дата и собственноручная подпись.</strong> Нотариальное заверение не обязательно, но не повредит.</li>
+        </ul>
+
+        <h2><span lang="de">Wo die Verfügung liegen sollte</span><span lang="ru">Где должно храниться распоряжение</span></h2>
+        <p lang="de">Nicht im Bankschliessfach und nicht im Testament — beides wird oft erst Wochen nach der Bestattung geöffnet. Besser: ein Exemplar bei der verantwortlichen Person, ein Exemplar bei uns, ein Hinweis in der Brieftasche. Wir hinterlegen Ihre Verfügung zusammen mit einer vorbereiteten Übernahmebestätigung, sodass im Ernstfall ein einziger Anruf genügt.</p>
+        <p lang="ru">Не в банковской ячейке и не в завещании — и то и другое часто открывают лишь спустя недели после похорон. Лучше: один экземпляр у ответственного лица, один у нас, пометка в бумажнике. Мы храним ваше распоряжение вместе с заранее подготовленным подтверждением о принятии, чтобы в нужный момент хватило одного звонка.</p>
+
+        <h2><span lang="de">Das Vorsorgegespräch</span><span lang="ru">Консультация по планированию</span></h2>
+        <p lang="de">Wir helfen beim Formulieren, prüfen, ob Ihr Wunsch im Zielland umsetzbar ist, und besprechen die Kosten, die Ihre Angehörigen später erwarten — zum Festpreis, der heute schon gilt. Das Gespräch ist kostenlos und verpflichtet zu nichts. Auf Deutsch oder Russisch, bei uns in Zug, am Telefon oder per Video.</p>
+        <p lang="ru">Мы помогаем с формулировкой, проверяем, осуществимо ли ваше желание в стране назначения, и обсуждаем расходы, которые ожидают ваших близких, — по фиксированной цене, действующей уже сегодня. Беседа бесплатна и ни к чему не обязывает. На немецком или русском, у нас в Цуге, по телефону или по видеосвязи.</p>
+        <div class="aside">
+          <p lang="de"><strong>Hinweis.</strong> Dieser Text ersetzt keine Rechtsberatung. Für erbrechtliche Fragen wenden Sie sich an eine Notarin oder einen Anwalt; die Bestattungsverfügung selbst können Sie ohne Beistand verfassen.</p>
+          <p lang="ru"><strong>Примечание.</strong> Этот текст не заменяет юридическую консультацию. По вопросам наследственного права обратитесь к нотариусу или адвокату; само распоряжение о погребении вы можете составить без помощи.</p>
+        </div>
+''' + ARTICLE_END + related('bestattungsverfuegung.html') + CTA + '''
+</main>
+'''
+
+# Ratgeber-Hauptseite bekommt ebenfalls «Weiterlesen»
+ratgeber_body = ratgeber_body.replace(CTA + '''
+</main>''', related('friedhofszwang.html') + CTA + '''
+</main>''')
+
+PUB = '2026-09-06'
 pages = {
   'friedhofszwang.html': (
-    'Der Friedhofszwang, erklärt — Ratgeber der Seelenfrieden Urnenrückführung GmbH',
-    'Обязательное захоронение в Германии — справочник Seelenfrieden Urnenrückführung GmbH',
+    'Friedhofszwang in Deutschland: Was gilt, was erlaubt ist, wie die Schweiz es hält',
+    'Обязательное захоронение в Германии: что действует, что разрешено, как это устроено в Швейцарии',
     'Warum in Deutschland eine Urne nicht nach Hause darf, wie die Schweiz es hält und wie die Überführung über die Grenze rechtlich und praktisch abläuft. Mit Bestattungsverfügung und häufigen Irrtümern.',
     'Почему в Германии урну нельзя забрать домой, как это устроено в Швейцарии и как проходит перевозка через границу. С распоряжением о погребении и распространёнными заблуждениями.',
-    ratgeber_body, False),
+    ratgeber_body, False,
+    lambda path: article_ld(path, 'Der Friedhofszwang — und der Weg daran vorbei', 'Warum in Deutschland eine Urne nicht nach Hause darf, wie die Schweiz es hält und wie die Überführung über die Grenze abläuft.', PUB, PUB, 'Friedhofszwang')),
+  'urne-zu-hause-aufbewahren.html': (
+    'Urne zu Hause aufbewahren: In Deutschland verboten, in der Schweiz erlaubt',
+    'Хранить урну дома: в Германии запрещено, в Швейцарии разрешено',
+    'Darf man eine Urne zu Hause aufbewahren? In Deutschland nein, in der Schweiz ja. Was gilt, warum das für Familien wichtig ist und wie die Überführung in die Schweiz abläuft.',
+    'Можно ли хранить урну дома? В Германии нет, в Швейцарии да. Что действует, почему это важно для семей и как проходит перевозка в Швейцарию.',
+    zuhause_body, False,
+    lambda path: article_ld(path, 'Urne zu Hause aufbewahren: in Deutschland verboten, in der Schweiz erlaubt', 'Darf man eine Urne zu Hause aufbewahren? In Deutschland nein, in der Schweiz ja — und so sieht der Weg aus.', PUB, PUB, 'Urne zu Hause aufbewahren')),
+  'urne-ins-ausland-ueberfuehren.html': (
+    'Urne ins Ausland überführen: Unterlagen, Dauer, Zoll, Kosten',
+    'Вывезти урну за границу: документы, сроки, таможня, стоимость',
+    'Eine Urne darf Deutschland verlassen. Welche Unterlagen nötig sind, wie lange es dauert, was an der Grenze passiert und was die Überführung in die Schweiz kostet: 490 € Festpreis.',
+    'Урна может покинуть Германию. Какие документы нужны, сколько это длится, что происходит на границе и сколько стоит перевозка в Швейцарию: 490 € фиксированная цена.',
+    ausland_body, False,
+    lambda path: article_ld(path, 'Urne ins Ausland überführen: Unterlagen, Dauer, Zoll und Kosten', 'Welche Papiere nötig sind, wie lange es dauert, was an der Grenze passiert und was es kostet.', PUB, PUB, 'Urne ins Ausland überführen')),
+  'bestattungsverfuegung.html': (
+    'Bestattungsverfügung: Zu Lebzeiten festlegen, dass die Urne in die Schweiz darf',
+    'Распоряжение о погребении: определить при жизни, что урна отправится в Швейцарию',
+    'Wie Sie mit einer Bestattungsverfügung verbindlich festlegen, dass Ihre Urne in die Schweiz überführt wird: Inhalt, Wirkung, Aufbewahrung, kostenloses Vorsorgegespräch.',
+    'Как распоряжением о погребении определить, что ваша урна будет перевезена в Швейцарию: содержание, действие, хранение, бесплатная консультация.',
+    verfuegung_body, False,
+    lambda path: article_ld(path, 'Die Bestattungsverfügung: zu Lebzeiten festlegen, wo Sie ruhen', 'Was in eine Bestattungsverfügung gehört, wie sie wirkt und wie wir sie hinterlegen.', PUB, PUB, 'Bestattungsverfügung')),
   'impressum.html': (
     'Impressum — Seelenfrieden Urnenrückführung GmbH, Zug',
     'Выходные данные — Seelenfrieden Urnenrückführung GmbH, Цуг',
     'Impressum der Seelenfrieden Urnenrückführung GmbH mit Sitz in Zug: Firma, Geschäftsführung, Adresse, Handelsregister, Haftung.',
     'Выходные данные Seelenfrieden Urnenrückführung GmbH, Цуг: компания, руководство, адрес, торговый реестр, ответственность.',
-    impressum_body, False),
+    impressum_body, False, lambda path: page_ld(path, 'Impressum')),
   'datenschutz.html': (
     'Datenschutzerklärung — Seelenfrieden Urnenrückführung GmbH',
     'Политика защиты данных — Seelenfrieden Urnenrückführung GmbH',
     'Welche Daten die Seelenfrieden Urnenrückführung GmbH bearbeitet, wozu, wie lange — und was diese Website nicht tut: keine Cookies, kein Tracking, keine Google Fonts.',
     'Какие данные обрабатывает Seelenfrieden Urnenrückführung GmbH, зачем и как долго — и чего этот сайт не делает: никаких cookie, трекинга и Google Fonts.',
-    datenschutz_body, False),
+    datenschutz_body, False, lambda path: page_ld(path, 'Datenschutzerklärung')),
   '404.html': (
     'Seite nicht gefunden — Seelenfrieden Urnenrückführung GmbH',
     'Страница не найдена — Seelenfrieden Urnenrückführung GmbH',
     'Diese Seite gibt es nicht.', 'Такой страницы нет.',
-    notfound_body, True),
+    notfound_body, True, lambda path: ''),
 }
 
-for name, (tde, tru, dde, dru, body, noindex) in pages.items():
-    html = head(tde, tru, dde, dru, name, noindex) + HEADER + body + FOOTER
+# --------------------------------------------------------------- Russische Fassung
+def to_ru(html, name):
+    """Leitet aus einer deutschen Seite die Fassung unter /ru/ ab: Russisch als
+    Standardsprache, eigene Adresse, Pfade eine Ebene höher."""
+    a = dict(re.findall(r'(data-title-ru|data-desc-ru)="([^"]*)"', html))
+    h = html.replace('<html lang="de" data-lang="de"', '<html lang="ru" data-lang="ru"', 1)
+    h = re.sub(r'<title>.*?</title>', '<title>' + a.get('data-title-ru', '') + '</title>', h, count=1, flags=re.S)
+    h = re.sub(r'<meta name="description" content="[^"]*">', '<meta name="description" content="' + a.get('data-desc-ru', '') + '">', h, count=1)
+    path = '' if name == 'index.html' else name
+    h = h.replace(f'<link rel="canonical" href="{D}/{path}">', f'<link rel="canonical" href="{D}/ru/{path}">')
+    h = h.replace(f'<meta property="og:url" content="{D}/{path}">', f'<meta property="og:url" content="{D}/ru/{path}">')
+    h = h.replace('<meta property="og:locale" content="de_CH">\n<meta property="og:locale:alternate" content="ru_RU">', '<meta property="og:locale" content="ru_RU">\n<meta property="og:locale:alternate" content="de_CH">')
+    h = re.sub(r'<meta property="og:title" content="[^"]*">', '<meta property="og:title" content="' + a.get('data-title-ru', '') + '">', h, count=1)
+    h = re.sub(r'<meta property="og:description" content="[^"]*">', '<meta property="og:description" content="' + a.get('data-desc-ru', '') + '">', h, count=1)
+    h = h.replace('href="assets/', 'href="../assets/').replace('src="assets/', 'src="../assets/').replace('href="site.webmanifest"', 'href="../site.webmanifest"')
+    h = h.replace('"inLanguage": "de"', '"inLanguage": "ru"')
+    # Sprachumschalter: DE zeigt nach oben, RU auf sich selbst
+    h = re.sub(r'<a href="([\w.-]+)" hreflang="de" data-set-lang="de" aria-pressed="true">DE</a>', r'<a href="../\1" hreflang="de" data-set-lang="de" aria-pressed="false">DE</a>', h)
+    h = re.sub(r'<a href="ru/([\w.-]+)" hreflang="ru" data-set-lang="ru" aria-pressed="false">RU</a>', r'<a href="\1" hreflang="ru" data-set-lang="ru" aria-pressed="true">RU</a>', h)
+    return h
+
+os.makedirs(os.path.join(ROOT, 'ru'), exist_ok=True)
+written = []
+for name, (tde, tru, dde, dru, body, noindex, ld) in pages.items():
+    html = head(tde, tru, dde, dru, name, noindex, ld(name)) + HEADER.replace('{{PAGE}}', name) + body + FOOTER
     with open(os.path.join(ROOT, name), 'w', encoding='utf-8') as f:
         f.write(html)
-    print('wrote', name, len(html))
+    with open(os.path.join(ROOT, 'ru', name), 'w', encoding='utf-8') as f:
+        f.write(to_ru(html, name))
+    written.append(name)
+    print('wrote', name, '+ ru/', len(html))
+
+# Startseite: nur die russische Fassung ableiten
+with open(os.path.join(ROOT, 'index.html'), encoding='utf-8') as f:
+    index_html = f.read()
+with open(os.path.join(ROOT, 'ru', 'index.html'), 'w', encoding='utf-8') as f:
+    f.write(to_ru(index_html, 'index.html'))
+print('wrote ru/index.html')
+
+# --------------------------------------------------------------- Sitemap
+def url_entry(path, prio, freq):
+    de = f'{D}/{path}'; ru = f'{D}/ru/{path}'
+    def block(loc):
+        return f'''  <url>
+    <loc>{loc}</loc>
+    <lastmod>{PUB}</lastmod><changefreq>{freq}</changefreq><priority>{prio}</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="{de}"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="{ru}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="{de}"/>
+  </url>
+'''
+    return block(de) + block(ru)
+
+sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n        xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
+sitemap += url_entry('', '1.0', 'monthly')
+for name in ['friedhofszwang.html', 'urne-zu-hause-aufbewahren.html', 'urne-ins-ausland-ueberfuehren.html', 'bestattungsverfuegung.html']:
+    sitemap += url_entry(name, '0.8', 'yearly')
+for name in ['impressum.html', 'datenschutz.html']:
+    sitemap += url_entry(name, '0.2', 'yearly')
+sitemap += '</urlset>\n'
+with open(os.path.join(ROOT, 'sitemap.xml'), 'w', encoding='utf-8') as f:
+    f.write(sitemap)
+print('wrote sitemap.xml')

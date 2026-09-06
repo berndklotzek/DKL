@@ -3,16 +3,100 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/</loc>
-    <changefreq>monthly</changefreq><priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/?lang=de"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/?lang=ru"/>
+    <lastmod>2026-09-06</lastmod><changefreq>monthly</changefreq><priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/ru/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/"/>
+  </url>
+  <url>
+    <loc>https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/ru/</loc>
+    <lastmod>2026-09-06</lastmod><changefreq>monthly</changefreq><priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/ru/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/"/>
   </url>
   <url>
     <loc>https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/friedhofszwang.html</loc>
-    <changefreq>yearly</changefreq><priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/friedhofszwang.html?lang=de"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/friedhofszwang.html?lang=ru"/>
+    <lastmod>2026-09-06</lastmod><changefreq>yearly</changefreq><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/friedhofszwang.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/ru/friedhofszwang.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/friedhofszwang.html"/>
   </url>
-  <url><loc>https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/impressum.html</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
-  <url><loc>https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/datenschutz.html</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url>
+    <loc>https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/ru/friedhofszwang.html</loc>
+    <lastmod>2026-09-06</lastmod><changefreq>yearly</changefreq><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/friedhofszwang.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/ru/friedhofszwang.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/friedhofszwang.html"/>
+  </url>
+  <url>
+    <loc>https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/urne-zu-hause-aufbewahren.html</loc>
+    <lastmod>2026-09-06</lastmod><changefreq>yearly</changefreq><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/urne-zu-hause-aufbewahren.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/ru/urne-zu-hause-aufbewahren.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/urne-zu-hause-aufbewahren.html"/>
+  </url>
+  <url>
+    <loc>https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/ru/urne-zu-hause-aufbewahren.html</loc>
+    <lastmod>2026-09-06</lastmod><changefreq>yearly</changefreq><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/urne-zu-hause-aufbewahren.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/ru/urne-zu-hause-aufbewahren.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/urne-zu-hause-aufbewahren.html"/>
+  </url>
+  <url>
+    <loc>https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/urne-ins-ausland-ueberfuehren.html</loc>
+    <lastmod>2026-09-06</lastmod><changefreq>yearly</changefreq><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/urne-ins-ausland-ueberfuehren.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/ru/urne-ins-ausland-ueberfuehren.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/urne-ins-ausland-ueberfuehren.html"/>
+  </url>
+  <url>
+    <loc>https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/ru/urne-ins-ausland-ueberfuehren.html</loc>
+    <lastmod>2026-09-06</lastmod><changefreq>yearly</changefreq><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/urne-ins-ausland-ueberfuehren.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/ru/urne-ins-ausland-ueberfuehren.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/urne-ins-ausland-ueberfuehren.html"/>
+  </url>
+  <url>
+    <loc>https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/bestattungsverfuegung.html</loc>
+    <lastmod>2026-09-06</lastmod><changefreq>yearly</changefreq><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/bestattungsverfuegung.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/ru/bestattungsverfuegung.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/bestattungsverfuegung.html"/>
+  </url>
+  <url>
+    <loc>https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/ru/bestattungsverfuegung.html</loc>
+    <lastmod>2026-09-06</lastmod><changefreq>yearly</changefreq><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/bestattungsverfuegung.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/ru/bestattungsverfuegung.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/bestattungsverfuegung.html"/>
+  </url>
+  <url>
+    <loc>https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/impressum.html</loc>
+    <lastmod>2026-09-06</lastmod><changefreq>yearly</changefreq><priority>0.2</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/ru/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/impressum.html"/>
+  </url>
+  <url>
+    <loc>https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/ru/impressum.html</loc>
+    <lastmod>2026-09-06</lastmod><changefreq>yearly</changefreq><priority>0.2</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/ru/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/impressum.html"/>
+  </url>
+  <url>
+    <loc>https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/datenschutz.html</loc>
+    <lastmod>2026-09-06</lastmod><changefreq>yearly</changefreq><priority>0.2</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/datenschutz.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/ru/datenschutz.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/datenschutz.html"/>
+  </url>
+  <url>
+    <loc>https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/ru/datenschutz.html</loc>
+    <lastmod>2026-09-06</lastmod><changefreq>yearly</changefreq><priority>0.2</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/datenschutz.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/ru/datenschutz.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.xn--seelenfrieden-urnenrckfhrung-l7cd.ch/datenschutz.html"/>
+  </url>
 </urlset>

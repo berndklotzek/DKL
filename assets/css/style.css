@@ -156,14 +156,16 @@ button { font: inherit; color: inherit; }
 [data-lang="ru"] [lang="de"] { display: none !important; }
 
 .langswitch { display: inline-flex; border: 1px solid var(--line-2); border-radius: 2px; overflow: hidden; }
-.langswitch button {
-  font-size: .66rem; font-weight: 500; letter-spacing: .12em;
+.langswitch a {
+  font-size: .66rem; font-weight: 500; letter-spacing: .12em; text-decoration: none;
   padding: .38rem .65rem; border: 0; background: transparent;
   color: var(--text-3); cursor: pointer; transition: background .2s ease, color .2s ease;
 }
-.langswitch button + button { border-left: 1px solid var(--line-2); }
-.langswitch button:hover { color: var(--text); }
-.langswitch button[aria-pressed="true"] { background: var(--gold); color: var(--ink-900); }
+.langswitch a + a { border-left: 1px solid var(--line-2); }
+.langswitch a:hover { color: var(--text); }
+.langswitch a[aria-pressed="true"] { background: var(--gold); color: var(--ink-900); }
+.mainnav .langswitch a { padding: .38rem .65rem; }
+.mainnav .langswitch a::after { display: none; }
 
 /* --- Laufschrift ---------------------------------------------------------- */
 
@@ -269,6 +271,7 @@ button { font: inherit; color: inherit; }
   .mainnav a::after { display: none; }
   .mainnav .nav-cta { margin-top: 1.5rem; text-align: center; justify-content: center; border-color: var(--gold); font-family: var(--font-sans); font-size: .78rem; letter-spacing: var(--track); text-transform: uppercase; }
   .mainnav .langswitch { margin-top: 1.5rem; }
+  .mainnav .langswitch a { font-family: var(--font-sans); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; padding: .5rem .9rem; border-bottom: 0; width: auto; }
   .topbar.is-open { background: rgba(7, 12, 17, .96); }
   body.nav-open { overflow: hidden; }
 }
@@ -280,7 +283,7 @@ main { margin-top: calc(-1 * var(--header)); }   /* Hero läuft unter die Kopfze
 .hero {
   position: relative; isolation: isolate; overflow: hidden;
   min-height: 100svh; display: flex; align-items: center;
-  padding: calc(var(--header) + 3rem) 0 4rem; text-align: center;
+  padding: calc(var(--header) + 3rem) 0 4rem; text-align: left;
   background:
     radial-gradient(120% 80% at 50% 0%, #1c2a38 0%, transparent 60%),
     linear-gradient(180deg, #16212d 0%, #0c141d 52%, #070c11 100%);
@@ -289,7 +292,10 @@ main { margin-top: calc(-1 * var(--header)); }   /* Hero läuft unter die Kopfze
 /* Kulisse und Fahne liegen hinter einem Schleier, damit der Text trägt. */
 .scene { position: absolute; inset: 0; width: 100%; height: 100%; display: block; z-index: -4; }
 .hero .scene { will-change: transform; }
-.hero .flag { position: absolute; z-index: -2; right: 7%; top: 16%; width: clamp(140px, 22vw, 260px); opacity: .5; }
+.hero .flag { position: absolute; z-index: -2; right: 2%; top: 14%; width: clamp(90px, 11vw, 150px); opacity: .32; }
+/* WebGL-Ebene: Partikel-Urne. Liegt über der Kulisse, unter dem Text. */
+.hero-3d { position: absolute; inset: 0; width: 100%; height: 100%; display: block; z-index: 0; pointer-events: none; }
+.hero-inner { z-index: 1; }
 
 /* Zwei Nebelfelder, die sehr langsam ziehen — Leben ohne Lärm. */
 .mist { position: absolute; inset: 0; z-index: -3; pointer-events: none; overflow: hidden; }
@@ -309,9 +315,9 @@ main { margin-top: calc(-1 * var(--header)); }   /* Hero läuft unter die Kopfze
     linear-gradient(180deg, rgba(7, 12, 17, .55) 0%, transparent 28%, rgba(7, 12, 17, .1) 70%, var(--ink-800) 100%);
 }
 
-.hero-inner { position: relative; width: min(100% - 2 * var(--gutter), 820px); min-width: 0; margin-inline: auto; }
-.hero .eyebrow { justify-content: center; margin-bottom: 2.2rem; }
-.hero .eyebrow::after { content: ""; height: 1px; width: 2.4rem; background: var(--gold-deep); flex: none; }
+.hero-inner { position: relative; width: min(100% - 2 * var(--gutter), var(--wrap)); min-width: 0; margin-inline: auto; }
+.hero-text { max-width: 640px; }
+.hero .eyebrow { margin-bottom: 2.2rem; }
 
 /* Wechselnde Hauptüberschrift: alle Aussagen im selben Rasterfeld. */
 .rotator { display: grid; }
@@ -325,20 +331,24 @@ main { margin-top: calc(-1 * var(--header)); }   /* Hero läuft unter die Kopfze
 .slogan .l1 { display: block; color: var(--text); }
 .slogan .l2 { display: block; color: var(--gold); font-style: italic; font-weight: 400; }
 
-.hero .lead { font-size: clamp(1rem, 1.4vw, 1.12rem); color: var(--text-2); max-width: 46ch; margin-inline: auto; }
+.hero .lead { font-size: clamp(1rem, 1.4vw, 1.12rem); color: var(--text-2); max-width: 46ch; }
+.hero .divider { justify-content: flex-start; margin: 2rem 0; }
+.hero .divider::before { display: none; }
 
 .cta { display: flex; flex-direction: column; gap: .8rem; margin: 2.4rem 0 3.4rem; }
 @media (min-width: 620px) {
-  .cta { flex-direction: row; justify-content: center; }
-  .cta .btn { min-width: 16rem; }
+  .cta { flex-direction: row; }
+  .cta .btn { min-width: 15rem; }
+  .cta-band .cta, .hero.centered .cta { justify-content: center; }
 }
 
 .stats {
   list-style: none; margin: 0; padding: 0;
-  display: grid; grid-template-columns: repeat(3, 1fr);
+  display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 0 2.5rem;
 }
-.stats li { padding: 0 .6rem; }
-.stats li + li { border-left: 1px solid var(--line); }
+.stats li { padding: 0 2.5rem 0 0; }
+.stats li + li { border-left: 1px solid var(--line); padding-left: 2.5rem; margin-left: -2.5rem; }
+.cta-band .stats { justify-content: center; }
 .stats b {
   display: block; font-family: var(--font-display); font-weight: 400;
   font-size: clamp(1.7rem, 5vw, 2.5rem); color: var(--gold); line-height: 1.2;
@@ -348,15 +358,19 @@ main { margin-top: calc(-1 * var(--header)); }   /* Hero läuft unter die Kopfze
 
 .scrollhint { margin: 3.2rem 0 0; color: var(--text-3); }
 .scrollhint::after {
-  content: ""; display: block; width: 1px; height: 3.2rem; margin: .8rem auto 0;
+  content: ""; display: block; width: 1px; height: 3.2rem; margin: .8rem 0 0 1rem;
   background: linear-gradient(180deg, var(--gold-deep), transparent);
   animation: scrollline 2.6s ease-in-out infinite;
 }
 @keyframes scrollline { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
 
 @media (max-width: 860px) {
-  .hero { min-height: auto; padding-bottom: 3rem; }
-  .hero .flag { right: -6%; top: 26%; opacity: .34; }
+  .hero { min-height: auto; padding-bottom: 3rem; padding-top: calc(var(--header) + 14rem); }
+  .hero .flag { right: -4%; top: 8%; opacity: .28; width: 110px; }
+  .hero-text { max-width: none; }
+  .stats { grid-template-columns: repeat(3, 1fr); gap: 0; }
+  .stats li { padding: 0 .6rem; }
+  .stats li + li { padding-left: .6rem; margin-left: 0; }
   .mist { display: none; }
 }
 
@@ -463,7 +477,14 @@ section + section::before {
   .services li { grid-template-columns: 3.5rem 1fr; }
 }
 
-/* Ablauf: vier Stationen an einer Route */
+/* Ablauf: vier Stationen an einer Route — dahinter die WebGL-Route */
+.has-route { isolation: isolate; overflow: hidden; }
+.route-3d { position: absolute; inset: 0; width: 100%; height: 100%; display: block; z-index: -1; opacity: .9; pointer-events: none; }
+.has-route::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(180deg, var(--ink-700) 0%, rgba(16, 25, 34, .55) 30%, rgba(16, 25, 34, .35) 60%, var(--ink-700) 100%);
+}
+.has-route > .wrap { position: relative; }
 .route { position: relative; }
 .route-line { position: absolute; left: 0; right: 0; top: 2.1rem; height: 1px; background: var(--line-2); }
 .route-line::after {
@@ -560,6 +581,18 @@ section + section::before {
 .promises b { display: block; font-family: var(--font-display); font-size: 1.5rem; color: var(--text); font-weight: 400; margin-bottom: .5rem; line-height: 1.2; }
 .promises p { margin: 0; font-size: .95rem; }
 @media (max-width: 760px) { .promises { grid-template-columns: 1fr; gap: 1.6rem; } }
+
+/* Ratgeber-Kacheln */
+.articles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
+.articles a { display: flex; flex-direction: column; gap: .8rem; padding: 1.8rem 1.6rem 1.6rem; background: var(--ink-800); text-decoration: none; color: var(--text-2); transition: background .3s ease; position: relative; }
+.articles a:hover { background: var(--ink-700); color: var(--text-2); }
+.articles .caps { color: var(--gold); }
+.articles h3 { font-size: 1.3rem; margin: 0; }
+.articles p { margin: 0; font-size: .9rem; flex: 1; }
+.articles .more { color: var(--gold); font-size: .68rem; letter-spacing: var(--track); text-transform: uppercase; font-weight: 500; }
+.articles .more::after { content: " \2192"; }
+@media (max-width: 960px) { .articles { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .articles { grid-template-columns: 1fr; } }
 
 /* FAQ — natives details/summary */
 .faq { border-top: 1px solid var(--line); }
@@ -688,6 +721,18 @@ section + section::before {
 .error-page { min-height: 70svh; display: grid; place-items: center; text-align: center; padding: calc(var(--header) + 4rem) 0 6rem; }
 .error-page .code { font-family: var(--font-display); font-size: clamp(5rem, 16vw, 11rem); line-height: 1; color: var(--gold); opacity: .6; }
 
+/* Lesefortschritt: goldene Linie ganz oben. */
+.progress { position: fixed; top: 0; left: 0; height: 2px; width: 100%; z-index: 70; transform-origin: left; transform: scaleX(0); background: linear-gradient(90deg, var(--gold-deep), var(--gold-soft)); pointer-events: none; }
+
+/* Lichtkegel folgt dem Zeiger über Karten (Position als --mx/--my aus fx.js). */
+.spot { position: relative; overflow: hidden; }
+.spot::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .4s ease;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(201, 168, 107, .14), transparent 45%);
+}
+.spot:hover::before { opacity: 1; }
+.tilt { transform-style: preserve-3d; transition: transform .35s var(--ease); will-change: transform; }
+
 /* --- 10 Bewegung ---------------------------------------------------------- */
 
 .reveal { opacity: 0; transform: translateY(26px); transition: opacity .9s ease, transform .9s var(--ease); }
@@ -716,6 +761,7 @@ section + section::before {
   .ticker-item + .ticker-item { display: none; }
   .ticker-item::after { display: none; }
   .mist i, .route-line::after, .scrollhint::after { animation: none; }
+  .tilt { transform: none !important; }
   .btn:hover { transform: none; }
 }
 

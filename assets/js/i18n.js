@@ -2,7 +2,10 @@
    Die Inhalte stehen doppelt im HTML (lang="de" / lang="ru"); sichtbar ist,
    was das data-lang-Attribut am <html>-Element freigibt. Ohne JavaScript
    bleibt die im Markup gesetzte Standardsprache stehen.
-   Reihenfolge: ?lang= in der Adresse, gemerkte Wahl, Browsersprache, Deutsch. */
+   Jede Sprache hat eine eigene Adresse (/ und /ru/), die Umschalter sind
+   echte Links — Suchmaschinen folgen ihnen. Für Besucher schaltet das
+   Skript sofort um, ohne die Seite neu zu laden, und merkt sich die Wahl.
+   Reihenfolge: ?lang= in der Adresse, gemerkte Wahl, Browsersprache, Seite. */
 (function () {
   var SUPPORTED = ['de', 'ru'];
   var STORE_KEY = 'sf-lang';
@@ -29,15 +32,22 @@
     if (d && meta) meta.setAttribute('content', d);
   }
 
+  var pageLang = root.getAttribute('data-lang') || 'de';
   var fromUrl = (new URLSearchParams(location.search).get('lang') || '').toLowerCase();
   var initial = fromUrl || stored() || (navigator.language || '').slice(0, 2).toLowerCase();
-  apply(SUPPORTED.indexOf(initial) === -1 ? 'de' : initial);
+  apply(SUPPORTED.indexOf(initial) === -1 ? pageLang : initial);
   if (fromUrl && SUPPORTED.indexOf(fromUrl) !== -1) remember(fromUrl);
 
   document.addEventListener('click', function (ev) {
     var btn = ev.target.closest('[data-set-lang]');
     if (!btn) return;
+    ev.preventDefault();
     apply(btn.dataset.setLang);
     remember(btn.dataset.setLang);
+    /* Adresse der Sprachfassung übernehmen, ohne neu zu laden. */
+    var href = btn.getAttribute('href');
+    if (href && window.history && history.replaceState) {
+      try { history.replaceState(null, '', href); } catch (e) { /* fremde Herkunft: egal */ }
+    }
   });
 })();
