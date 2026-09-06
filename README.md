@@ -9,7 +9,7 @@ erwerben eine Grabstelle in den Schweizer Bergen; das deutsche Krematorium
 übergibt die Urne an Seelenfrieden; nach Schweizer Recht gilt die Übergabe an
 die Angehörigen als Beisetzung; danach kommt die Urne zur freien Verfügung
 zurück zur Familie nach Hause. Abschied ohne Frist, spätere Beisetzung auf
-der Grabstelle inklusive. Festpreis 490 € inkl. Schweizer MwSt. Keine
+der Grabstelle inklusive. Festpreis 649 € inkl. Schweizer MwSt. Keine
 weltweite Überführung, keine anderen Dienste — alle Texte sind darauf
 ausgerichtet.
 
@@ -167,7 +167,7 @@ Slogan-Wechsel, Einblendungen.
   und `x-default`, Canonical in Punycode-Form.
 - **Strukturierte Daten:** Startseite `Organization`/`LocalBusiness` mit Geo,
   Öffnungszeiten und Kontakt, `WebSite`, `WebPage`, `Service` mit `Offer`
-  (490 €) und Leistungskatalog, `FAQPage` mit acht Fragen. Ratgeber-Seiten
+  (649 €) und Leistungskatalog, `FAQPage` mit acht Fragen. Ratgeber-Seiten
   `Article` + `BreadcrumbList`, Impressum/Datenschutz `WebPage` + Breadcrumb.
 - **Inhalt:** vier Ratgeber-Artikel zu den Suchbegriffen «Friedhofszwang»,
   «Urne zu Hause aufbewahren», «Zurück in die Heimat / Urne nach Schweizer
@@ -188,7 +188,7 @@ Slogan-Wechsel, Einblendungen.
 | Impressum | `CHE-000.000.000` | UID nach Handelsregistereintrag |
 | Datenschutz | «Hosting-Anbieter» | Name und Serverstandort des Hosters |
 | Über uns | Porträtrahmen (Canvas) | Foto von Daniel Klotzek — `<canvas>` durch `<img>` ersetzen |
-| Hero, Festpreis, FAQ, Ratgeber | `200+`, `490 €`, «inkl. Schweizer MwSt.», «1–2 Wochen», «Zahlung vorab» | Zahlen und Zusagen bestätigen — Werbeaussagen müssen stimmen |
+| Hero, Festpreis, FAQ, Ratgeber | `200+`, `649 €`, «inkl. Schweizer MwSt.», «1–2 Wochen», «Zahlung vorab» | Zahlen und Zusagen bestätigen — Werbeaussagen müssen stimmen |
 | überall | «Grabstelle in den Schweizer Bergen — Bergwiese oder Wald» | Ort, Gemeinde und Art der Grabstelle eintragen (z. B. Wiesengrab im Kanton …) |
 | Festpreis, Ratgeber | «Versand der Urne zu uns gehört zur Bestattung in Deutschland» | Wer den Versand DE→CH zahlt und wie die Rückführung erfolgt (Kurier / persönlich) bestätigen |
 | Festpreis | «Nicht enthalten» | Leistungsumfang mit dem tatsächlichen Angebot abgleichen |

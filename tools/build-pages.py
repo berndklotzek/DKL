@@ -236,14 +236,14 @@ ratgeber_body = '''
         <p lang="de">Der Friedhofszwang gilt in Deutschland — nicht darüber hinaus. Die Bestattungsgesetze erlauben ausdrücklich, eine Urne ins Ausland zu überführen, wenn dort eine zugelassene Stelle sie übernimmt. In der Schweiz ist das die Seelenfrieden Urnenrückführung GmbH. Und weil in der Schweiz jede Person frei über die Asche ihrer Verstorbenen verfügen darf, gilt dort die Übergabe der Urne an die Angehörigen als Beisetzung. Genau darauf beruht «Zurück in die Heimat»:</p>
         <p lang="ru">Обязательное захоронение действует в Германии — но не за её пределами. Похоронные законы прямо разрешают вывезти урну за границу, если там её принимает уполномоченная сторона. В Швейцарии это Seelenfrieden Urnenrückführung GmbH. А поскольку в Швейцарии каждый может свободно распоряжаться прахом своих умерших, передача урны близким считается там захоронением. Именно на этом основано «Возвращение домой»:</p>
         <ol lang="de">
-          <li><strong>Grabstelle.</strong> Sie erwerben eine Grabstelle auf einer Bergwiese oder in einem Wald in der Schweiz — zum Festpreis von 490 €, ohne Folgekosten.</li>
+          <li><strong>Grabstelle.</strong> Sie erwerben eine Grabstelle auf einer Bergwiese oder in einem Wald in der Schweiz — zum Festpreis von 649 €, ohne Folgekosten.</li>
           <li><strong>Übernahme.</strong> Wir bestätigen dem Krematorium schriftlich, dass wir die Urne übernehmen. Ihr Bestatter oder das Krematorium sendet die Urne an uns; wir beschaffen Sterbeurkunde, Einäscherungsbescheinigung und was sonst verlangt wird.</li>
           <li><strong>Beisetzung nach Schweizer Recht.</strong> Die Urne wird Ihnen als Angehörigen übergeben — damit ist sie beigesetzt. Sie erhalten die Beisetzungsbestätigung und die Grabstellenurkunde.</li>
           <li><strong>Zurück in die Heimat.</strong> Die Urne steht zur freien Verfügung und kommt zu Ihnen nach Hause, persönlich überbracht oder per versichertem Kurier. Der Abschied kennt keine Frist.</li>
           <li><strong>Später.</strong> Wenn Sie so weit sind, setzen wir die Asche auf Ihrer Grabstelle in den Schweizer Bergen bei — ohne weitere Kosten, auf Wunsch im Beisein der Familie.</li>
         </ol>
         <ol lang="ru">
-          <li><strong>Место захоронения.</strong> Вы приобретаете место на горном лугу или в лесу в Швейцарии — по фиксированной цене 490 €, без последующих расходов.</li>
+          <li><strong>Место захоронения.</strong> Вы приобретаете место на горном лугу или в лесу в Швейцарии — по фиксированной цене 649 €, без последующих расходов.</li>
           <li><strong>Принятие.</strong> Мы письменно подтверждаем крематорию, что принимаем урну. Ваше похоронное бюро или крематорий отправляет урну нам; мы получаем свидетельство о смерти, справку о кремации и всё, что ещё требуется.</li>
           <li><strong>Захоронение по швейцарскому праву.</strong> Урна передаётся вам как близким — с этого момента она считается захороненной. Вы получаете подтверждение захоронения и свидетельство о месте.</li>
           <li><strong>Возвращение домой.</strong> Урна находится в свободном распоряжении и возвращается к вам домой — лично или застрахованным курьером. Прощание не ограничено сроком.</li>
@@ -285,7 +285,7 @@ ratgeber_body = '''
           <dt>„Im eigenen Garten verstreuen wird geduldet.“</dt>
           <dd>Nein. Ausserhalb Bremens ist es eine Ordnungswidrigkeit — und Bremen verlangt eine Erklärung zu Lebzeiten.</dd>
           <dt>„Eine Überführung ins Ausland ist kompliziert und teuer.“</dt>
-          <dd>Nein. Der Weg ist gesetzlich vorgesehen, dauert meist ein bis zwei Wochen, und «Zurück in die Heimat» kostet bei uns 490 € zum Festpreis — Grabstelle inklusive.</dd>
+          <dd>Nein. Der Weg ist gesetzlich vorgesehen, dauert meist ein bis zwei Wochen, und «Zurück in die Heimat» kostet bei uns 649 € zum Festpreis — Grabstelle inklusive.</dd>
           <dt>„Ich brauche einen Bezug zur Schweiz.“</dt>
           <dd>Nein. Entscheidend ist nur, dass in der Schweiz eine zugelassene Stelle die Urne übernimmt und Sie dort eine Grabstelle haben — beides ist Teil unseres Angebots.</dd>
           <dt>„Dafür muss ich in die Schweiz reisen.“</dt>
@@ -297,7 +297,7 @@ ratgeber_body = '''
           <dt>«Развеять в собственном саду — на это закрывают глаза».</dt>
           <dd>Нет. За пределами Бремена это административное правонарушение — а Бремен требует заявления, сделанного при жизни.</dd>
           <dt>«Вывоз за границу — это сложно и дорого».</dt>
-          <dd>Нет. Путь предусмотрен законом, занимает обычно одну–две недели, а «Возвращение домой» стоит у нас 490 € по фиксированной цене — включая место захоронения.</dd>
+          <dd>Нет. Путь предусмотрен законом, занимает обычно одну–две недели, а «Возвращение домой» стоит у нас 649 € по фиксированной цене — включая место захоронения.</dd>
           <dt>«Мне нужна связь со Швейцарией».</dt>
           <dd>Нет. Важно лишь, чтобы в Швейцарии урну приняла уполномоченная сторона и у вас там было место захоронения — и то и другое входит в наше предложение.</dd>
           <dt>«Для этого мне нужно ехать в Швейцарию».</dt>
@@ -580,13 +580,13 @@ zuhause_body = article_head(
         <p lang="de">Was in Deutschland verboten ist, ist nach Schweizer Recht möglich — und der Weg dorthin steht auch Familien offen, die in Deutschland leben. Die deutschen Bestattungsgesetze gestatten die Überführung einer Urne ins Ausland, wenn dort eine zugelassene Stelle die Urne übernimmt. In der Schweiz gilt die Übergabe der Urne an die Angehörigen als Beisetzung; danach steht die Asche zur freien Verfügung. Das Modell «Zurück in die Heimat» der Seelenfrieden Urnenrückführung GmbH nutzt genau das:</p>
         <p lang="ru">То, что запрещено в Германии, возможно по швейцарскому праву — и этот путь открыт и семьям, живущим в Германии. Немецкие похоронные законы позволяют вывезти урну за границу, если там её принимает уполномоченная сторона. В Швейцарии передача урны близким считается захоронением; после этого прах находится в свободном распоряжении. Модель «Возвращение домой» Seelenfrieden Urnenrückführung GmbH использует именно это:</p>
         <ol lang="de">
-          <li>Sie erwerben eine Grabstelle in den Schweizer Bergen — zum Festpreis von 490 €, ohne Folgekosten.</li>
+          <li>Sie erwerben eine Grabstelle in den Schweizer Bergen — zum Festpreis von 649 €, ohne Folgekosten.</li>
           <li>Wir bestätigen dem Krematorium die Übernahme; Ihr Bestatter sendet die Urne an uns. Wir beschaffen alle Unterlagen.</li>
           <li>Die Urne wird Ihnen übergeben — nach Schweizer Recht ist sie damit beigesetzt. Sie erhalten Beisetzungsbestätigung und Grabstellenurkunde.</li>
           <li>Die Urne kommt zu Ihnen nach Hause, persönlich oder per versichertem Kurier. Der Abschied kennt keine Frist.</li>
         </ol>
         <ol lang="ru">
-          <li>Вы приобретаете место захоронения в швейцарских горах — по фиксированной цене 490 €, без последующих расходов.</li>
+          <li>Вы приобретаете место захоронения в швейцарских горах — по фиксированной цене 649 €, без последующих расходов.</li>
           <li>Мы подтверждаем крематорию принятие; ваше похоронное бюро отправляет урну нам. Мы получаем все документы.</li>
           <li>Урна передаётся вам — по швейцарскому праву с этого момента она считается захороненной. Вы получаете подтверждение захоронения и свидетельство о месте.</li>
           <li>Урна возвращается к вам домой, лично или застрахованным курьером. Прощание не ограничено сроком.</li>
@@ -630,14 +630,14 @@ heimat_body = article_head(
 
         <h2><span lang="de">Der Ablauf in fünf Schritten</span><span lang="ru">Порядок в пять шагов</span></h2>
         <ol lang="de">
-          <li><strong>Erstgespräch und Grabstelle.</strong> Sie rufen an oder schreiben uns. Wir klären Ihren Fall, Sie erwerben die Grabstelle zum Festpreis von 490 € (inklusive Schweizer Mehrwertsteuer) und unterschreiben eine Vollmacht.</li>
+          <li><strong>Erstgespräch und Grabstelle.</strong> Sie rufen an oder schreiben uns. Wir klären Ihren Fall, Sie erwerben die Grabstelle zum Festpreis von 649 € (inklusive Schweizer Mehrwertsteuer) und unterschreiben eine Vollmacht.</li>
           <li><strong>Übernahmebestätigung.</strong> Wir bestätigen dem Krematorium schriftlich, dass wir die Urne übernehmen. Erst damit darf das Krematorium die Urne ins Ausland abgeben.</li>
           <li><strong>Die Urne kommt in die Schweiz.</strong> Ihr Bestatter oder das Krematorium sendet die Urne an uns. Wir beschaffen Sterbeurkunde, Einäscherungsbescheinigung und was das jeweilige Bundesland verlangt.</li>
           <li><strong>Beisetzung nach Schweizer Recht.</strong> Die Urne wird Ihnen als Angehörigen übergeben — nach Schweizer Recht ist sie damit beigesetzt und steht zur freien Verfügung. Sie erhalten die Beisetzungsbestätigung und die Grabstellenurkunde.</li>
           <li><strong>Zurück in die Heimat.</strong> Wir bringen die Urne zu Ihnen nach Hause — persönlich oder per versichertem Kurier. Von jetzt an gibt es keine Frist mehr.</li>
         </ol>
         <ol lang="ru">
-          <li><strong>Первая беседа и место захоронения.</strong> Вы звоните или пишете нам. Мы уточняем ваш случай, вы приобретаете место по фиксированной цене 490 € (включая швейцарский НДС) и подписываете доверенность.</li>
+          <li><strong>Первая беседа и место захоронения.</strong> Вы звоните или пишете нам. Мы уточняем ваш случай, вы приобретаете место по фиксированной цене 649 € (включая швейцарский НДС) и подписываете доверенность.</li>
           <li><strong>Подтверждение о принятии.</strong> Мы письменно подтверждаем крематорию, что принимаем урну. Только после этого крематорий может выдать урну за границу.</li>
           <li><strong>Урна поступает в Швейцарию.</strong> Ваше похоронное бюро или крематорий отправляет урну нам. Мы получаем свидетельство о смерти, справку о кремации и всё, что требует соответствующая федеральная земля.</li>
           <li><strong>Захоронение по швейцарскому праву.</strong> Урна передаётся вам как близким — по швейцарскому праву с этого момента она захоронена и находится в свободном распоряжении. Вы получаете подтверждение захоронения и свидетельство о месте.</li>
@@ -677,8 +677,8 @@ heimat_body = article_head(
         <p lang="ru">Обычно одна–две недели после кремации. Почти всё время уходит на бумаги. Решающий момент — когда вы нам позвоните: пока урна ещё не захоронена в Германии, путь прост. После этого он значительно сложнее.</p>
 
         <h2><span lang="de">Was es kostet</span><span lang="ru">Сколько это стоит</span></h2>
-        <p lang="de"><strong>490 € zum Festpreis, inklusive Schweizer Mehrwertsteuer.</strong> Darin enthalten: die Grabstelle in den Schweizer Bergen, das Erstgespräch, Übernahmebestätigung und alle Unterlagen, die Beisetzung nach Schweizer Recht mit Beisetzungsbestätigung und Grabstellenurkunde, die Rückführung der Urne zu Ihnen nach Hause — und die spätere Beisetzung auf der Grabstelle, auf Wunsch im Beisein der Familie. Nicht enthalten sind die Einäscherung, die Leistungen Ihres Bestatters in Deutschland und der Versand der Urne zu uns; diese gehören zur Bestattung in Deutschland.</p>
-        <p lang="ru"><strong>490 € по фиксированной цене, включая швейцарский НДС.</strong> В неё входят: место захоронения в швейцарских горах, первая беседа, подтверждение о принятии и все документы, захоронение по швейцарскому праву с подтверждением и свидетельством о месте, возврат урны к вам домой — и последующее захоронение на месте, по желанию в присутствии семьи. Не включены кремация, услуги вашего похоронного бюро в Германии и отправка урны к нам; они относятся к похоронам в Германии.</p>
+        <p lang="de"><strong>649 € zum Festpreis, inklusive Schweizer Mehrwertsteuer.</strong> Darin enthalten: die Grabstelle in den Schweizer Bergen, das Erstgespräch, Übernahmebestätigung und alle Unterlagen, die Beisetzung nach Schweizer Recht mit Beisetzungsbestätigung und Grabstellenurkunde, die Rückführung der Urne zu Ihnen nach Hause — und die spätere Beisetzung auf der Grabstelle, auf Wunsch im Beisein der Familie. Nicht enthalten sind die Einäscherung, die Leistungen Ihres Bestatters in Deutschland und der Versand der Urne zu uns; diese gehören zur Bestattung in Deutschland.</p>
+        <p lang="ru"><strong>649 € по фиксированной цене, включая швейцарский НДС.</strong> В неё входят: место захоронения в швейцарских горах, первая беседа, подтверждение о принятии и все документы, захоронение по швейцарскому праву с подтверждением и свидетельством о месте, возврат урны к вам домой — и последующее захоронение на месте, по желанию в присутствии семьи. Не включены кремация, услуги вашего похоронного бюро в Германии и отправка урны к нам; они относятся к похоронам в Германии.</p>
         <p><a class="btn btn-text" href="index.html#festpreis"><span lang="de">Zum Festpreis im Detail</span><span lang="ru">Подробно о фиксированной цене</span></a></p>
 
         <h2><span lang="de">Und die Grabstelle?</span><span lang="ru">А место захоронения?</span></h2>
@@ -766,8 +766,8 @@ pages = {
   'zurueck-in-die-heimat.html': (
     'Zurück in die Heimat: Urne nach Schweizer Recht nach Hause',
     'Возвращение домой: урна по швейцарскому праву',
-    'Das Schweizer Modell Schritt für Schritt: Grabstelle, Übernahme, Beisetzung, Rückführung der Urne nach Hause. Unterlagen, Dauer, Festpreis 490 €.',
-    'Швейцарская модель шаг за шагом: место, принятие, захоронение, возврат урны домой. Документы, сроки, фиксированная цена 490 €.',
+    'Das Schweizer Modell Schritt für Schritt: Grabstelle, Übernahme, Beisetzung, Rückführung der Urne nach Hause. Unterlagen, Dauer, Festpreis 649 €.',
+    'Швейцарская модель шаг за шагом: место, принятие, захоронение, возврат урны домой. Документы, сроки, фиксированная цена 649 €.',
     heimat_body, False,
     lambda path: article_ld(path, 'Zurück in die Heimat: So kommt die Urne nach Schweizer Recht zu Ihnen nach Hause', 'Das Schweizer Modell Schritt für Schritt: Grabstelle, Übernahme, Beisetzung, Rückführung — Unterlagen, Dauer, Kosten.', PUB, PUB, 'Zurück in die Heimat')),
   'bestattungsverfuegung.html': (
