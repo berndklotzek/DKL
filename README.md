@@ -125,7 +125,14 @@ Das unsichtbare Feld `website` ist ein Honeypot gegen Bots.
 
 `three-scenes.js` zeichnet mit Three.js zwei WebGL-Szenen:
 
-- **Hero:** eine Urne aus rund 9 000 goldenen Lichtpunkten (auf Handys 4 200),
+- **Hero, Variante «geist»:** ein leuchtender, halbtransparenter Mensch aus
+  Lichtpunkten mit weicher Aura, der zu einer strahlenden Friedenstaube
+  aufblickt. Die Taube schlägt mit den Flügeln, Wolkenschleier ziehen, beim
+  Scrollen steigt der Geist zur Taube auf. Aktivieren mit
+  `<canvas class="hero-3d" data-scene="geist">` in `index.html` oder zum
+  Ausprobieren mit `?scene=geist` in der Adresse. Die Fahne wird in dieser
+  Variante ausgeblendet.
+- **Hero, Variante «urne» (Standard):** eine Urne aus rund 9 000 goldenen Lichtpunkten (auf Handys 4 200),
   gleichmässig auf einer Drehfläche verteilt. Sie dreht sich, neigt sich zur
   Maus und löst sich beim Scrollen in einen Strom auf, der nach oben zieht.
   Dazu zwei Lichtbahnen und aufsteigende Funken. Profil der Urne: `profile`

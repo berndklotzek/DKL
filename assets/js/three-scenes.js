@@ -1,9 +1,13 @@
 /* Zwei WebGL-Szenen (Three.js, lokal unter assets/vendor/):
 
-   1. Hero — eine Urne aus einigen tausend goldenen Lichtpunkten. Sie dreht
-      sich langsam, neigt sich zur Maus und löst sich beim Scrollen in einen
-      Strom auf, der nach oben zieht. Dazu zwei Lichtbahnen und aufsteigende
-      Funken.
+   1. Hero — zwei Varianten, gewählt über data-scene am Canvas oder ?scene=
+      in der Adresse:
+      «urne»  (Standard): eine Urne aus einigen tausend goldenen Lichtpunkten,
+              die sich dreht, zur Maus neigt und beim Scrollen verweht.
+      «geist»: ein leuchtender, halbtransparenter Mensch aus Lichtpunkten, der
+              zu einer strahlenden Friedenstaube aufblickt; die Taube schlägt
+              mit den Flügeln, Wolken ziehen, beim Scrollen steigt der Geist
+              zur Taube auf.
    2. Ablauf — ein Drahtgitter-Gelände, darüber ein Lichtbogen zwischen
       Deutschland und Zug, auf dem ein Lichtpunkt hin- und zurückreist:
       in die Schweiz und zurück in die Heimat.
@@ -66,16 +70,95 @@
     return true;
   }
 
-  /* ------------------------------------------------------------ Hero: Urne */
-  (function hero() {
-    var canvas = document.querySelector('canvas.hero-3d');
-    if (!canvas) return;
-    var renderer = makeRenderer(canvas);
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(32, 1, .1, 100);
-    camera.position.set(0, .1, 13.5);
+  /* Punkte gleichmässig auf Dreiecksflächen verteilen (nach Fläche gewichtet).
+     parts: [{geo, matrix}] — beliebige Geometrien mit Lage im Raum. */
+  var seed = 7;
+  function rnd() { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
+  function sampleSurface(parts, count, tag) {
+    var tris = [], areas = [], total = 0;
+    var a = new THREE.Vector3(), b = new THREE.Vector3(), c = new THREE.Vector3(), ab = new THREE.Vector3(), ac = new THREE.Vector3();
+    parts.forEach(function (P) {
+      var g = P.geo.index ? P.geo.toNonIndexed() : P.geo;
+      if (P.matrix) g.applyMatrix4(P.matrix);
+      var pos = g.attributes.position.array;
+      for (var i = 0; i < pos.length; i += 9) {
+        a.fromArray(pos, i); b.fromArray(pos, i + 3); c.fromArray(pos, i + 6);
+        var area = ab.subVectors(b, a).cross(ac.subVectors(c, a)).length() / 2;
+        if (area <= 0) continue;
+        tris.push([a.x, a.y, a.z, b.x, b.y, b.z, c.x, c.y, c.z, P.tag || 0]);
+        total += area; areas.push(total);
+      }
+    });
+    var out = new Float32Array(count * 3), tags = new Float32Array(count);
+    for (var k = 0; k < count; k++) {
+      var r = rnd() * total, lo = 0, hi = areas.length - 1;
+      while (lo < hi) { var mid = (lo + hi) >> 1; if (areas[mid] < r) lo = mid + 1; else hi = mid; }
+      var t = tris[lo], u = rnd(), v = rnd(); if (u + v > 1) { u = 1 - u; v = 1 - v; }
+      out[k * 3]     = t[0] + (t[3] - t[0]) * u + (t[6] - t[0]) * v;
+      out[k * 3 + 1] = t[1] + (t[4] - t[1]) * u + (t[7] - t[1]) * v;
+      out[k * 3 + 2] = t[2] + (t[5] - t[2]) * u + (t[8] - t[2]) * v;
+      tags[k] = t[9];
+    }
+    return { pos: out, tags: tags };
+  }
+  function M(x, y, z, rx, ry, rz, sx, sy, sz) {
+    return new THREE.Matrix4().compose(new THREE.Vector3(x, y, z), new THREE.Quaternion().setFromEuler(new THREE.Euler(rx || 0, ry || 0, rz || 0)), new THREE.Vector3(sx || 1, sy || 1, sz || 1));
+  }
 
-    /* Profil der Urne: [Radius, Höhe] von unten nach oben. */
+  /* Gemeinsamer Partikel-Shader: Punkte, die beim Scrollen zu aTarget wandern. */
+  function particleMaterial(color, color2, size, extra) {
+    return new THREE.ShaderMaterial({
+      uniforms: { uTime: { value: 0 }, uProgress: { value: 0 }, uSize: { value: size }, uTex: { value: DOT }, uColor: { value: color }, uColor2: { value: color2 }, uFlap: { value: 0 } },
+      vertexShader: [
+        'attribute vec3 aTarget; attribute vec2 aRand; attribute float aWing;',
+        'uniform float uTime, uProgress, uSize, uFlap; varying float vA;',
+        'void main(){',
+        '  vec3 p = position;',
+        '  if (aWing != 0.) {',                      /* Flügelschlag: Drehung um die Körperachse (x) */
+        '    float sg = sign(aWing); float zz = p.z * sg; float a = uFlap * (0.35 + 0.65 * min(1., zz / 1.1));',
+        '    float y2 = p.y * cos(a) + zz * sin(a); zz = zz * cos(a) - p.y * sin(a); p.y = y2; p.z = zz * sg;',
+        '  }',
+        '  float pr = smoothstep(aRand.x * .6, aRand.x * .6 + .4, uProgress);',
+        '  p = mix(p, aTarget, pr);',
+        '  p.x += sin(uTime * .9 + aRand.y * 6.283) * .016 * (1. + pr * 6.);',
+        '  p.y += cos(uTime * .7 + aRand.x * 6.283) * .016 * (1. + pr * 6.) + pr * uTime * .15;',
+        '  vec4 mv = modelViewMatrix * vec4(p, 1.);',
+        '  gl_Position = projectionMatrix * mv;',
+        '  float tw = .55 + .45 * sin(uTime * (1.5 + aRand.y * 2.) + aRand.x * 40.);',
+        '  gl_PointSize = uSize * (.5 + aRand.y * .9) * tw * (10. / -mv.z);',
+        '  vA = (0.35 + .65 * tw) * (1. - pr * .7);',
+        '}'].join('\n'),
+      fragmentShader: [
+        'uniform sampler2D uTex; uniform vec3 uColor, uColor2; varying float vA;',
+        'void main(){ vec4 t = texture2D(uTex, gl_PointCoord); gl_FragColor = vec4(mix(uColor, uColor2, t.a), t.a * vA); }'].join('\n'),
+      transparent: true, depthWrite: false, blending: THREE.AdditiveBlending
+    });
+  }
+  function pointsFrom(sample, targetFn) {
+    var n = sample.pos.length / 3, target = new Float32Array(n * 3), rand = new Float32Array(n * 2);
+    for (var k = 0; k < n; k++) {
+      var x = sample.pos[k * 3], y = sample.pos[k * 3 + 1], z = sample.pos[k * 3 + 2];
+      var tg = targetFn(x, y, z);
+      target[k * 3] = tg[0]; target[k * 3 + 1] = tg[1]; target[k * 3 + 2] = tg[2];
+      rand[k * 2] = rnd(); rand[k * 2 + 1] = rnd();
+    }
+    var geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(sample.pos, 3));
+    geo.setAttribute('aTarget', new THREE.BufferAttribute(target, 3));
+    geo.setAttribute('aRand', new THREE.BufferAttribute(rand, 2));
+    geo.setAttribute('aWing', new THREE.BufferAttribute(sample.tags, 1));
+    return geo;
+  }
+  function ring(radius, tilt, count, color, opacity) {
+    var arr = new Float32Array(count * 3);
+    for (var i = 0; i < count; i++) { var an = i / count * Math.PI * 2; arr[i * 3] = Math.cos(an) * radius; arr[i * 3 + 2] = Math.sin(an) * radius; }
+    var g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.BufferAttribute(arr, 3));
+    var l = new THREE.LineLoop(g, new THREE.LineBasicMaterial({ color: color, transparent: true, opacity: opacity, blending: THREE.AdditiveBlending }));
+    l.rotation.x = tilt; return l;
+  }
+
+  /* ---------------------------------------------------- Hero, Szene «Urne» */
+  function buildUrn(scene) {
     var profile = [
       [0, -2.0], [.55, -2.0], [.58, -1.9], [.42, -1.78], [.36, -1.55], [.42, -1.3],
       [.62, -1.0], [.8, -.55], [.88, -.05], [.86, .45], [.76, .85], [.6, 1.12],
@@ -83,87 +166,147 @@
     ];
     var curve = new THREE.CatmullRomCurve3(profile.map(function (p) { return new THREE.Vector3(p[0], p[1], 0); }));
     var pts = curve.getPoints(160).map(function (v) { return new THREE.Vector2(Math.max(0, v.x), v.y); });
-    var lathe = new THREE.LatheGeometry(pts, 128);
+    var sample = sampleSurface([{ geo: new THREE.LatheGeometry(pts, 128) }], mobile ? 4200 : 9000);
+    var geo = pointsFrom(sample, function (x, y, z) {
+      var ang = Math.atan2(z, x) + (rnd() - .5) * 2.2, rad = 1.5 + rnd() * 4.5;
+      return [Math.cos(ang) * rad + 1.5, y * .6 + 2.5 + rnd() * 5, Math.sin(ang) * rad];
+    });
+    var mat = particleMaterial(GOLD, GOLD_SOFT, 7.5 * DPR);
+    var group = new THREE.Group();
+    group.add(new THREE.Points(geo, mat));
+    var r1 = ring(1.45, Math.PI / 2.4, 180, GOLD, .28), r2 = ring(1.85, Math.PI / 1.7, 220, GOLD, .28);
+    r2.rotation.z = .6; group.add(r1); group.add(r2);
+    scene.add(group);
+    return {
+      group: group, mats: [mat], halfW: 1.85, fullH: 4.3, sizeBase: [7.5, 6],
+      update: function (t) { r1.rotation.z = t * .12; r2.rotation.y = -t * .09; group.rotation.y = t * .18; }
+    };
+  }
 
-    /* Punkte gleichmässig auf der Oberfläche verteilen (Dreiecke nach Fläche gewichtet). */
-    var COUNT = mobile ? 4200 : 9000;
-    var pos = lathe.attributes.position.array, idx = lathe.index.array;
-    var tri = [], areas = [], total = 0, a = new THREE.Vector3(), b = new THREE.Vector3(), c = new THREE.Vector3(), ab = new THREE.Vector3(), ac = new THREE.Vector3();
-    for (var i = 0; i < idx.length; i += 3) {
-      a.fromArray(pos, idx[i] * 3); b.fromArray(pos, idx[i + 1] * 3); c.fromArray(pos, idx[i + 2] * 3);
-      var area = ab.subVectors(b, a).cross(ac.subVectors(c, a)).length() / 2;
-      tri.push(i); total += area; areas.push(total);
-    }
-    var seed = 7;
-    function rnd() { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
-    var base = new Float32Array(COUNT * 3), target = new Float32Array(COUNT * 3), rand = new Float32Array(COUNT * 2);
-    for (var k = 0; k < COUNT; k++) {
-      var r = rnd() * total, lo = 0, hi = areas.length - 1;
-      while (lo < hi) { var mid = (lo + hi) >> 1; if (areas[mid] < r) lo = mid + 1; else hi = mid; }
-      var t0 = tri[lo];
-      a.fromArray(pos, idx[t0] * 3); b.fromArray(pos, idx[t0 + 1] * 3); c.fromArray(pos, idx[t0 + 2] * 3);
-      var u = rnd(), v = rnd(); if (u + v > 1) { u = 1 - u; v = 1 - v; }
-      var px = a.x + (b.x - a.x) * u + (c.x - a.x) * v;
-      var py = a.y + (b.y - a.y) * u + (c.y - a.y) * v;
-      var pz = a.z + (b.z - a.z) * u + (c.z - a.z) * v;
-      base[k * 3] = px; base[k * 3 + 1] = py; base[k * 3 + 2] = pz;
-      /* Ziel beim Auflösen: ein weiter Strom, der nach oben rechts zieht. */
-      var ang = Math.atan2(pz, px) + (rnd() - .5) * 2.2, rad = 1.5 + rnd() * 4.5;
-      target[k * 3] = Math.cos(ang) * rad + 1.5;
-      target[k * 3 + 1] = py * .6 + 2.5 + rnd() * 5;
-      target[k * 3 + 2] = Math.sin(ang) * rad;
-      rand[k * 2] = rnd(); rand[k * 2 + 1] = rnd();
-    }
-    var geo = new THREE.BufferGeometry();
-    geo.setAttribute('position', new THREE.BufferAttribute(base, 3));
-    geo.setAttribute('aTarget', new THREE.BufferAttribute(target, 3));
-    geo.setAttribute('aRand', new THREE.BufferAttribute(rand, 2));
+  /* ------------------------------------------ Hero, Szene «Freier Geist» */
+  function buildSpirit(scene) {
+    var SKY = new THREE.Color('#a4dbff'), SKY_SOFT = new THREE.Color('#f2fbff');
+    var WHITE = new THREE.Color('#fff8e6'), WHITE_SOFT = new THREE.Color('#ffffff');
 
-    var mat = new THREE.ShaderMaterial({
-      uniforms: { uTime: { value: 0 }, uProgress: { value: 0 }, uSize: { value: (mobile ? 6 : 7.5) * DPR }, uTex: { value: DOT }, uColor: { value: GOLD }, uColor2: { value: GOLD_SOFT } },
+    /* Figur aus Grundkörpern: Kopf, Hals, Rumpf, Arme, Becken, Beine. Sie steht
+       leicht abgewandt und hebt den Kopf zur Taube. */
+    var parts = [];
+    var sph = function (r) { return new THREE.SphereGeometry(r, 24, 18); };
+    var cyl = function (r1, r2, h) { return new THREE.CylinderGeometry(r1, r2, h, 20, 6); };
+    parts.push({ geo: sph(.34), matrix: M(.02, 1.9, .04, -.42, .5, 0, 1, 1.15, 1.05) });             /* Kopf, nach oben rechts gewandt */
+    parts.push({ geo: cyl(.12, .16, .36), matrix: M(0, 1.48, .02, -.15, 0, 0) });                   /* Hals */
+    var torso = [[0, -.55], [.5, -.5], [.56, -.3], [.46, .1], [.42, .45], [.5, .85], [.62, 1.2], [.58, 1.35], [0, 1.4]]
+      .map(function (p) { return new THREE.Vector2(p[0], p[1]); });
+    parts.push({ geo: new THREE.LatheGeometry(torso, 40), matrix: M(0, 0, 0, 0, 0, 0, 1, 1, .62) });
+    parts.push({ geo: sph(.5), matrix: M(0, -.5, 0, 0, 0, 0, 1, .55, .7) });                        /* Becken */
+    [-1, 1].forEach(function (sd) {
+      parts.push({ geo: sph(.19), matrix: M(sd * .68, 1.22, 0) });                                  /* Schulter */
+      parts.push({ geo: cyl(.12, .1, .95), matrix: M(sd * .8, .72, .02, .06, 0, sd * -.22) });     /* Oberarm */
+      parts.push({ geo: cyl(.1, .08, .9), matrix: M(sd * .9, -.15, .12, .18, 0, sd * -.08) });     /* Unterarm */
+      parts.push({ geo: sph(.11), matrix: M(sd * .92, -.62, .2, 0, 0, 0, 1, 1.4, .8) });           /* Hand */
+      parts.push({ geo: cyl(.21, .16, 1.15), matrix: M(sd * .26, -1.35, 0, 0, 0, sd * .05) });     /* Oberschenkel */
+      parts.push({ geo: cyl(.15, .11, 1.1), matrix: M(sd * .3, -2.45, -.02, .04, 0, 0) });         /* Unterschenkel */
+      parts.push({ geo: sph(.14), matrix: M(sd * .3, -3.0, .12, 0, 0, 0, .9, .5, 1.6) });          /* Fuss */
+    });
+    var figSample = sampleSurface(parts, mobile ? 4200 : 9000);
+    var DOVE = new THREE.Vector3(1.35, 2.95, -.4);
+    var figGeo = pointsFrom(figSample, function (x, y, z) {
+      /* Beim Scrollen steigt der Geist zur Taube auf und verweht. */
+      var k = .4 + rnd() * .8;
+      return [x + (DOVE.x - x) * k + (rnd() - .5) * 1.5, y + (DOVE.y - y) * k + rnd() * 3, z + (DOVE.z - z) * k + (rnd() - .5) * 1.5];
+    });
+    var figMat = particleMaterial(SKY, SKY_SOFT, 6.5 * DPR);
+    /* Aura: dieselben Punkte, gross und schwach — der Geist leuchtet von innen. */
+    var auraMat = particleMaterial(SKY.clone().multiplyScalar(.22), SKY.clone().multiplyScalar(.3), 22 * DPR);
+    var figure = new THREE.Group();
+    figure.add(new THREE.Points(figGeo, figMat));
+    figure.add(new THREE.Points(figGeo, auraMat));
+    figure.position.set(-.9, -.15, 0);
+    figure.rotation.y = -.55;
+
+    /* Taube: Körper, Kopf, Schwanz und zwei Flügel; aWing ±1 markiert die Flügel für den Schlag. */
+    var dp = [];
+    dp.push({ geo: sph(.2), matrix: M(0, 0, 0, 0, 0, 0, 2.2, 1, 1.1) });                          /* Körper, längs x */
+    dp.push({ geo: sph(.13), matrix: M(.5, .1, 0, 0, 0, 0, 1.2, 1, 1) });                          /* Kopf */
+    dp.push({ geo: new THREE.ConeGeometry(.16, .7, 12, 1, true), matrix: M(-.75, 0, 0, 0, 0, Math.PI / 2, 1, 1, .45) }); /* Schwanz */
+    [-1, 1].forEach(function (sd) {
+      var wing = new THREE.PlaneGeometry(1, 1, 22, 8);
+      var wp = wing.attributes.position;
+      for (var i = 0; i < wp.count; i++) {
+        var u = wp.getX(i) + .5, v = wp.getY(i) + .5;                       /* u: Wurzel→Spitze, v: Hinter-→Vorderkante */
+        var chord = .62 * (1 - .55 * u * u), feather = .12 * Math.sin(v * Math.PI * 5) * u;
+        wp.setXYZ(i, -.15 + (v - .5) * chord + .15 * u - feather * (1 - v), .18 * u * u, sd * u * 1.15);
+      }
+      dp.push({ geo: wing, tag: sd });
+    });
+    var doveSample = sampleSurface(dp, mobile ? 1300 : 2600);
+    var doveGeo = pointsFrom(doveSample, function (x, y, z) { return [x + (rnd() - .5) * .6, y + 1.5 + rnd() * 2, z + (rnd() - .5) * .6]; });
+    var doveMat = particleMaterial(WHITE, WHITE_SOFT, 6.5 * DPR);
+    var dove = new THREE.Group();
+    dove.add(new THREE.Points(doveGeo, doveMat));
+    /* Strahlender Hof hinter der Taube. */
+    var halo = new THREE.Sprite(new THREE.SpriteMaterial({ map: DOT, color: 0xfff1cc, transparent: true, opacity: .9, blending: THREE.AdditiveBlending, depthWrite: false }));
+    halo.scale.set(3.2, 3.2, 1); halo.position.set(0, .1, -.5); halo.material.opacity = .55; dove.add(halo);
+    var core = new THREE.Sprite(new THREE.SpriteMaterial({ map: DOT, color: 0xffffff, transparent: true, opacity: .75, blending: THREE.AdditiveBlending, depthWrite: false }));
+    core.scale.set(.9, .9, 1); core.position.set(.1, .05, -.35); core.material.opacity = .5; dove.add(core);
+    dove.position.copy(DOVE);
+    dove.rotation.set(.35, -.85, .3);
+    dove.scale.setScalar(1.15);
+
+    /* Wolkenschleier: grosse, sehr weiche Punkte, die langsam ziehen. */
+    var CN = mobile ? 90 : 220, cp = new Float32Array(CN * 3), cr = new Float32Array(CN * 2);
+    for (var q = 0; q < CN; q++) { cp[q * 3] = (rnd() - .5) * 12; cp[q * 3 + 1] = (rnd() - .35) * 8; cp[q * 3 + 2] = -2 - rnd() * 5; cr[q * 2] = rnd(); cr[q * 2 + 1] = rnd(); }
+    var cg = new THREE.BufferGeometry();
+    cg.setAttribute('position', new THREE.BufferAttribute(cp, 3));
+    cg.setAttribute('aRand', new THREE.BufferAttribute(cr, 2));
+    var cm = new THREE.ShaderMaterial({
+      uniforms: { uTime: { value: 0 }, uSize: { value: 120 * DPR }, uTex: { value: DOT }, uColor: { value: new THREE.Color('#9fc4e8') } },
       vertexShader: [
-        'attribute vec3 aTarget; attribute vec2 aRand;',
-        'uniform float uTime, uProgress, uSize; varying float vA;',
-        'void main(){',
-        '  float p = smoothstep(aRand.x * .6, aRand.x * .6 + .4, uProgress);',
-        '  vec3 pos = mix(position, aTarget, p);',
-        '  pos.x += sin(uTime * .9 + aRand.y * 6.283) * .018 * (1. + p * 6.);',
-        '  pos.y += cos(uTime * .7 + aRand.x * 6.283) * .018 * (1. + p * 6.) + p * uTime * .15;',
-        '  vec4 mv = modelViewMatrix * vec4(pos, 1.);',
-        '  gl_Position = projectionMatrix * mv;',
-        '  float tw = .55 + .45 * sin(uTime * (1.5 + aRand.y * 2.) + aRand.x * 40.);',
-        '  gl_PointSize = uSize * (.5 + aRand.y * .9) * tw * (10. / -mv.z);',
-        '  vA = (0.35 + .65 * tw) * (1. - p * .7);',
-        '}'].join('\n'),
-      fragmentShader: [
-        'uniform sampler2D uTex; uniform vec3 uColor, uColor2; varying float vA;',
-        'void main(){ vec4 t = texture2D(uTex, gl_PointCoord); gl_FragColor = vec4(mix(uColor, uColor2, t.a), t.a * vA); }'].join('\n'),
+        'attribute vec2 aRand; uniform float uTime, uSize; varying float vA;',
+        'void main(){ vec3 p = position; p.x = mod(p.x + uTime * (.08 + aRand.x * .1) + 6., 12.) - 6.;',
+        '  vec4 mv = modelViewMatrix * vec4(p, 1.); gl_Position = projectionMatrix * mv;',
+        '  gl_PointSize = uSize * (.5 + aRand.y) * (10. / -mv.z); vA = .05 + .05 * aRand.y; }'].join('\n'),
+      fragmentShader: 'uniform sampler2D uTex; uniform vec3 uColor; varying float vA; void main(){ vec4 t = texture2D(uTex, gl_PointCoord); gl_FragColor = vec4(uColor, t.a * t.a * vA); }',
       transparent: true, depthWrite: false, blending: THREE.AdditiveBlending
     });
-    var urn = new THREE.Points(geo, mat);
-    var group = new THREE.Group(); group.add(urn);
+
+    var group = new THREE.Group();
+    group.add(figure); group.add(dove); group.add(new THREE.Points(cg, cm));
     scene.add(group);
+    return {
+      group: group, mats: [figMat, doveMat], auras: [auraMat], halfW: 2.2, fullH: 6.4, sizeBase: [6.5, 5.5],
+      update: function (t) {
+        cm.uniforms.uTime.value = t;
+        doveMat.uniforms.uFlap.value = Math.sin(t * 5.2) * .55;
+        dove.position.set(DOVE.x + Math.sin(t * .6) * .18, DOVE.y + Math.sin(t * 1.1) * .12, DOVE.z);
+        halo.material.opacity = .5 + Math.sin(t * 1.7) * .1;
+        figure.rotation.y = -.55 + Math.sin(t * .25) * .06;
+      }
+    };
+  }
 
-    /* Zwei feine Lichtbahnen um die Urne. */
-    function ring(radius, tilt, count) {
-      var arr = new Float32Array(count * 3);
-      for (var i = 0; i < count; i++) { var an = i / count * Math.PI * 2; arr[i * 3] = Math.cos(an) * radius; arr[i * 3 + 2] = Math.sin(an) * radius; }
-      var g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.BufferAttribute(arr, 3));
-      var m = new THREE.LineBasicMaterial({ color: GOLD, transparent: true, opacity: .28, blending: THREE.AdditiveBlending });
-      var l = new THREE.LineLoop(g, m); l.rotation.x = tilt; return l;
-    }
-    var ring1 = ring(1.45, Math.PI / 2.4, 180), ring2 = ring(1.85, Math.PI / 1.7, 220);
-    ring2.rotation.z = .6;
-    group.add(ring1); group.add(ring2);
+  /* ------------------------------------------------------------- Hero */
+  (function hero() {
+    var canvas = document.querySelector('canvas.hero-3d');
+    if (!canvas) return;
+    var kind = (new URLSearchParams(location.search).get('scene') || canvas.dataset.scene || 'urne').toLowerCase();
+    var renderer = makeRenderer(canvas);
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(32, 1, .1, 100);
+    camera.position.set(0, .1, 13.5);
+    var S = kind === 'geist' ? buildSpirit(scene) : buildUrn(scene);
+    var heroEl = canvas.closest('.hero');
+    if (heroEl) heroEl.classList.add('scene-' + kind);
+    var group = S.group;
 
-    /* Aufsteigende Funken. */
+    /* Aufsteigende Funken (beide Szenen). */
     var SP = mobile ? 120 : 260, sp = new Float32Array(SP * 3), spr = new Float32Array(SP * 2);
     for (var s = 0; s < SP; s++) { sp[s * 3] = (rnd() - .5) * 9; sp[s * 3 + 1] = (rnd() - .5) * 8; sp[s * 3 + 2] = (rnd() - .5) * 5 - 1; spr[s * 2] = rnd(); spr[s * 2 + 1] = rnd(); }
     var sg = new THREE.BufferGeometry();
     sg.setAttribute('position', new THREE.BufferAttribute(sp, 3));
     sg.setAttribute('aRand', new THREE.BufferAttribute(spr, 2));
     var sm = new THREE.ShaderMaterial({
-      uniforms: { uTime: { value: 0 }, uSize: { value: 4 * DPR }, uTex: { value: DOT }, uColor: { value: GOLD_SOFT } },
+      uniforms: { uTime: { value: 0 }, uSize: { value: 4 * DPR }, uTex: { value: DOT }, uColor: { value: kind === 'geist' ? new THREE.Color('#dff1ff') : GOLD_SOFT } },
       vertexShader: [
         'attribute vec2 aRand; uniform float uTime, uSize; varying float vA;',
         'void main(){ vec3 p = position; p.y = mod(p.y + uTime * (.25 + aRand.x * .35) + 4., 8.) - 4.; p.x += sin(uTime * .6 + aRand.y * 6.28) * .3;',
@@ -174,62 +317,62 @@
     });
     scene.add(new THREE.Points(sg, sm));
 
-    /* Lage: Die Urne darf die Überschrift nie überdecken. Auf breiten Schirmen
+    /* Lage: Die Szene darf die Überschrift nie überdecken. Auf breiten Schirmen
        bekommt sie die Spalte rechts neben dem Textblock, auf schmalen den Raum
        zwischen Kopfzeile und Text. Beides wird aus der echten Textbox gerechnet
-       und die Urne so skaliert, dass sie samt Lichtbahnen hineinpasst. */
+       und die Szene so skaliert, dass sie hineinpasst. */
     var baseX = 0, baseY = 0, baseScale = 1;
-    var RING_R = 1.85, URN_H = 4.3;                       // Ausdehnung der Szene in Welteinheiten
     function place() {
       if (!fit(renderer, camera, canvas)) return;
       var W = canvas.clientWidth, H = canvas.clientHeight;
-      var vh = 2 * camera.position.z * Math.tan(camera.fov / 2 * Math.PI / 180);   // sichtbare Höhe auf z = 0
-      var vw = vh * camera.aspect, upp = vh / H;                                    // Einheiten je Pixel
+      var vh = 2 * camera.position.z * Math.tan(camera.fov / 2 * Math.PI / 180);
+      var vw = vh * camera.aspect, upp = vh / H;
       var hb = canvas.getBoundingClientRect();
       var text = document.querySelector('.hero-text');
       var tb = text ? text.getBoundingClientRect() : null;
       var wide = W > 860;
       var cx, cy, sc;
       if (wide) {
-        var left = (tb ? tb.right - hb.left : W * .5) + 32;     // linke Kante der freien Spalte
+        var left = (tb ? tb.right - hb.left : W * .5) + 32;
         var colW = Math.max(0, W - left - W * .04);
         cx = left + colW / 2;
         cy = tb ? (tb.top + tb.bottom) / 2 - hb.top : H / 2;
-        sc = Math.min(1, colW * .46 * upp / RING_R, H * .8 * upp / URN_H);
+        sc = Math.min(1, colW * .46 * upp / S.halfW, H * .8 * upp / S.fullH);
       } else {
-        var top = hb.top < 0 ? -hb.top : 0;                     // Kopfzeile abziehen: sichtbarer Anfang
+        var top = hb.top < 0 ? -hb.top : 0;
         var headerH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header')) * 16 || 84;
         var start = top + headerH, end = tb ? tb.top - hb.top : H * .35;
         cx = W / 2;
         cy = (start + end) / 2;
-        sc = Math.max(.25, Math.min(.6, (end - start) * .92 * upp / URN_H, W * .44 * upp / RING_R));
+        sc = Math.max(.25, Math.min(.6, (end - start) * .92 * upp / S.fullH, W * .44 * upp / S.halfW));
       }
       baseX = (cx / W - .5) * vw;
       baseY = camera.position.y - (cy / H - .5) * vh;
       baseScale = sc;
-      mat.uniforms.uSize.value = (wide ? 7.5 : 6) * DPR * Math.max(.7, sc);
+      var base = wide ? S.sizeBase[0] : S.sizeBase[1];
+      S.mats.forEach(function (m) { m.uniforms.uSize.value = base * DPR * Math.max(.7, sc); });
+      (S.auras || []).forEach(function (m) { m.uniforms.uSize.value = base * 3.4 * DPR * Math.max(.7, sc); });
     }
     place();
     window.addEventListener('resize', place);
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);   /* Textbox ändert sich mit den Schriften */
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
     window.addEventListener('load', place);
 
     var mx = 0, my = 0, tx = 0, ty = 0;
     window.addEventListener('pointermove', function (e) { tx = (e.clientX / window.innerWidth - .5); ty = (e.clientY / window.innerHeight - .5); }, { passive: true });
 
-    var hero = canvas.closest('.hero');
     loop(canvas, function (t) {
-      var sc = window.scrollY, h = hero ? hero.offsetHeight : window.innerHeight;
+      var sc = window.scrollY, h = heroEl ? heroEl.offsetHeight : window.innerHeight;
       var progress = Math.min(1, Math.max(0, (sc - h * .12) / (h * .75)));
-      mat.uniforms.uTime.value = t; sm.uniforms.uTime.value = t;
-      mat.uniforms.uProgress.value = reduce ? 0 : progress;
+      S.mats.concat(S.auras || []).forEach(function (m) { m.uniforms.uTime.value = t; m.uniforms.uProgress.value = reduce ? 0 : progress; });
+      sm.uniforms.uTime.value = t;
       mx += (tx - mx) * .04; my += (ty - my) * .04;
-      group.rotation.y = t * .18 + mx * .6;
-      group.rotation.x = my * .25;
+      S.update(t);
+      group.rotation.y = mx * .5;
+      group.rotation.x = my * .2;
       group.position.x += (baseX - group.position.x) * .1;
       group.position.y += (baseY + Math.sin(t * .5) * .08 * baseScale - group.position.y) * .1;
       group.scale.setScalar(group.scale.x + (baseScale - group.scale.x) * .1);
-      ring1.rotation.z = t * .12; ring2.rotation.y = -t * .09;
       renderer.render(scene, camera);
     });
   })();
