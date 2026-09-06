@@ -4,8 +4,9 @@
       sich langsam, neigt sich zur Maus und löst sich beim Scrollen in einen
       Strom auf, der nach oben zieht. Dazu zwei Lichtbahnen und aufsteigende
       Funken.
-   2. Ablauf — ein Drahtgitter-Gelände, darüber ein Lichtbogen von
-      Deutschland nach Zug, auf dem ein Lichtpunkt reist.
+   2. Ablauf — ein Drahtgitter-Gelände, darüber ein Lichtbogen zwischen
+      Deutschland und Zug, auf dem ein Lichtpunkt hin- und zurückreist:
+      in die Schweiz und zurück in die Heimat.
 
    Ohne WebGL, ohne Three.js oder mit Bewegungswunsch «reduziert» bleibt die
    gemalte 2D-Kulisse stehen — nichts fehlt, es leuchtet nur weniger. */
@@ -264,8 +265,9 @@
     function place() { fit(renderer, camera, canvas); }
     place(); window.addEventListener('resize', place);
 
+    /* Hin und zurück: Deutschland → Schweiz → zurück in die Heimat. */
     loop(canvas, function (t) {
-      var u = reduce ? .45 : (t * .09) % 1;
+      var ph = (t * .07) % 1, u = reduce ? .45 : (ph < .5 ? ph * 2 : 2 - ph * 2);
       for (var q = 0; q < TAIL; q++) {
         var v = arc.getPoint(Math.max(0, u - q * .004));
         tail[q * 3] = v.x; tail[q * 3 + 1] = v.y; tail[q * 3 + 2] = v.z;

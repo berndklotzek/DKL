@@ -122,7 +122,7 @@ FOOTER = '''
         <ul>
           <li><a href="friedhofszwang.html"><span lang="de">Ratgeber Friedhofszwang</span><span lang="ru">Обязательное захоронение</span></a></li>
           <li><a href="urne-zu-hause-aufbewahren.html"><span lang="de">Urne zu Hause aufbewahren</span><span lang="ru">Хранить урну дома</span></a></li>
-          <li><a href="urne-ins-ausland-ueberfuehren.html"><span lang="de">Urne ins Ausland überführen</span><span lang="ru">Вывезти урну за границу</span></a></li>
+          <li><a href="zurueck-in-die-heimat.html"><span lang="de">Zurück in die Heimat: das Modell</span><span lang="ru">Возвращение домой: модель</span></a></li>
           <li><a href="bestattungsverfuegung.html"><span lang="de">Bestattungsverfügung</span><span lang="ru">Распоряжение о погребении</span></a></li>
           <li><a href="impressum.html"><span lang="de">Impressum</span><span lang="ru">Выходные данные</span></a></li>
           <li><a href="datenschutz.html"><span lang="de">Datenschutz</span><span lang="ru">Защита данных</span></a></li>
@@ -177,8 +177,8 @@ ratgeber_body = '''
       <p class="crumbs caps"><a href="index.html"><span lang="de">Startseite</span><span lang="ru">Главная</span></a><span>/</span><span lang="de">Ratgeber</span><span lang="ru">Справочник</span></p>
       <p class="eyebrow caps"><span lang="de">Ratgeber</span><span lang="ru">Справочник</span></p>
       <h1><span lang="de">Der Friedhofszwang — und der Weg daran vorbei.</span><span lang="ru">Обязательное захоронение — и путь в обход.</span></h1>
-      <p class="lead" lang="de">Warum in Deutschland eine Urne nicht nach Hause darf, warum das in der Schweiz anders ist, und wie eine Überführung über die Grenze rechtlich und praktisch abläuft.</p>
-      <p class="lead" lang="ru">Почему в Германии урну нельзя забрать домой, почему в Швейцарии всё иначе и как юридически и практически проходит перевозка через границу.</p>
+      <p class="lead" lang="de">Warum in Deutschland eine Urne nicht nach Hause darf, warum das in der Schweiz anders ist — und wie das Schweizer Recht den Weg zurück in die Heimat öffnet.</p>
+      <p class="lead" lang="ru">Почему в Германии урну нельзя забрать домой, почему в Швейцарии всё иначе — и как швейцарское право открывает путь домой.</p>
     </div>
   </div>
 
@@ -190,7 +190,7 @@ ratgeber_body = '''
           <li><a href="#was"><span lang="de">Was der Friedhofszwang ist</span><span lang="ru">Что такое обязательное захоронение</span></a></li>
           <li><a href="#folgen"><span lang="de">Was er für Angehörige bedeutet</span><span lang="ru">Что это значит для близких</span></a></li>
           <li><a href="#schweiz"><span lang="de">Wie die Schweiz es hält</span><span lang="ru">Как это устроено в Швейцарии</span></a></li>
-          <li><a href="#grenze"><span lang="de">Der Weg über die Grenze</span><span lang="ru">Путь через границу</span></a></li>
+          <li><a href="#grenze"><span lang="de">Der Weg zurück in die Heimat</span><span lang="ru">Путь домой</span></a></li>
           <li><a href="#danach"><span lang="de">Was danach möglich ist</span><span lang="ru">Что возможно после</span></a></li>
           <li><a href="#vorsorge"><span lang="de">Vorsorge: die Bestattungsverfügung</span><span lang="ru">Планирование: распоряжение о погребении</span></a></li>
           <li><a href="#irrtuemer"><span lang="de">Häufige Irrtümer</span><span lang="ru">Распространённые заблуждения</span></a></li>
@@ -232,46 +232,46 @@ ratgeber_body = '''
         <p lang="de">Der Unterschied ist kein juristisches Detail, sondern eine andere Haltung: Die Schweiz vertraut den Familien.</p>
         <p lang="ru">Разница — не юридическая деталь, а другая позиция: Швейцария доверяет семьям.</p>
 
-        <h2 id="grenze"><span lang="de">Der Weg über die Grenze</span><span lang="ru">Путь через границу</span></h2>
-        <p lang="de">Der Friedhofszwang gilt in Deutschland — nicht darüber hinaus. Die Bestattungsgesetze erlauben ausdrücklich, eine Urne ins Ausland zu überführen, wenn dort eine Stelle die Urne rechtmässig entgegennimmt. In der Schweiz ist das ein Bestattungsunternehmen wie die Seelenfrieden Urnenrückführung GmbH. Der Ablauf:</p>
-        <p lang="ru">Обязательное захоронение действует в Германии — но не за её пределами. Похоронные законы прямо разрешают вывезти урну за границу, если там её законно принимает уполномоченная сторона. В Швейцарии это похоронное предприятие, такое как Seelenfrieden Urnenrückführung GmbH. Порядок:</p>
+        <h2 id="grenze"><span lang="de">Der Weg zurück in die Heimat</span><span lang="ru">Путь домой</span></h2>
+        <p lang="de">Der Friedhofszwang gilt in Deutschland — nicht darüber hinaus. Die Bestattungsgesetze erlauben ausdrücklich, eine Urne ins Ausland zu überführen, wenn dort eine zugelassene Stelle sie übernimmt. In der Schweiz ist das die Seelenfrieden Urnenrückführung GmbH. Und weil in der Schweiz jede Person frei über die Asche ihrer Verstorbenen verfügen darf, gilt dort die Übergabe der Urne an die Angehörigen als Beisetzung. Genau darauf beruht «Zurück in die Heimat»:</p>
+        <p lang="ru">Обязательное захоронение действует в Германии — но не за её пределами. Похоронные законы прямо разрешают вывезти урну за границу, если там её принимает уполномоченная сторона. В Швейцарии это Seelenfrieden Urnenrückführung GmbH. А поскольку в Швейцарии каждый может свободно распоряжаться прахом своих умерших, передача урны близким считается там захоронением. Именно на этом основано «Возвращение домой»:</p>
         <ol lang="de">
-          <li><strong>Übernahmebestätigung.</strong> Wir bestätigen dem Krematorium schriftlich, dass wir die Urne übernehmen und in der Schweiz ordnungsgemäss verwahren beziehungsweise übergeben.</li>
-          <li><strong>Unterlagen.</strong> Sterbeurkunde, Einäscherungsbescheinigung und — je nach Bundesland — ein Formular der zuständigen Behörde. Wir beschaffen alles und lassen übersetzen, was die Schweiz auf Deutsch braucht (bei fremdsprachigen Urkunden).</li>
-          <li><strong>Abholung.</strong> Wir übernehmen die Urne persönlich beim Krematorium. Sie wird in einem versiegelten, zugelassenen Behälter transportiert.</li>
-          <li><strong>Grenze.</strong> Am Zoll legen wir die Urkunden vor. Die Asche eines Verstorbenen ist keine Ware; Abgaben fallen nicht an.</li>
-          <li><strong>Übergabe.</strong> In Zug händigen wir Ihnen die Urne persönlich aus und dokumentieren die Übergabe — für Sie und für jede Behörde, die später fragt.</li>
+          <li><strong>Grabstelle.</strong> Sie erwerben eine Grabstelle auf einer Bergwiese oder in einem Wald in der Schweiz — zum Festpreis von 490 €, ohne Folgekosten.</li>
+          <li><strong>Übernahme.</strong> Wir bestätigen dem Krematorium schriftlich, dass wir die Urne übernehmen. Ihr Bestatter oder das Krematorium sendet die Urne an uns; wir beschaffen Sterbeurkunde, Einäscherungsbescheinigung und was sonst verlangt wird.</li>
+          <li><strong>Beisetzung nach Schweizer Recht.</strong> Die Urne wird Ihnen als Angehörigen übergeben — damit ist sie beigesetzt. Sie erhalten die Beisetzungsbestätigung und die Grabstellenurkunde.</li>
+          <li><strong>Zurück in die Heimat.</strong> Die Urne steht zur freien Verfügung und kommt zu Ihnen nach Hause, persönlich überbracht oder per versichertem Kurier. Der Abschied kennt keine Frist.</li>
+          <li><strong>Später.</strong> Wenn Sie so weit sind, setzen wir die Asche auf Ihrer Grabstelle in den Schweizer Bergen bei — ohne weitere Kosten, auf Wunsch im Beisein der Familie.</li>
         </ol>
         <ol lang="ru">
-          <li><strong>Подтверждение о принятии.</strong> Мы письменно подтверждаем крематорию, что принимаем урну и надлежащим образом храним или передаём её в Швейцарии.</li>
-          <li><strong>Документы.</strong> Свидетельство о смерти, справка о кремации и — в зависимости от федеральной земли — форма соответствующего ведомства. Мы получаем всё и переводим то, что нужно Швейцарии на немецком языке (при иноязычных документах).</li>
-          <li><strong>Получение.</strong> Мы лично принимаем урну в крематории. Она перевозится в опечатанном, допущенном контейнере.</li>
-          <li><strong>Граница.</strong> На таможне мы предъявляем документы. Прах умершего не является товаром; пошлины не взимаются.</li>
-          <li><strong>Передача.</strong> В Цуге мы лично вручаем вам урну и документируем передачу — для вас и для любого ведомства, которое спросит позже.</li>
+          <li><strong>Место захоронения.</strong> Вы приобретаете место на горном лугу или в лесу в Швейцарии — по фиксированной цене 490 €, без последующих расходов.</li>
+          <li><strong>Принятие.</strong> Мы письменно подтверждаем крематорию, что принимаем урну. Ваше похоронное бюро или крематорий отправляет урну нам; мы получаем свидетельство о смерти, справку о кремации и всё, что ещё требуется.</li>
+          <li><strong>Захоронение по швейцарскому праву.</strong> Урна передаётся вам как близким — с этого момента она считается захороненной. Вы получаете подтверждение захоронения и свидетельство о месте.</li>
+          <li><strong>Возвращение домой.</strong> Урна находится в свободном распоряжении и возвращается к вам домой — лично или застрахованным курьером. Прощание не ограничено сроком.</li>
+          <li><strong>Позже.</strong> Когда вы будете готовы, мы захороним прах на вашем месте в швейцарских горах — без дополнительных расходов, по желанию в присутствии семьи.</li>
         </ol>
         <div class="aside">
-          <p lang="de"><strong>Was Sie selbst tun müssen:</strong> nichts, ausser uns anzurufen und eine Vollmacht zu unterschreiben. Das Krematorium, das Standesamt und die Behörden sprechen mit uns.</p>
-          <p lang="ru"><strong>Что нужно сделать вам:</strong> ничего, кроме как позвонить нам и подписать доверенность. С крематорием, загсом и ведомствами общаемся мы.</p>
+          <p lang="de"><strong>Was Sie selbst tun müssen:</strong> uns anrufen, die Grabstelle erwerben und eine Vollmacht unterschreiben. Das Krematorium, das Standesamt und die Behörden sprechen mit uns. Wichtig ist nur eines: Melden Sie sich, bevor die Urne in Deutschland beigesetzt wird.</p>
+          <p lang="ru"><strong>Что нужно сделать вам:</strong> позвонить нам, приобрести место и подписать доверенность. С крематорием, загсом и ведомствами общаемся мы. Важно лишь одно: свяжитесь с нами до того, как урна будет захоронена в Германии.</p>
         </div>
 
         <h2 id="danach"><span lang="de">Was danach möglich ist</span><span lang="ru">Что возможно после</span></h2>
-        <p lang="de">Sobald die Urne in der Schweiz ist, entscheiden Sie. Viele Familien wählen einen Ort, den sie mit dem Verstorbenen verbinden: einen Aussichtspunkt in den Bergen, das Ufer eines Sees, einen Wald. Andere behalten die Urne zu Hause, bis sich die Familie gemeinsam für einen Ort entschieden hat — es gibt keine Frist.</p>
-        <p lang="ru">Как только урна в Швейцарии, решаете вы. Многие семьи выбирают место, которое связывают с умершим: смотровую площадку в горах, берег озера, лес. Другие оставляют урну дома, пока семья вместе не определится с местом — никаких сроков нет.</p>
-        <p lang="de">Soll die Urne in die Heimat der Familie weiterreisen, organisieren wir das aus der Schweiz heraus: Luftfracht oder Kurier, konsularische Bescheinigungen, Einfuhrbestimmungen des Ziellandes, Übergabe an die Familie vor Ort. Wichtig zu wissen: Eine Rückkehr nach Deutschland ist nicht vorgesehen — dort gilt weiterhin der Friedhofszwang.</p>
-        <p lang="ru">Если урна должна отправиться дальше на родину семьи, мы организуем это из Швейцарии: авиагруз или курьер, консульские справки, правила ввоза страны назначения, передача семье на месте. Важно знать: возвращение в Германию не предусмотрено — там по-прежнему действует обязательное захоронение.</p>
+        <p lang="de">Sobald die Urne bei Ihnen ist, entscheiden Sie. Viele Familien stellen sie an einen stillen Platz im Haus und nehmen sich Zeit — Monate oder Jahre. Andere setzen die Asche bald auf der Grabstelle in den Schweizer Bergen bei und verbinden das mit einer Reise der Familie. Beides ist im Modell vorgesehen, beides ist bezahlt.</p>
+        <p lang="ru">Как только урна у вас, решаете вы. Многие семьи ставят её в тихое место в доме и дают себе время — месяцы или годы. Другие вскоре хоронят прах на месте в швейцарских горах и совмещают это с поездкой всей семьёй. И то и другое предусмотрено моделью, и то и другое оплачено.</p>
+        <p lang="de">Auch eine spätere Beisetzung an einem anderen Ort ist möglich — in einem Bestattungswald oder auf einem Friedhof in Deutschland etwa. Die Grabstelle in der Schweiz bleibt Ihnen in jedem Fall erhalten.</p>
+        <p lang="ru">Возможно и последующее захоронение в другом месте — например, в «похоронном лесу» или на кладбище в Германии. Место в Швейцарии в любом случае остаётся за вами.</p>
 
         <h2 id="vorsorge"><span lang="de">Vorsorge: die Bestattungsverfügung</span><span lang="ru">Планирование: распоряжение о погребении</span></h2>
         <p lang="de">Wer zu Lebzeiten festlegen möchte, dass die eigene Urne nicht auf einem deutschen Friedhof bleibt, hält das in einer <strong>Bestattungsverfügung</strong> fest. Sie ist formfrei, sollte aber eigenhändig unterschrieben und datiert sein und enthalten:</p>
         <p lang="ru">Кто хочет при жизни определить, что его урна не останется на немецком кладбище, фиксирует это в <strong>распоряжении о погребении</strong>. Форма свободная, но документ должен быть собственноручно подписан и датирован и содержать:</p>
         <ul lang="de">
           <li>den Wunsch nach Einäscherung,</li>
-          <li>den Wunsch, die Urne in die Schweiz zu überführen — und was dort mit ihr geschehen soll,</li>
+          <li>den Wunsch, die Urne nach dem Modell «Zurück in die Heimat» über die Schweiz zur Familie zu bringen — und wo sie später beigesetzt werden soll,</li>
           <li>die Person, die das umsetzen soll (die sogenannte totenfürsorgeberechtigte Person),</li>
           <li>den Hinweis auf uns als beauftragtes Unternehmen samt Kontaktdaten.</li>
         </ul>
         <ul lang="ru">
           <li>желание быть кремированным,</li>
-          <li>желание перевезти урну в Швейцарию — и что должно с ней произойти там,</li>
+          <li>желание передать урну семье по модели «Возвращение домой» через Швейцарию — и где она должна быть захоронена впоследствии,</li>
           <li>лицо, которое должно это осуществить (так называемое лицо, ответственное за погребение),</li>
           <li>указание на нас как уполномоченное предприятие с контактными данными.</li>
         </ul>
@@ -285,9 +285,11 @@ ratgeber_body = '''
           <dt>„Im eigenen Garten verstreuen wird geduldet.“</dt>
           <dd>Nein. Ausserhalb Bremens ist es eine Ordnungswidrigkeit — und Bremen verlangt eine Erklärung zu Lebzeiten.</dd>
           <dt>„Eine Überführung ins Ausland ist kompliziert und teuer.“</dt>
-          <dd>Nein. Der Weg ist gesetzlich vorgesehen, dauert meist ein bis zwei Wochen und kostet bei uns 490 € zum Festpreis.</dd>
+          <dd>Nein. Der Weg ist gesetzlich vorgesehen, dauert meist ein bis zwei Wochen, und «Zurück in die Heimat» kostet bei uns 490 € zum Festpreis — Grabstelle inklusive.</dd>
           <dt>„Ich brauche einen Bezug zur Schweiz.“</dt>
-          <dd>Nein. Entscheidend ist nur, dass in der Schweiz eine zugelassene Stelle die Urne übernimmt — das tun wir.</dd>
+          <dd>Nein. Entscheidend ist nur, dass in der Schweiz eine zugelassene Stelle die Urne übernimmt und Sie dort eine Grabstelle haben — beides ist Teil unseres Angebots.</dd>
+          <dt>„Dafür muss ich in die Schweiz reisen.“</dt>
+          <dd>Nein. Die Urne kommt per Bestatter zu uns und von uns zu Ihnen nach Hause. Wer die Grabstelle sehen möchte, ist jederzeit willkommen.</dd>
         </dl>
         <dl class="qa" lang="ru">
           <dt>«После прощания я могу ненадолго взять урну домой».</dt>
@@ -295,9 +297,11 @@ ratgeber_body = '''
           <dt>«Развеять в собственном саду — на это закрывают глаза».</dt>
           <dd>Нет. За пределами Бремена это административное правонарушение — а Бремен требует заявления, сделанного при жизни.</dd>
           <dt>«Вывоз за границу — это сложно и дорого».</dt>
-          <dd>Нет. Путь предусмотрен законом, занимает обычно одну–две недели и стоит у нас 490 € по фиксированной цене.</dd>
+          <dd>Нет. Путь предусмотрен законом, занимает обычно одну–две недели, а «Возвращение домой» стоит у нас 490 € по фиксированной цене — включая место захоронения.</dd>
           <dt>«Мне нужна связь со Швейцарией».</dt>
-          <dd>Нет. Важно лишь, чтобы в Швейцарии урну приняла уполномоченная сторона — это делаем мы.</dd>
+          <dd>Нет. Важно лишь, чтобы в Швейцарии урну приняла уполномоченная сторона и у вас там было место захоронения — и то и другое входит в наше предложение.</dd>
+          <dt>«Для этого мне нужно ехать в Швейцарию».</dt>
+          <dd>Нет. Урна поступает к нам через похоронное бюро и от нас — к вам домой. Кто хочет увидеть место захоронения, всегда желанный гость.</dd>
         </dl>
 
         <div class="aside">
@@ -407,8 +411,8 @@ datenschutz_body = '''
         <p lang="ru">Мы обрабатываем ваши данные, чтобы ответить на обращение и выполнить заказ (исполнение договора, ст. 6 п. 1 b GDPR), чтобы выполнять законные обязанности по хранению и подтверждению (ст. 6 п. 1 c GDPR) и чтобы безопасно эксплуатировать сайт (законный интерес, ст. 6 п. 1 f GDPR). Мы не используем ваши данные для рекламы.</p>
 
         <h2 id="weitergabe"><span lang="de">Weitergabe</span><span lang="ru">Передача данных</span></h2>
-        <p lang="de">Wir geben Daten nur an Stellen weiter, die für die Überführung zwingend beteiligt sind: Krematorien, Standesämter und Behörden, Zoll, Transporteure und Bestattungsunternehmen im Zielland, Übersetzungsbüros für beglaubigte Übersetzungen. Eine Übermittlung ins Ausland erfolgt nur, soweit der Auftrag es verlangt — etwa bei einer Weiterreise der Urne in ein Drittland.</p>
-        <p lang="ru">Мы передаём данные только тем сторонам, чьё участие в перевозке обязательно: крематориям, загсам и ведомствам, таможне, перевозчикам и похоронным предприятиям в стране назначения, бюро заверенных переводов. Передача за рубеж происходит только в той мере, в какой этого требует заказ — например, при дальнейшей перевозке урны в третью страну.</p>
+        <p lang="de">Wir geben Daten nur an Stellen weiter, die für die Überführung zwingend beteiligt sind: Krematorien, Standesämter und Behörden, Zoll, Transporteure und Bestattungsunternehmen im Zielland, Übersetzungsbüros für beglaubigte Übersetzungen. Eine Übermittlung zwischen der Schweiz und Deutschland erfolgt nur, soweit der Auftrag es verlangt — etwa für die Übernahme vom Krematorium und die Rückführung der Urne zu Ihnen.</p>
+        <p lang="ru">Мы передаём данные только тем сторонам, чьё участие в перевозке обязательно: крематориям, загсам и ведомствам, таможне, перевозчикам и похоронным предприятиям в стране назначения, бюро заверенных переводов. Передача данных между Швейцарией и Германией происходит только в той мере, в какой этого требует заказ — например, для принятия урны из крематория и её возврата вам.</p>
 
         <h2 id="dauer"><span lang="de">Aufbewahrung</span><span lang="ru">Срок хранения</span></h2>
         <p lang="de">Anfragen ohne Auftrag löschen wir spätestens nach zwölf Monaten. Auftragsunterlagen bewahren wir auf, solange gesetzliche Pflichten es verlangen — für Geschäftsunterlagen in der Schweiz zehn Jahre. Server-Logdateien löscht der Hosting-Anbieter nach kurzer Frist.</p>
@@ -464,7 +468,7 @@ def related(exclude):
     items = [
       ('friedhofszwang.html', 'Der Friedhofszwang, erklärt', 'Обязательное захоронение: как это устроено', 'Rechtslage', 'Право'),
       ('urne-zu-hause-aufbewahren.html', 'Urne zu Hause aufbewahren', 'Хранить урну дома', 'Zu Hause', 'Дома'),
-      ('urne-ins-ausland-ueberfuehren.html', 'Urne ins Ausland überführen', 'Вывезти урну за границу', 'Ablauf & Kosten', 'Порядок и цена'),
+      ('zurueck-in-die-heimat.html', 'Zurück in die Heimat: das Modell', 'Возвращение домой: модель', 'Ablauf & Kosten', 'Порядок и цена'),
       ('bestattungsverfuegung.html', 'Die Bestattungsverfügung', 'Распоряжение о погребении', 'Vorsorge', 'Планирование'),
     ]
     cards = ''.join(f'''
@@ -558,8 +562,8 @@ zuhause_body = article_head(
   'Urne zu Hause', 'Урна дома', 'Ratgeber · Zu Hause', 'Справочник · Дома',
   'Urne zu Hause aufbewahren: in Deutschland verboten, in der Schweiz erlaubt.',
   'Хранить урну дома: в Германии запрещено, в Швейцарии разрешено.',
-  'Viele Angehörige möchten die Urne eines geliebten Menschen bei sich behalten. In Deutschland scheitert das am Friedhofszwang — in der Schweiz ist es selbstverständlich. Was gilt, was möglich ist und wie der Weg aussieht.',
-  'Многие близкие хотят сохранить урну любимого человека у себя. В Германии это невозможно из-за обязательного захоронения — в Швейцарии это само собой разумеется. Что действует, что возможно и как выглядит путь.') + '''
+  'Viele Angehörige möchten die Urne eines geliebten Menschen bei sich behalten. In Deutschland scheitert das am Friedhofszwang — nach Schweizer Recht ist es möglich, auch für Familien in Deutschland. Was gilt, was möglich ist und wie die Urne nach Hause kommt.',
+  'Многие близкие хотят сохранить урну любимого человека у себя. В Германии это невозможно из-за обязательного захоронения — по швейцарскому праву это возможно, в том числе для семей в Германии. Что действует, что возможно и как урна возвращается домой.') + '''
         <h2><span lang="de">Darf man eine Urne zu Hause aufbewahren?</span><span lang="ru">Можно ли хранить урну дома?</span></h2>
         <p lang="de"><strong>In Deutschland: nein.</strong> Die Bestattungsgesetze aller sechzehn Bundesländer schreiben vor, dass die Asche eines Verstorbenen auf einem Friedhof oder in einer zugelassenen Anlage beigesetzt wird. Das Krematorium händigt die Urne nicht an Angehörige aus, sondern nur an ein Bestattungsunternehmen oder eine Friedhofsverwaltung. Wer die Urne dennoch zu Hause aufbewahrt, begeht eine Ordnungswidrigkeit.</p>
         <p lang="ru"><strong>В Германии: нет.</strong> Похоронные законы всех шестнадцати федеральных земель предписывают захоронение праха умершего на кладбище или в допущенном для этого месте. Крематорий не выдаёт урну родственникам — только похоронному бюро или администрации кладбища. Тот, кто всё же хранит урну дома, совершает административное правонарушение.</p>
@@ -572,38 +576,36 @@ zuhause_body = article_head(
         <blockquote lang="de">Trauer braucht Nähe. Ein Grab in einer fremden Stadt gibt sie nicht.</blockquote>
         <blockquote lang="ru">Скорби нужна близость. Могила в чужом городе её не даёт.</blockquote>
 
-        <h2><span lang="de">Der Weg: Überführung in die Schweiz</span><span lang="ru">Путь: перевозка в Швейцарию</span></h2>
-        <p lang="de">Was in Deutschland verboten ist, ist über die Grenze erlaubt. Die deutschen Bestattungsgesetze gestatten die Überführung einer Urne ins Ausland, wenn dort eine zugelassene Stelle die Urne übernimmt. Die Seelenfrieden Urnenrückführung GmbH ist eine solche Stelle. Der Ablauf in Kürze:</p>
-        <p lang="ru">То, что запрещено в Германии, разрешено за границей. Немецкие похоронные законы позволяют вывезти урну за рубеж, если там её принимает уполномоченная сторона. Seelenfrieden Urnenrückführung GmbH — такая сторона. Порядок вкратце:</p>
+        <h2><span lang="de">Der Weg nach Hause: das Schweizer Modell</span><span lang="ru">Путь домой: швейцарская модель</span></h2>
+        <p lang="de">Was in Deutschland verboten ist, ist nach Schweizer Recht möglich — und der Weg dorthin steht auch Familien offen, die in Deutschland leben. Die deutschen Bestattungsgesetze gestatten die Überführung einer Urne ins Ausland, wenn dort eine zugelassene Stelle die Urne übernimmt. In der Schweiz gilt die Übergabe der Urne an die Angehörigen als Beisetzung; danach steht die Asche zur freien Verfügung. Das Modell «Zurück in die Heimat» der Seelenfrieden Urnenrückführung GmbH nutzt genau das:</p>
+        <p lang="ru">То, что запрещено в Германии, возможно по швейцарскому праву — и этот путь открыт и семьям, живущим в Германии. Немецкие похоронные законы позволяют вывезти урну за границу, если там её принимает уполномоченная сторона. В Швейцарии передача урны близким считается захоронением; после этого прах находится в свободном распоряжении. Модель «Возвращение домой» Seelenfrieden Urnenrückführung GmbH использует именно это:</p>
         <ol lang="de">
-          <li>Sie rufen uns an. Wir klären Ausgangsort, Unterlagen und Zeitrahmen — zum Festpreis von 490 €.</li>
-          <li>Wir bestätigen dem Krematorium die Übernahme und beschaffen Sterbeurkunde und Einäscherungsbescheinigung.</li>
-          <li>Wir holen die Urne ab und bringen sie versiegelt über die Grenze.</li>
-          <li>In Zug übergeben wir Ihnen die Urne persönlich — ab jetzt gehört sie zu Ihnen.</li>
+          <li>Sie erwerben eine Grabstelle in den Schweizer Bergen — zum Festpreis von 490 €, ohne Folgekosten.</li>
+          <li>Wir bestätigen dem Krematorium die Übernahme; Ihr Bestatter sendet die Urne an uns. Wir beschaffen alle Unterlagen.</li>
+          <li>Die Urne wird Ihnen übergeben — nach Schweizer Recht ist sie damit beigesetzt. Sie erhalten Beisetzungsbestätigung und Grabstellenurkunde.</li>
+          <li>Die Urne kommt zu Ihnen nach Hause, persönlich oder per versichertem Kurier. Der Abschied kennt keine Frist.</li>
         </ol>
         <ol lang="ru">
-          <li>Вы звоните нам. Мы уточняем место, документы и сроки — по фиксированной цене 490 €.</li>
-          <li>Мы подтверждаем крематорию принятие урны и получаем свидетельство о смерти и справку о кремации.</li>
-          <li>Мы забираем урну и провозим её опечатанной через границу.</li>
-          <li>В Цуге мы лично передаём вам урну — с этого момента она ваша.</li>
+          <li>Вы приобретаете место захоронения в швейцарских горах — по фиксированной цене 490 €, без последующих расходов.</li>
+          <li>Мы подтверждаем крематорию принятие; ваше похоронное бюро отправляет урну нам. Мы получаем все документы.</li>
+          <li>Урна передаётся вам — по швейцарскому праву с этого момента она считается захороненной. Вы получаете подтверждение захоронения и свидетельство о месте.</li>
+          <li>Урна возвращается к вам домой, лично или застрахованным курьером. Прощание не ограничено сроком.</li>
         </ol>
 
-        <h2><span lang="de">Wo die Urne dann bleiben darf</span><span lang="ru">Где урна может находиться дальше</span></h2>
+        <h2><span lang="de">Und danach?</span><span lang="ru">А потом?</span></h2>
         <ul lang="de">
-          <li><strong>Zu Hause in der Schweiz.</strong> Ohne Frist, ohne Bewilligung.</li>
-          <li><strong>Im eigenen Garten.</strong> In den meisten Gemeinden ohne Formalitäten möglich.</li>
-          <li><strong>In der Natur.</strong> Verstreuen am Berg, im Wald oder auf dem See — mit Rücksicht auf Dritte und Grundeigentümer.</li>
-          <li><strong>In einem anderen Land.</strong> Wir organisieren die Weiterreise, wenn die Einfuhr dort erlaubt ist.</li>
+          <li><strong>Die Urne bleibt bei Ihnen.</strong> Ohne Frist — so lange, wie es sich richtig anfühlt.</li>
+          <li><strong>Beisetzung in den Schweizer Bergen.</strong> Auf Ihrer Grabstelle, wann Sie möchten, ohne weitere Kosten — auf Wunsch im Beisein der Familie.</li>
+          <li><strong>Ein anderer Ort.</strong> Auch eine spätere Beisetzung in einem Bestattungswald oder auf einem Friedhof in Deutschland ist möglich.</li>
         </ul>
         <ul lang="ru">
-          <li><strong>Дома в Швейцарии.</strong> Без сроков, без разрешений.</li>
-          <li><strong>В собственном саду.</strong> В большинстве общин без формальностей.</li>
-          <li><strong>На природе.</strong> Развеять в горах, в лесу или на озере — с уважением к окружающим и владельцам земли.</li>
-          <li><strong>В другой стране.</strong> Мы организуем дальнейшую перевозку, если ввоз там разрешён.</li>
+          <li><strong>Урна остаётся у вас.</strong> Без срока — столько, сколько это будет правильно для вас.</li>
+          <li><strong>Захоронение в швейцарских горах.</strong> На вашем месте, когда захотите, без дополнительных расходов — по желанию в присутствии семьи.</li>
+          <li><strong>Другое место.</strong> Возможно и последующее захоронение в «похоронном лесу» или на кладбище в Германии.</li>
         </ul>
         <div class="aside">
-          <p lang="de"><strong>Ehrlich gesagt:</strong> Zurück nach Deutschland darf die Urne nicht — dort gilt weiterhin der Friedhofszwang. Wer in Deutschland lebt, wählt in der Regel einen Ort in der Schweiz, den er jederzeit besuchen kann, oder die Weiterreise in die Heimat.</p>
-          <p lang="ru"><strong>Честно говоря:</strong> обратно в Германию урну везти нельзя — там по-прежнему действует обязательное захоронение. Кто живёт в Германии, обычно выбирает место в Швейцарии, которое можно посещать в любое время, или дальнейший путь на родину.</p>
+          <p lang="de"><strong>Ehrlich gesagt:</strong> Der Weg funktioniert nur, solange die Urne noch nicht in Deutschland beigesetzt ist. Rufen Sie uns deshalb früh an — am besten, sobald Sie wissen, dass Sie den Verstorbenen bei sich haben möchten.</p>
+          <p lang="ru"><strong>Честно говоря:</strong> этот путь работает только до тех пор, пока урна ещё не захоронена в Германии. Поэтому звоните нам как можно раньше — лучше всего, как только вы поймёте, что хотите, чтобы близкий человек был рядом.</p>
         </div>
         <div class="aside">
           <p lang="de"><strong>Hinweis.</strong> Dieser Text ersetzt keine Rechtsberatung. Bestattungsrecht ist Länder- beziehungsweise Kantonssache; wir klären jeden Fall individuell.</p>
@@ -613,64 +615,80 @@ zuhause_body = article_head(
 </main>
 '''
 
-# --------------------------------------------------------------- Ins Ausland
-ausland_body = article_head(
-  'Urne ins Ausland', 'Урна за границу', 'Ratgeber · Ablauf & Kosten', 'Справочник · Порядок и цена',
-  'Urne ins Ausland überführen: Unterlagen, Dauer, Zoll und Kosten.',
-  'Вывезти урну за границу: документы, сроки, таможня и стоимость.',
-  'Eine Urne darf Deutschland verlassen — wenn der Weg stimmt. Hier steht, welche Papiere nötig sind, wie lange es dauert, was an der Grenze passiert und was es kostet.',
-  'Урна может покинуть Германию — если путь правильный. Здесь описано, какие бумаги нужны, сколько это длится, что происходит на границе и сколько это стоит.') + '''
-        <h2><span lang="de">Ist die Überführung einer Urne ins Ausland erlaubt?</span><span lang="ru">Разрешён ли вывоз урны за границу?</span></h2>
-        <p lang="de">Ja. Die Bestattungsgesetze der Bundesländer sehen die Überführung von Urnen ins Ausland ausdrücklich vor. Voraussetzung ist, dass im Zielland eine zugelassene Stelle — ein Bestattungsunternehmen, eine Friedhofsverwaltung — die Urne übernimmt und dem deutschen Krematorium dies schriftlich bestätigt. Was danach im Zielland mit der Urne geschieht, richtet sich allein nach dessen Recht.</p>
-        <p lang="ru">Да. Похоронные законы федеральных земель прямо предусматривают вывоз урн за границу. Условие — чтобы в стране назначения уполномоченная сторона (похоронное предприятие, администрация кладбища) приняла урну и письменно подтвердила это немецкому крематорию. Что происходит с урной дальше, определяется исключительно правом страны назначения.</p>
+# --------------------------------------------------------------- Zurück in die Heimat
+heimat_body = article_head(
+  'Zurück in die Heimat', 'Возвращение домой', 'Ratgeber · Ablauf & Kosten', 'Справочник · Порядок и цена',
+  'Zurück in die Heimat: So kommt die Urne nach Schweizer Recht zu Ihnen nach Hause.',
+  'Возвращение домой: как урна по швейцарскому праву возвращается к вам домой.',
+  'Das Schweizer Modell in Ruhe erklärt: Grabstelle, Übernahme, Beisetzung, Rückführung. Welche Unterlagen nötig sind, wie lange es dauert, was es kostet — und was Sie selbst tun müssen.',
+  'Швейцарская модель спокойно и по порядку: место захоронения, принятие, захоронение, возврат. Какие документы нужны, сколько это длится, сколько стоит — и что нужно сделать вам.') + '''
+        <h2><span lang="de">Der Gedanke dahinter</span><span lang="ru">Идея, лежащая в основе</span></h2>
+        <p lang="de">In Deutschland muss eine Urne auf einen Friedhof. In der Schweiz darf jede Person frei über die Asche ihrer Verstorbenen verfügen — die Übergabe der Urne an die Angehörigen gilt dort als Beisetzung. «Zurück in die Heimat» verbindet beides: Die Urne wird in der Schweiz nach Schweizer Recht beigesetzt, indem sie Ihnen übergeben wird, und kommt danach zur freien Verfügung zu Ihnen nach Hause. Der rechtliche Anker ist eine Grabstelle in den Schweizer Bergen, die Ihnen gehört.</p>
+        <p lang="ru">В Германии урна должна быть на кладбище. В Швейцарии каждый может свободно распоряжаться прахом своих умерших — передача урны близким считается там захоронением. «Возвращение домой» соединяет и то и другое: урна захоранивается в Швейцарии по швейцарскому праву в момент передачи вам и после этого в свободном распоряжении возвращается к вам домой. Правовая основа — место захоронения в швейцарских горах, которое принадлежит вам.</p>
+        <blockquote lang="de">Die Urne ist beigesetzt — und trotzdem bei Ihnen. Das ist kein Trick, sondern Schweizer Recht.</blockquote>
+        <blockquote lang="ru">Урна захоронена — и всё же у вас. Это не уловка, а швейцарское право.</blockquote>
 
-        <h2><span lang="de">Welche Unterlagen werden gebraucht?</span><span lang="ru">Какие документы нужны?</span></h2>
+        <h2><span lang="de">Der Ablauf in fünf Schritten</span><span lang="ru">Порядок в пять шагов</span></h2>
+        <ol lang="de">
+          <li><strong>Erstgespräch und Grabstelle.</strong> Sie rufen an oder schreiben uns. Wir klären Ihren Fall, Sie erwerben die Grabstelle zum Festpreis von 490 € (inklusive Schweizer Mehrwertsteuer) und unterschreiben eine Vollmacht.</li>
+          <li><strong>Übernahmebestätigung.</strong> Wir bestätigen dem Krematorium schriftlich, dass wir die Urne übernehmen. Erst damit darf das Krematorium die Urne ins Ausland abgeben.</li>
+          <li><strong>Die Urne kommt in die Schweiz.</strong> Ihr Bestatter oder das Krematorium sendet die Urne an uns. Wir beschaffen Sterbeurkunde, Einäscherungsbescheinigung und was das jeweilige Bundesland verlangt.</li>
+          <li><strong>Beisetzung nach Schweizer Recht.</strong> Die Urne wird Ihnen als Angehörigen übergeben — nach Schweizer Recht ist sie damit beigesetzt und steht zur freien Verfügung. Sie erhalten die Beisetzungsbestätigung und die Grabstellenurkunde.</li>
+          <li><strong>Zurück in die Heimat.</strong> Wir bringen die Urne zu Ihnen nach Hause — persönlich oder per versichertem Kurier. Von jetzt an gibt es keine Frist mehr.</li>
+        </ol>
+        <ol lang="ru">
+          <li><strong>Первая беседа и место захоронения.</strong> Вы звоните или пишете нам. Мы уточняем ваш случай, вы приобретаете место по фиксированной цене 490 € (включая швейцарский НДС) и подписываете доверенность.</li>
+          <li><strong>Подтверждение о принятии.</strong> Мы письменно подтверждаем крематорию, что принимаем урну. Только после этого крематорий может выдать урну за границу.</li>
+          <li><strong>Урна поступает в Швейцарию.</strong> Ваше похоронное бюро или крематорий отправляет урну нам. Мы получаем свидетельство о смерти, справку о кремации и всё, что требует соответствующая федеральная земля.</li>
+          <li><strong>Захоронение по швейцарскому праву.</strong> Урна передаётся вам как близким — по швейцарскому праву с этого момента она захоронена и находится в свободном распоряжении. Вы получаете подтверждение захоронения и свидетельство о месте.</li>
+          <li><strong>Возвращение домой.</strong> Мы доставляем урну к вам домой — лично или застрахованным курьером. С этого момента никаких сроков.</li>
+        </ol>
+
+        <h2><span lang="de">Welche Unterlagen gebraucht werden</span><span lang="ru">Какие документы нужны</span></h2>
         <div class="table-scroll">
         <table lang="de">
           <thead><tr><th>Dokument</th><th>Wer stellt es aus</th><th>Wozu</th></tr></thead>
           <tbody>
-            <tr><td>Sterbeurkunde</td><td>Standesamt des Sterbeorts</td><td>Nachweis des Todesfalls; wird an der Grenze und im Zielland verlangt</td></tr>
-            <tr><td>Einäscherungsbescheinigung</td><td>Krematorium</td><td>Belegt, dass die Urne die Asche der genannten Person enthält</td></tr>
-            <tr><td>Übernahmebestätigung</td><td>Wir</td><td>Bestätigt dem Krematorium die ordnungsgemässe Übernahme im Zielland</td></tr>
+            <tr><td>Grabstellenurkunde</td><td>Wir</td><td>Belegt Ihre Grabstelle in der Schweiz — die Grundlage des Modells</td></tr>
+            <tr><td>Übernahmebestätigung</td><td>Wir</td><td>Erlaubt dem Krematorium, die Urne an uns abzugeben</td></tr>
             <tr><td>Vollmacht</td><td>Sie</td><td>Berechtigt uns, in Ihrem Namen mit Krematorium und Behörden zu handeln</td></tr>
-            <tr><td>Ausweiskopie</td><td>Sie</td><td>Identität der auftraggebenden Person</td></tr>
+            <tr><td>Sterbeurkunde</td><td>Standesamt</td><td>Nachweis des Todesfalls</td></tr>
+            <tr><td>Einäscherungsbescheinigung</td><td>Krematorium</td><td>Belegt, dass die Urne die Asche der genannten Person enthält</td></tr>
+            <tr><td>Beisetzungsbestätigung</td><td>Wir</td><td>Bestätigt die Beisetzung nach Schweizer Recht — für Sie und für Behörden</td></tr>
           </tbody>
         </table>
         <table lang="ru">
           <thead><tr><th>Документ</th><th>Кто выдаёт</th><th>Зачем</th></tr></thead>
           <tbody>
-            <tr><td>Свидетельство о смерти</td><td>Загс по месту смерти</td><td>Подтверждение факта смерти; требуется на границе и в стране назначения</td></tr>
-            <tr><td>Справка о кремации</td><td>Крематорий</td><td>Подтверждает, что в урне прах указанного лица</td></tr>
-            <tr><td>Подтверждение о принятии</td><td>Мы</td><td>Подтверждает крематорию надлежащее принятие в стране назначения</td></tr>
+            <tr><td>Свидетельство о месте захоронения</td><td>Мы</td><td>Подтверждает ваше место в Швейцарии — основа модели</td></tr>
+            <tr><td>Подтверждение о принятии</td><td>Мы</td><td>Позволяет крематорию выдать урну нам</td></tr>
             <tr><td>Доверенность</td><td>Вы</td><td>Даёт нам право действовать от вашего имени с крематорием и ведомствами</td></tr>
-            <tr><td>Копия удостоверения</td><td>Вы</td><td>Личность заказчика</td></tr>
+            <tr><td>Свидетельство о смерти</td><td>Загс</td><td>Подтверждение факта смерти</td></tr>
+            <tr><td>Справка о кремации</td><td>Крематорий</td><td>Подтверждает, что в урне прах указанного лица</td></tr>
+            <tr><td>Подтверждение захоронения</td><td>Мы</td><td>Подтверждает захоронение по швейцарскому праву — для вас и для ведомств</td></tr>
           </tbody>
         </table>
         </div>
-        <p lang="de">Je nach Bundesland und Krematorium kommen einzelne Formulare hinzu. Wir kennen sie und beschaffen sie — Sie müssen bei keiner Behörde anrufen.</p>
-        <p lang="ru">В зависимости от федеральной земли и крематория добавляются отдельные формы. Мы их знаем и получаем — вам не нужно звонить ни в одно ведомство.</p>
+        <p lang="de">Sie müssen bei keiner Behörde anrufen. Wir kennen die Formulare der Bundesländer und beschaffen, was fehlt.</p>
+        <p lang="ru">Вам не нужно звонить ни в одно ведомство. Мы знаем формы федеральных земель и получаем всё недостающее.</p>
 
-        <h2><span lang="de">Wie lange dauert es?</span><span lang="ru">Сколько это длится?</span></h2>
-        <p lang="de">Meist ein bis zwei Wochen nach der Einäscherung. Die Zeit geht fast vollständig für Papiere drauf: Standesämter und Krematorien haben ihre eigenen Fristen. Die Fahrt selbst dauert einen Tag. Wenn es eilt — etwa weil Angehörige aus dem Ausland anreisen — sagen Sie es uns im ersten Gespräch; oft lässt sich etwas beschleunigen.</p>
-        <p lang="ru">Обычно одна–две недели после кремации. Почти всё время уходит на бумаги: у загсов и крематориев свои сроки. Сама поездка занимает один день. Если спешно — например, потому что родственники приезжают из-за рубежа, — скажите нам в первом разговоре; часто что-то можно ускорить.</p>
+        <h2><span lang="de">Wie lange es dauert</span><span lang="ru">Сколько это длится</span></h2>
+        <p lang="de">Meist ein bis zwei Wochen nach der Einäscherung. Die Zeit geht fast vollständig für Papiere drauf. Entscheidend ist der Zeitpunkt, an dem Sie uns anrufen: Solange die Urne noch nicht in Deutschland beigesetzt ist, ist der Weg einfach. Danach wird er deutlich schwieriger.</p>
+        <p lang="ru">Обычно одна–две недели после кремации. Почти всё время уходит на бумаги. Решающий момент — когда вы нам позвоните: пока урна ещё не захоронена в Германии, путь прост. После этого он значительно сложнее.</p>
 
-        <h2><span lang="de">Was passiert an der Grenze?</span><span lang="ru">Что происходит на границе?</span></h2>
-        <p lang="de">Die Asche eines Verstorbenen ist keine Ware. Es fallen keine Zollabgaben an. Am Grenzübergang legen wir Sterbeurkunde, Einäscherungsbescheinigung und Übernahmebestätigung vor; die Urne reist in einem versiegelten, zugelassenen Transportbehälter. Für die Weiterreise per Luftfracht in ein Drittland gelten zusätzlich die Vorschriften des Ziellandes und der Fluggesellschaft — auch das klären wir vorab.</p>
-        <p lang="ru">Прах умершего — не товар. Таможенные пошлины не взимаются. На пограничном переходе мы предъявляем свидетельство о смерти, справку о кремации и подтверждение о принятии; урна перевозится в опечатанном, допущенном транспортном контейнере. Для дальнейшей авиаперевозки в третью страну дополнительно действуют правила страны назначения и авиакомпании — это мы также уточняем заранее.</p>
-
-        <h2><span lang="de">Was kostet die Überführung?</span><span lang="ru">Сколько стоит перевозка?</span></h2>
-        <p lang="de">Die Standard-Überführung Deutschland → Zug kostet bei uns <strong>490 € zum Festpreis</strong>: Erstgespräch, Unterlagen, Abholung beim Krematorium, Transportbehälter, Grenze, persönliche Übergabe. Nicht enthalten sind die Einäscherung selbst, amtliche Gebühren und beglaubigte Übersetzungen — die rechnen wir nach Aufwand ab, vorher angekündigt. Für die Weiterreise in ein anderes Land erhalten Sie innerhalb von 24 Stunden ein schriftliches Angebot.</p>
-        <p lang="ru">Стандартная перевозка Германия → Цуг стоит у нас <strong>490 € по фиксированной цене</strong>: первая беседа, документы, получение урны в крематории, транспортный контейнер, граница, личная передача. Не включены сама кремация, государственные пошлины и заверенные переводы — их мы рассчитываем по фактическим затратам, предупредив заранее. Для дальнейшей перевозки в другую страну вы получите письменное предложение в течение 24 часов.</p>
+        <h2><span lang="de">Was es kostet</span><span lang="ru">Сколько это стоит</span></h2>
+        <p lang="de"><strong>490 € zum Festpreis, inklusive Schweizer Mehrwertsteuer.</strong> Darin enthalten: die Grabstelle in den Schweizer Bergen, das Erstgespräch, Übernahmebestätigung und alle Unterlagen, die Beisetzung nach Schweizer Recht mit Beisetzungsbestätigung und Grabstellenurkunde, die Rückführung der Urne zu Ihnen nach Hause — und die spätere Beisetzung auf der Grabstelle, auf Wunsch im Beisein der Familie. Nicht enthalten sind die Einäscherung, die Leistungen Ihres Bestatters in Deutschland und der Versand der Urne zu uns; diese gehören zur Bestattung in Deutschland.</p>
+        <p lang="ru"><strong>490 € по фиксированной цене, включая швейцарский НДС.</strong> В неё входят: место захоронения в швейцарских горах, первая беседа, подтверждение о принятии и все документы, захоронение по швейцарскому праву с подтверждением и свидетельством о месте, возврат урны к вам домой — и последующее захоронение на месте, по желанию в присутствии семьи. Не включены кремация, услуги вашего похоронного бюро в Германии и отправка урны к нам; они относятся к похоронам в Германии.</p>
         <p><a class="btn btn-text" href="index.html#festpreis"><span lang="de">Zum Festpreis im Detail</span><span lang="ru">Подробно о фиксированной цене</span></a></p>
 
-        <h2><span lang="de">Was Sie selbst tun müssen</span><span lang="ru">Что нужно сделать вам</span></h2>
-        <p lang="de">Anrufen. Eine Vollmacht unterschreiben. Die Urne in Zug in Empfang nehmen — oder uns sagen, wohin sie weiterreisen soll. Alles andere ist unsere Aufgabe.</p>
-        <p lang="ru">Позвонить. Подписать доверенность. Принять урну в Цуге — или сказать нам, куда её везти дальше. Всё остальное — наша работа.</p>
+        <h2><span lang="de">Und die Grabstelle?</span><span lang="ru">А место захоронения?</span></h2>
+        <p lang="de">Sie gehört Ihnen und bleibt Ihnen — eine Stelle auf einer Bergwiese oder in einem Wald in der Schweiz, ohne Grabpflege und ohne laufende Gebühren. Wenn die Zeit gekommen ist, setzen wir die Asche dort bei; die Familie kann dabei sein. Viele verbinden das mit einer Reise in die Berge — an einen Ort, den man jederzeit wieder besuchen kann, ohne Öffnungszeiten.</p>
+        <p lang="ru">Оно принадлежит вам и остаётся за вами — место на горном лугу или в лесу в Швейцарии, без ухода за могилой и без текущих платежей. Когда придёт время, мы захороним там прах; семья может присутствовать. Многие совмещают это с поездкой в горы — в место, которое можно посещать снова и снова, без часов работы.</p>
         <div class="aside">
-          <p lang="de"><strong>Hinweis.</strong> Dieser Text ersetzt keine Rechtsberatung. Vorschriften unterscheiden sich nach Bundesland, Kanton und Zielland; wir klären jeden Fall individuell.</p>
-          <p lang="ru"><strong>Примечание.</strong> Этот текст не заменяет юридическую консультацию. Правила различаются по землям, кантонам и странам назначения; каждый случай мы проверяем индивидуально.</p>
+          <p lang="de"><strong>Hinweis.</strong> Grundlage des Modells ist das Schweizer Bestattungsrecht. In Deutschland ist Bestattungsrecht Ländersache; dieser Text ersetzt keine Rechtsberatung. Wir besprechen Ihren Fall vorab offen — auch die Grenzen des Modells.</p>
+          <p lang="ru"><strong>Примечание.</strong> Основа модели — швейцарское похоронное право. В Германии похоронное право относится к компетенции земель; этот текст не заменяет юридическую консультацию. Ваш случай мы обсуждаем заранее и открыто — включая границы модели.</p>
         </div>
-''' + ARTICLE_END + related('urne-ins-ausland-ueberfuehren.html') + CTA + '''
+''' + ARTICLE_END + related('zurueck-in-die-heimat.html') + CTA + '''
 </main>
 '''
 
@@ -679,7 +697,7 @@ verfuegung_body = article_head(
   'Bestattungsverfügung', 'Распоряжение о погребении', 'Ratgeber · Vorsorge', 'Справочник · Планирование',
   'Die Bestattungsverfügung: zu Lebzeiten festlegen, wo Sie ruhen.',
   'Распоряжение о погребении: определить при жизни, где вы будете покоиться.',
-  'Wer nicht in ein Reihengrab will, sondern zur Familie, in die Berge oder nach Hause, kann das heute schon verbindlich regeln. Was in eine Bestattungsverfügung gehört, wie sie wirkt und wie wir sie hinterlegen.',
+  'Wer nicht in ein Reihengrab will, sondern zur Familie nach Hause und später auf eine Bergwiese, kann das heute schon verbindlich regeln. Was in eine Bestattungsverfügung gehört, wie sie wirkt und wie wir sie hinterlegen.',
   'Кто не хочет в рядовую могилу, а хочет к семье, в горы или домой, может оформить это уже сегодня. Что должно быть в распоряжении о погребении, как оно действует и как мы его храним.') + '''
         <h2><span lang="de">Was eine Bestattungsverfügung ist</span><span lang="ru">Что такое распоряжение о погребении</span></h2>
         <p lang="de">Eine Bestattungsverfügung ist eine schriftliche Erklärung, in der Sie zu Lebzeiten festlegen, wie Ihre Bestattung ablaufen soll: Einäscherung oder Erdbestattung, Ort der Beisetzung, Art der Feier, wer sich kümmert. In Deutschland ist der Wille des Verstorbenen für die Angehörigen und die Behörden verbindlich — soweit er sich im Rahmen des Gesetzes bewegt. Und genau hier liegt der Punkt: Der Wunsch, die Urne ins Ausland zu überführen, bewegt sich im Rahmen des Gesetzes.</p>
@@ -695,7 +713,7 @@ verfuegung_body = article_head(
         <ul lang="de">
           <li><strong>Ihre Personalien</strong> — Name, Geburtsdatum, Adresse.</li>
           <li><strong>Die Bestattungsart</strong> — Einäscherung.</li>
-          <li><strong>Der Wunsch nach Überführung</strong> — «Meine Urne soll in die Schweiz überführt und dort meiner Familie ausgehändigt werden.» Nennen Sie, was danach geschehen soll: zu Hause bleiben, im Garten, an einem bestimmten Ort in der Natur, Weiterreise in ein bestimmtes Land.</li>
+          <li><strong>Der Wunsch nach Rückführung</strong> — «Meine Urne soll nach dem Modell ‹Zurück in die Heimat› über die Schweiz meiner Familie zur freien Verfügung übergeben werden.» Nennen Sie, was danach geschehen soll: bei der Familie bleiben, später Beisetzung auf der Grabstelle in den Schweizer Bergen oder an einem anderen Ort.</li>
           <li><strong>Die verantwortliche Person</strong> — wer Ihre Verfügung umsetzt (in Deutschland «totenfürsorgeberechtigt»). Am besten mit Ersatzperson.</li>
           <li><strong>Das beauftragte Unternehmen</strong> — Seelenfrieden Urnenrückführung GmbH, Zug, mit unseren Kontaktdaten.</li>
           <li><strong>Datum und eigenhändige Unterschrift.</strong> Eine notarielle Beglaubigung ist nicht nötig, schadet aber nicht.</li>
@@ -703,7 +721,7 @@ verfuegung_body = article_head(
         <ul lang="ru">
           <li><strong>Ваши личные данные</strong> — имя, дата рождения, адрес.</li>
           <li><strong>Вид погребения</strong> — кремация.</li>
-          <li><strong>Желание перевозки</strong> — «Моя урна должна быть перевезена в Швейцарию и передана там моей семье». Укажите, что должно произойти дальше: остаться дома, в саду, в определённом месте на природе, дальнейшая перевозка в определённую страну.</li>
+          <li><strong>Желание возврата</strong> — «Моя урна должна быть передана моей семье в свободное распоряжение по модели ‹Возвращение домой› через Швейцарию». Укажите, что должно произойти дальше: остаться у семьи, позже — захоронение на месте в швейцарских горах или в другом месте.</li>
           <li><strong>Ответственное лицо</strong> — кто исполнит ваше распоряжение (в Германии «totenfürsorgeberechtigt»). Лучше с запасным лицом.</li>
           <li><strong>Уполномоченное предприятие</strong> — Seelenfrieden Urnenrückführung GmbH, Цуг, с нашими контактами.</li>
           <li><strong>Дата и собственноручная подпись.</strong> Нотариальное заверение не обязательно, но не повредит.</li>
@@ -714,8 +732,8 @@ verfuegung_body = article_head(
         <p lang="ru">Не в банковской ячейке и не в завещании — и то и другое часто открывают лишь спустя недели после похорон. Лучше: один экземпляр у ответственного лица, один у нас, пометка в бумажнике. Мы храним ваше распоряжение вместе с заранее подготовленным подтверждением о принятии, чтобы в нужный момент хватило одного звонка.</p>
 
         <h2><span lang="de">Das Vorsorgegespräch</span><span lang="ru">Консультация по планированию</span></h2>
-        <p lang="de">Wir helfen beim Formulieren, prüfen, ob Ihr Wunsch im Zielland umsetzbar ist, und besprechen die Kosten, die Ihre Angehörigen später erwarten — zum Festpreis, der heute schon gilt. Das Gespräch ist kostenlos und verpflichtet zu nichts. Auf Deutsch oder Russisch, bei uns in Zug, am Telefon oder per Video.</p>
-        <p lang="ru">Мы помогаем с формулировкой, проверяем, осуществимо ли ваше желание в стране назначения, и обсуждаем расходы, которые ожидают ваших близких, — по фиксированной цене, действующей уже сегодня. Беседа бесплатна и ни к чему не обязывает. На немецком или русском, у нас в Цуге, по телефону или по видеосвязи.</p>
+        <p lang="de">Wir helfen beim Formulieren, reservieren auf Wunsch schon jetzt Ihre Grabstelle in den Schweizer Bergen und besprechen die Kosten, die Ihre Angehörigen später erwarten — zum Festpreis, der heute schon gilt. Das Gespräch ist kostenlos und verpflichtet zu nichts. Auf Deutsch oder Russisch, bei uns in Zug, am Telefon oder per Video.</p>
+        <p lang="ru">Мы помогаем с формулировкой, по желанию уже сейчас резервируем ваше место в швейцарских горах и обсуждаем расходы, которые ожидают ваших близких, — по фиксированной цене, действующей уже сегодня. Беседа бесплатна и ни к чему не обязывает. На немецком или русском, у нас в Цуге, по телефону или по видеосвязи.</p>
         <div class="aside">
           <p lang="de"><strong>Hinweis.</strong> Dieser Text ersetzt keine Rechtsberatung. Für erbrechtliche Fragen wenden Sie sich an eine Notarin oder einen Anwalt; die Bestattungsverfügung selbst können Sie ohne Beistand verfassen.</p>
           <p lang="ru"><strong>Примечание.</strong> Этот текст не заменяет юридическую консультацию. По вопросам наследственного права обратитесь к нотариусу или адвокату; само распоряжение о погребении вы можете составить без помощи.</p>
@@ -734,29 +752,29 @@ pages = {
   'friedhofszwang.html': (
     'Friedhofszwang in Deutschland: Was gilt, was erlaubt ist, wie die Schweiz es hält',
     'Обязательное захоронение в Германии: что действует, что разрешено, как это устроено в Швейцарии',
-    'Warum in Deutschland eine Urne nicht nach Hause darf, wie die Schweiz es hält und wie die Überführung über die Grenze rechtlich und praktisch abläuft. Mit Bestattungsverfügung und häufigen Irrtümern.',
+    'Warum in Deutschland eine Urne nicht nach Hause darf, wie die Schweiz es hält und wie das Schweizer Recht den Weg zurück in die Heimat öffnet. Mit Bestattungsverfügung und häufigen Irrtümern.',
     'Почему в Германии урну нельзя забрать домой, как это устроено в Швейцарии и как проходит перевозка через границу. С распоряжением о погребении и распространёнными заблуждениями.',
     ratgeber_body, False,
-    lambda path: article_ld(path, 'Der Friedhofszwang — und der Weg daran vorbei', 'Warum in Deutschland eine Urne nicht nach Hause darf, wie die Schweiz es hält und wie die Überführung über die Grenze abläuft.', PUB, PUB, 'Friedhofszwang')),
+    lambda path: article_ld(path, 'Der Friedhofszwang — und der Weg daran vorbei', 'Warum in Deutschland eine Urne nicht nach Hause darf, wie die Schweiz es hält und wie das Schweizer Recht den Weg nach Hause öffnet.', PUB, PUB, 'Friedhofszwang')),
   'urne-zu-hause-aufbewahren.html': (
     'Urne zu Hause aufbewahren: In Deutschland verboten, in der Schweiz erlaubt',
     'Хранить урну дома: в Германии запрещено, в Швейцарии разрешено',
-    'Darf man eine Urne zu Hause aufbewahren? In Deutschland nein, in der Schweiz ja. Was gilt, warum das für Familien wichtig ist und wie die Überführung in die Schweiz abläuft.',
-    'Можно ли хранить урну дома? В Германии нет, в Швейцарии да. Что действует, почему это важно для семей и как проходит перевозка в Швейцарию.',
+    'Darf man eine Urne zu Hause aufbewahren? In Deutschland nein, nach Schweizer Recht ja — auch für Familien in Deutschland. Was gilt, warum das wichtig ist und wie die Urne über die Schweiz nach Hause kommt.',
+    'Можно ли хранить урну дома? В Германии нет, по швейцарскому праву да — в том числе для семей в Германии. Что действует, почему это важно и как урна через Швейцарию возвращается домой.',
     zuhause_body, False,
-    lambda path: article_ld(path, 'Urne zu Hause aufbewahren: in Deutschland verboten, in der Schweiz erlaubt', 'Darf man eine Urne zu Hause aufbewahren? In Deutschland nein, in der Schweiz ja — und so sieht der Weg aus.', PUB, PUB, 'Urne zu Hause aufbewahren')),
-  'urne-ins-ausland-ueberfuehren.html': (
-    'Urne ins Ausland überführen: Unterlagen, Dauer, Zoll, Kosten',
-    'Вывезти урну за границу: документы, сроки, таможня, стоимость',
-    'Eine Urne darf Deutschland verlassen. Welche Unterlagen nötig sind, wie lange es dauert, was an der Grenze passiert und was die Überführung in die Schweiz kostet: 490 € Festpreis.',
-    'Урна может покинуть Германию. Какие документы нужны, сколько это длится, что происходит на границе и сколько стоит перевозка в Швейцарию: 490 € фиксированная цена.',
-    ausland_body, False,
-    lambda path: article_ld(path, 'Urne ins Ausland überführen: Unterlagen, Dauer, Zoll und Kosten', 'Welche Papiere nötig sind, wie lange es dauert, was an der Grenze passiert und was es kostet.', PUB, PUB, 'Urne ins Ausland überführen')),
+    lambda path: article_ld(path, 'Urne zu Hause aufbewahren: in Deutschland verboten, nach Schweizer Recht möglich', 'Darf man eine Urne zu Hause aufbewahren? In Deutschland nein, nach Schweizer Recht ja — und so kommt sie nach Hause.', PUB, PUB, 'Urne zu Hause aufbewahren')),
+  'zurueck-in-die-heimat.html': (
+    'Zurück in die Heimat: Urne nach Schweizer Recht nach Hause — Ablauf, Unterlagen, Kosten',
+    'Возвращение домой: урна по швейцарскому праву домой — порядок, документы, стоимость',
+    'So funktioniert das Schweizer Modell: Grabstelle in den Bergen, Übernahme vom Krematorium, Beisetzung nach Schweizer Recht, Rückführung der Urne nach Hause. Unterlagen, Dauer und Festpreis 490 €.',
+    'Как работает швейцарская модель: место в горах, принятие из крематория, захоронение по швейцарскому праву, возврат урны домой. Документы, сроки и фиксированная цена 490 €.',
+    heimat_body, False,
+    lambda path: article_ld(path, 'Zurück in die Heimat: So kommt die Urne nach Schweizer Recht zu Ihnen nach Hause', 'Das Schweizer Modell Schritt für Schritt: Grabstelle, Übernahme, Beisetzung, Rückführung — Unterlagen, Dauer, Kosten.', PUB, PUB, 'Zurück in die Heimat')),
   'bestattungsverfuegung.html': (
-    'Bestattungsverfügung: Zu Lebzeiten festlegen, dass die Urne in die Schweiz darf',
-    'Распоряжение о погребении: определить при жизни, что урна отправится в Швейцарию',
-    'Wie Sie mit einer Bestattungsverfügung verbindlich festlegen, dass Ihre Urne in die Schweiz überführt wird: Inhalt, Wirkung, Aufbewahrung, kostenloses Vorsorgegespräch.',
-    'Как распоряжением о погребении определить, что ваша урна будет перевезена в Швейцарию: содержание, действие, хранение, бесплатная консультация.',
+    'Bestattungsverfügung: Zu Lebzeiten festlegen, dass die Urne zur Familie kommt',
+    'Распоряжение о погребении: определить при жизни, что урна вернётся в семью',
+    'Wie Sie mit einer Bestattungsverfügung verbindlich festlegen, dass Ihre Urne über die Schweiz zu Ihrer Familie kommt: Inhalt, Wirkung, Aufbewahrung, kostenloses Vorsorgegespräch.',
+    'Как распоряжением о погребении определить, что ваша урна через Швейцарию вернётся к вашей семье: содержание, действие, хранение, бесплатная консультация.',
     verfuegung_body, False,
     lambda path: article_ld(path, 'Die Bestattungsverfügung: zu Lebzeiten festlegen, wo Sie ruhen', 'Was in eine Bestattungsverfügung gehört, wie sie wirkt und wie wir sie hinterlegen.', PUB, PUB, 'Bestattungsverfügung')),
   'impressum.html': (
@@ -833,7 +851,7 @@ def url_entry(path, prio, freq):
 
 sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n        xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
 sitemap += url_entry('', '1.0', 'monthly')
-for name in ['friedhofszwang.html', 'urne-zu-hause-aufbewahren.html', 'urne-ins-ausland-ueberfuehren.html', 'bestattungsverfuegung.html']:
+for name in ['friedhofszwang.html', 'urne-zu-hause-aufbewahren.html', 'zurueck-in-die-heimat.html', 'bestattungsverfuegung.html']:
     sitemap += url_entry(name, '0.8', 'yearly')
 for name in ['impressum.html', 'datenschutz.html']:
     sitemap += url_entry(name, '0.2', 'yearly')
