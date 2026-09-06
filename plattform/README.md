@@ -1,4 +1,4 @@
-# fello — Studierende betreuen Ihr Tier
+# Fellpaten GmbH — Studierende betreuen Ihr Tier
 
 Auftritt einer Vermittlungsplattform nach dem Vorbild von Alltagshilfe-Diensten
 wie JUHI, übertragen auf Tierbetreuung: Studierende auf Minijob-Basis führen
@@ -8,10 +8,15 @@ Seiten.
 
 ```
 plattform/
-├── index.html                Tierhalter: Modell, Preise, Sicherheit, Video, Anfrage
-├── studierende.html          Studierende: Vorteile, Minijob erklärt, Ablauf, Bewerbung
-├── impressum.html            Betreiber noch offen
-├── datenschutz.html          Anfragen, Bewerbungen, Führungszeugnis, Weitergabe
+├── index.html                    Startseite: Modell, Preise, Team, Sicherheit, Video, Anfrage
+├── hundesitter-stuttgart.html    Landingpage „Hundesitter Stuttgart“
+├── gassi-service-stuttgart.html  Landingpage „Gassi-Service Stuttgart“
+├── katzensitter-stuttgart.html   Landingpage „Katzensitter Stuttgart“
+├── urlaubsbetreuung-stuttgart.html  Landingpage „Urlaubsbetreuung Stuttgart“
+├── studierende.html              Studierende: Vorteile, Minijob erklärt, Bewerbung (JobPosting)
+├── impressum.html                Fellpaten GmbH, HRB und USt-IdNr. noch offen
+├── datenschutz.html              Anfragen, Bewerbungen, Führungszeugnis, Weitergabe
+├── sitemap.xml, robots.txt       für Suchmaschinen
 └── assets/
     ├── css/style.css         Ultramarin auf Knochenweiss, Koralle als Signalton
     ├── fonts/                Familjen Grotesk + Instrument Sans, selbst gehostet
@@ -36,6 +41,64 @@ Kein Build, kein Framework.
 | Beschäftigung | Minijob bei der Plattform, Grenze 2026: 603 € im Monat |
 | Prüfung | Gespräch → erweitertes Führungszeugnis → Probeeinsatz zu zweit → Kennenlernen bei der Familie |
 | Betreuung | eine feste Person je Tier, Vertretung nur angekündigt, Foto nach jedem Besuch |
+
+## Name und Domain
+
+**Fellpaten** — Fell für Hund und Katze, Paten für die feste Person, die
+bleibt. Die Studierenden heißen auf der Seite durchgehend *Pfotenpatin* und
+*Pfotenpate*; das ist das Vokabular der Marke.
+
+Stand der DNS-Prüfung am 6. September 2026 (nur ein Hinweis — verbindlich ist
+die Abfrage beim Registrar):
+
+| Domain | Befund |
+|---|---|
+| **fellpaten.de** | keine Auflösung — vermutlich frei, **sofort sichern** |
+| fellpaten.com, fellpate.de | keine Auflösung — als Schutz mitnehmen |
+| pfotenpaten.de, pfotenpate.de, pfotenpaten.net | vergeben |
+| pfotenzeit.de, pfotenfreunde.de, gassifreunde.de, fellfreunde.de | vergeben |
+
+Alternative, falls Fellpaten nicht gefällt: **Pfotenpaten** ist das schönere
+Wort, aber „Pfotenpate“ ist ein gängiger Begriff für Tierheim-Patenschaften,
+die .de ist weg, und der Verwechslungsschutz wäre schwächer. Für beide Namen
+vor der Anmeldung eine Markenrecherche beim DPMA machen.
+
+Umbenennen ist ein Einzeiler, weil der Name nur als Text vorkommt:
+
+```bash
+grep -rl 'Fellpaten' plattform/ | xargs sed -i 's/Fellpaten/NeuerName/g; s/fellpaten\.de/neuedomain.de/g'
+```
+
+## SEO — was eingebaut ist
+
+* **Eine Landingpage je Suchintention**: Hundesitter Stuttgart, Gassi-Service
+  Stuttgart, Katzensitter Stuttgart, Urlaubsbetreuung Stuttgart — jeweils mit
+  eigenem Text, Preis, Leistungsumfang, Stadtteilliste und fünf eigenen Fragen.
+  Keine Textbausteine zwischen den Seiten; Google straft nahezu gleiche Seiten ab.
+* **Seitentitel mit Suchbegriff vorn** („Hundesitter Stuttgart — …“), Beschreibung
+  mit Preis und Nutzen, eine H1 je Seite, Zwischenüberschriften mit Begriff.
+* **Strukturierte Daten** (JSON-LD): `Organization` mit beiden Geschäftsführern,
+  `WebSite`, `LocalBusiness` mit `makesOffer` und Preisen, `Service` je
+  Landingpage, `FAQPage` auf jeder Seite mit Fragen, `BreadcrumbList`,
+  `JobPosting` auf der Studierendenseite — damit erscheint der Minijob bei
+  Google for Jobs.
+* **Canonical, Open Graph, Twitter Card, geo-Meta**, `sitemap.xml` mit
+  Bildangabe, `robots.txt`. Impressum und Datenschutz tragen `noindex`.
+* **Interne Verlinkung**: Menü und Fußzeile führen auf alle Landingpages,
+  jede Landingpage verweist auf die drei anderen und auf die Anfrage.
+* **Technik**: keine externen Requests, selbst gehostete Schriften mit
+  `preload`, Bilder mit Breite/Höhe und `lazy`, Video ohne Vorabladen —
+  Core Web Vitals sind damit unkritisch.
+
+**Nach dem Livegang** (nicht in der Datei machbar): Domain in
+`https://www.fellpaten.de/` ist als Canonical und in der Sitemap
+eingetragen — bei anderer Domain überall ersetzen (siehe sed oben). Dann:
+Google Search Console anmelden und Sitemap einreichen, Google-Unternehmensprofil
+für „Fellpaten GmbH“ anlegen (Kategorie Tierbetreuung, Einsatzgebiet
+Stuttgart), Bing Webmaster Tools, ein paar Einträge in lokalen Verzeichnissen
+(Hochschul-Jobbörsen für die Studierendenseite!). Rezensionen im
+Unternehmensprofil sind danach der stärkste Hebel — nach jeder gelungenen
+Urlaubsbetreuung darum bitten.
 
 Alle Zahlen stehen in `assets/js/config.js` **und** als Text in den HTML-Dateien.
 Ändert sich ein Preis, sind beide Stellen zu ändern — die Seite hat keinen
@@ -81,11 +144,15 @@ die vor dem ersten Kunden wahr sein müssen:
 | „erweitertes Führungszeugnis Pflicht“ | Bescheinigung des Betreibers für den Antrag der Studierenden |
 | Preise und Lohn | Kalkulation prüfen: 5 € Marge je Stunde muss Versicherung, Lohnnebenkosten (Pauschalen ca. 30 % beim Minijob!) und Ausfall decken — **das ist knapp** |
 | Minijob-Grenze, Mindestlohn | jährlich prüfen (Grenze folgt dem Mindestlohn) |
-| Impressum, Datenschutz | Betreiber, Rechtsform, Anschrift, Hoster |
-| Name „fello“ | Arbeitstitel — Marke und Domain prüfen |
-| Veronikas Rolle | „arbeitet jede neue Kraft ein“ ist eine Annahme aus dem Konzept — mit ihr abstimmen |
+| Impressum | HRB-Nummer nach Eintragung, USt-IdNr. nach Erteilung, Sitz der GmbH laut Gesellschaftsvertrag (derzeit Berliner Straße 13, Remseck) |
+| Datenschutz | Hoster und Speicherdauer |
+| Name „Fellpaten“, Domain | Registrar und DPMA prüfen, dann eintragen |
+| Rollen der Geschäftsführung | Veronika: Betreuung/Einarbeitung, Daniel: Organisation/Abrechnung — so steht es im Team-Abschnitt; mit beiden abstimmen |
 
-Zur Rechtsform: Wer Studierende anstellt und zu Kunden schickt, ist Arbeitgeber
+Zur GmbH: Sie braucht 25.000 € Stammkapital (12.500 € bei Gründung eingezahlt),
+notariellen Gesellschaftsvertrag, Handelsregistereintrag — erst dann darf
+„GmbH“ auf der Seite stehen. Bis zur Eintragung heißt es „in Gründung“
+(GmbH i. G.). Wer Studierende anstellt und zu Kunden schickt, ist Arbeitgeber
 mit allen Pflichten. Für gewerbliche Tierbetreuung kann zusätzlich eine
 Erlaubnis nach § 11 TierSchG nötig sein. Beides vor dem Start mit Steuerberatung
 und Gewerbeamt klären.
@@ -93,5 +160,6 @@ und Gewerbeamt klären.
 ## Kontakt in der Startphase
 
 Anfragen und Bewerbungen laufen bei Veronika auf (E-Mail, WhatsApp). Später
-auf Plattform-Adressen umstellen: `contact` in `config.js` sowie die Angaben
-im Kontaktabschnitt, im Impressum und in der Datenschutzerklärung.
+auf Firmenadressen umstellen (hallo@fellpaten.de): `contact` in `config.js`
+sowie die Angaben im Kontaktabschnitt, in den strukturierten Daten, im
+Impressum und in der Datenschutzerklärung.

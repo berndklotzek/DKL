@@ -128,7 +128,7 @@ p:last-child { margin-bottom: 0; }
 .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; min-height: 4.6rem; padding-block: .8rem; }
 
 .brand { display: inline-flex; align-items: baseline; gap: .6rem; text-decoration: none; }
-.brand__mark { font-family: var(--display); font-size: 1.55rem; font-weight: 700; letter-spacing: -.03em; }
+.brand__mark { font-family: var(--display); font-size: 1.45rem; font-weight: 700; letter-spacing: -.025em; }
 .brand__mark::after { content: '.'; color: var(--coral); }
 .brand__claim { font-size: .74rem; color: var(--mute); }
 @media (max-width: 600px) { .brand__claim { display: none; } }
@@ -258,6 +258,17 @@ p:last-child { margin-bottom: 0; }
 .reasons strong { display: block; font-family: var(--display); font-size: 1.1rem; font-weight: 600; }
 .reasons p { color: var(--ink-soft); font-size: .95rem; }
 
+/* --- Team ---------------------------------------------------------------- */
+.team { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; }
+@media (max-width: 780px) { .team { grid-template-columns: 1fr; } }
+.team__card { display: grid; grid-template-columns: 6.5rem 1fr; gap: 1.2rem; align-items: start; background: var(--card); border: 1px solid var(--line-soft); border-radius: var(--radius); padding: 1.3rem; }
+.team__card img { width: 6.5rem; aspect-ratio: 1; object-fit: cover; object-position: 50% 25%; border-radius: 50%; }
+.team__initials { display: grid; place-items: center; width: 6.5rem; aspect-ratio: 1; border-radius: 50%; background: var(--blue-tint); color: var(--blue); font-family: var(--display); font-weight: 700; font-size: 1.6rem; }
+.team__card h3 { font-size: 1.2rem; }
+.team__role { font-size: .8rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--coral); margin: .3rem 0 .6rem; }
+.team__card p:last-child { color: var(--ink-soft); font-size: .93rem; }
+@media (max-width: 460px) { .team__card { grid-template-columns: 1fr; } }
+
 /* --- Sicherheit ------------------------------------------------------------*/
 .checks { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; list-style: none; margin: 0; padding: 0; }
 @media (max-width: 900px) { .checks { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -386,3 +397,9 @@ p:last-child { margin-bottom: 0; }
 [data-reveal] { opacity: 0; transform: translateY(1rem); transition: opacity .7s cubic-bezier(.2,.7,.3,1), transform .7s cubic-bezier(.2,.7,.3,1); }
 [data-reveal].is-in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { [data-reveal] { opacity: 1; transform: none; } }
+
+/* --- Brotkrumen und Stadtteil-Chips (Leistungsseiten) ---------------------- */
+.crumbs { padding-top: 1.2rem; font-size: .85rem; color: var(--mute); }
+.crumbs a { color: var(--blue); text-decoration: none; }
+.crumbs a:hover { text-decoration: underline; }
+ul.chips { list-style: none; margin: 0; padding: 0; }

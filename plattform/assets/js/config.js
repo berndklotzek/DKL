@@ -9,17 +9,17 @@
 window.PLATFORM = {
 
   /* --- Marke ------------------------------------------------------------ */
-  brand: 'fello',                                   // TODO Arbeitstitel — Name und Domain prüfen
+  brand: 'Fellpaten',                               // Firma: Fellpaten GmbH — Domain fellpaten.de registrieren
   claim: 'Studierende betreuen Ihr Tier.',
 
   /* --- Kontakt ------------------------------------------------------------
      In der Startphase laufen Anfragen bei Veronika auf; später auf die
      Plattform-Adressen umstellen.                                          */
   contact: {
-    email:    'veronikayovenko@gmail.com',          // TODO z. B. hallo@fello.de
+    email:    'veronikayovenko@gmail.com',          // TODO z. B. hallo@fellpaten.de
     phone:    '+49 176 57990459',                   // TODO Plattform-Nummer
     whatsapp: '4917657990459',                      // nur Ziffern, mit Vorwahl
-    street:   'Berliner Straße 13',                 // TODO Sitz der Plattform
+    street:   'Berliner Straße 13',                 // TODO Sitz der GmbH laut Handelsregister
     city:     '71686 Remseck am Neckar'
   },
 
