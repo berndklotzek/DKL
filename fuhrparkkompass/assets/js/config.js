@@ -8,6 +8,15 @@ window.FPK = {
   phone: "+49 000 0000000",            /* TODO: echte Rufnummer */
   phoneDisplay: "+49 (0) 000 000 00 00",
 
+  /* 3D-Lkw im Hero
+     truckModel: Pfad zu einer .glb-/.gltf-Datei (z. B. "assets/models/lkw.glb").
+     Leer = eingebautes Modell. truckLength: Zuglänge in Metern, auf die das
+     Modell skaliert wird. truckRotationY: Korrektur in Radiant, falls die
+     Front nicht nach +z zeigt (Math.PI dreht um 180°). */
+  truckModel: "",
+  truckLength: 16.5,
+  truckRotationY: 0,
+
   /* Terminbuchung
      endpoint: URL, an die die Buchung als JSON per POST geschickt wird
      (z. B. Formspree, Make/Zapier-Webhook, eigener Server).
