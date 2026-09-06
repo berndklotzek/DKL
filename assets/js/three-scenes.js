@@ -188,27 +188,37 @@
     var SKY = new THREE.Color('#a4dbff'), SKY_SOFT = new THREE.Color('#f2fbff');
     var WHITE = new THREE.Color('#fff8e6'), WHITE_SOFT = new THREE.Color('#ffffff');
 
-    /* Figur aus Grundkörpern: Kopf, Hals, Rumpf, Arme, Becken, Beine. Sie steht
-       leicht abgewandt und hebt den Kopf zur Taube. */
+    /* Sportlicher Menschengeist aus Grundkörpern: breite Schultern, V-förmiger
+       Rücken, schmale Taille, kräftige Arme und Beine. Muskeln sind zusätzliche
+       Wölbungen, die die Silhouette formen. Er steht leicht abgewandt und hebt
+       den Kopf zur Taube. */
     var parts = [];
     var sph = function (r) { return new THREE.SphereGeometry(r, 24, 18); };
     var cyl = function (r1, r2, h) { return new THREE.CylinderGeometry(r1, r2, h, 20, 6); };
-    parts.push({ geo: sph(.34), matrix: M(.02, 1.9, .04, -.42, .5, 0, 1, 1.15, 1.05) });             /* Kopf, nach oben rechts gewandt */
-    parts.push({ geo: cyl(.12, .16, .36), matrix: M(0, 1.48, .02, -.15, 0, 0) });                   /* Hals */
-    var torso = [[0, -.55], [.5, -.5], [.56, -.3], [.46, .1], [.42, .45], [.5, .85], [.62, 1.2], [.58, 1.35], [0, 1.4]]
+    parts.push({ geo: sph(.32), matrix: M(.03, 1.97, .05, -.5, .55, 0, 1, 1.15, 1.05) });            /* Kopf, nach oben rechts gewandt */
+    parts.push({ geo: cyl(.15, .2, .36), matrix: M(0, 1.55, .02, -.12, 0, 0) });                    /* Hals, kräftig */
+    var torso = [[0, -.6], [.5, -.55], [.56, -.35], [.46, -.05], [.42, .2], [.5, .55], [.66, .9], [.8, 1.15], [.82, 1.3], [.6, 1.42], [0, 1.45]]
       .map(function (p) { return new THREE.Vector2(p[0], p[1]); });
-    parts.push({ geo: new THREE.LatheGeometry(torso, 40), matrix: M(0, 0, 0, 0, 0, 0, 1, 1, .62) });
-    parts.push({ geo: sph(.5), matrix: M(0, -.5, 0, 0, 0, 0, 1, .55, .7) });                        /* Becken */
+    parts.push({ geo: new THREE.LatheGeometry(torso, 40), matrix: M(0, 0, 0, 0, 0, 0, 1, 1, .68) }); /* Rumpf, V-Form */
+    parts.push({ geo: sph(.35), matrix: M(0, 1.38, -.05, 0, 0, 0, 1.6, .5, .7) });                   /* Trapez */
+    parts.push({ geo: sph(.55), matrix: M(0, -.55, 0, 0, 0, 0, 1, .5, .7) });                        /* Becken */
     [-1, 1].forEach(function (sd) {
-      parts.push({ geo: sph(.19), matrix: M(sd * .68, 1.22, 0) });                                  /* Schulter */
-      parts.push({ geo: cyl(.12, .1, .95), matrix: M(sd * .8, .72, .02, .06, 0, sd * -.22) });     /* Oberarm */
-      parts.push({ geo: cyl(.1, .08, .9), matrix: M(sd * .9, -.15, .12, .18, 0, sd * -.08) });     /* Unterarm */
-      parts.push({ geo: sph(.11), matrix: M(sd * .92, -.62, .2, 0, 0, 0, 1, 1.4, .8) });           /* Hand */
-      parts.push({ geo: cyl(.21, .16, 1.15), matrix: M(sd * .26, -1.35, 0, 0, 0, sd * .05) });     /* Oberschenkel */
-      parts.push({ geo: cyl(.15, .11, 1.1), matrix: M(sd * .3, -2.45, -.02, .04, 0, 0) });         /* Unterschenkel */
-      parts.push({ geo: sph(.14), matrix: M(sd * .3, -3.0, .12, 0, 0, 0, .9, .5, 1.6) });          /* Fuss */
+      parts.push({ geo: sph(.27), matrix: M(sd * .86, 1.2, 0, 0, 0, 0, 1, 1.1, .9) });               /* Deltamuskel */
+      parts.push({ geo: sph(.28), matrix: M(sd * .32, .95, .28, 0, 0, 0, 1.1, .8, .6) });            /* Brust */
+      parts.push({ geo: sph(.3), matrix: M(sd * .38, .7, -.28, 0, 0, 0, 1, 1.4, .5) });              /* Rückenmuskel */
+      parts.push({ geo: cyl(.17, .14, .95), matrix: M(sd * .98, .62, .02, .06, 0, sd * -.28) });     /* Oberarm */
+      parts.push({ geo: sph(.17), matrix: M(sd * 1.02, .75, .1, 0, 0, sd * -.28, 1, 1.3, 1) });      /* Bizeps */
+      parts.push({ geo: cyl(.14, .1, .9), matrix: M(sd * 1.15, -.25, .12, .15, 0, sd * -.12) });     /* Unterarm */
+      parts.push({ geo: sph(.12), matrix: M(sd * 1.2, -.72, .2, 0, 0, 0, 1, 1.4, .8) });             /* Hand */
+      parts.push({ geo: sph(.28), matrix: M(sd * .24, -.6, -.28) });                                  /* Gesäss */
+      parts.push({ geo: cyl(.26, .19, 1.2), matrix: M(sd * .3, -1.4, 0, 0, 0, sd * .05) });          /* Oberschenkel */
+      parts.push({ geo: sph(.22), matrix: M(sd * .32, -1.1, .15, 0, 0, 0, 1, 1.6, .8) });            /* Quadrizeps */
+      parts.push({ geo: sph(.16), matrix: M(sd * .33, -2.0, 0) });                                    /* Knie */
+      parts.push({ geo: cyl(.16, .11, 1.1), matrix: M(sd * .34, -2.55, 0, .04, 0, 0) });             /* Unterschenkel */
+      parts.push({ geo: sph(.17), matrix: M(sd * .34, -2.35, -.15, 0, 0, 0, 1, 1.5, .9) });          /* Wade */
+      parts.push({ geo: sph(.15), matrix: M(sd * .34, -3.12, .14, 0, 0, 0, .9, .45, 1.7) });         /* Fuss */
     });
-    var figSample = sampleSurface(parts, mobile ? 4200 : 9000);
+    var figSample = sampleSurface(parts, mobile ? 4800 : 10500);
     var DOVE = new THREE.Vector3(1.35, 2.95, -.4);
     var figGeo = pointsFrom(figSample, function (x, y, z) {
       /* Beim Scrollen steigt der Geist zur Taube auf und verweht. */
@@ -274,7 +284,7 @@
     group.add(figure); group.add(dove); group.add(new THREE.Points(cg, cm));
     scene.add(group);
     return {
-      group: group, mats: [figMat, doveMat], auras: [auraMat], halfW: 2.2, fullH: 6.4, sizeBase: [6.5, 5.5],
+      group: group, mats: [figMat, doveMat], auras: [auraMat], halfW: 2.3, fullH: 6.5, sizeBase: [6.5, 5.5],
       update: function (t) {
         cm.uniforms.uTime.value = t;
         doveMat.uniforms.uFlap.value = Math.sin(t * 5.2) * .55;
