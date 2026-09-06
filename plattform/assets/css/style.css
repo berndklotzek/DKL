@@ -262,7 +262,7 @@ p:last-child { margin-bottom: 0; }
 .team { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; }
 @media (max-width: 780px) { .team { grid-template-columns: 1fr; } }
 .team__card { display: grid; grid-template-columns: 6.5rem 1fr; gap: 1.2rem; align-items: start; background: var(--card); border: 1px solid var(--line-soft); border-radius: var(--radius); padding: 1.3rem; }
-.team__card img { width: 6.5rem; aspect-ratio: 1; object-fit: cover; object-position: 50% 25%; border-radius: 50%; }
+.team__card img { width: 6.5rem; aspect-ratio: 1; object-fit: cover; object-position: 50% 30%; border-radius: 50%; }
 .team__initials { display: grid; place-items: center; width: 6.5rem; aspect-ratio: 1; border-radius: 50%; background: var(--blue-tint); color: var(--blue); font-family: var(--display); font-weight: 700; font-size: 1.6rem; }
 .team__card h3 { font-size: 1.2rem; }
 .team__role { font-size: .8rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--coral); margin: .3rem 0 .6rem; }
