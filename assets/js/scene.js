@@ -65,7 +65,7 @@
 
     /* Ein schmaler Mond mit weichem Hof, links oben. Die Sichel entsteht,
        indem der Himmel in den Mond zurückgemalt wird — kein dunkler Fleck. */
-    var mx = W * .56, my = horizon * .13, mr = Math.max(9, Math.min(W, H) * .022);
+    var mx = W * (W / dpr < 861 ? .84 : .56), my = horizon * (W / dpr < 861 ? .1 : .13), mr = Math.max(9, Math.min(W, H) * .022);
     var halo = ctx.createRadialGradient(mx, my, mr * .6, mx, my, mr * 7);
     halo.addColorStop(0, 'rgba(226, 203, 157, .22)');
     halo.addColorStop(1, 'rgba(226, 203, 157, 0)');
@@ -165,7 +165,7 @@
     });
 
     /* Mondstrasse. */
-    var mx = W * .56;
+    var mx = W * (W / dpr < 861 ? .84 : .56);
     var road = ctx.createLinearGradient(0, horizon, 0, H);
     road.addColorStop(0, 'rgba(226, 203, 157, .28)');
     road.addColorStop(1, 'rgba(226, 203, 157, 0)');

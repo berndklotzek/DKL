@@ -174,16 +174,45 @@
     });
     scene.add(new THREE.Points(sg, sm));
 
-    /* Lage: rechts neben dem Text auf breiten Schirmen, hinter dem Text auf schmalen. */
+    /* Lage: Die Urne darf die Überschrift nie überdecken. Auf breiten Schirmen
+       bekommt sie die Spalte rechts neben dem Textblock, auf schmalen den Raum
+       zwischen Kopfzeile und Text. Beides wird aus der echten Textbox gerechnet
+       und die Urne so skaliert, dass sie samt Lichtbahnen hineinpasst. */
+    var baseX = 0, baseY = 0, baseScale = 1;
+    var RING_R = 1.85, URN_H = 4.3;                       // Ausdehnung der Szene in Welteinheiten
     function place() {
       if (!fit(renderer, camera, canvas)) return;
-      var wide = canvas.clientWidth > 860;
-      group.position.set(wide ? 2.7 : 0, wide ? .5 : 2.1, 0);
-      group.scale.setScalar(wide ? 1 : .55);
-      mat.uniforms.uSize.value = (wide ? 7.5 : 6) * DPR;
+      var W = canvas.clientWidth, H = canvas.clientHeight;
+      var vh = 2 * camera.position.z * Math.tan(camera.fov / 2 * Math.PI / 180);   // sichtbare Höhe auf z = 0
+      var vw = vh * camera.aspect, upp = vh / H;                                    // Einheiten je Pixel
+      var hb = canvas.getBoundingClientRect();
+      var text = document.querySelector('.hero-text');
+      var tb = text ? text.getBoundingClientRect() : null;
+      var wide = W > 860;
+      var cx, cy, sc;
+      if (wide) {
+        var left = (tb ? tb.right - hb.left : W * .5) + 32;     // linke Kante der freien Spalte
+        var colW = Math.max(0, W - left - W * .04);
+        cx = left + colW / 2;
+        cy = tb ? (tb.top + tb.bottom) / 2 - hb.top : H / 2;
+        sc = Math.min(1, colW * .46 * upp / RING_R, H * .8 * upp / URN_H);
+      } else {
+        var top = hb.top < 0 ? -hb.top : 0;                     // Kopfzeile abziehen: sichtbarer Anfang
+        var headerH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header')) * 16 || 84;
+        var start = top + headerH, end = tb ? tb.top - hb.top : H * .35;
+        cx = W / 2;
+        cy = (start + end) / 2;
+        sc = Math.max(.25, Math.min(.6, (end - start) * .92 * upp / URN_H, W * .44 * upp / RING_R));
+      }
+      baseX = (cx / W - .5) * vw;
+      baseY = camera.position.y - (cy / H - .5) * vh;
+      baseScale = sc;
+      mat.uniforms.uSize.value = (wide ? 7.5 : 6) * DPR * Math.max(.7, sc);
     }
     place();
     window.addEventListener('resize', place);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);   /* Textbox ändert sich mit den Schriften */
+    window.addEventListener('load', place);
 
     var mx = 0, my = 0, tx = 0, ty = 0;
     window.addEventListener('pointermove', function (e) { tx = (e.clientX / window.innerWidth - .5); ty = (e.clientY / window.innerHeight - .5); }, { passive: true });
@@ -197,7 +226,9 @@
       mx += (tx - mx) * .04; my += (ty - my) * .04;
       group.rotation.y = t * .18 + mx * .6;
       group.rotation.x = my * .25;
-      group.position.y += ((canvas.clientWidth > 860 ? .5 : 2.1) + Math.sin(t * .5) * .08 - group.position.y) * .05;
+      group.position.x += (baseX - group.position.x) * .1;
+      group.position.y += (baseY + Math.sin(t * .5) * .08 * baseScale - group.position.y) * .1;
+      group.scale.setScalar(group.scale.x + (baseScale - group.scale.x) * .1);
       ring1.rotation.z = t * .12; ring2.rotation.y = -t * .09;
       renderer.render(scene, camera);
     });
