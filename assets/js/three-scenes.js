@@ -15,10 +15,22 @@
    Ohne WebGL, ohne Three.js oder mit Bewegungswunsch «reduziert» bleibt die
    gemalte 2D-Kulisse stehen — nichts fehlt, es leuchtet nur weniger. */
 (function () {
-  if (!window.THREE) return;
+  /* Three.js wird erst geladen, wenn WebGL vorhanden ist und Bewegung erwünscht —
+     alle anderen sparen sich 600 KB. Der Pfad steht als data-three am Script-Tag. */
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var test = document.createElement('canvas');
   if (!(test.getContext('webgl') || test.getContext('experimental-webgl'))) return;
+  if (!document.querySelector('canvas.hero-3d, canvas.route-3d')) return;
+  if (window.THREE) { init(); return; }
+  var me = document.currentScript, src = me && me.dataset.three;
+  if (!src) return;
+  var tag = document.createElement('script');
+  tag.src = src; tag.async = true;
+  tag.onload = init;
+  document.head.appendChild(tag);
+
+  function init() {
+  if (!window.THREE) return;
 
   var GOLD = new THREE.Color('#c9a86b');
   var GOLD_SOFT = new THREE.Color('#e2cb9d');
@@ -465,4 +477,5 @@
       renderer.render(scene, camera);
     });
   })();
+  }
 })();

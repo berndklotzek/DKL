@@ -750,31 +750,31 @@ ratgeber_body = ratgeber_body.replace(CTA + '''
 PUB = '2026-09-06'
 pages = {
   'friedhofszwang.html': (
-    'Friedhofszwang in Deutschland: Was gilt, was erlaubt ist, wie die Schweiz es hält',
-    'Обязательное захоронение в Германии: что действует, что разрешено, как это устроено в Швейцарии',
-    'Warum in Deutschland eine Urne nicht nach Hause darf, wie die Schweiz es hält und wie das Schweizer Recht den Weg zurück in die Heimat öffnet. Mit Bestattungsverfügung und häufigen Irrtümern.',
-    'Почему в Германии урну нельзя забрать домой, как это устроено в Швейцарии и как проходит перевозка через границу. С распоряжением о погребении и распространёнными заблуждениями.',
+    'Friedhofszwang in Deutschland: Was gilt, was möglich ist',
+    'Обязательное захоронение в Германии: что действует',
+    'Warum in Deutschland eine Urne nicht nach Hause darf, wie die Schweiz es hält und wie das Schweizer Recht den Weg zurück in die Heimat öffnet.',
+    'Почему в Германии урну нельзя забрать домой, как это устроено в Швейцарии и как швейцарское право открывает путь домой.',
     ratgeber_body, False,
     lambda path: article_ld(path, 'Der Friedhofszwang — und der Weg daran vorbei', 'Warum in Deutschland eine Urne nicht nach Hause darf, wie die Schweiz es hält und wie das Schweizer Recht den Weg nach Hause öffnet.', PUB, PUB, 'Friedhofszwang')),
   'urne-zu-hause-aufbewahren.html': (
-    'Urne zu Hause aufbewahren: In Deutschland verboten, in der Schweiz erlaubt',
-    'Хранить урну дома: в Германии запрещено, в Швейцарии разрешено',
-    'Darf man eine Urne zu Hause aufbewahren? In Deutschland nein, nach Schweizer Recht ja — auch für Familien in Deutschland. Was gilt, warum das wichtig ist und wie die Urne über die Schweiz nach Hause kommt.',
-    'Можно ли хранить урну дома? В Германии нет, по швейцарскому праву да — в том числе для семей в Германии. Что действует, почему это важно и как урна через Швейцарию возвращается домой.',
+    'Urne zu Hause aufbewahren – nach Schweizer Recht möglich',
+    'Хранить урну дома – возможно по швейцарскому праву',
+    'In Deutschland verboten, nach Schweizer Recht möglich – auch für Familien in Deutschland. Was gilt und wie die Urne über die Schweiz nach Hause kommt.',
+    'В Германии запрещено, по швейцарскому праву возможно – в том числе для семей в Германии. Что действует и как урна возвращается домой.',
     zuhause_body, False,
     lambda path: article_ld(path, 'Urne zu Hause aufbewahren: in Deutschland verboten, nach Schweizer Recht möglich', 'Darf man eine Urne zu Hause aufbewahren? In Deutschland nein, nach Schweizer Recht ja — und so kommt sie nach Hause.', PUB, PUB, 'Urne zu Hause aufbewahren')),
   'zurueck-in-die-heimat.html': (
-    'Zurück in die Heimat: Urne nach Schweizer Recht nach Hause — Ablauf, Unterlagen, Kosten',
-    'Возвращение домой: урна по швейцарскому праву домой — порядок, документы, стоимость',
-    'So funktioniert das Schweizer Modell: Grabstelle in den Bergen, Übernahme vom Krematorium, Beisetzung nach Schweizer Recht, Rückführung der Urne nach Hause. Unterlagen, Dauer und Festpreis 490 €.',
-    'Как работает швейцарская модель: место в горах, принятие из крематория, захоронение по швейцарскому праву, возврат урны домой. Документы, сроки и фиксированная цена 490 €.',
+    'Zurück in die Heimat: Urne nach Schweizer Recht nach Hause',
+    'Возвращение домой: урна по швейцарскому праву',
+    'Das Schweizer Modell Schritt für Schritt: Grabstelle, Übernahme, Beisetzung, Rückführung der Urne nach Hause. Unterlagen, Dauer, Festpreis 490 €.',
+    'Швейцарская модель шаг за шагом: место, принятие, захоронение, возврат урны домой. Документы, сроки, фиксированная цена 490 €.',
     heimat_body, False,
     lambda path: article_ld(path, 'Zurück in die Heimat: So kommt die Urne nach Schweizer Recht zu Ihnen nach Hause', 'Das Schweizer Modell Schritt für Schritt: Grabstelle, Übernahme, Beisetzung, Rückführung — Unterlagen, Dauer, Kosten.', PUB, PUB, 'Zurück in die Heimat')),
   'bestattungsverfuegung.html': (
-    'Bestattungsverfügung: Zu Lebzeiten festlegen, dass die Urne zur Familie kommt',
-    'Распоряжение о погребении: определить при жизни, что урна вернётся в семью',
-    'Wie Sie mit einer Bestattungsverfügung verbindlich festlegen, dass Ihre Urne über die Schweiz zu Ihrer Familie kommt: Inhalt, Wirkung, Aufbewahrung, kostenloses Vorsorgegespräch.',
-    'Как распоряжением о погребении определить, что ваша урна через Швейцарию вернётся к вашей семье: содержание, действие, хранение, бесплатная консультация.',
+    'Bestattungsverfügung: Die Urne kommt zur Familie',
+    'Распоряжение о погребении: урна вернётся в семью',
+    'Zu Lebzeiten festlegen, dass Ihre Urne über die Schweiz zu Ihrer Familie kommt: Inhalt, Wirkung, Aufbewahrung, kostenloses Vorsorgegespräch.',
+    'Как при жизни определить, что ваша урна через Швейцарию вернётся к семье: содержание, действие, хранение, бесплатная консультация.',
     verfuegung_body, False,
     lambda path: article_ld(path, 'Die Bestattungsverfügung: zu Lebzeiten festlegen, wo Sie ruhen', 'Was in eine Bestattungsverfügung gehört, wie sie wirkt und wie wir sie hinterlegen.', PUB, PUB, 'Bestattungsverfügung')),
   'impressum.html': (
@@ -786,8 +786,8 @@ pages = {
   'datenschutz.html': (
     'Datenschutzerklärung — Seelenfrieden Urnenrückführung GmbH',
     'Политика защиты данных — Seelenfrieden Urnenrückführung GmbH',
-    'Welche Daten die Seelenfrieden Urnenrückführung GmbH bearbeitet, wozu, wie lange — und was diese Website nicht tut: keine Cookies, kein Tracking, keine Google Fonts.',
-    'Какие данные обрабатывает Seelenfrieden Urnenrückführung GmbH, зачем и как долго — и чего этот сайт не делает: никаких cookie, трекинга и Google Fonts.',
+    'Welche Daten wir bearbeiten, wozu und wie lange – und was diese Website nicht tut: keine Cookies, kein Tracking, keine Google Fonts.',
+    'Какие данные мы обрабатываем, зачем и как долго – и чего этот сайт не делает: никаких cookie, трекинга и Google Fonts.',
     datenschutz_body, False, lambda path: page_ld(path, 'Datenschutzerklärung')),
   '404.html': (
     'Seite nicht gefunden — Seelenfrieden Urnenrückführung GmbH',
@@ -811,6 +811,7 @@ def to_ru(html, name):
     h = re.sub(r'<meta property="og:title" content="[^"]*">', '<meta property="og:title" content="' + a.get('data-title-ru', '') + '">', h, count=1)
     h = re.sub(r'<meta property="og:description" content="[^"]*">', '<meta property="og:description" content="' + a.get('data-desc-ru', '') + '">', h, count=1)
     h = h.replace('href="assets/', 'href="../assets/').replace('src="assets/', 'src="../assets/').replace('href="site.webmanifest"', 'href="../site.webmanifest"')
+    h = h.replace('data-three="assets/', 'data-three="../assets/')
     h = h.replace('"inLanguage": "de"', '"inLanguage": "ru"')
     # Sprachumschalter: DE zeigt nach oben, RU auf sich selbst
     h = re.sub(r'<a href="([\w.-]+)" hreflang="de" data-set-lang="de" aria-pressed="true">DE</a>', r'<a href="../\1" hreflang="de" data-set-lang="de" aria-pressed="false">DE</a>', h)
