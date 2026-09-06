@@ -304,7 +304,10 @@
         </article>
         <article class="person reveal" data-delay="1">
           <div class="person-photo">
-            <div class="placeholder" role="img" aria-label="Porträt von Kevin Kelsch folgt">KK</div>
+            <picture>
+              <source srcset="assets/img/kevin-kelsch.webp" type="image/webp">
+              <img src="assets/img/kevin-kelsch.jpg" width="900" height="900" loading="lazy" alt="Kevin Kelsch, Versicherungsexperte bei Fuhrparkkompass">
+            </picture>
           </div>
           <div>
             <h3>Kevin Kelsch</h3>
@@ -491,6 +494,7 @@
       "@id": "https://www.fuhrparkkompass.de/#kevin-kelsch",
       "name": "Kevin Kelsch",
       "jobTitle": "Versicherungsexperte",
+      "image": "https://www.fuhrparkkompass.de/assets/img/kevin-kelsch.jpg",
       "worksFor": { "@id": "https://www.fuhrparkkompass.de/#organization" },
       "knowsAbout": ["Flottenversicherung", "Verkehrshaftungsversicherung", "Gewerbeversicherung", "Schadenmanagement"]
     },

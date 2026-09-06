@@ -49,7 +49,6 @@ assets/img/                 Porträt, Logo-Icons, OG-Bild, Favicon
 | `assets/js/config.js` | `bookingEndpoint` | siehe „Terminbuchung“ unten |
 | `impressum.html` | gelbe `.todo`-Felder | Rechtsform, Anschrift, Registergericht, USt-ID, **IHK-Erlaubnis § 34d GewO, Vermittlerregister-Nr.** |
 | `datenschutz.html` | gelbe `.todo`-Felder | Hoster, Log-Löschfrist, Aufsichtsbehörde, Stand |
-| `index.html` Team | Platzhalter „KK“ | Porträt von Kevin Kelsch (quadratisch, ≥ 900 px) als `assets/img/kevin-kelsch.jpg` einbinden – analog zum Bild von Daniel |
 | `index.html` Hero/Stats | „400+ Kunden“, „Ab 3 Fahrzeugen“, „0 €“ | Werbeaussagen bestätigen – sie müssen belegbar sein |
 | `assets/js/config.js` | `calc.saving` | Ersparnis-Spannen des Rechners mit echten Erfahrungswerten abgleichen |
 | `assets/js/config.js` | `holidays` | Feiertage jährlich ergänzen |
