@@ -67,7 +67,8 @@
     else if (state.step === 2) body = stepForm();
     else if (state.step === 3) body = stepConfirm();
     else body = stepDone();
-    host.innerHTML = progress + `<div class="bw-step is-active" role="region" aria-live="polite">${body}</div>`;
+    const info = state.step < 4 ? `<p class="bw-stepinfo">Schritt ${state.step + 1} von 4 · ${labels[state.step]}</p>` : "";
+    host.innerHTML = progress + info + `<div class="bw-step is-active" role="region" aria-live="polite">${body}</div>`;
     bind();
   };
 

@@ -31,7 +31,8 @@
 
   /* ---------- Renderer, Szene, Kamera ---------- */
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: "high-performance" });
-  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
+  const small = matchMedia("(max-width: 720px)").matches;
+  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, small ? 1.5 : 2));
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   renderer.outputEncoding = THREE.sRGBEncoding;
@@ -70,7 +71,7 @@
   const key = new THREE.DirectionalLight(0xfff1dc, 2.1);
   key.position.set(11, 17, 9);
   key.castShadow = true;
-  key.shadow.mapSize.set(2048, 2048);
+  key.shadow.mapSize.set(small ? 1024 : 2048, small ? 1024 : 2048);
   key.shadow.camera.near = 1; key.shadow.camera.far = 70;
   key.shadow.camera.left = key.shadow.camera.bottom = -20;
   key.shadow.camera.right = key.shadow.camera.top = 20;

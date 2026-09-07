@@ -74,6 +74,15 @@
     map.forEach((_, id) => { const el = document.getElementById(id); if (el) io.observe(el); });
   }
 
+  /* Fester Buchungs-Button auf dem Handy: erscheint nach dem Hero, verschwindet bei der Buchung */
+  const mobileCta = $(".mobile-cta"), booking = $("#buchung");
+  if (mobileCta) {
+    let bookingSeen = false;
+    if (booking && "IntersectionObserver" in window) new IntersectionObserver(([en]) => { bookingSeen = en.isIntersecting; update(); }, { threshold: .05 }).observe(booking);
+    const update = () => mobileCta.classList.toggle("is-visible", scrollY > innerHeight * .7 && !bookingSeen && !(nav && nav.classList.contains("is-open")));
+    addEventListener("scroll", update, { passive: true }); update();
+  }
+
   /* Wechselnde Slogans in der Hauptüberschrift */
   const rotator = $(".rotator");
   if (rotator && !reduced) {
