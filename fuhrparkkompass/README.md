@@ -90,14 +90,29 @@ Emblem, LED-Scheinwerfern, Kennzeichen; Reifen mit Profil und Alufelgen;
 Koffer mit Türen, Verschlussstangen, Schürzen, Umriss- und Rückleuchten. Die
 Beschriftung auf dem Auflieger wird aus einem Canvas gezeichnet.
 
-**Echtes Modell einbinden.** Für ein fotorealistisches Fahrzeug (z. B. ein
+**Aktuelles Modell.** Eingebunden ist der 7,5-Tonner-Koffer-Lkw aus dem
+Fahrsimulator [MetaDrive](https://github.com/metadriverse/metadrive)
+(`assets/models/lkw/`, aus dem Asset-Paket der Version 0.4.3, Repository unter
+Apache-Lizenz 2.0). Räder werden getrennt geladen und an den Simulator-Positionen
+montiert (`truckWheels` in `config.js`), die Beschriftung liegt als Fläche auf
+den Kofferseiten (`truckLivery`). **Vor dem Livegang klären:** Für dieses eine
+Modell fehlt im MetaDrive-Paket die Herkunftsdatei, die bei den anderen Modellen
+auf Sketchfab-Autoren und CC-BY verweist. Entweder den Ursprung bei den
+MetaDrive-Autoren erfragen oder das Modell durch ein eigenes, lizenziertes
+ersetzen (siehe unten). Das Impressum enthält bereits den Nachweis.
+
+**Eigenes Modell einbinden.** Für ein fotorealistisches Fahrzeug (z. B. ein
 lizenziertes Actros-/TGX-Modell von Sketchfab, CGTrader oder TurboSquid) die
 Datei als `.glb` unter `assets/models/` ablegen und in `config.js` eintragen:
 
 ```js
 truckModel: "assets/models/lkw.glb",
-truckLength: 16.5,      // Zuglänge in Metern, das Modell wird darauf skaliert
-truckRotationY: 0       // Math.PI, falls die Front nach hinten zeigt
+truckLength: 16.5,      // Fahrzeuglänge in Metern, das Modell wird darauf skaliert
+truckRotationY: 0,      // Math.PI, falls die Front nach hinten zeigt
+truckWheels: [],        // leer lassen, wenn die Räder im Modell enthalten sind
+truckLivery: null,      // oder Anteile { z0, z1, y0, y1 } für die Beschriftung
+cameraScale: 1,         // Kameraabstand relativ zu einem 16,5-m-Zug
+cameraTarget: [0, 2, 0] // Blickpunkt
 ```
 
 Das Modell wird geladen (`assets/vendor/GLTFLoader.js`), auf die Straße
@@ -111,6 +126,7 @@ eingebaute Modell.
 - Bei `prefers-reduced-motion` steht ein einzelnes Standbild.
 - Ohne WebGL erscheint eine SVG-Silhouette (`.truck-fallback`).
 - Materialien stehen in `truck.js` unter `M`, Kamera in `camBase`/`camTarget`, Blickwinkel in `baseYaw`.
+- Die Hauptüberschrift wechselt alle 5,2 Sekunden durch fünf Slogans (`.rotator` in `index.html`, Logik in `site.js`); bei `prefers-reduced-motion` bleibt der erste stehen.
 
 ## SEO
 

@@ -43,8 +43,10 @@
   scene.fog = new THREE.FogExp2(BG, .02);
 
   const camera = new THREE.PerspectiveCamera(26, 1, .1, 200);
-  const camBase = new THREE.Vector3(16.3, 5.0, 20.8);
-  const camTarget = new THREE.Vector3(0, 2.0, -2.2);
+  const CS = cfg.truckModel && cfg.cameraScale ? cfg.cameraScale : 1;
+  const camBase = new THREE.Vector3(16.3 * CS, 5.0 * CS, 20.8 * CS);
+  const ct = cfg.truckModel && cfg.cameraTarget ? cfg.cameraTarget : [0, 2.0, -2.2];
+  const camTarget = new THREE.Vector3(ct[0], ct[1], ct[2]);
   camera.position.copy(camBase);
 
   /* Studio-Umgebung: dunkler Raum mit Lichtflächen → Reflexionen */
@@ -405,28 +407,52 @@
   };
 
   /* Echtes Modell laden, falls konfiguriert */
-  const loadModel = (url) => new Promise((resolve, reject) => {
-    if (!THREE.GLTFLoader) return reject(new Error("GLTFLoader fehlt"));
-    new THREE.GLTFLoader().load(url, (gltf) => {
-      const obj = gltf.scene;
-      obj.traverse((o) => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; } });
-      const bb = new THREE.Box3().setFromObject(obj), size = bb.getSize(new THREE.Vector3());
-      const longest = Math.max(size.x, size.z), scale = (cfg.truckLength || 16.5) / longest;
-      obj.scale.setScalar(scale);
-      if (size.x > size.z) obj.rotation.y = Math.PI / 2;
-      if (cfg.truckRotationY) obj.rotation.y += cfg.truckRotationY;
-      const bb2 = new THREE.Box3().setFromObject(obj), c = bb2.getCenter(new THREE.Vector3());
-      obj.position.set(-c.x, -bb2.min.y, -c.z - 7.2);
-      obj.traverse((o) => { if (/wheel|rad|tire|tyre/i.test(o.name)) wheels.push(o); });
-      tractor.add(obj); resolve(obj);
-    }, undefined, reject);
-  });
+  const loadGltf = (url) => new Promise((res, rej) => new THREE.GLTFLoader().load(url, (g) => res(g.scene), undefined, rej));
+  const prepMesh = (o) => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; if (o.material) { o.material.envMapIntensity = .9; if (o.material.map) o.material.map.anisotropy = 8; } } };
+  const loadModel = async (url) => {
+    if (!THREE.GLTFLoader) throw new Error("GLTFLoader fehlt");
+    const model = new THREE.Group();                       /* Modellkoordinaten */
+    const body = await loadGltf(url); body.traverse(prepMesh);
+    const off = cfg.truckBodyOffset || [0, 0, 0]; body.position.set(off[0], off[1], off[2]); model.add(body);
+    const wheelDefs = cfg.truckWheels || [];
+    const cache = {};
+    for (const w of wheelDefs) {
+      if (!cache[w.file]) cache[w.file] = await loadGltf(w.file);
+      const g = new THREE.Group(); const m = cache[w.file].clone(); m.traverse(prepMesh);
+      if (w.mirror) m.scale.x = -1;
+      g.add(m); g.position.set(w.x, w.y, w.z); g.userData.r = w.r || .5; model.add(g); wheels.push(g);
+    }
+    /* Beschriftung auf beiden Seiten */
+    const bb = new THREE.Box3().setFromObject(body), size = bb.getSize(new THREE.Vector3());
+    const L = cfg.truckLivery;
+    if (L) {
+      const w = size.z * (L.z1 - L.z0), h = size.y * (L.y1 - L.y0), ratio = 860 / 4096;
+      const pw = Math.min(w, h / ratio), ph = pw * ratio;
+      const zc = bb.min.z + size.z * (L.z0 + L.z1) / 2, yc = bb.min.y + size.y * (L.y0 + L.y1) / 2;
+      [1, -1].forEach((s) => {
+        const p = new THREE.Mesh(new THREE.PlaneGeometry(pw, ph), liveryMat);
+        p.position.set(s > 0 ? bb.max.x + .012 : bb.min.x - .012, yc, zc); p.rotation.y = s * Math.PI / 2; model.add(p);
+      });
+    }
+    /* Auf Straßenmaß bringen, Boden auf y = 0, Mitte auf den Drehpunkt */
+    const full = new THREE.Box3().setFromObject(model), fs = full.getSize(new THREE.Vector3());
+    const scale = (cfg.truckLength || 16.5) / Math.max(fs.x, fs.z);
+    const holder = new THREE.Group(); holder.add(model); model.scale.setScalar(scale);
+    const ground = cfg.truckGround !== undefined ? cfg.truckGround : full.min.y;
+    const c = full.getCenter(new THREE.Vector3());
+    model.position.set(-c.x * scale, -ground * scale, -c.z * scale);
+    holder.rotation.y = cfg.truckRotationY || 0;
+    holder.position.z = -7.2;                              /* hebt den Rig-Versatz auf: Mitte = Drehpunkt */
+    tractor.add(holder);
+    wheels.forEach((w) => { w.userData.r = (w.userData.r || .5) * scale; });
+    return holder;
+  };
 
   const ready = cfg.truckModel
     ? loadModel(cfg.truckModel).catch((e) => { console.warn("3D-Modell konnte nicht geladen werden, Ersatzmodell wird gezeigt.", e); buildProcedural(); })
     : Promise.resolve(buildProcedural());
 
-  const HOME_Z = -2.2;
+  const HOME_Z = cfg.truckModel ? 0 : -2.2;
   truck.position.z = HOME_Z;
   const baseYaw = .22;
 
@@ -434,7 +460,7 @@
   const resize = () => {
     const w = stage.clientWidth, h = stage.clientHeight; if (!w || !h) return;
     renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix();
-    const k = w / h < 1 ? 1.35 : 1; camBase.set(16.3 * k, 5.0 * k, 20.8 * k);
+    const k = (w / h < 1 ? 1.35 : 1) * CS; camBase.set(16.3 * k, 5.0 * k, 20.8 * k);
   };
   if ("ResizeObserver" in window) new ResizeObserver(resize).observe(stage); else addEventListener("resize", resize);
   resize();
@@ -463,7 +489,7 @@
     truck.position.x = (1 - entry) * -4;
     truck.rotation.y = baseYaw + (1 - entry) * -.18 + scrollP * .75 + mouse.x * .06;
 
-    wheels.forEach((w) => { w.rotation.x -= (speed * dt) / R; });
+    wheels.forEach((w) => { w.rotation.x -= (speed * dt) / (w.userData.r || R); });
     dashes.forEach((d) => { d.position.z -= speed * dt * 2.2; if (d.position.z < ROAD_Z - ROAD_L / 2) d.position.z += ROAD_L; d.material.opacity = dashFade(d.position.z - ROAD_Z); });
 
     if (!reduced) {
@@ -472,9 +498,9 @@
       trailer.rotation.y = Math.sin(elapsed * .9) * .005 + (1 - entry) * .08;
     }
     mouse.x += (target.x - mouse.x) * .05; mouse.y += (target.y - mouse.y) * .05;
-    camera.position.x = camBase.x + mouse.x * 2.2;
-    camera.position.y = camBase.y - mouse.y * 1.4 + scrollP * 4;
-    camera.position.z = camBase.z + scrollP * 3;
+    camera.position.x = camBase.x + mouse.x * 2.2 * CS;
+    camera.position.y = camBase.y - mouse.y * 1.4 * CS + scrollP * 4 * CS;
+    camera.position.z = camBase.z + scrollP * 3 * CS;
     camera.lookAt(camTarget.x, camTarget.y + scrollP * -.6, camTarget.z);
     renderer.render(scene, camera);
   };

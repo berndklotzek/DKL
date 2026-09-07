@@ -74,6 +74,25 @@
     map.forEach((_, id) => { const el = document.getElementById(id); if (el) io.observe(el); });
   }
 
+  /* Wechselnde Slogans in der Hauptüberschrift */
+  const rotator = $(".rotator");
+  if (rotator && !reduced) {
+    const slogans = $$(".slogan", rotator);
+    if (slogans.length > 1) {
+      let i = 0, timer = null, paused = false;
+      const show = (n) => {
+        slogans[i].classList.remove("is-active"); slogans[i].classList.add("is-leaving");
+        const old = slogans[i]; setTimeout(() => old.classList.remove("is-leaving"), 700);
+        i = n % slogans.length; slogans[i].classList.add("is-active");
+      };
+      const tick = () => { if (!paused && !document.hidden) show(i + 1); };
+      const start = () => { clearInterval(timer); timer = setInterval(tick, 5200); };
+      rotator.addEventListener("mouseenter", () => { paused = true; });
+      rotator.addEventListener("mouseleave", () => { paused = false; });
+      start();
+    }
+  }
+
   /* Nur ein FAQ-Eintrag zugleich offen */
   $$(".faq details").forEach((d) => d.addEventListener("toggle", () => {
     if (d.open) $$(".faq details[open]").forEach((o) => { if (o !== d) o.open = false; });

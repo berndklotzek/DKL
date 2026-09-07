@@ -13,9 +13,22 @@ window.FPK = {
      Leer = eingebautes Modell. truckLength: Zuglänge in Metern, auf die das
      Modell skaliert wird. truckRotationY: Korrektur in Radiant, falls die
      Front nicht nach +z zeigt (Math.PI dreht um 180°). */
-  truckModel: "",
-  truckLength: 16.5,
-  truckRotationY: 0,
+  truckModel: "assets/models/lkw/vehicle.gltf",
+  truckLength: 5.84,               /* Modell ist 1:1 in Metern */
+  truckRotationY: Math.PI,          /* Front des Modells zeigt nach -z */
+  /* Räder (aus den MetaDrive-Fahrzeugparametern), in Modellkoordinaten: */
+  truckWheels: [
+    { file: "assets/models/lkw/right_tire_front.gltf", x: .931, y: .07, z: -1.6, mirror: false, r: .37 },
+    { file: "assets/models/lkw/right_tire_front.gltf", x: -.931, y: .07, z: -1.6, mirror: true, r: .37 },
+    { file: "assets/models/lkw/right_tire_back.gltf", x: .931, y: .07, z: 1.7, mirror: false, r: .37 },
+    { file: "assets/models/lkw/right_tire_back.gltf", x: -.931, y: .07, z: 1.7, mirror: true, r: .37 }
+  ],
+  truckBodyOffset: [0, -.17, -.25],  /* Karosserie gegenüber Fahrgestell */
+  truckGround: -.3,                 /* Bodenhöhe in Modellkoordinaten */
+  /* Beschriftung auf den Kofferseiten, als Anteile der Länge/Höhe (null = keine) */
+  truckLivery: { z0: .30, z1: .97, y0: .40, y1: .93 },
+  cameraScale: .48,                 /* Kameraabstand relativ zum 16,5-m-Sattelzug */
+  cameraTarget: [0, 1.35, 0],
 
   /* Terminbuchung
      endpoint: URL, an die die Buchung als JSON per POST geschickt wird

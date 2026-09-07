@@ -172,6 +172,11 @@ ul, ol { padding-left: 1.2em; }
 .hero-copy { max-width: 640px; }
 .hero h1 { color: var(--white); margin-bottom: 22px; }
 .hero h1 em { font-style: normal; color: var(--amber); }
+/* Wechselnde Slogans: alle liegen im selben Rasterfeld, das Layout springt nicht */
+.rotator { display: grid; }
+.rotator .slogan { grid-area: 1 / 1; opacity: 0; transform: translateY(14px); transition: opacity .7s var(--ease), transform .7s var(--ease); pointer-events: none; }
+.rotator .slogan.is-active { opacity: 1; transform: none; pointer-events: auto; }
+.rotator .slogan.is-leaving { opacity: 0; transform: translateY(-14px); }
 .hero .lead { margin-bottom: 34px; }
 .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 40px; }
 .hero-cta .btn { padding: 15px 24px; }
@@ -491,6 +496,7 @@ select.input option { color: var(--ink); background: #fff; }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .hero-copy > *, .bw-step.is-active { animation: none; }
+  .rotator .slogan { transition: none; }
   .marquee-track { animation: none; flex-wrap: wrap; width: auto; justify-content: center; }
   .marquee-group:last-child { display: none; }
   .hero-scroll span { animation: none; }
