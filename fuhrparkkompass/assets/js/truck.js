@@ -256,9 +256,33 @@
   })();
   const road = new THREE.Mesh(new THREE.PlaneGeometry(ROAD_W, ROAD_L), new THREE.MeshStandardMaterial({ map: roadTex, alphaMap: roadAlpha, transparent: true, roughness: .96, metalness: 0, depthWrite: false }));
   road.rotation.x = -Math.PI / 2; road.position.set(0, .004, ROAD_Z); road.receiveShadow = true; scene.add(road);
-  const dashes = [], dashGeo = new THREE.BoxGeometry(.14, .01, 1.8);
   const dashFade = (z) => Math.max(0, Math.min(1, (1 - Math.abs(z) / (ROAD_L / 2)) / .62));
-  for (let i = 0; i < 18; i++) { const d = new THREE.Mesh(dashGeo, M.lane.clone()); d.position.set(0, .012, ROAD_Z - ROAD_L / 2 + i * 4); scene.add(d); dashes.push(d); }
+  /* Alles, was am Fahrzeug vorbeizieht: Objekte laufen nach -z, springen am Ende zurück und blenden an den Rändern aus */
+  const movers = [];
+  const mover = (obj, z, mats) => { obj.position.z = z; obj.userData.mats = mats; scene.add(obj); movers.push(obj); return obj; };
+  const laneMat = new THREE.MeshStandardMaterial({ color: srgb(0xf2f4f8), emissive: srgb(0xffffff), emissiveIntensity: .25, transparent: true, roughness: .8 });
+  const dashGeo = new THREE.BoxGeometry(.14, .01, 2.0);
+  for (let i = 0; i < 18; i++) { const m = laneMat.clone(); const d = new THREE.Mesh(dashGeo, m); d.position.set(0, .012, 0); mover(d, ROAD_Z - ROAD_L / 2 + i * 4, [m]); }
+  /* Leitpfosten (weiß, schwarzer Ring, Reflektor) im Abstand von 8 m */
+  const postWhite = new THREE.MeshStandardMaterial({ color: srgb(0xf4f6fa), roughness: .6, transparent: true });
+  const postBlack = new THREE.MeshStandardMaterial({ color: srgb(0x15181d), roughness: .7, transparent: true });
+  const postRefl = new THREE.MeshStandardMaterial({ color: srgb(0xffb224), emissive: srgb(0xffb224), emissiveIntensity: .9, transparent: true });
+  const makePost = (side) => {
+    const g = new THREE.Group(), mats = [postWhite.clone(), postBlack.clone(), postRefl.clone()];
+    const p = new THREE.Mesh(new THREE.BoxGeometry(.12, 1.0, .1), mats[0]); p.position.y = .5; p.castShadow = true; g.add(p);
+    const b = new THREE.Mesh(new THREE.BoxGeometry(.125, .16, .105), mats[1]); b.position.y = .78; g.add(b);
+    const r = new THREE.Mesh(new THREE.BoxGeometry(.05, .1, .02), mats[2]); r.position.set(0, .78, side < 0 ? .06 : -.06); g.add(r);
+    g.position.x = side * 4.6; return [g, mats];
+  };
+  for (let i = 0; i < 10; i++) [-1, 1].forEach((side) => { const [g, mats] = makePost(side); mover(g, ROAD_Z - ROAD_L / 2 + i * 8 + (side > 0 ? 4 : 0), mats); });
+  /* Leitplanke auf der abgewandten Seite: Holm mit Pfosten, Segmente von 4 m */
+  const railMat = new THREE.MeshStandardMaterial({ color: srgb(0xb9c0cc), metalness: .8, roughness: .4, transparent: true });
+  for (let i = 0; i < 20; i++) {
+    const g = new THREE.Group(), m = railMat.clone();
+    const beam = new THREE.Mesh(new THREE.BoxGeometry(.06, .31, 4.02), m); beam.position.y = .62; beam.castShadow = true; g.add(beam);
+    const post = new THREE.Mesh(new THREE.BoxGeometry(.1, .75, .1), m); post.position.y = .37; g.add(post);
+    g.position.x = -5.3; mover(g, ROAD_Z - ROAD_L / 2 + i * 4, [m]);
+  }
 
   /* ---------- Sattelzug ---------- */
   const truck = new THREE.Group(); scene.add(truck);
@@ -483,19 +507,26 @@
     const dt = Math.min(clock.getDelta(), .05);
     const elapsed = (performance.now() - start) / 1000;
     const entry = reduced ? 1 : easeOut(Math.min(1, elapsed / ENTRY));
-    const speed = reduced ? 0 : 6 * (1 - entry) + 2.2;
+    const speed = reduced ? 0 : 9 * (1 - entry) + 6;   /* m/s: Einfahrt schnell, dann gleichmäßiges Fahren */
 
     truck.position.z = HOME_Z - (1 - entry) * 34;
     truck.position.x = (1 - entry) * -4;
     truck.rotation.y = baseYaw + (1 - entry) * -.18 + scrollP * .75 + mouse.x * .06;
 
     wheels.forEach((w) => { w.rotation.x -= (speed * dt) / (w.userData.r || R); });
-    dashes.forEach((d) => { d.position.z -= speed * dt * 2.2; if (d.position.z < ROAD_Z - ROAD_L / 2) d.position.z += ROAD_L; d.material.opacity = dashFade(d.position.z - ROAD_Z); });
+    movers.forEach((o) => {
+      o.position.z -= speed * dt; if (o.position.z < ROAD_Z - ROAD_L / 2) o.position.z += ROAD_L;
+      const a = dashFade(o.position.z - ROAD_Z); o.userData.mats.forEach((m) => { m.opacity = a; });
+    });
 
     if (!reduced) {
       cab.position.y = Math.sin(elapsed * 2.1) * .01 + Math.sin(elapsed * 5.3) * .005;
       cab.rotation.x = Math.sin(elapsed * 1.7) * .003;
       trailer.rotation.y = Math.sin(elapsed * .9) * .005 + (1 - entry) * .08;
+      /* Fahrwerk: leichtes Federn und Nicken, spürbar auch beim geladenen Modell */
+      tractor.position.y = Math.sin(elapsed * 2.4) * .012 + Math.sin(elapsed * 7.1) * .004;
+      tractor.rotation.x = Math.sin(elapsed * 1.9) * .004;
+      tractor.rotation.z = Math.sin(elapsed * 1.3) * .004;
     }
     mouse.x += (target.x - mouse.x) * .05; mouse.y += (target.y - mouse.y) * .05;
     camera.position.x = camBase.x + mouse.x * 2.2 * CS;
