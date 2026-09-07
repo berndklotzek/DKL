@@ -111,8 +111,6 @@ truckLength: 16.5,      // Fahrzeuglänge in Metern, das Modell wird darauf skal
 truckRotationY: 0,      // Math.PI, falls die Front nach hinten zeigt
 truckWheels: [],        // leer lassen, wenn die Räder im Modell enthalten sind
 truckLivery: null,      // oder Anteile { z0, z1, y0, y1 } für die Beschriftung
-cameraScale: 1,         // Kameraabstand relativ zu einem 16,5-m-Zug
-cameraTarget: [0, 2, 0] // Blickpunkt
 ```
 
 Das Modell wird geladen (`assets/vendor/GLTFLoader.js`), auf die Straße

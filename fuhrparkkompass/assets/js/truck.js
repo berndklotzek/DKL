@@ -43,11 +43,6 @@
   scene.fog = new THREE.FogExp2(BG, .02);
 
   const camera = new THREE.PerspectiveCamera(26, 1, .1, 200);
-  const CS = cfg.truckModel && cfg.cameraScale ? cfg.cameraScale : 1;
-  const camBase = new THREE.Vector3(16.3 * CS, 5.0 * CS, 20.8 * CS);
-  const ct = cfg.truckModel && cfg.cameraTarget ? cfg.cameraTarget : [0, 2.0, -2.2];
-  const camTarget = new THREE.Vector3(ct[0], ct[1], ct[2]);
-  camera.position.copy(camBase);
 
   /* Studio-Umgebung: dunkler Raum mit Lichtflächen → Reflexionen */
   const buildEnvironment = () => {
@@ -237,7 +232,7 @@
   /* ---------- Straße ---------- */
   const ground = new THREE.Mesh(new THREE.CircleGeometry(80, 48), new THREE.ShadowMaterial({ color: 0x02050c, opacity: .6 }));
   ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; scene.add(ground);
-  const ROAD_L = 80, ROAD_W = 10, ROAD_Z = -14;
+  const ROAD_L = 80, ROAD_W = 10, ROAD_Z = 0;
   const roadTex = tex(512, 2048, (g, c) => {
     const img = g.createImageData(c.width, c.height), d = img.data;
     for (let i = 0; i < d.length; i += 4) { const v = 26 + Math.random() * 22; d[i] = v; d[i + 1] = v + 6; d[i + 2] = v + 18; d[i + 3] = 255; }
@@ -250,13 +245,13 @@
     const c = document.createElement("canvas"); c.width = 256; c.height = 2048; const g = c.getContext("2d");
     g.save(); g.translate(128, 1024); g.scale(128, 1024);
     const r = g.createRadialGradient(0, 0, 0, 0, 0, 1);
-    r.addColorStop(0, "#fff"); r.addColorStop(.3, "#fff"); r.addColorStop(.72, "rgba(255,255,255,0)"); r.addColorStop(1, "rgba(255,255,255,0)");
+    r.addColorStop(0, "#fff"); r.addColorStop(.3, "#fff"); r.addColorStop(.55, "rgba(255,255,255,0)"); r.addColorStop(1, "rgba(255,255,255,0)");
     g.fillStyle = r; g.beginPath(); g.arc(0, 0, 1, 0, 7); g.fill(); g.restore();
     return new THREE.CanvasTexture(c);
   })();
   const road = new THREE.Mesh(new THREE.PlaneGeometry(ROAD_W, ROAD_L), new THREE.MeshStandardMaterial({ map: roadTex, alphaMap: roadAlpha, transparent: true, roughness: .96, metalness: 0, depthWrite: false }));
   road.rotation.x = -Math.PI / 2; road.position.set(0, .004, ROAD_Z); road.receiveShadow = true; scene.add(road);
-  const dashFade = (z) => Math.max(0, Math.min(1, (1 - Math.abs(z) / (ROAD_L / 2)) / .62));
+  const dashFade = (z) => Math.max(0, Math.min(1, (22 - Math.abs(z)) / 10));
   /* Alles, was am Fahrzeug vorbeizieht: Objekte laufen nach -z, springen am Ende zurück und blenden an den Rändern aus */
   const movers = [];
   const mover = (obj, z, mats) => { obj.position.z = z; obj.userData.mats = mats; scene.add(obj); movers.push(obj); return obj; };
@@ -476,65 +471,68 @@
     ? loadModel(cfg.truckModel).catch((e) => { console.warn("3D-Modell konnte nicht geladen werden, Ersatzmodell wird gezeigt.", e); buildProcedural(); })
     : Promise.resolve(buildProcedural());
 
-  const HOME_Z = cfg.truckModel ? 0 : -2.2;
+  const HOME_Z = 0;
   truck.position.z = HOME_Z;
   const baseYaw = .22;
 
-  /* ---------- Größe ---------- */
+  /* ---------- Größe und Kamera: das ganze Fahrzeug bleibt in jedem Seitenverhältnis sichtbar ---------- */
+  const viewDir = new THREE.Vector3(16.3, 5.0, 20.8).normalize();
+  const fit = { r: 9, c: new THREE.Vector3(0, 1.8, 0) };
+  const measure = () => {
+    const bb = new THREE.Box3().setFromObject(truck);
+    if (bb.isEmpty()) return;
+    const sphere = bb.getBoundingSphere(new THREE.Sphere());
+    fit.r = sphere.radius; fit.c.copy(sphere.center);
+  };
+  const placeCamera = () => {
+    const vFov = THREE.MathUtils.degToRad(camera.fov);
+    const hFov = 2 * Math.atan(Math.tan(vFov / 2) * camera.aspect);
+    const dist = (fit.r * 1.12) / Math.sin(Math.min(vFov, hFov) / 2);
+    camera.position.copy(fit.c).addScaledVector(viewDir, dist);
+    camera.lookAt(fit.c.x, fit.c.y - fit.r * .08, fit.c.z);
+  };
   const resize = () => {
     const w = stage.clientWidth, h = stage.clientHeight; if (!w || !h) return;
     renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix();
-    const k = (w / h < 1 ? 1.35 : 1) * CS; camBase.set(16.3 * k, 5.0 * k, 20.8 * k);
+    placeCamera();
   };
   if ("ResizeObserver" in window) new ResizeObserver(resize).observe(stage); else addEventListener("resize", resize);
   resize();
 
-  /* ---------- Eingaben ---------- */
-  const mouse = { x: 0, y: 0 }, target = { x: 0, y: 0 };
-  addEventListener("pointermove", (e) => { if (e.pointerType === "touch") return; target.x = (e.clientX / innerWidth) * 2 - 1; target.y = (e.clientY / innerHeight) * 2 - 1; }, { passive: true });
-  let scrollP = 0;
-  const onScroll = () => { scrollP = Math.min(1, scrollY / (innerHeight * .9)); };
-  addEventListener("scroll", onScroll, { passive: true }); onScroll();
   let visible = true;
   if ("IntersectionObserver" in window) new IntersectionObserver(([en]) => { visible = en.isIntersecting; }).observe(stage);
 
-  /* ---------- Animation ---------- */
-  const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+  /* ---------- Animation: gleichmäßiges Rollen ---------- */
   const clock = new THREE.Clock();
   const start = performance.now();
-  const ENTRY = 2.6;
+  const SPEED = 6;                                        /* m/s */
   const frame = () => {
     const dt = Math.min(clock.getDelta(), .05);
     const elapsed = (performance.now() - start) / 1000;
-    const entry = reduced ? 1 : easeOut(Math.min(1, elapsed / ENTRY));
-    const speed = reduced ? 0 : 9 * (1 - entry) + 6;   /* m/s: Einfahrt schnell, dann gleichmäßiges Fahren */
+    const speed = reduced ? 0 : SPEED;
 
-    truck.position.z = HOME_Z - (1 - entry) * 34;
-    truck.position.x = (1 - entry) * -4;
-    truck.rotation.y = baseYaw + (1 - entry) * -.18 + scrollP * .75 + mouse.x * .06;
+    truck.position.set(0, 0, HOME_Z);
+    truck.rotation.y = baseYaw;
 
     wheels.forEach((w) => { w.rotation.x -= (speed * dt) / (w.userData.r || R); });
     movers.forEach((o) => {
       o.position.z -= speed * dt; if (o.position.z < ROAD_Z - ROAD_L / 2) o.position.z += ROAD_L;
       const a = dashFade(o.position.z - ROAD_Z); o.userData.mats.forEach((m) => { m.opacity = a; });
     });
-
     if (!reduced) {
       cab.position.y = Math.sin(elapsed * 2.1) * .01 + Math.sin(elapsed * 5.3) * .005;
       cab.rotation.x = Math.sin(elapsed * 1.7) * .003;
-      trailer.rotation.y = Math.sin(elapsed * .9) * .005 + (1 - entry) * .08;
-      /* Fahrwerk: leichtes Federn und Nicken, spürbar auch beim geladenen Modell */
+      trailer.rotation.y = Math.sin(elapsed * .9) * .005;
       tractor.position.y = Math.sin(elapsed * 2.4) * .012 + Math.sin(elapsed * 7.1) * .004;
       tractor.rotation.x = Math.sin(elapsed * 1.9) * .004;
       tractor.rotation.z = Math.sin(elapsed * 1.3) * .004;
     }
-    mouse.x += (target.x - mouse.x) * .05; mouse.y += (target.y - mouse.y) * .05;
-    camera.position.x = camBase.x + mouse.x * 2.2 * CS;
-    camera.position.y = camBase.y - mouse.y * 1.4 * CS + scrollP * 4 * CS;
-    camera.position.z = camBase.z + scrollP * 3 * CS;
-    camera.lookAt(camTarget.x, camTarget.y + scrollP * -.6, camTarget.z);
     renderer.render(scene, camera);
   };
   const loop = () => { if (visible && !document.hidden) frame(); requestAnimationFrame(loop); };
-  ready.then(() => { if (reduced) { frame(); addEventListener("resize", frame); } else loop(); });
+  ready.then(() => {
+    truck.position.set(0, 0, HOME_Z); truck.rotation.y = baseYaw; truck.updateMatrixWorld(true);
+    measure(); placeCamera();
+    if (reduced) { frame(); addEventListener("resize", frame); } else loop();
+  });
 })();

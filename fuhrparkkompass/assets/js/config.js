@@ -27,8 +27,6 @@ window.FPK = {
   truckGround: -.3,                 /* Bodenhöhe in Modellkoordinaten */
   /* Beschriftung auf den Kofferseiten, als Anteile der Länge/Höhe (null = keine) */
   truckLivery: { z0: .30, z1: .97, y0: .40, y1: .93 },
-  cameraScale: .48,                 /* Kameraabstand relativ zum 16,5-m-Sattelzug */
-  cameraTarget: [0, 1.35, 0],
 
   /* Terminbuchung
      endpoint: URL, an die die Buchung als JSON per POST geschickt wird
