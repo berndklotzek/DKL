@@ -317,7 +317,9 @@ button { font: inherit; }
     radial-gradient(60% 50% at 50% 100%, rgba(201, 162, 77, .25), transparent),
     linear-gradient(160deg, var(--navy-600), var(--navy-900));
 }
-.hero-card .portrait.has-photo .monogram { display: none; }
+/* Lädt das Foto, verschwindet das Monogramm; bei einem Ladefehler entfernt sich das Bild selbst. */
+.hero-card .portrait img + .monogram { display: none; }
+.hero-card .portrait img { object-position: 50% 15%; }
 .hero-card figcaption { margin-top: 1.3rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
 .hero-card figcaption b { display: block; font-family: var(--font-display); font-weight: 500; font-size: 1.3rem; color: var(--on-dark); }
 .hero-card figcaption span { font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; color: var(--on-dark-3); font-weight: 600; }
@@ -346,7 +348,13 @@ button { font: inherit; }
 }
 @media (max-width: 600px) {
   .hero { padding-top: 6.5rem; min-height: auto; }
-  .hero-visual { display: none; }
+  /* Auf dem Handy bleibt das Foto sichtbar, nur die schwebenden Hinweise entfallen. */
+  .hero-visual { order: -1; max-width: 300px; margin: 0 0 1.5rem; }
+  .hero-chip { display: none; }
+  .hero-card { padding: 1.2rem; border-radius: 20px; }
+  .hero-card figcaption b { font-size: 1.1rem; }
+  .hero-card figcaption span { font-size: .66rem; }
+  .hero-card .badge { width: 50px; height: 50px; font-size: .48rem; }
 }
 
 /* --- Logo-Karussell ----------------------------------------------------- */
@@ -455,7 +463,8 @@ button { font: inherit; }
 }
 .about-frame img { width: 100%; height: 100%; object-fit: cover; }
 .about-frame .monogram { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--font-display); font-size: 7rem; color: var(--gold-soft); font-weight: 300; }
-.about-frame.has-photo .monogram { display: none; }
+.about-frame img + .monogram { display: none; }
+.about-frame img { object-position: 50% 15%; }
 .about-frame::after { content: ""; position: absolute; inset: 1rem; border: 1px solid rgba(255, 255, 255, .25); border-radius: 20px; pointer-events: none; }
 .about-quote {
   position: absolute; right: -2rem; bottom: 2.5rem; max-width: 300px;
