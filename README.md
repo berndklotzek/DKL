@@ -1,120 +1,105 @@
-# Seelenfrieden Urnenrückführung GmbH — Website
+# Daniel Klotzek — Versicherungsmakler & Finanzberater
 
-Statische, zweisprachige Website (Deutsch / Russisch) für die
-Seelenfrieden Urnenrückführung GmbH, Zug.
+Statische High-End-Website für die unabhängige Versicherungs- und
+Finanzberatung in Wiesloch, Dielheim, Nußloch, Leimen und Heidelberg.
+Kein Build, kein Framework, keine Cookies.
 
 ## Aufbau
 
 ```
-index.html              Komplette Seite (Hero, Leistungen, Ablauf, Über uns, Kontakt, Impressum)
-assets/css/style.css    Styles; alle Farben und Schriften als CSS-Variablen ganz oben in :root
-assets/js/i18n.js       Sprachumschalter DE/RU
-assets/js/nav.js        Menü auf schmalen Schirmen
-assets/js/slogans.js    Wechsel der Hauptüberschrift
-assets/js/scene.js      Dämmerungskulisse: Berge, Dunst, Stadt (Canvas)
-assets/js/flag.js       Wehende Schweizer Fahne am Mast (Canvas)
+index.html                 Startseite: Hero, Versicherer-Karussell, Leistungen, Kennzahlen,
+                           Über mich, Grundsätze, Ablauf, Region, Terminbuchung, Kontakt
+visitenkarte.html          QR-Code-Generator + druckfertige Visitenkarten-Vorlage (85 × 55 mm)
+impressum.html             Impressum, Erstinformation § 15 VersVermV, Schlichtungsstellen
+datenschutz.html           Datenschutzerklärung (Hosting, Google Kalender/Meet, Formular)
+
+assets/js/config.js        ► Alle persönlichen Angaben: Kontakt, Buchungslink, Registernummer
+assets/js/main.js          Kopfzeile, Menü, Einblenden, Zähler, Karussell, Tabs, Buchung, Formular
+assets/js/hero.js          Animierte Hero-Kulisse (Canvas)
+assets/js/vendor/          QR-Code-Bibliothek (node-qrcode, MIT), für den Browser gebündelt
+assets/css/style.css       Gestaltung; alle Farben und Schriften als Variablen in :root
+assets/fonts/              Fraunces + Manrope (SIL Open Font License), selbst gehostet
+assets/logos/*.svg         Wortmarken der Versicherer fürs Karussell (siehe unten)
+assets/img/                Porträtfotos hier ablegen (siehe assets/img/README.md)
+assets/qr/                 Vorab erzeugter QR-Code (SVG, PNG) für die Visitenkarte
+
+tools/make_qr.py           QR-Code neu erzeugen, z. B. nach Domainwechsel
+tools/make_logos.py        Logo-Wortmarken neu erzeugen
+.github/workflows/pages.yml  Veröffentlichung über GitHub Pages
 ```
 
-Kein Build, kein Framework. Lokal testen:
+Lokal testen:
 
 ```bash
-python3 -m http.server 8000   # dann http://localhost:8000 öffnen
+python3 -m http.server 8000     # dann http://localhost:8000 öffnen
 ```
 
-## Gestaltung
+## Vor dem Livegang — Checkliste
 
-Der Auftritt ist bewusst **einfarbig dunkel** — Gold auf Nachtblau — und hat
-keine helle Variante: Er soll auf jedem Gerät gleich wirken. Alle Werte liegen
-als Variablen in `:root`:
+Alles Persönliche steht in **`assets/js/config.js`**. Dort ausfüllen:
 
-```css
---gold:    #c9a86b;   /* Akzent: Kursive, Buttons, Kennzahlen, Zierlinien */
---ink-800: #0b1119;   /* Grundton der Abschnitte */
---track:   .22em;     /* Laufweite der Versalien-Kleinschrift */
-```
+1. **Kontaktdaten** — Telefon, E-Mail, Adresse, Erreichbarkeit.
+2. **Google-Meet-Buchung** — `booking.url` (Anleitung unten).
+3. **Pflichtangaben** — Vermittlerregister-Nummer (`D-…`), IHK, ggf. USt-IdNr.
+   Liegt eine Erlaubnis nach § 34f GewO (Finanzanlagen) vor, `hasFinanzanlagen34f: true` setzen.
+4. **`siteUrl`** — die endgültige Domain; danach `python3 tools/make_qr.py` ausführen.
+5. **Porträtfotos** nach `assets/img/` legen (Dateinamen siehe dort).
+6. Impressum und Datenschutz einmal gegenlesen — die Texte sind sorgfältig
+   vorbereitet, ersetzen aber keine Prüfung durch die IHK oder einen Anwalt.
 
-Wiederkehrendes Motiv ist die Klasse `.caps`: kleine Versalien mit weiter
-Laufweite, in Eyebrow, Buttons, Kennzahlen und Fusszeile.
+## Google-Meet-Terminbuchung einrichten
 
-### Schriften — bitte selbst hosten
+Die Seite bettet den **Terminplan von Google Kalender** ein. Jede Buchung erzeugt
+automatisch einen Google-Meet-Link und verschickt Bestätigung und Erinnerung.
 
-Playfair Display und Poppins werden derzeit über **Google Fonts** geladen. Für
-eine Seite, die sich an Angehörige in Deutschland richtet, ist das heikel: Das
-Einbinden per Verweis überträgt die IP-Adresse der Besucher an Google, was
-deutsche Gerichte als DSGVO-Verstoss gewertet haben (LG München I, 3 O 17493/20).
-Vor dem Livegang also die beiden Familien herunterladen, unter `assets/fonts/`
-ablegen, per `@font-face` einbinden und die drei `<link>`-Zeilen im `<head>`
-entfernen.
+1. [calendar.google.com](https://calendar.google.com) öffnen → **Erstellen → Terminplan**.
+2. Titel „Erstgespräch“, Dauer 30 Minuten, verfügbare Zeiten eintragen,
+   unter *Buchungsformular* Name, E-Mail und optional Telefon abfragen.
+3. Unter **Videokonferenz** „Google Meet“ auswählen (bei Google-Workspace-Konten
+   meist Standard; bei privaten Konten aktivieren).
+4. Speichern → **Freigeben** → Link kopieren. Er sieht so aus:
+   `https://calendar.google.com/calendar/appointments/schedules/AcZssZ…?gv=true`
+5. Diesen Link in `assets/js/config.js` bei `booking.url` eintragen.
 
-## Zweisprachigkeit
+Der Kalender wird aus Datenschutzgründen erst nach einem Klick des Besuchers
+geladen (Zwei-Klick-Lösung); die Datenschutzerklärung beschreibt das bereits.
 
-Beide Sprachfassungen stehen parallel im HTML:
+## Versicherer-Karussell
 
-```html
-<span lang="de">Leistungen</span><span lang="ru">Услуги</span>
-```
+Die Logos liegen als `assets/logos/<name>.svg` (240 × 80 px) und werden in
+`index.html` über `data-logos="allianz,axa,…"` in zwei gegenläufige Reihen
+geladen. Reihenfolge ändern oder Gesellschaften ergänzen: nur die Liste
+anpassen und eine passende SVG-Datei ablegen.
 
-Sichtbar ist die Sprache, die `data-lang` am `<html>`-Element freigibt.
-`i18n.js` setzt das Attribut, merkt sich die Wahl in `localStorage` und
-übernimmt beim ersten Besuch die Browsersprache. Ohne JavaScript bleibt Deutsch
-stehen — es fehlt also nie Inhalt.
+**Wichtig:** Die mitgelieferten Dateien sind *Wortmarken in Markenfarbe*, die
+das Skript `tools/make_logos.py` erzeugt — keine Kopien der offiziellen
+Bildmarken. Die Nutzung echter Logos setzt die Freigabe der jeweiligen
+Gesellschaft voraus (bei bestehender Courtagezusage in der Regel über das
+Maklerportal erhältlich). Offizielles Logo unter gleichem Dateinamen ablegen,
+fertig.
 
-**Neuen Text ergänzen:** immer beide Sprachvarianten anlegen.
+## QR-Code für die Visitenkarte
 
-## Wechselnde Hauptüberschrift
+* **`visitenkarte.html`** erzeugt den Code live im Browser: Adresse, Farbe und
+  Fehlerkorrektur wählbar, Download als SVG (Druck) oder PNG (2048 px), dazu
+  eine druckfertige Vorlage für Vorder- und Rückseite (Browser → Drucken → als PDF).
+* **`assets/qr/`** enthält den Code für die in `config.js` hinterlegte Adresse.
+  Nach einem Domainwechsel: `python3 tools/make_qr.py` (benötigt `pip install "qrcode[pil]"`).
+* Druckhinweise: mindestens 15 mm Kantenlänge, 2 mm heller Rand, dunkler Code auf hellem Grund.
 
-Die fünf Aussagen im Hero stehen als `.slogan` in der `<h1 class="rotator">`,
-jede zweizeilig: `.l1` weiss, `.l2` goldkursiv. Sie liegen im selben Rasterfeld
-übereinander, deshalb springt das Layout beim Wechsel nicht. `slogans.js`
-schaltet alle 5,2 Sekunden weiter und pausiert unter der Maus und bei Tab im
-Hintergrund. Die erste Aussage trägt `is-active`, damit ohne JavaScript keine
-leere Überschrift dasteht; bei `prefers-reduced-motion` bleibt sie stehen.
+## Veröffentlichung
 
-## Kulisse
+**GitHub Pages:** Repository → *Settings → Pages → Source: GitHub Actions*.
+Der Workflow `.github/workflows/pages.yml` veröffentlicht bei jedem Push auf
+`main`. Eigene Domain unter *Settings → Pages → Custom domain* eintragen und in
+`config.js` als `siteUrl` übernehmen.
 
-`scene.js` zeichnet die Dämmerung selbst, statt ein Foto zu laden: Himmel mit
-warmem Horizontschimmer, Sterne, vier Bergketten über Mittelpunktverschiebung,
-Dunstbänder am Fuss jeder Kette (das ist die Luftperspektive) und die Lichter
-einer Stadt am Grund. Alles kommt aus einem festen Startwert — dieselbe Kulisse
-auf jedem Gerät und bei jedem Aufruf, ein Markenbild darf nicht flackern.
+Jeder andere Webspace funktioniert ebenso: Alle Dateien per FTP hochladen.
 
-Gezeichnet wird in jedes `canvas.scene`: einmal im Hero, einmal gedämpft hinter
-dem Kontaktteil. Startwert und Farben stehen oben in der Datei.
+## Datenschutz-Hinweise zur Technik
 
-**Soll das Originalfoto rein:** Bild unter `assets/img/` ablegen, im Hero
-`background-image` setzen und das `<canvas class="scene">` dort entfernen — der
-Schleier `\.hero::after` bleibt und sorgt weiter für lesbaren Text.
-
-## Wehende Fahne
-
-`flag.js` zeichnet die Fahne einmal flach in ein Offscreen-Canvas — Feld 32 × 32,
-Kreuzbalken 20 × 6, also die eidgenössischen Proportionen — und trägt sie dann
-spaltenweise versetzt wieder auf. Der Versatz kommt aus einer Sinuswelle, deren
-Ausschlag zum freien Ende hin wächst; die Helligkeit jeder Spalte folgt der
-Steigung der Welle. Der Mast wird separat gezeichnet. Kein Bild, keine Bibliothek.
-
-Stellschrauben oben in der Datei: `WAVES`, `SPEED`, `AMP`. Bei
-`prefers-reduced-motion` steht die Fahne still.
-
-## Laufschrift
-
-Das Slogan-Band über der Kopfzeile läuft endlos, weil die Items doppelt im
-Markup stehen und die Spur um genau 50 % verschoben wird. Die laufende Spur ist
-`aria-hidden`, der Slogan steht einmal zusätzlich als `.visually-hidden` im
-Dokument. Pause beim Überfahren; bei `prefers-reduced-motion` steht ein
-einzelner, zentrierter Slogan.
-
-## Noch einzutragen
-
-| Stelle | Platzhalter | gebraucht wird |
-|---|---|---|
-| Kontakt + Impressum | `+41 41 000 00 00` | echte Rufnummer |
-| Impressum | `CHE-000.000.000` | UID nach Handelsregistereintrag |
-| Kontakt + Impressum | `6300 Zug` | Postleitzahl bestätigen |
-| Kopfzeile | `.logo-mark` (SVG) | das echte Signet |
-| Hero | Bergkette als SVG | das Original-Hintergrundbild, falls gewünscht |
-| Hero | `200+`, `490 €`, `100 %` | Zahlen bestätigen — Werbeaussagen müssen stimmen |
-
-Die E-Mail-Adresse ist aus der Domain abgeleitet; `mailto:`-Links verwenden die
-Punycode-Form `info@xn--seelenfrieden-urnenrckfhrung-l7cd.ch`, damit ältere
-Mailprogramme sie auflösen.
+* Schriften, Skripte und Grafiken werden lokal geladen — kein Google Fonts, kein CDN.
+* Keine Cookies, kein Tracking, daher kein Cookie-Banner.
+* Das Kontaktformular öffnet das E-Mail-Programm des Besuchers (`mailto:`);
+  es werden keine Daten auf dem Server gespeichert. Soll das Formular direkt
+  versenden, bietet sich ein Dienst wie Formspree oder ein kleines PHP-Skript an.
