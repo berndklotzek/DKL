@@ -16,10 +16,10 @@ window.SITE = {
       "Geprüfter Fachmann für Versicherungsvermittlung (IHK)",
       "Logistik- und Mobilitätsmanagement (B.Sc.)"
     ],
-    phone: "+49 6222 0000000",           /* TODO: Telefonnummer */
-    phoneDisplay: "06222 / 000 00 00",   /* TODO: Anzeigeform */
+    phone: "+49 162 4053093",
+    phoneDisplay: "0162 / 405 30 93",
     email: "kontakt@daniel-klotzek.de",  /* TODO: E-Mail-Adresse */
-    street: "Musterstraße 1",            /* TODO: Straße */
+    street: "Am Danielsbrunnen 28",
     zip: "69168",
     city: "Wiesloch",
     hours: "Mo – Fr 8:30 – 18:30 Uhr · Termine nach Vereinbarung, auch abends"
