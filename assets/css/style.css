@@ -19,6 +19,27 @@
   src: url("../fonts/Manrope-normal.woff2") format("woff2");
   font-weight: 300 800; font-style: normal; font-display: swap;
 }
+/* Kyrillisch: Fraunces hat keine kyrillischen Glyphen, deshalb springt für
+   diese Zeichen Playfair Display ein (gleiche Familie, eigener unicode-range).
+   Manrope bringt Kyrillisch als eigene Teilmenge mit. */
+@font-face {
+  font-family: "Fraunces";
+  src: url("../fonts/PlayfairDisplay-normal-cyrillic.woff2") format("woff2");
+  font-weight: 400 900; font-style: normal; font-display: swap;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "Fraunces";
+  src: url("../fonts/PlayfairDisplay-italic-cyrillic.woff2") format("woff2");
+  font-weight: 400 900; font-style: italic; font-display: swap;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "Manrope";
+  src: url("../fonts/Manrope-normal-cyrillic.woff2") format("woff2");
+  font-weight: 200 800; font-style: normal; font-display: swap;
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
 
 :root {
   --navy-950: #050b17;
@@ -190,6 +211,19 @@ button { font: inherit; }
 .nav .btn--navy { color: var(--on-dark); }
 .topbar:not(.topbar--light) .nav { color: var(--on-dark); }
 
+.topbar-tools { display: flex; align-items: center; gap: .8rem; flex: none; }
+.langswitch { display: inline-flex; border: 1px solid var(--line-dark); border-radius: 999px; padding: 2px; }
+.topbar--light .langswitch { border-color: var(--line); }
+.langswitch button {
+  font: inherit; font-size: .66rem; font-weight: 700; letter-spacing: .12em;
+  padding: .32rem .62rem; border: 0; border-radius: 999px; background: transparent;
+  color: var(--on-dark-3); cursor: pointer; transition: background .25s, color .25s;
+}
+.topbar--light .langswitch button { color: var(--ink-3); }
+.langswitch button[aria-pressed="true"] { background: var(--gold); color: var(--navy-900); }
+.langswitch button:hover:not([aria-pressed="true"]) { color: var(--on-dark); }
+.topbar--light .langswitch button:hover:not([aria-pressed="true"]) { color: var(--ink); }
+
 .nav-toggle {
   display: none; width: 44px; height: 44px; border: 0; border-radius: 12px;
   background: rgba(255, 255, 255, .08); color: var(--on-dark); cursor: pointer;
@@ -216,7 +250,9 @@ button { font: inherit; }
   .nav a { font-size: 1.4rem; font-family: var(--font-display); font-weight: 400; letter-spacing: 0; }
   .nav .btn { font-family: var(--font-sans); font-size: .78rem; margin: 1rem 0 0; }
   .nav-open .nav { opacity: 1; pointer-events: auto; }
-  .nav-open .nav-toggle { position: relative; z-index: 45; }
+  .nav-open .topbar-tools { position: relative; z-index: 45; }
+  .nav-open .langswitch { border-color: var(--line-dark); }
+  .nav-open .langswitch button { color: var(--on-dark-3); }
   .nav-open .nav-toggle span::before, .nav-open .nav-toggle span::after { background: var(--on-dark); }
 }
 
@@ -226,10 +262,21 @@ button { font: inherit; }
   position: relative; overflow: hidden; isolation: isolate;
   min-height: 100svh; display: flex; align-items: center;
   padding: 8rem 0 5rem;
-  background: radial-gradient(120% 80% at 80% 10%, var(--navy-700) 0%, var(--navy-900) 45%, var(--navy-950) 100%);
   color: var(--on-dark-2);
+  /* Ruhige, unbewegte Kulisse: Nachtblau mit einem warmen Lichtschein oben rechts
+     und einem kühlen Schimmer unten links. */
+  background:
+    radial-gradient(70% 60% at 85% 15%, rgba(201, 162, 77, .16), transparent 60%),
+    radial-gradient(60% 50% at 10% 90%, rgba(43, 101, 175, .22), transparent 60%),
+    linear-gradient(160deg, var(--navy-700) 0%, var(--navy-900) 45%, var(--navy-950) 100%);
 }
-.hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; opacity: .9; }
+.hero::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background-image: linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(80% 70% at 60% 40%, #000, transparent);
+  -webkit-mask-image: radial-gradient(80% 70% at 60% 40%, #000, transparent);
+}
 .hero::after {
   content: ""; position: absolute; inset: auto 0 0 0; height: 30%; z-index: -1;
   background: linear-gradient(to bottom, transparent, var(--navy-950));
@@ -257,9 +304,7 @@ button { font: inherit; }
   border: 1px solid rgba(255, 255, 255, .14);
   backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
   box-shadow: 0 40px 80px -40px rgba(0, 0, 0, .8);
-  animation: float 8s ease-in-out infinite;
 }
-@keyframes float { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-12px) } }
 .hero-card .portrait {
   width: 100%; aspect-ratio: 4 / 4.6; border-radius: 18px; overflow: hidden; position: relative;
   background: linear-gradient(160deg, var(--navy-600), var(--navy-900));
@@ -286,27 +331,18 @@ button { font: inherit; }
   position: absolute; padding: .8rem 1rem; border-radius: 14px;
   background: var(--white); color: var(--ink); box-shadow: var(--shadow);
   display: flex; align-items: center; gap: .7rem; font-size: .8rem; font-weight: 600;
-  animation: float 7s ease-in-out infinite;
 }
 .hero-chip svg { width: 22px; height: 22px; flex: none; }
-.hero-chip--a { left: -2.4rem; top: 18%; animation-delay: -2s; }
-.hero-chip--b { right: -1.6rem; bottom: 22%; animation-delay: -4s; }
+.hero-chip--a { left: -2.4rem; top: 18%; }
+.hero-chip--b { right: -1.6rem; bottom: 22%; }
 .hero-chip small { display: block; font-size: .66rem; color: var(--ink-3); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
 
-.scroll-hint {
-  position: absolute; left: 50%; bottom: 1.6rem; transform: translateX(-50%);
-  color: var(--on-dark-3); font-size: .62rem; letter-spacing: .3em; text-transform: uppercase;
-  display: flex; flex-direction: column; align-items: center; gap: .5rem;
-}
-.scroll-hint::after { content: ""; width: 1px; height: 36px; background: linear-gradient(var(--gold), transparent); animation: drop 2.2s infinite; }
-@keyframes drop { 0% { transform: scaleY(0); transform-origin: top } 50% { transform: scaleY(1); transform-origin: top } 51% { transform-origin: bottom } 100% { transform: scaleY(0); transform-origin: bottom } }
 
 @media (max-width: 1000px) {
   .hero .wrap { grid-template-columns: 1fr; gap: 3rem; }
   .hero-visual { max-width: 440px; }
   .hero-chip--a { left: -.5rem; }
   .hero-chip--b { right: -.5rem; }
-  .scroll-hint { display: none; }
 }
 @media (max-width: 600px) {
   .hero { padding-top: 6.5rem; min-height: auto; }
@@ -557,7 +593,7 @@ button { font: inherit; }
 .reveal[data-delay="2"] { transition-delay: .2s; }
 .reveal[data-delay="3"] { transition-delay: .3s; }
 .reveal[data-delay="4"] { transition-delay: .4s; }
-@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } .hero-card, .hero-chip { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
 
 /* --- Unterseiten (Impressum, Datenschutz, Visitenkarte) ---------------- */
 

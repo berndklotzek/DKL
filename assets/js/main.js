@@ -4,6 +4,7 @@
   const S = window.SITE || {};
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+  const t = (str) => (window.I18N ? window.I18N.t(str) : str);
 
   /* --- Kopfzeile: kompakt nach dem Scrollen ---------------------------- */
   const topbar = $("#topbar");
@@ -16,7 +17,7 @@
     toggle.addEventListener("click", () => {
       const open = document.body.classList.toggle("nav-open");
       toggle.setAttribute("aria-expanded", String(open));
-      toggle.setAttribute("aria-label", open ? "Menü schließen" : "Menü öffnen");
+      toggle.setAttribute("aria-label", t(open ? "Menü schließen" : "Menü öffnen"));
     });
     $$("#nav a").forEach(a => a.addEventListener("click", () => {
       document.body.classList.remove("nav-open"); toggle.setAttribute("aria-expanded", "false");
@@ -97,7 +98,7 @@
   } else if (loadBtn && frame) {
     loadBtn.addEventListener("click", () => {
       const iframe = document.createElement("iframe");
-      iframe.src = booking.url; iframe.title = "Terminbuchung – Google Kalender";
+      iframe.src = booking.url; iframe.title = t("Terminbuchung – Google Kalender");
       iframe.setAttribute("loading", "lazy"); iframe.setAttribute("allow", "camera; microphone");
       frame.appendChild(iframe); frame.classList.add("is-loaded");
     });
@@ -110,10 +111,10 @@
     if (form.website && form.website.value) return;          /* Spam-Falle */
     if (!form.reportValidity()) return;
     const f = new FormData(form);
-    const subject = `Anfrage über die Website: ${f.get("topic")}`;
+    const subject = `${t("Anfrage über die Website")}: ${f.get("topic")}`;
     const body = [
-      `Name: ${f.get("name")}`, `E-Mail: ${f.get("email")}`, `Telefon: ${f.get("phone") || "—"}`,
-      `Thema: ${f.get("topic")}`, "", f.get("message")
+      `${t("Name")}: ${f.get("name")}`, `${t("E-Mail")}: ${f.get("email")}`, `${t("Telefon")}: ${f.get("phone") || "—"}`,
+      `${t("Thema")}: ${f.get("topic")}`, "", f.get("message")
     ].join("\n");
     window.location.href = `mailto:${o.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   });

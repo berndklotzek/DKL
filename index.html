@@ -80,7 +80,6 @@
       <span class="logo-mark">DK</span>
       <span class="logo-type"><b>Daniel Klotzek</b><span>Versicherungsmakler · Finanzberater</span></span>
     </a>
-    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="nav" aria-label="Menü öffnen"><span></span></button>
     <nav class="nav" id="nav" aria-label="Hauptnavigation">
       <a href="#leistungen">Leistungen</a>
       <a href="#ueber-mich">Über mich</a>
@@ -89,6 +88,13 @@
       <a href="#kontakt">Kontakt</a>
       <a class="btn btn--gold btn--sm" href="#termin"><svg aria-hidden="true"><use href="#i-video"/></svg>Termin buchen</a>
     </nav>
+    <div class="topbar-tools">
+      <div class="langswitch" role="group" aria-label="Sprache">
+        <button type="button" data-lang="de" aria-pressed="true" lang="de">DE</button>
+        <button type="button" data-lang="ru" aria-pressed="false" lang="ru">RU</button>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="nav" aria-label="Menü öffnen"><span></span></button>
+    </div>
   </div>
 </header>
 
@@ -96,7 +102,6 @@
 
   <!-- ======================= Hero ======================= -->
   <section class="hero dark">
-    <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
     <div class="wrap">
       <div class="hero-copy">
         <p class="eyebrow caps reveal">Unabhängiger Versicherungsmakler · Rhein-Neckar</p>
@@ -134,7 +139,6 @@
         </div>
       </div>
     </div>
-    <div class="scroll-hint" aria-hidden="true">Scrollen</div>
   </section>
 
   <!-- ======================= Partner-Karussell ======================= -->
@@ -517,7 +521,7 @@
   </div>
 </footer>
 
-<script src="assets/js/hero.js" defer></script>
+<script src="assets/js/i18n.js" defer></script>
 <script src="assets/js/main.js" defer></script>
 </body>
 </html>

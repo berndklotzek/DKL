@@ -7,7 +7,7 @@ Kein Build, kein Framework, keine Cookies.
 ## Aufbau
 
 ```
-index.html                 Startseite: Hero, Versicherer-Karussell, Leistungen, Kennzahlen,
+index.html                 Startseite (DE/RU): Hero, Versicherer-Karussell, Leistungen, Kennzahlen,
                            Über mich, Grundsätze, Ablauf, Region, Terminbuchung, Kontakt
 visitenkarte.html          QR-Code-Generator + druckfertige Visitenkarten-Vorlage (85 × 55 mm)
 impressum.html             Impressum, Erstinformation § 15 VersVermV, Schlichtungsstellen
@@ -15,10 +15,10 @@ datenschutz.html           Datenschutzerklärung (Hosting, Google Kalender/Meet,
 
 assets/js/config.js        ► Alle persönlichen Angaben: Kontakt, Buchungslink, Registernummer
 assets/js/main.js          Kopfzeile, Menü, Einblenden, Zähler, Karussell, Tabs, Buchung, Formular
-assets/js/hero.js          Animierte Hero-Kulisse (Canvas)
+assets/js/i18n.js          Sprachumschalter DE/RU mit dem russischen Wörterbuch
 assets/js/vendor/          QR-Code-Bibliothek (node-qrcode, MIT), für den Browser gebündelt
 assets/css/style.css       Gestaltung; alle Farben und Schriften als Variablen in :root
-assets/fonts/              Fraunces + Manrope (SIL Open Font License), selbst gehostet
+assets/fonts/              Fraunces, Manrope, Playfair Display (kyrillisch) — SIL OFL, selbst gehostet
 assets/logos/*.svg         Wortmarken der Versicherer fürs Karussell (siehe unten)
 assets/img/                Porträtfotos hier ablegen (siehe assets/img/README.md)
 assets/qr/                 Vorab erzeugter QR-Code (SVG, PNG) für die Visitenkarte
@@ -63,6 +63,18 @@ automatisch einen Google-Meet-Link und verschickt Bestätigung und Erinnerung.
 
 Der Kalender wird aus Datenschutzgründen erst nach einem Klick des Besuchers
 geladen (Zwei-Klick-Lösung); die Datenschutzerklärung beschreibt das bereits.
+
+## Zweisprachigkeit (Deutsch / Russisch)
+
+Der Umschalter DE/RU sitzt in der Kopfzeile. Das HTML bleibt einsprachig
+deutsch; `assets/js/i18n.js` enthält ein Wörterbuch *deutscher Text → russischer
+Text* und ersetzt beim Umschalten alle Textknoten und Attribute. Die Wahl wird im
+Browser gemerkt, `index.html?lang=ru` öffnet die Seite direkt auf Russisch.
+
+Neuen Text ergänzen: deutschen Wortlaut in `index.html` schreiben, dann in
+`i18n.js` denselben Wortlaut als Schlüssel mit russischer Fassung eintragen.
+Fehlt ein Eintrag, bleibt der Text deutsch. Impressum und Datenschutzerklärung
+bleiben bewusst deutsch (Pflichtangaben).
 
 ## Versicherer-Karussell
 
